@@ -15,7 +15,8 @@ export const getAll = () => {
 
 export const getAll2 = async (): Promise<testOutput[]> => {
   try {
-    const response = await api.get('/all');
+    const response = await api.get('/users');
+    console.log(response.data)
     return response.data;
   } catch (error) {
     console.error("Error while fetching all data:", error);
