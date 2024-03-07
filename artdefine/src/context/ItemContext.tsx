@@ -1,5 +1,5 @@
 import React, { createContext, useState, useMemo, useContext, useEffect, ReactNode } from 'react';
-import { getAll } from '../api';
+import { getAll2 } from '../api';
 
 interface Item {
     key: string;
@@ -19,9 +19,9 @@ export const ItemsProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await getAll();
+            const data = await getAll2();
             console.log(data);
-            setItems(data.items);
+            setItems(data);
         };
 
         fetchData();
