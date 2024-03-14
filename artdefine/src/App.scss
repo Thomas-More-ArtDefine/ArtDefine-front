@@ -1,5 +1,9 @@
+@import './style/variables';
+@import './style/mixins';
+
 .App {
   text-align: center;
+  background-color: $background-color;
 }
 
 .App-logo {
