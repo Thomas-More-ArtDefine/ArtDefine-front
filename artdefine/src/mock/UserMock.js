@@ -29,22 +29,4 @@ const userMockData = [
     }
 ];
 
-const postMockData = [ 
-    { id: 1, photo: "https://example.com/post1.jpg",
-     username: "alisadoe",
-     title: "Amazing artwork" 
-    }, 
-     { id: 2, 
-        photo: "https://example.com/post2.jpg", 
-        username: "janesmith", 
-        title: "Creative design" 
-    }, 
-    { id: 3, photo: "https://example.com/post3.jpg", 
-    username: "alexjohnson", 
-    title: "Illustration masterpiece" 
-} 
-];
-
-export { userMockData, postMockData };
-
 export default userMockData;
