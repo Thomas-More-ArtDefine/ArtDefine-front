@@ -1,5 +1,3 @@
-
-import './App.scss';
 import ListPage from './pages/Listpage';
 import { ItemsProvider } from './context/ItemContext';
 import {

@@ -1,1 +1,61 @@
-$background-color: #8a673a;
+// --- Typography ---
+$font-size-base: 18px;
+$font-size-sm: 16px;
+$font-size-lg: 20px;
+
+@font-face {
+    font-family: 'EavesSans'; 
+    src: url('./font/28413.otf') format('opentype')
+}
+
+@font-face {
+    font-family: 'EavesSansLight'; 
+    src: url('./font/28415.otf') format('opentype')
+}
+
+@font-face {
+    font-family: 'EavesSansBook'; 
+    src: url('./font/28416.otf') format('opentype')
+}
+
+@font-face {
+    font-family: 'EavesSansHeavy'; 
+    src: url('./font/28412.otf') format('opentype')
+}
+
+
+@font-face {
+    font-family: 'EavesSansHeavy'; 
+    src: url('./font/49259.otf') format('opentype')
+}
+
+
+// --- Border ---
+// corner radius
+$corner-radius: 16px;
+$corner-radius-sm: 8px;
+
+
+
+// --- Colors ---
+// head colors
+$color-white: #FFFFF3; // canvas white light
+$color-black: #000000;
+$color-primary: #FDED52; // Canary Yellow
+$color-secondary: #FE755E; // Sunset Red
+$color-tertiary: #FFACE0; // Candy Pink
+
+// color palette
+$midnight-blue: #232845;
+$canvas-white-dark: #FFF5B8;
+$canvas-white-light: #FFFFF3;
+$purple-dark: #4F296B;
+$purple-light: #6B2969;
+$purple-pastel: #D2AAF5;
+$candy-pink: #FFACE0;
+$canary-yellow-dark: #56511F;
+$canary-yellow: #FDED52;
+$sunset-red-dark: #6D2929;
+$sunset-red: #FE755E;
+
+$background-color: linear-gradient(to top, $canvas-white-dark, $color-white);
