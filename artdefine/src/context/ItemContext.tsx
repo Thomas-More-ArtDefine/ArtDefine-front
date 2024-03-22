@@ -19,9 +19,9 @@ export const ItemsProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await getAll2();
-            console.log(data);
-            setItems(data);
+            //const data = await getAll2();
+            //console.log(data);
+            //setItems(data);
         };
 
         fetchData();
