@@ -6,37 +6,64 @@
   background: $background-color;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+// --- Button ---
+button {
+  width: 192px;
+  height: 48px;
+  padding: 0 16px;
+  @include button($color-primary, $color-black, $midnight-blue);
+  margin: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button.primary {
+  @include button($color-primary, $color-black, $midnight-blue);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+button.secondary {
+  @include button($canvas-white-dark, $midnight-blue, $midnight-blue);
 }
 
-.App-link {
-  color: #61dafb;
+// --- Headers ---
+h1 {
+  font-size: 60px;
+  font-family: 'Icecream';
+  color: $color-secondary;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+h2 {
+  font-size: 48px;
+  font-family: 'Icecream';
+  color: $purple-pastel;
+}
+
+h3,h4,h5,h6 {
+  font-family: 'EavesSansHeavy';
+  color: $purple-dark;
+}
+
+h3 {
+  font-size: 36px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+h5 {
+  font-size: 20px;
+}
+
+// ---
+
+.link > a{
+  color: $color-secondary;
+  font-size: 16px;
+  font-family: 'EavesSansBook';
+  cursor: pointer;
+  transition: color 0.3s ease;
+  &:hover {
+    color: $purple-dark;
   }
 }

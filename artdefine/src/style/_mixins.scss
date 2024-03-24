@@ -1,0 +1,48 @@
+@import './variables';
+
+
+@mixin drop-shadow($x-offset, $y-offset) {
+    box-shadow: $x-offset $y-offset 0 $midnight-blue;
+  }
+  @mixin border-effect($place) {
+    @if $place == '0,0' {
+      @include drop-shadow(-4px, -4px);
+    } @else if $place == '1,0' {
+        @include drop-shadow(4px, -4px);
+    } @else if $place == '1,1' {
+        @include drop-shadow(4px, 4px);
+    } @else if $place == '0,1' {
+        @include drop-shadow(-4px, 4px);
+    } 
+  }
+
+
+
+@mixin button($bg-color, $text-color, $border-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    text-align: center;
+    font-family: 'EavesSansHeavy';
+    font-size: 24px;
+    border-radius: $corner-radius;
+    border: 1px solid $border-color;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  
+    @include border-effect('1,1');
+
+    &:hover {
+      background-color: darken($bg-color, 10%);
+    }
+
+    &.has-icon {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+  }
+
+  
+
+
