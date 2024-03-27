@@ -1,11 +1,14 @@
-@import './style/variables';
-@import './style/mixins';
+@import "./style/variables";
+@import "./style/mixins";
 
 .App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
   text-align: center;
   background: $background-color;
 }
-
 
 // --- Button ---
 button {
@@ -27,19 +30,21 @@ button.secondary {
 // --- Headers ---
 h1 {
   font-size: 60px;
-  font-family: 'Icecream';
+  font-family: "Icecream";
   color: $color-secondary;
-
 }
 
 h2 {
   font-size: 48px;
-  font-family: 'Icecream';
+  font-family: "Icecream";
   color: $purple-pastel;
 }
 
-h3,h4,h5,h6 {
-  font-family: 'EavesSansHeavy';
+h3,
+h4,
+h5,
+h6 {
+  font-family: "EavesSansHeavy";
   color: $purple-dark;
 }
 
@@ -55,15 +60,47 @@ h5 {
   font-size: 20px;
 }
 
-// ---
+// --- links ---
 
-.link > a{
+.link > a {
   color: $color-secondary;
   font-size: 16px;
-  font-family: 'EavesSansBook';
+  font-family: "EavesSansBook";
   cursor: pointer;
   transition: color 0.3s ease;
   &:hover {
     color: $purple-dark;
   }
+}
+
+// --- Nav ---
+.navigation {
+  height: 90px;
+  padding: 16px;
+  background: $color-white;
+  box-shadow: 0 4px 4px $midnight-blue;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+// --- Page ---
+
+.page {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 27px 18px 55px 18px;
+}
+
+// --- Profile ---
+
+.profile {
+  background-image: url("./assets/Compentent_assests/rasterframe_yellow.png");
+  background-size: contain;
 }

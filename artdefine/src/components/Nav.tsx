@@ -11,6 +11,9 @@ const Nav: React.FC = () => {
                 <li>
                     <Link to="/listpage">Listpage</Link>
                 </li>
+                <li>
+                    <Link to="/profile">Profile</Link>
+                </li>
             </ul>
         </nav>
     );
