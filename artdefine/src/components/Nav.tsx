@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Nav: React.FC = () => {
     return (
-        <nav>
+        <nav className='navigation'>
             <ul>
                 <li>
                     <Link to="/">Home</Link>
@@ -20,3 +20,4 @@ const Nav: React.FC = () => {
 };
 
 export default Nav;
+// Path: artdefine/src/components/Nav.tsx

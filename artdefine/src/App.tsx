@@ -14,7 +14,7 @@ function App() {
     <Routes>
         <Route path="/listpage" element={<ListPage />} />
         <Route path="*" element={<h1>Not Found</h1>} />
-        <Route path="/profile" element={<Profile name='Tim Everenbeek'/>} />
+        <Route path="/profile" element={<Profile name='Tim Everenbeek' rank={0}/>} />
       </Routes>
     </ItemsProvider>
     </div>

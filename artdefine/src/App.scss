@@ -12,18 +12,21 @@
 
 // --- Button ---
 button {
-  width: 192px;
-  height: 48px;
+  
   padding: 0 16px;
   @include button($color-primary, $color-black, $midnight-blue);
   margin: 10px;
 }
 
 button.primary {
+  width: 192px;
+  height: 48px;
   @include button($color-primary, $color-black, $midnight-blue);
 }
 
 button.secondary {
+  width: 192px;
+  height: 48px;
   @include button($canvas-white-dark, $midnight-blue, $midnight-blue);
 }
 
@@ -103,4 +106,59 @@ h5 {
 .profile {
   background-image: url("./assets/Compentent_assests/rasterframe_yellow.png");
   background-size: contain;
+
+  .profile-main{
+    height: 296px;
+    display: flex;
+    flex-direction: column ;
+    
+
+    .banner {
+      position: relative;
+      background: $color-white;
+      overflow: hidden;
+      width:100%;
+      height: 152px;
+      
+      @include border-standard(3px);
+      
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .collapse{
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 100%;
+        left: 100%;
+        padding-bottom: 30px;
+        padding-right: 45px;
+      }
+
+      
+    }
+
+    .profile-btns {
+      display: grid;
+      flex-grow: 1;
+      max-height: 150px;
+
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+
+      img{
+        position: absolute;
+        width: 110px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        aspect-ratio: 1/1;
+        object-fit: cover;   
+        @include border-standard(3px);
+        @include border-effect('1,1');
+      }
+
+    }
+  }
 }
