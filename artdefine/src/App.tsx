@@ -5,6 +5,7 @@ import {
 
 } from "react-router-dom";
 import Nav from './components/Nav';
+import Profile from './pages/Profile';
 function App() {
   return (
     <div className="App">
@@ -12,6 +13,8 @@ function App() {
       <Nav />
     <Routes>
         <Route path="/listpage" element={<ListPage />} />
+        <Route path="*" element={<h1>Not Found</h1>} />
+        <Route path="/profile" element={<Profile name='Tim Everenbeek'/>} />
       </Routes>
     </ItemsProvider>
     </div>
