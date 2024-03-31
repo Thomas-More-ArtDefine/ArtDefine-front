@@ -4,7 +4,7 @@ interface listprops {
   items: testOutput[];
 }
 
-const ListItem = ({ text, ...p }: testOutput) => {
+const ListItem = ({ text, ...rest }: testOutput) => {
   return <div className="item">{text}</div>;
 };
 

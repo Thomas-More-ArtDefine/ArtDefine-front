@@ -1,6 +1,15 @@
 @import "./style/variables";
 @import "./style/mixins";
 
+// --- Normalize ---
+a{
+  text-decoration: none;
+  color: $color-black;
+  cursor: auto;
+}
+
+
+// --- App ---
 .App {
   display: flex;
   flex-direction: column;
@@ -12,7 +21,6 @@
 
 // --- Button ---
 button {
-  
   padding: 0 16px;
   @include button($color-primary, $color-black, $midnight-blue);
   margin: 10px;
@@ -69,11 +77,21 @@ h5 {
   color: $color-secondary;
   font-size: 16px;
   font-family: "EavesSansBook";
-  cursor: pointer;
   transition: color 0.3s ease;
+
+  @include clickable;
+
   &:hover {
     color: $purple-dark;
   }
+}
+
+// --- Text ---
+.item-title {
+  font-size: 24px;
+  font-family: "EavesSansHeavy";
+  text-align: left;
+  border-bottom: 4px solid $midnight-blue;
 }
 
 // --- Nav ---
@@ -107,37 +125,47 @@ h5 {
   background-image: url("./assets/Compentent_assests/rasterframe_yellow.png");
   background-size: contain;
 
-  .profile-main{
+  .profile-main {
     height: 296px;
     display: flex;
-    flex-direction: column ;
-    
+    flex-direction: column;
 
     .banner {
       position: relative;
       background: $color-white;
       overflow: hidden;
-      width:100%;
+      width: 100%;
       height: 152px;
-      
+
       @include border-standard(3px);
-      
-      img{
+
+      img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
 
-      .collapse{
+      .collapse {
         position: absolute;
         transform: translate(-50%, -50%);
         top: 100%;
         left: 100%;
         padding-bottom: 30px;
         padding-right: 45px;
+
+        @include clickable;
       }
 
-      
+      .dots {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 100%;
+        left: 0%;
+        padding-bottom: 30px;
+        padding-left: 60px;
+
+        @include clickable;
+      }
     }
 
     .profile-btns {
@@ -148,17 +176,17 @@ h5 {
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(2, 1fr);
 
-      img{
+      img {
         position: absolute;
         width: 110px;
         left: 50%;
         transform: translate(-50%, -50%);
         aspect-ratio: 1/1;
-        object-fit: cover;   
+        object-fit: cover;
         @include border-standard(3px);
-        @include border-effect('1,1');
+        @include border-effect("1,1");
       }
-
     }
   }
 }
+

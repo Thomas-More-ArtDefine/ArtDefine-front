@@ -1,11 +1,15 @@
-import ListPage from './pages/Listpage';
 import { ItemsProvider } from './context/ItemContext';
 import {
   Routes, Route
 
 } from "react-router-dom";
 import Nav from './components/Nav';
-import Profile from './pages/Profile';
+import Profile from './pages/Profile/Profile';
+import UploadBanner from './pages/Profile/UploadBanner';
+import UploadProfilePic from './pages/Profile/UploadProfilePic';
+import ListPage from './pages/Listpage';
+
+
 function App() {
   return (
     <div className="App">
@@ -14,7 +18,8 @@ function App() {
     <Routes>
         <Route path="/listpage" element={<ListPage />} />
         <Route path="*" element={<h1>Not Found</h1>} />
-        <Route path="/profile" element={<Profile name='Tim Everenbeek' rank={0}/>} />
+        <Route path="/profile" element={<Profile name='Tim Everenbeek' rank={1}/>} />
+        <Route path="/editBanner" element={<UploadBanner />} />
       </Routes>
     </ItemsProvider>
     </div>

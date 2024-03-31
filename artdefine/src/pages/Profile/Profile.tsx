@@ -1,4 +1,4 @@
-import ProfileMain from "../components/Profile-main";
+import ProfileMain from "../../components/Profile-main";
 
 
 interface ProfileProps {
@@ -8,11 +8,11 @@ interface ProfileProps {
 
 export default function Profile({name,rank} : ProfileProps) {
   
-    
+
     return (
         <>
         <div className="page profile own-profile">
-            <ProfileMain />
+            <ProfileMain rank={rank} />
             <p>{name}</p>
             </div>
         </>
