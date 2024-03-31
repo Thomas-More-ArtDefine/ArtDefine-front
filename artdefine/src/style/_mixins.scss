@@ -1,7 +1,14 @@
 @import './variables';
 
-@mixin clickable {
+@mixin clickable{
     cursor: pointer;
+  }
+
+@mixin flex-center ($direction: row) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
   }
 
 @mixin border-standard($width) {
