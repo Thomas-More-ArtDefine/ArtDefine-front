@@ -1,4 +1,4 @@
-export interface userOutput {
+export interface User {
     id: number,
     user_name: string,
     user_subtitle: string,

@@ -6,6 +6,8 @@ import UploadProfilePic from './pages/Profile/UploadProfilePic';
 import ListPage from './pages/Listpage';
 import { AuthProvider } from './context/AuthContext';
 import Layout from './components/Layout';
+import AddPost from './pages/AddPost';
+import { ArtworkProvider } from './context/ArtworkContext';
 
 
 
@@ -23,6 +25,15 @@ const router =  createBrowserRouter([
           {
             index: true,
             element: <h1>Feed</h1>,
+          },
+        ],
+      },
+      {
+        path: '/add',
+        children: [
+          {
+            index: true,
+            element: <AddPost />,
           },
         ],
       },
@@ -65,7 +76,9 @@ function App() {
     <div className="App">
       <AuthProvider>
         <ItemsProvider>
-          <RouterProvider router={router} />
+          <ArtworkProvider>
+            <RouterProvider router={router} />
+          </ArtworkProvider>
         </ItemsProvider>
       </AuthProvider>
     </div>

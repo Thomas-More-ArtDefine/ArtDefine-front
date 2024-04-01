@@ -1,5 +1,5 @@
 import { testOutput } from "../model/testOutput";
-import { userOutput } from "../model/userOutput";
+import { User } from "../model/userModel";
 import api from "./http-common";
 
 
@@ -28,7 +28,7 @@ export const getAll2 = async (): Promise<testOutput[]> => {
 
 
 
-export const getAllUsers = async (): Promise<userOutput[]> => {
+export const getAllUsers = async (): Promise<User[]> => {
   try {
     const response = await api.get('/users');
     console.log('fire in the hole')

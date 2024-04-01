@@ -1,11 +1,11 @@
 import React, { createContext, useState, useMemo, useContext, useEffect, ReactNode } from 'react';
 import { getAllUsers } from '../api';
-import { userOutput } from '../model/userOutput';
+import { User } from '../model/userModel';
 
 
 interface AuthContextType {
-    users: userOutput[];
-    user: userOutput | null;
+    users: User[];
+    user: User | null;
 }
 
 export const AuthContext = createContext<AuthContextType | null>(null);
@@ -13,8 +13,8 @@ export const AuthContext = createContext<AuthContextType | null>(null);
 export const useAuth = () => useContext(AuthContext)!;
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [users, setUsers] = useState<userOutput[]>([]);
-    const [user, setUser] = useState<userOutput | null>(null);
+    const [users, setUsers] = useState<User[]>([]);
+    const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
