@@ -1,15 +1,25 @@
 import UploadItemForProfile from '../../components/BannerAndProfileImage/UploadItemForProfile';
-import src from '../../assets/images/mock-banner-pic.png';
+import srcMock from '../../assets/images/mock-banner-pic.png';
 import PreviewItem from '../../components/BannerAndProfileImage/PreviewItem';
+import { useState } from 'react';
 
 export default function UploadProfilePic() {
-    const handleFileChange = (file: File | null) => {
-        console.log(file);
+  const [currentSrc, setCurrentSrc] = useState<string>(srcMock);
+    const [src, setSrc] = useState<string>(srcMock);
+    const [isChanged, setIsChanged] = useState<boolean>(false);
+  
+    
+    const handleFileChange = (file: string) => {
+        if (file) {
+          setSrc(file);
+          setIsChanged(true);
+        }
       };
+
     return (
         <div className='page upload-profile-pic-page'>
-           <UploadItemForProfile onFileChange={handleFileChange} title={"Upload Profile Picture"} />;
-           <PreviewItem imageSource={src} />
+           <UploadItemForProfile onFileChange={handleFileChange} title={"Upload Profile Picture"} isChanged={isChanged} setIsChanged={setIsChanged} />;
+           <PreviewItem imageSource={src} isChanged={isChanged} currentImageSource={currentSrc}/>
         </div>
     )
 };

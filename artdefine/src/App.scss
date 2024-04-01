@@ -120,6 +120,16 @@ h5 {
 
 // --- Misc page elements ---
 
+.upload-banner-page{
+  .btns{
+    display: flex;
+    justify-content: space-between;
+    button{
+      margin:0;
+    }
+  }
+}
+
 // --- Profile ---
 
 .profile {
@@ -208,6 +218,29 @@ h5 {
 }
 
 .uploadImageFlow {
+
+.file-name-container {
+  height: 185px;
+  width: 100%;
+  margin: 40px 0;
+  .file-name {
+   
+    padding: 5px 20px;
+    color: $color-secondary;
+    font-family: "EavesSansHeavy";
+    font-size: 20px;
+    font-style: normal;
+    text-decoration-line: underline;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $color-white;
+    @include border-standard(4px);
+    
+  
+  }
+}
+
   .card-item {
     width: 100%;
 

@@ -1,11 +1,11 @@
 
-const PreviewItem = ({ imageSource : src } : {imageSource:string}) => {
+const PreviewItem = ({ imageSource : newSrc, currentImageSource: currentSrc, isChanged } : {imageSource:string, currentImageSource: string, isChanged: boolean}) => {
   
     return (
         <div className="preview-item">
-        <div className='item-title'>Original</div>
+        <div className='item-title'>{isChanged ? 'Preview' : 'Original'}</div>
         <div className='item'>
-            <img src={src} alt='Original' />
+           {isChanged ?  <img src={newSrc} alt='' /> : <img src={currentSrc} alt='' /> }
         </div>
         </div>
     );
