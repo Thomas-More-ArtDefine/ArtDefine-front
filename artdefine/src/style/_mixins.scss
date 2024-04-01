@@ -1,10 +1,26 @@
 @import './variables';
 
+@mixin clickable{
+    cursor: pointer;
+  }
+
+@mixin flex-center ($direction: row) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+  }
+
+@mixin border-standard($width) {
+    border-radius: $corner-radius;
+    border: $width solid $midnight-blue;
+  }
 
 @mixin drop-shadow($x-offset, $y-offset) {
     box-shadow: $x-offset $y-offset 0 $midnight-blue;
   }
-  @mixin border-effect($place) {
+
+@mixin border-effect($place) {
     @if $place == '0,0' {
       @include drop-shadow(-4px, -4px);
     } @else if $place == '1,0' {
@@ -22,14 +38,12 @@
     background-color: $bg-color;
     color: $text-color;
     text-align: center;
-    font-family: 'EavesSansHeavy';
+    font-family: 'EavesSansBook';
     font-size: 24px;
-    border-radius: $corner-radius;
-    border: 1px solid $border-color;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
-  
-    @include border-effect('1,1');
+    @include border-standard(2px);
+    
 
     &:hover {
       background-color: darken($bg-color, 10%);

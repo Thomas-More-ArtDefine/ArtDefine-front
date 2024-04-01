@@ -1,6 +1,14 @@
 @import "./style/variables";
 @import "./style/mixins";
 
+// --- Normalize ---
+a {
+  text-decoration: none;
+  color: $color-black;
+  cursor: auto;
+}
+
+// --- App ---
 .App {
   display: flex;
   flex-direction: column;
@@ -12,18 +20,20 @@
 
 // --- Button ---
 button {
-  width: 192px;
-  height: 48px;
   padding: 0 16px;
   @include button($color-primary, $color-black, $midnight-blue);
   margin: 10px;
 }
 
 button.primary {
+  width: 192px;
+  height: 48px;
   @include button($color-primary, $color-black, $midnight-blue);
 }
 
 button.secondary {
+  width: 192px;
+  height: 48px;
   @include button($canvas-white-dark, $midnight-blue, $midnight-blue);
 }
 
@@ -66,11 +76,21 @@ h5 {
   color: $color-secondary;
   font-size: 16px;
   font-family: "EavesSansBook";
-  cursor: pointer;
   transition: color 0.3s ease;
+
+  @include clickable;
+
   &:hover {
     color: $purple-dark;
   }
+}
+
+// --- Text ---
+.item-title {
+  font-size: 24px;
+  font-family: "EavesSansHeavy";
+  text-align: left;
+  border-bottom: 4px solid $midnight-blue;
 }
 
 // --- Nav ---
@@ -98,9 +118,149 @@ h5 {
   margin: 27px 18px 55px 18px;
 }
 
+// --- Misc page elements ---
+
+.upload-banner-page{
+  .btns{
+    display: flex;
+    justify-content: space-between;
+    button{
+      margin:0;
+    }
+  }
+}
+
 // --- Profile ---
 
 .profile {
   background-image: url("./assets/Compentent_assests/rasterframe_yellow.png");
   background-size: contain;
+
+  .profile-main {
+    height: 296px;
+    display: flex;
+    flex-direction: column;
+
+    .banner {
+      position: relative;
+      background: $color-white;
+      overflow: hidden;
+      width: 100%;
+      height: 152px;
+
+      @include border-standard(3px);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .collapse {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 100%;
+        left: 100%;
+        padding-bottom: 30px;
+        padding-right: 45px;
+
+        @include clickable;
+      }
+
+      .dots {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 100%;
+        left: 0%;
+        padding-bottom: 30px;
+        padding-left: 60px;
+
+        @include clickable;
+      }
+    }
+
+    .profile-btns {
+      display: grid;
+      flex-grow: 1;
+      max-height: 150px;
+
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+
+      img {
+        position: absolute;
+        width: 110px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        @include border-standard(3px);
+        @include border-effect("1,1");
+      }
+    }
+  }
+}
+
+// --- Components ---
+
+.upload-card {
+  flex-grow: 1;
+  max-width: 400px;
+  width: 300px;
+  height: 185px;
+  background: $color-white;
+  margin: 40px 0;
+  @include border-standard(4px);
+  .upload-label {
+    @include flex-center(column);
+    height: 100%;
+  }
+}
+
+.uploadImageFlow {
+
+.file-name-container {
+  height: 185px;
+  width: 100%;
+  margin: 40px 0;
+  .file-name {
+   
+    padding: 5px 20px;
+    color: $color-secondary;
+    font-family: "EavesSansHeavy";
+    font-size: 20px;
+    font-style: normal;
+    text-decoration-line: underline;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $color-white;
+    @include border-standard(4px);
+    
+  
+  }
+}
+
+  .card-item {
+    width: 100%;
+
+    @include flex-center();
+  }
+}
+
+.preview-item {
+  .item {
+    margin: 40px 0;
+    overflow: hidden;
+    width: 100%;
+    height: 152px;
+
+    @include border-standard(3px);
+    @include border-effect("1,1");
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 }
