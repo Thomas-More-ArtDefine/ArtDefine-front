@@ -1,19 +1,16 @@
 import ProfileMain from "../../components/Profile-main";
+import { useAuth } from "../../context/AuthContext";
 
 
-interface ProfileProps {
-    name: string;
-    rank: number;
-}
 
-export default function Profile({name,rank} : ProfileProps) {
+export default function Profile() {
   
-
+    const {user} = useAuth();
     return (
         <>
         <div className="page profile own-profile">
-            <ProfileMain rank={rank} />
-            <p>{name}</p>
+            <ProfileMain rank={1} />
+            {user && <p>{user.user_name}</p>}
             </div>
         </>
     );

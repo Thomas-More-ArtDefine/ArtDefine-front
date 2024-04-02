@@ -37,6 +37,34 @@ button.secondary {
   @include button($canvas-white-dark, $midnight-blue, $midnight-blue);
 }
 
+.cat-button{
+  font-family: 'EavesSansHeavy';
+  font-size: 16px;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  .icon{
+    padding: 2px 25px;
+    @include flex-center();
+    @include button($color-primary, $color-black, $midnight-blue);
+  
+  }
+
+  .text{
+    padding: 3px 25px;
+    @include flex-center();
+    
+  }
+
+  &.active{
+    .button{
+       .icon{
+        @include button($color-white, $color-black, $midnight-blue);
+       }
+    }
+  }
+}
+
 // --- Headers ---
 h1 {
   font-size: 60px;
@@ -91,6 +119,7 @@ h5 {
   font-family: "EavesSansHeavy";
   text-align: left;
   border-bottom: 4px solid $midnight-blue;
+  margin-bottom: 20px;
 }
 
 // --- Nav ---
@@ -198,6 +227,19 @@ h5 {
         @include border-effect("1,1");
       }
     }
+  }
+}
+
+// --- Add post ---
+
+.add-post{
+  .tabs{
+    display: flex;
+    justify-content:space-around;
+    button{
+      margin:0;
+    }
+  
   }
 }
 

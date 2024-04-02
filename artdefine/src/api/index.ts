@@ -1,4 +1,5 @@
 import { testOutput } from "../model/testOutput";
+import { User } from "../model/userModel";
 import api from "./http-common";
 
 
@@ -24,4 +25,19 @@ export const getAll2 = async (): Promise<testOutput[]> => {
   }
 }; 
         
+
+
+
+export const getAllUsers = async (): Promise<User[]> => {
+  try {
+    const response = await api.get('/users');
+    console.log('fire in the hole')
+    console.log('api response', response.data)
+    
+    return response.data;
+  } catch (error) {
+    console.error("Error while fetching all data:", error);
+    throw error;
+  }
+};
       

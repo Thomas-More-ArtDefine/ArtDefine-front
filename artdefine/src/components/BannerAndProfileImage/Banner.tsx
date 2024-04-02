@@ -9,16 +9,16 @@ interface BannerProps {
 const Banner = ({ imageUrl: src, imageAlt: alt }: BannerProps) => {
 
     const handleDotsClick = (): void => {
-    window.location.href = "/editBanner";
+    window.location.href = "profile/editBanner";
     }
 
   return (
     <div className="banner">
       <img src={src} alt={alt} />
-      <div className="collapse clickable">
+      <div className="collapse">
         <ArrowIcon />
       </div>
-      <div className="dots clickable" onClick={handleDotsClick}>
+      <div className="dots" onClick={handleDotsClick}>
         <DotsIcon />
       </div>
     </div>
