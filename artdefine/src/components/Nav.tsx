@@ -29,15 +29,16 @@ const Nav: React.FC = () => {
                     <input className='search' type="text" placeholder='Search...' />
                     <i className="material-icons">search</i>
                 </li>
-                <li className='navmessages'>
-                    <div className='navlink'>
-                        <Link to="/messages"><MessageIcon /></Link>
-                        </div>
-                </li>
                 <li className='navprofile'>
+                    <div className='navmessage'>
+                        <Link to="/messages"><MessageIcon /></Link>
+                    </div>
                     <Link to="/profile">
-                        <div className='profile-info'><div className='username'>[username]</div> <div className='profile'>profile</div></div>
-                        <img src={pfp} alt="profile picture" />
+                        <div className='profile-block'>
+                           <div className='profile-info'><div className='username'>[username]</div> <div className='profile'>Profile</div></div>
+                            <img src={pfp} alt="profile picture" /> 
+                        </div>
+                        
                     </Link> 
                 </li>
             </ul>

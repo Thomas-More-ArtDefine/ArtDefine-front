@@ -72,17 +72,6 @@ button.nav{
   margin-bottom: 0;
 }
 
-li.navmessages{
-  height: 48px;
-  position: relative;
-  margin: 20px 10px 0px 10px;
-  padding: 0 16px;
-  div.navlink{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-}
 
 li.navlogo{
   span.logo{
@@ -94,14 +83,19 @@ li.navlogo{
 }
 
 li.navprofile{
-  a{
+  display: flex;
+  align-items: flex-end;
+  div.navmessage{
+    height: 48px;
+    display: flex;
+    align-items: flex-end;
+  }
+  div.profile-block{
+    cursor: pointer;
     display: inline-block;
     max-height: 48px;
     padding: 0 16px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 20px;
-    margin-bottom: 0;
+    margin: 20px 10px 0px 10px;
     display: flex;
     img{
       @include border-standard(2px);
@@ -129,10 +123,7 @@ li.navprofile{
 
 li.SearchBar {
   padding: 0 16px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 20px;
-  margin-bottom: 0;
+  margin: 20px 10px 0px 10px;
   width: 192px;
   height: 48px;
   @include border-standard(2px);
