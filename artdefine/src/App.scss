@@ -21,14 +21,14 @@ a {
 // --- Button ---
 button {
   padding: 0 16px;
-  @include button($color-primary, $color-black, $midnight-blue);
+  @include button($color-primary, $midnight-blue, $midnight-blue);
   margin: 10px;
 }
 
 button.primary {
   width: 192px;
   height: 48px;
-  @include button($color-primary, $color-black, $midnight-blue);
+  @include button($color-primary, $midnight-blue, $midnight-blue);
 }
 
 button.secondary {
@@ -46,7 +46,7 @@ button.secondary {
   .icon{
     padding: 2px 25px;
     @include flex-center();
-    @include button($color-primary, $color-black, $midnight-blue);
+    @include button($color-primary, $midnight-blue, $midnight-blue);
   
   }
 
@@ -59,11 +59,106 @@ button.secondary {
   &.active{
     .button{
        .icon{
-        @include button($color-white, $color-black, $midnight-blue);
+        @include button($color-white, $midnight-blue, $midnight-blue);
        }
     }
   }
 }
+
+//--navbar--
+
+button.nav{
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+li.navmessages{
+  height: 48px;
+  position: relative;
+  margin: 20px 10px 0px 10px;
+  padding: 0 16px;
+  div.navlink{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+li.navlogo{
+  span.logo{
+    margin: 10px;
+  }
+  span.text{
+    margin: 10px;
+  }
+}
+
+li.navprofile{
+  a{
+    display: inline-block;
+    max-height: 48px;
+    padding: 0 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    display: flex;
+    img{
+      @include border-standard(2px);
+      height: 48px;
+      margin-left: 20px;
+    }
+    div.profile-info{
+      max-height: 48px;
+      text-align: end;
+      color: $midnight-blue;
+      div.username{
+        font-family: 'IceCream';
+        font-weight: regular;
+        font-size: 24px;
+      }
+      div.profile{
+        font-family: 'EavesSansBook';
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 75%;
+      }
+    }
+  }
+}
+
+li.SearchBar {
+  padding: 0 16px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  margin-bottom: 0;
+  width: 192px;
+  height: 48px;
+  @include border-standard(2px);
+  border-color: $midnight-blue;
+  background-color: $canvas-white-light;
+  position: relative;
+  input.search{
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    left: 5%;
+    height: 95%;
+    width: 75%;
+    color: $purple-dark;
+    font-family: 'EavesSansBook';
+    font-size: 18px;
+  }
+  i.material-icons{
+    position: absolute;
+    right: 5%;
+    top: 30%;
+    color: $midnight-blue;
+  }
+
+}
+
 
 // --- Headers ---
 h1 {
