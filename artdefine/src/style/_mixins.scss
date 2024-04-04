@@ -44,6 +44,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
     @include border-standard(2px);
+    border-color: $border-color;
     
 
     &:hover {
@@ -58,6 +59,55 @@
 
   }
 
+
+  @mixin searchbar($bg-color, $text-color, $border-color, $D-width, $D-height) {
+    background-color: $bg-color;
+    color: $text-color;
+    width: $D-width;
+    height: $D-height;
+    @include border-standard(2px);
+    border-color: $border-color;
+    background-color: $bg-color;
+    position: relative;
+    input.search{
+      border: none;
+      background-color: transparent;
+      position: absolute;
+      left: 10px;
+      height: 95%;
+      width: 75%;
+      color: $purple-dark;
+      font-family: 'EavesSansBook';
+      font-size: 18px;
+    }
+    i.material-icons{
+      position: absolute;
+      right: 10px;
+      top: 30%;
+      color: $border-color;
+    }
+
+  }
+  
+  // --- Breakpoints ---
+
+  @mixin breakpoint($point) {
+    @if $point == sm {
+      @media (min-width: $smBreakpoint) { @content; }
+    }
+    @if $point == md {
+      @media (min-width: $mdBreakpoint) { @content; }
+    }
+    @if $point == lg {
+      @media (min-width: $lgBreakpoint) { @content; }
+    }
+    @if $point == xl {
+      @media (min-width: $xlBreakpoint) { @content; }
+    }
+    @if $point == xxl {
+      @media (min-width: $xxlBreakpoint) { @content; }
+    }
+  }
   
 
 

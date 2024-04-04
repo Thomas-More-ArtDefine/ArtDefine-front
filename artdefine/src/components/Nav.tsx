@@ -8,7 +8,7 @@ import pfp from "../assets/images/mock-profile-pic.png";
 const Nav: React.FC = () => {
     const navigate = useNavigate();
     return (
-        <nav className='navigation'>
+        <nav className='navigation desktop'>
             <ul>
                 <li className='navlogo'>
                     <Link to="/"><span className='logo'><Logo  /></span><span className='text'><LogoText  /></span></Link>
@@ -43,6 +43,7 @@ const Nav: React.FC = () => {
                 </li>
             </ul>
         </nav>
+        
     );
 };
 

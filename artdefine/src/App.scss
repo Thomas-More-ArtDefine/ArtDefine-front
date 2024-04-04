@@ -75,9 +75,11 @@ button.nav{
 
 li.navlogo{
   span.logo{
+    cursor: pointer;
     margin: 10px;
   }
   span.text{
+    cursor: pointer;
     margin: 10px;
   }
 }
@@ -86,24 +88,27 @@ li.navprofile{
   display: flex;
   align-items: flex-end;
   div.navmessage{
-    height: 48px;
+    height: $nav-element-height;
     display: flex;
     align-items: flex-end;
+    svg{
+      cursor: pointer;
+    }
   }
   div.profile-block{
     cursor: pointer;
     display: inline-block;
-    max-height: 48px;
+    height: $nav-element-height;
     padding: 0 16px;
-    margin: 20px 10px 0px 10px;
+    margin: $nav-element-margin;
     display: flex;
     img{
       @include border-standard(2px);
-      height: 48px;
+      height: $nav-element-height;
       margin-left: 20px;
     }
     div.profile-info{
-      max-height: 48px;
+      height: $nav-element-height;
       text-align: end;
       color: $midnight-blue;
       div.username{
@@ -122,32 +127,9 @@ li.navprofile{
 }
 
 li.SearchBar {
+  @include searchbar($canvas-white-light, $purple-dark, $midnight-blue, 320px, $nav-element-height);
   padding: 0 16px;
-  margin: 20px 10px 0px 10px;
-  width: 320px;
-  height: 48px;
-  @include border-standard(2px);
-  border-color: $midnight-blue;
-  background-color: $canvas-white-light;
-  position: relative;
-  input.search{
-    border: none;
-    background-color: transparent;
-    position: absolute;
-    left: 5%;
-    height: 95%;
-    width: 75%;
-    color: $purple-dark;
-    font-family: 'EavesSansBook';
-    font-size: 18px;
-  }
-  i.material-icons{
-    position: absolute;
-    right: 5%;
-    top: 30%;
-    color: $midnight-blue;
-  }
-
+  margin: $nav-element-margin;
 }
 
 
