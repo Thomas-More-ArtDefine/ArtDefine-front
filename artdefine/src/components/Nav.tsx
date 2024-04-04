@@ -39,7 +39,10 @@ const Nav: React.FC = () => {
                         </div>
                         <Link to="/profile">
                             <div className='profile-block'>
-                            <div className='profile-info'><div className='username'>[username]</div> <div className='profile'>Profile</div></div>
+                                <div className='profile-info'>
+                                    <div className='username'>[username]</div> 
+                                    <div className='profile'>Profile</div>
+                                </div>
                                 <img src={pfp} alt="profile picture" /> 
                             </div>
                             

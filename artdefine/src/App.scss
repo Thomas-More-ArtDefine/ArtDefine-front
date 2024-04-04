@@ -139,9 +139,6 @@ nav.navigation{
         width: 130px;
         font-size: 20px;
       }
-      // div.navmessage{
-      //   margin-left: 8px;
-      // }
 
       li.navprofile{
           display: flex;
@@ -149,9 +146,16 @@ nav.navigation{
           justify-content: space-between;
           min-width: 100px;
       }
+
+      div.navmessage{
+        svg{
+          cursor: pointer;
+        }
+        
+      }
       
       div.profile-block{
-        // padding: 0 8px;
+        cursor: pointer;
         width: 52px;
         height: 52px;
         div.profile-info{
