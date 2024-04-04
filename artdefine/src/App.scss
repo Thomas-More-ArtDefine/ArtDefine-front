@@ -74,6 +74,13 @@ button.secondary {
 
 //--navbar--
 
+li.SearchBar {
+  @include searchbar($canvas-white-light, $purple-dark, $midnight-blue, 320px, $nav-element-height);
+  padding: 0 16px;
+  margin: $nav-element-margin;
+  height: $nav-element-height;
+}
+
 nav.navigation{
   // nav smallest screen
   div.desktop{
@@ -106,6 +113,25 @@ nav.navigation{
     }
     
   }
+
+  button.nav{
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+  
+  
+  li.navlogo{
+    span.logo{
+      cursor: pointer;
+      margin: 10px;
+    }
+    span.text{
+      cursor: pointer;
+      margin: 10px;
+    }
+  }
+  
+  
 
   // nav small to medium screen
   @include breakpoint(sm){
@@ -227,41 +253,102 @@ nav.navigation{
   }
 }
 
-button.nav{
-  margin-top: 20px;
-  margin-bottom: 0;
+nav.mobileNavigation{
+  ul{
+    padding-left: 27px;
+  }
+  li{
+    list-style: none;
+  }
+  div.navmessage{
+    padding-right: 20px;
+    svg{
+      cursor: pointer;
+    }
+    
+  }
+
+  div.divider{
+    margin: 16px 0px 0px 0px;
+    width: 332px;
+    background-color: $canvas-white-dark;
+    border-radius: 6px;
+    height: 6px;
+  }
+
+  li.SearchBar {
+    margin: 16px 0px 0px 0px;
+    max-width: 296px;
+  }
+
+
+  button.nav{
+    margin: 16px 0px 0px 0px;
+    width: 332px;
+  }
+
+  li.navprofile{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 332px;
+    margin-bottom: 20px;
+  }
+  
+  div.profile-block{
+    cursor: pointer;
+    width: 250px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    
+    div.profile-info{
+      padding-right: 15px;
+      height: $nav-element-height;
+      text-align: start;
+      color: $midnight-blue;
+      div.username{
+        font-family: 'IceCream';
+        font-weight: regular;
+        font-size: 24px;
+      }
+      div.profile{
+        font-family: 'EavesSansBook';
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 75%;
+            
+      }
+    }
+    img{
+      @include border-standard(2px);
+      height: 72px;
+      margin-right: 16px;
+    }
+  }
+  
 }
 
-
-li.navlogo{
-  span.logo{
-    cursor: pointer;
-    margin: 10px;
+div.mobileNav{
+  @include breakpoint(lg){
+    display: none;
   }
-  span.text{
-    cursor: pointer;
-    margin: 10px;
-  }
-}
-
-li.SearchBar {
-  @include searchbar($canvas-white-light, $purple-dark, $midnight-blue, 320px, $nav-element-height);
-  padding: 0 16px;
-  margin: $nav-element-margin;
 }
 
 div.mobileMenu{
-  background-color: red;
+  background-color: $canvas-white-light;
   width: 368px;
   height: 810px;
   position: absolute;
   bottom: 0;
   right: 0;
   border-radius: 16px 0px 0px 0px;
+  border: 4px $canary-yellow-dark;
+  border-style: solid none none solid;
 }
 
 div.modalbackground{
-  background-color: rgba(7, 6, 39, 0.021);
+  background-color: rgba(39, 6, 6, 0.021);
   height: 100%;
   width: 100%;
   position: absolute;
