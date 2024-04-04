@@ -67,6 +67,155 @@ button.secondary {
 
 //--navbar--
 
+nav.navigation{
+  // nav smallest screen
+  div.desktop{
+    display: none;
+  }
+  div.mobile{
+    span.logo{
+      display: none;
+    }
+    li.navlogo{
+      display: flex;
+      align-items: end;
+      padding: 0 16px;
+      margin: $nav-element-margin;
+    }
+    li.navprofile{
+      height: $nav-element-height;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      padding: 0 16px;
+      margin: $nav-element-margin;
+      width: 90px;
+      span.hamburger{
+        cursor: pointer;
+      }
+      a{
+        cursor: pointer;
+      }
+    }
+    
+  }
+
+  // nav small to medium screen
+  @include breakpoint(sm){
+    div.mobile{
+      span.logo{
+        display: initial;
+      }
+      li.navlogo{
+        display: flex;
+        align-items: end;
+        padding: 0 16px;
+        margin: 0px 10px 0px 10px;;
+      }
+    }
+  }
+
+  // nav large screen
+  @include breakpoint(lg){
+    div.desktop{
+      display: initial;
+      span.logo{
+        display: none;
+      }
+      li.navlogo{
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        margin: $nav-element-margin;
+      }
+      button.primary{
+        width: 130px;
+        font-size: 20px;
+      }
+      // div.navmessage{
+      //   margin-left: 8px;
+      // }
+
+      li.navprofile{
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          min-width: 100px;
+      }
+      
+      div.profile-block{
+        // padding: 0 8px;
+        width: 52px;
+        height: 52px;
+        div.profile-info{
+          display: none;
+        }
+        img{
+          @include border-standard(2px);
+          height: $nav-element-height;
+        }
+      }
+    }
+    div.mobile{
+      display: none;
+    }
+  }
+  // nav extra large screen
+  @include breakpoint(xxl){
+    div.desktop{
+      span.logo{
+        display: initial;
+      }
+      div.profile-block{
+        div.profile-info{
+          display: initial;
+        }
+      }
+      div.navmessage{
+        margin-left: 0px;
+      }
+      button.primary{
+        width: 192px;
+        font-size: 24px;
+      }
+      li.navlogo{
+        display: flex;
+        align-items: end;
+        padding: 0 16px;
+        margin: 0px 10px 0px 10px;;
+      }
+      li.navprofile{
+        min-width: 250px;
+        div.profile-block{
+          width: 200px;
+          display: flex;
+        }
+        div.profile-info{
+          padding-right: 15px;
+          height: $nav-element-height;
+          text-align: end;
+          color: $midnight-blue;
+            div.username{
+              font-family: 'IceCream';
+              font-weight: regular;
+              font-size: 24px;
+            }
+            div.profile{
+              font-family: 'EavesSansBook';
+              font-weight: bold;
+              font-size: 20px;
+              line-height: 75%;
+            
+            }
+        }
+      }
+      li.navlogo{
+        min-width: 300px;
+      }
+    }
+  }
+}
+
 button.nav{
   margin-top: 20px;
   margin-bottom: 0;
@@ -81,48 +230,6 @@ li.navlogo{
   span.text{
     cursor: pointer;
     margin: 10px;
-  }
-}
-
-li.navprofile{
-  display: flex;
-  align-items: flex-end;
-  div.navmessage{
-    height: $nav-element-height;
-    display: flex;
-    align-items: flex-end;
-    svg{
-      cursor: pointer;
-    }
-  }
-  div.profile-block{
-    cursor: pointer;
-    display: inline-block;
-    height: $nav-element-height;
-    padding: 0 16px;
-    margin: $nav-element-margin;
-    display: flex;
-    img{
-      @include border-standard(2px);
-      height: $nav-element-height;
-      margin-left: 20px;
-    }
-    div.profile-info{
-      height: $nav-element-height;
-      text-align: end;
-      color: $midnight-blue;
-      div.username{
-        font-family: 'IceCream';
-        font-weight: regular;
-        font-size: 24px;
-      }
-      div.profile{
-        font-family: 'EavesSansBook';
-        font-weight: bold;
-        font-size: 20px;
-        line-height: 75%;
-      }
-    }
   }
 }
 

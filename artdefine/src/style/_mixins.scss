@@ -64,7 +64,7 @@
     background-color: $bg-color;
     color: $text-color;
     width: $D-width;
-    height: $D-height;
+    max-height: $D-height;
     @include border-standard(2px);
     border-color: $border-color;
     background-color: $bg-color;
