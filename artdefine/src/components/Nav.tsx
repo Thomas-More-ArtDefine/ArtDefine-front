@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ReactComponent as MessageIcon } from "../assets/Vectors/message-icon.svg";
 import { ReactComponent as LogoText } from "../assets/Vectors/ArtDefine-LogoText.svg";
@@ -6,11 +6,21 @@ import { ReactComponent as Logo } from "../assets/Vectors/ArtDefine-Logo.svg";
 import { ReactComponent as MobileProfile } from "../assets/Vectors/mobile-profile.svg";
 import { ReactComponent as Hamburger } from "../assets/Vectors/Hamburger.svg";
 import pfp from "../assets/images/mock-profile-pic.png";
+import MobileMenu from './Mobile-menu';
 
 const Nav: React.FC = () => {
+    const [openMenu, setOpenMenu] = useState<boolean>(false);
     const navigate = useNavigate();
+
+    const handleMenuClick = () => {
+        setOpenMenu(true);
+    };
+    
     return (
-        <nav className='navigation'>
+        <div>
+            {openMenu && <MobileMenu closeMenu={setOpenMenu} />}
+            {/* <MobileMenu /> */}
+            <nav className='navigation'>
             {/* full nav */}
             <div className='desktop'>
                 <ul>
@@ -62,13 +72,18 @@ const Nav: React.FC = () => {
                             <MobileProfile />
                         </Link> 
                         <span className='hamburger'>
-                            <Hamburger />
+                            <Hamburger onClick={handleMenuClick}  />
                         </span>
                         
                     </li>
                 </ul>
             </div>
+            
         </nav>
+        
+        </div>
+        
+        
         
     );
 };

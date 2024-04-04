@@ -250,6 +250,23 @@ li.SearchBar {
   margin: $nav-element-margin;
 }
 
+div.mobileMenu{
+  background-color: red;
+  width: 368px;
+  height: 810px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-radius: 16px 0px 0px 0px;
+}
+
+div.modalbackground{
+  background-color: rgba(7, 6, 39, 0.021);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
 
 // --- Headers ---
 h1 {
