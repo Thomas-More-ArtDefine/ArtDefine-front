@@ -18,6 +18,14 @@ a {
   background: $background-color;
 }
 
+// --- Styles ---
+
+.border-effect{
+  @include border-effect("1,1");
+
+}
+
+
 // --- Button ---
 button {
   padding: 0 16px;
@@ -37,23 +45,22 @@ button.secondary {
   @include button($canvas-white-dark, $midnight-blue, $midnight-blue);
 }
 
-.cat-button{
-  font-family: 'EavesSansHeavy';
+.cat-button {
+  font-family: "EavesSansHeavy";
   font-size: 16px;
-  width: fit-content;
+  width: 91px;
   display: flex;
   flex-direction: column;
-  .icon{
-    padding: 2px 25px;
+  
+  .icon {
+    padding: 2px 20px;
     @include flex-center();
     @include button($color-primary, $midnight-blue, $midnight-blue);
-  
   }
 
-  .text{
+  .text {
     padding: 3px 25px;
     @include flex-center();
-    
   }
 
   &.active{
@@ -324,12 +331,12 @@ h5 {
 
 // --- Misc page elements ---
 
-.upload-banner-page{
-  .btns{
+.upload-banner-page {
+  .btns {
     display: flex;
     justify-content: space-between;
-    button{
-      margin:0;
+    button {
+      margin: 0;
     }
   }
 }
@@ -407,18 +414,53 @@ h5 {
 
 // --- Add post ---
 
-.add-post{
-  .tabs{
+.add-post {
+  display: flex;
+  flex-direction: column;
+  .tabs {
     display: flex;
-    justify-content:space-around;
-    button{
-      margin:0;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    button {
+      margin: 0;
     }
-  
+  }
+  .content{
+    flex-grow: 1;
+    display: flex;
+    width: 100%;
+    
+  }
+  .form{
+    padding: 0 20px;
+    flex-grow: 1;
   }
 }
 
 // --- Components ---
+
+.artwork {
+  @include flex-center();
+  aspect-ratio: 11/10;
+  background-color: $color-white;
+  box-shadow: 0px 0px 24px 0px $color-primary;
+  @include border-standard(0);
+  width: 100%;
+  .content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      box-sizing: border-box;
+      @include border-standard(4px);
+    }
+  }
+}
 
 .upload-card {
   flex-grow: 1;
@@ -435,28 +477,24 @@ h5 {
 }
 
 .uploadImageFlow {
-
-.file-name-container {
-  height: 185px;
-  width: 100%;
-  margin: 40px 0;
-  .file-name {
-   
-    padding: 5px 20px;
-    color: $color-secondary;
-    font-family: "EavesSansHeavy";
-    font-size: 20px;
-    font-style: normal;
-    text-decoration-line: underline;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: $color-white;
-    @include border-standard(4px);
-    
-  
+  .file-name-container {
+    height: 185px;
+    width: 100%;
+    margin: 40px 0;
+    .file-name {
+      padding: 5px 20px;
+      color: $color-secondary;
+      font-family: "EavesSansHeavy";
+      font-size: 20px;
+      font-style: normal;
+      text-decoration-line: underline;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: $color-white;
+      @include border-standard(4px);
+    }
   }
-}
 
   .card-item {
     width: 100%;
@@ -478,6 +516,30 @@ h5 {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+  }
+}
+
+.form {
+  margin-top: -20px;
+  .form-item {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    label {
+      font-family: "EavesSansHeavy";
+      font-size: 20px;
+      color: $color-black;
+      text-align: left;
+      padding-left: 12px;
+    }
+    input,
+    textarea {
+      padding: 10px;
+      font-family: "EavesSansBook";
+      font-size: 16px;
+      border: 2px solid $midnight-blue;
+      @include border-standard(2px);
     }
   }
 }

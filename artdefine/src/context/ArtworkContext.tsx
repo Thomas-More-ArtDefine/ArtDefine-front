@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useContext, useMemo, useState } from "react";
+import { ReactNode, createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { Artwork } from "../model/PostModel";
 
 
@@ -21,12 +21,18 @@ export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children })
     const [artwork, setArtwork] = useState<Artwork>(
       { post_content: "", 
         post_title: "",
+        post_description: "",
+        post_medium: "",
         user: { id: "" }, 
         folders: [
           { id: "" }
         ]
       });
   
+
+    useEffect(() => {
+      console.log("artwork: ",artwork);
+    }, [artwork]);
    
   
     const value = useMemo(() => ({ artwork, setArtwork }), [artwork, setArtwork]);
