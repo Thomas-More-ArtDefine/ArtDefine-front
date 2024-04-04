@@ -80,6 +80,7 @@ const router =  createBrowserRouter([
 function App() {
   return (
     <div className="App">
+      
       <AuthProvider>
         <ItemsProvider>
           <ArtworkProvider>
@@ -87,6 +88,7 @@ function App() {
           </ArtworkProvider>
         </ItemsProvider>
       </AuthProvider>
+    
     </div>
   );
 }

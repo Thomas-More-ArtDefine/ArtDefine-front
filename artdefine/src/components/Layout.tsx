@@ -7,7 +7,9 @@ export default function Layout() {
   return (
     <>
      <Nav />
+     <div className='page-container'>
     <Outlet />
+    </div>
     </>
   );
 }
