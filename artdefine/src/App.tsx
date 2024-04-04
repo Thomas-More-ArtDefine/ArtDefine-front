@@ -1,13 +1,14 @@
 import { ItemsProvider } from './context/ItemContext';
 import { Navigate, createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Profile from './pages/Profile/Profile';
-import UploadBanner from './pages/Profile/UploadBanner';
-import UploadProfilePic from './pages/Profile/UploadProfilePic';
+import Profile from './pages/profile/Profile';
+import UploadBanner from './pages/profile/UploadBanner';
+import UploadProfilePic from './pages/profile/UploadProfilePic';
 import ListPage from './pages/Listpage';
 import { AuthProvider } from './context/AuthContext';
 import Layout from './components/Layout';
 import AddPost from './pages/AddPost';
 import { ArtworkProvider } from './context/ArtworkContext';
+import Post from './pages/Post';
 
 
 
@@ -62,6 +63,11 @@ const router =  createBrowserRouter([
             element: <ListPage />,
           },
         ],
+      },
+      {
+        path: '/post/:id',
+        element: <Post />,
+        
       },
       {
         path: '*',

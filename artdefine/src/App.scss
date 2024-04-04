@@ -45,6 +45,12 @@ button.secondary {
   @include button($canvas-white-dark, $midnight-blue, $midnight-blue);
 }
 
+button.delete {
+  width: 192px;
+  height: 48px;
+  @include button($sunset-red, $color-black, $midnight-blue);
+}
+
 .cat-button {
   font-family: "EavesSansHeavy";
   font-size: 16px;
@@ -94,6 +100,7 @@ h6 {
 }
 
 h3 {
+  text-align: left;
   font-size: 36px;
 }
 
@@ -152,9 +159,10 @@ h5 {
   display: flex;
   flex-direction: column;
   margin: 27px 18px 55px 18px;
+  overflow-y: auto;
 }
 
-// --- Misc page elements ---
+// ## Misc page elements ##
 
 .upload-banner-page {
   .btns {
@@ -166,10 +174,10 @@ h5 {
   }
 }
 
-// --- Profile ---
+// ## Profile page ##
 
 .profile {
-  background-image: url("./assets/Compentent_assests/rasterframe_yellow.png");
+  background-image: url("./assets/component_assests/rasterframe_yellow.png");
   background-size: contain;
 
   .profile-main {
@@ -237,7 +245,7 @@ h5 {
   }
 }
 
-// --- Add post ---
+// ## Add post page ##
 
 .add-post {
   display: flex;
@@ -252,14 +260,114 @@ h5 {
   }
   .content{
     flex-grow: 1;
-    display: flex;
-    width: 100%;
+   
+    .not-uploaded {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .upload-card {
+        margin: 40px 0;
+      }
+    }
+    .uploaded {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      flex-direction: column;
+
+      .artwork {
+        flex-grow: 1;
+      }
+      > div {
+        display: flex;
+        button.delete{
+          display: flex;
+          flex-grow: 1;
+          margin: 20px;
+          margin-bottom: 60px;
+        }
+      }
+      
+    }
     
   }
   .form{
     padding: 0 20px;
     flex-grow: 1;
   }
+}
+
+// ## Artwork page ##
+
+.artwork-page {
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  
+  .artwork{
+    height: 50vh
+  }
+
+  .artwork-info {
+    background-color: $canvas-white-light;
+    @include border-standard(0px);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding-top: 0;
+    .title{
+      padding-top: 0;
+      margin-right: 40px
+    }
+    .user-card{
+      display: flex;
+      align-items: center;
+      
+      img{
+        width: 53px;
+        height: 53px;
+        object-fit: cover;
+        @include border-standard(3px);
+        @include border-effect("1,1");
+      }
+      .username{
+        margin-left: 20px;
+        font-family: "EavesSansHeavy";
+        font-size: 24px;
+        color: $midnight-blue;
+        flex-grow: 1;
+        text-align: left;
+        
+      }
+    }
+
+  .item-description-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+   
+    :first-child { // desctiption title
+      text-align: left;
+      font-family: "EavesSansHeavy";
+      font-size: 20px;
+    }
+    .item-description {
+      margin-top: 4px;
+      padding: 8px;
+      margin-left: -8px;
+      margin-right: -8px;
+      font-family: "EavesSansBook";
+      font-size: 16px;
+      color: $midnight-blue;
+      text-align: left;
+      background-color: rgba(255, 245, 184, 0.25);
+      @include border-standard(0);
+
+    }
+  }
+}
 }
 
 // --- Components ---

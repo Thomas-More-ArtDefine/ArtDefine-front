@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import UploadCard from '../UploadCard';
-import { ReactComponent as CrossIcon } from '../../assets/Vectors/cross-black.svg';
+import { ReactComponent as CrossIcon } from '../../assets/vectors/cross-black.svg';
 
 const UploadItemForProfile = ({ onFileChange, title, isChanged, setIsChanged } : {onFileChange: (file: string) => void , title : String, isChanged : boolean, setIsChanged :React.Dispatch<React.SetStateAction<boolean>>}) => {
         

@@ -1,7 +1,7 @@
 
 
 
-const Artwork = ({src}: {src:string}) => {
+const ArtworkContainer = ({src}: {src:string}) => {
     return (
         <div className="artwork">
            <div className="content"><img src={src} alt="" /></div> 
@@ -13,4 +13,4 @@ const Artwork = ({src}: {src:string}) => {
 
 
 
-export default Artwork;
+export default ArtworkContainer;

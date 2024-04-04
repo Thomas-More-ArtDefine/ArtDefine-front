@@ -1,10 +1,10 @@
-import CatButton from "../components/Buttons/CatBotton";
+import CatButton from "../components/buttons/CatBotton";
 import { ReactComponent as CrossIcon } from "../assets/Vectors/cross-black.svg";
 import React, { useState } from "react";
 import UploadItemForPost from "../components/addPostFlow/UploadItemForPost";
 import DetailFormForPost from "../components/addPostFlow/DetailFormForPost";
-import { ReactComponent as UploadIcon } from "../assets/Vectors/upload-icon-black-fill.svg";
-import { ReactComponent as DetailsIcon } from "../assets/Vectors/details-icon-black.svg";
+import { ReactComponent as UploadIcon } from "../assets/vectors/upload-icon-black-fill.svg";
+import { ReactComponent as DetailsIcon } from "../assets/vectors/details-icon-black.svg";
 
 export default function AddPost() {
   const [currentStep, setCurrentStep] = useState("Upload");

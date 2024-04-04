@@ -14,6 +14,12 @@ const Nav: React.FC = () => {
                 <li>
                     <Link to="/profile">Profile</Link>
                 </li>
+                <li>
+                    <Link to="/add">Add Post</Link>
+                </li>
+                <li>
+                    <Link to="/post">Post</Link>
+                </li>
             </ul>
         </nav>
     );

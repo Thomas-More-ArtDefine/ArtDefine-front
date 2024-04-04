@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ReactComponent as UploadIcon } from '../assets/Vectors/upload-icon.svg';
+import { ReactComponent as UploadIcon } from '../assets/vectors/upload-icon.svg';
 
 const UploadCard = ({ onFileChange : handleFileChange }: { onFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void}) => {
     const [fileName, setFileName] = useState<string | null>(null);
