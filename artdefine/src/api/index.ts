@@ -1,6 +1,8 @@
+import { Artwork } from "../model/PostModel";
 import { testOutput } from "../model/testOutput";
 import { User } from "../model/userModel";
 import api from "./http-common";
+import POSTMOCK from "../mock/PostMock";
 
 
 export const getAll = () => {
@@ -37,6 +39,27 @@ export const getAllUsers = async (): Promise<User[]> => {
     return response.data;
   } catch (error) {
     console.error("Error while fetching all data:", error);
+    throw error;
+  }
+};
+
+export const getOne = async (id: string): Promise<User> => {
+  try {
+    const response = await api.get(`/users/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error while fetching one data:", error);
+    throw error;
+  }
+};
+
+export const getArtwork = async (id: string): Promise<Artwork> => {
+  try {
+    //const response = await api.get(`/posts/${id}`);
+    //return response.data;
+    return POSTMOCK[0];
+  } catch (error) {
+    console.error("Error while fetching one data:", error);
     throw error;
   }
 };

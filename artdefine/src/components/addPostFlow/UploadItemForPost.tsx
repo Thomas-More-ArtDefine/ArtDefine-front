@@ -1,7 +1,8 @@
 import { ChangeEvent, useState } from "react";
 import UploadCard from "../UploadCard";
 import { useArtwork } from "../../context/ArtworkContext";
-import Artwork from "../Artwork";
+import ArtworkContainer from "../artwork/Artwork";
+import { ReactComponent as DeleteIcon } from "../../assets/vectors/delete-icon.svg";
 
 const UploadItemForPost = ({
 
@@ -27,17 +28,24 @@ const UploadItemForPost = ({
     }
   };
 
+  const handleDelete = () => {
+    setArtwork({...artwork, post_content: ""});
+    setSrc("");
+    setIsChanged(false);
+  }
+
   return (
     <>
       {isChanged ? (
-       <div>
-       <Artwork src={src} />
+       <div className="uploaded">
+       <ArtworkContainer src={src} />
+       <div><button onClick={handleDelete} className="delete has-icon">Delete {<DeleteIcon/>}</button></div>
      </div>
       ) : (
         
-         <>
+         <div className="not-uploaded">
          <UploadCard onFileChange={handleFileChange} />
-       </>
+       </div>
       )}
 
      

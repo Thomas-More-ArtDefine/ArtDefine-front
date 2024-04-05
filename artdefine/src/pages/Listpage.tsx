@@ -1,13 +1,12 @@
 
 import List from "../components/List";
-import { useArtwork } from "../context/ArtworkContext";
+
 import { useAuth } from "../context/AuthContext";
 import { useItems } from "../context/ItemContext";
 
 export default function ListPage() {
     const { items } = useItems(); 
     const { users } = useAuth();
-    const { artwork } = useArtwork();
     
     
     return (

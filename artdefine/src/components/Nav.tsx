@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ReactComponent as MessageIcon } from "../assets/Vectors/message-icon.svg";
-import { ReactComponent as LogoText } from "../assets/Vectors/ArtDefine-LogoText.svg";
-import { ReactComponent as Logo } from "../assets/Vectors/ArtDefine-Logo.svg";
-import { ReactComponent as MobileProfile } from "../assets/Vectors/mobile-profile.svg";
-import { ReactComponent as Hamburger } from "../assets/Vectors/Hamburger.svg";
+import { ReactComponent as MessageIcon } from "../assets/vectors/message-icon.svg";
+import { ReactComponent as LogoText } from "../assets/vectors/ArtDefine-LogoText.svg";
+import { ReactComponent as Logo } from "../assets/vectors/ArtDefine-Logo.svg";
+import { ReactComponent as MobileProfile } from "../assets/vectors/mobile-profile.svg";
+import { ReactComponent as Hamburger } from "../assets/vectors/Hamburger.svg";
 import pfp from "../assets/images/mock-profile-pic.png";
 import MobileMenu from './Mobile-menu';
 
@@ -36,7 +36,7 @@ const Nav: React.FC = () => {
                         
                     </li>
                     <li className='navbutton'>
-                        <button className="primary has-icon nav" onClick={() => navigate("/listpage")} ><span>Upload </span><i className="material-icons">upload</i></button>
+                        <button className="primary has-icon nav" onClick={() => navigate("/add")} ><span>Upload </span><i className="material-icons">upload</i></button>
                     
                     </li>
                     <li className='SearchBar'>
