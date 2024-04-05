@@ -1,6 +1,6 @@
 import { useFeed } from "../../context/FeedContext";
 import React, { useState } from 'react';
-import placeholder from "../assets/images/mock-banner-pic.png";
+import placeholder from "../../assets/images/mock-banner-pic.png";
 import ArtworkCard from "../../components/Artwork-card";
 
 

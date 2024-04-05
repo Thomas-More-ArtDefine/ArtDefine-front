@@ -14,6 +14,11 @@ a {
   -webkit-box-sizing: border-box;
 }
 
+body{
+  background: $background-color;
+  background-attachment: fixed;
+}
+
 // --- App ---
 .App {
   display: flex;
@@ -860,11 +865,18 @@ h5 {
 // ----feed----
 
 div.feedpage{
-  background-image: url("./assets/component_assets/rasterframe_yellow.png");
+  background-image: url("./assets/component_assests/rasterframe_yellow.png");
   background-size: contain;
-  background-attachment: fixed;
+  background-repeat: repeat;
+  background-attachment: fixed !important;
+}
+
+div.feedpage{
+  width: 100%;
   display: flex;
   justify-content: center;
+  height: fit-content;
+  
 }
 
 div.feed-btns{
