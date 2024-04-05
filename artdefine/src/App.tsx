@@ -8,7 +8,7 @@ import { AuthProvider } from './context/AuthContext';
 import Layout from './components/Layout';
 import AddPost from './pages/AddPost';
 import { ArtworkProvider } from './context/ArtworkContext';
-import Feed from './pages/Feed';
+import Feed from './pages/feed/Feed';
 import Post from './pages/Post';
 import PostView from './pages/PostView';
 import { FeedProvider } from './context/FeedContext';
