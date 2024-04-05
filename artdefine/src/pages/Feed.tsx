@@ -31,8 +31,8 @@ export default function Feed() {
     };
 
     return (
-        <div>
-            <div className='feed-btns'>
+        <div className='feedpage'>
+            <div className='feed-btns fixed'>
                 <div className='subnav-button'>
                     <button className={((globalActive) ? "active": "")} onClick={() => handleFeedButtonClick("global")}><i className="material-icons">public</i></button>
                     <div className='button-text'>Global</div>

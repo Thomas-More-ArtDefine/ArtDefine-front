@@ -20,7 +20,7 @@ const Nav: React.FC = () => {
         <div>
             {openMenu && <MobileMenu closeMenu={setOpenMenu} />}
             {/* <MobileMenu /> */}
-            <nav className='navigation'>
+            <nav className='navigation fixed'>
             {/* full nav */}
             <div className='desktop'>
                 <ul>
