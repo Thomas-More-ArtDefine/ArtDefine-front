@@ -23,6 +23,7 @@ export const useArtwork = () => {
 export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [artwork, setArtwork] = useState<Artwork>(
       { 
+        post_id: 0,
         post_content: "", 
         post_title: "",
         post_description: "",

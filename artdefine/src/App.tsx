@@ -9,10 +9,12 @@ import Layout from './components/Layout';
 import AddPost from './pages/AddPost';
 import { ArtworkProvider } from './context/ArtworkContext';
 import Post from './pages/Post';
+import PostView from './pages/PostView';
+import { FeedProvider } from './context/FeedContext';
 
 
 
-const router =  createBrowserRouter([
+const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
@@ -65,13 +67,25 @@ const router =  createBrowserRouter([
         ],
       },
       {
-        path: '/post/:id',
-        element: <Post />,
-        
+        path: '/post',
+        children: [
+          {
+            index: true,
+            element: <h1>Not Found</h1>,
+          },
+          {
+            path: ':id',
+            element: <Post />,
+          },
+          {
+            path: ':id/view',
+            element: <PostView />,
+          },
+        ],
       },
       {
         path: '*',
-        element:<h1>Not Found</h1>,
+        element: <h1>Not Found</h1>,
       },
     ],
   },
@@ -80,19 +94,20 @@ const router =  createBrowserRouter([
 function App() {
   return (
     <div className="App">
-      
       <AuthProvider>
         <ItemsProvider>
           <ArtworkProvider>
-            <RouterProvider router={router} />
+            <FeedProvider>
+              <RouterProvider router={router} />
+            </FeedProvider>
           </ArtworkProvider>
         </ItemsProvider>
       </AuthProvider>
-    
     </div>
   );
 }
 
 export default App;
+
 
 // Path: artdefine/src/App.tsx
