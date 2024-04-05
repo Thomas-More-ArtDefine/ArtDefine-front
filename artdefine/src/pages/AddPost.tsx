@@ -1,10 +1,10 @@
-import CatButton from "../components/Buttons/CatBotton";
+import CatButton from "../components/buttons/CatBotton";
 import { ReactComponent as CrossIcon } from "../assets/Vectors/cross-black.svg";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import UploadItemForPost from "../components/addPostFlow/UploadItemForPost";
 import DetailFormForPost from "../components/addPostFlow/DetailFormForPost";
-import { ReactComponent as UploadIcon } from "../assets/Vectors/upload-icon-black-fill.svg";
-import { ReactComponent as DetailsIcon } from "../assets/Vectors/details-icon-black.svg";
+import { ReactComponent as UploadIcon } from "../assets/vectors/upload-icon-black-fill.svg";
+import { ReactComponent as DetailsIcon } from "../assets/vectors/details-icon-black.svg";
 
 export default function AddPost() {
   const [currentStep, setCurrentStep] = useState("Upload");
@@ -27,11 +27,29 @@ export default function AddPost() {
     setCurrentStep("Feedback");
   }
 
+
+  // when resizing to, or starting from (min-width: 992px) set state to "Details"
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 992) {
+        setCurrentStep("Details");
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+ 
+
   return (
     <div className="page add-post">
       <div className="item-title">{currentStep}</div>
 
       <div className="tabs">
+        
         <CatButton
           text="Upload"
           icon={UploadIcon}
@@ -58,6 +76,7 @@ export default function AddPost() {
         />
       </div>
       <div className="content">
+        {/* Mobile */}
       {currentStep === "Upload" && (
         <>
           {
@@ -70,6 +89,13 @@ export default function AddPost() {
           }
         </>
       )}
+        {/* Desktop */}
+        <div id="upload-item-for-post">
+              <UploadItemForPost
+                isChanged={isChanged}
+                setIsChanged={setIsChanged}
+              />
+        </div>
       {currentStep === "Details" && <>{isChanged? <DetailFormForPost/> : <div>UPload content first</div>}</>}
       {currentStep === "Groups" && <div>{<div>Not yet implemented</div>}</div>}
       {currentStep === "Feedback" && <div>{<div>Not yet implemented</div>}</div>}

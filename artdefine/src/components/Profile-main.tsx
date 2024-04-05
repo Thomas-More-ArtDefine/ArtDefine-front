@@ -1,4 +1,4 @@
-import Banner from "./BannerAndProfileImage/Banner";
+import Banner from "./bannerAndProfileImage/Banner";
 import mockBannerPic from "../assets/images/mock-banner-pic.png";
 import mockprofilePic from "../assets/images/mock-profile-pic.png";
 

@@ -1,5 +1,5 @@
-import { ReactComponent as ArrowIcon } from "../../assets/Vectors/arrow-down-yellow.svg";
-import { ReactComponent as DotsIcon } from "../../assets/Vectors/dots-yellow.svg";
+import { ReactComponent as ArrowIcon } from "../../assets/vectors/arrow-down-yellow.svg";
+import { ReactComponent as DotsIcon } from "../../assets/vectors/dots-yellow.svg";
 
 interface BannerProps {
   imageUrl: string;

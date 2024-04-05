@@ -1,17 +1,20 @@
 import { ItemsProvider } from './context/ItemContext';
 import { Navigate, createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Profile from './pages/Profile/Profile';
-import UploadBanner from './pages/Profile/UploadBanner';
-import UploadProfilePic from './pages/Profile/UploadProfilePic';
+import Profile from './pages/profile/Profile';
+import UploadBanner from './pages/profile/UploadBanner';
+import UploadProfilePic from './pages/profile/UploadProfilePic';
 import ListPage from './pages/Listpage';
 import { AuthProvider } from './context/AuthContext';
 import Layout from './components/Layout';
 import AddPost from './pages/AddPost';
 import { ArtworkProvider } from './context/ArtworkContext';
+import Post from './pages/Post';
+import PostView from './pages/PostView';
+import { FeedProvider } from './context/FeedContext';
 
 
 
-const router =  createBrowserRouter([
+const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
@@ -64,8 +67,25 @@ const router =  createBrowserRouter([
         ],
       },
       {
+        path: '/post',
+        children: [
+          {
+            index: true,
+            element: <h1>Not Found</h1>,
+          },
+          {
+            path: ':id',
+            element: <Post />,
+          },
+          {
+            path: ':id/view',
+            element: <PostView />,
+          },
+        ],
+      },
+      {
         path: '*',
-        element:<h1>Not Found</h1>,
+        element: <h1>Not Found</h1>,
       },
     ],
   },
@@ -77,7 +97,9 @@ function App() {
       <AuthProvider>
         <ItemsProvider>
           <ArtworkProvider>
-            <RouterProvider router={router} />
+            <FeedProvider>
+              <RouterProvider router={router} />
+            </FeedProvider>
           </ArtworkProvider>
         </ItemsProvider>
       </AuthProvider>
@@ -86,5 +108,6 @@ function App() {
 }
 
 export default App;
+
 
 // Path: artdefine/src/App.tsx

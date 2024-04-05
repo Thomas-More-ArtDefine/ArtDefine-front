@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import UploadItemForProfile from "../../components/BannerAndProfileImage/UploadItemForProfile";
+import UploadItemForProfile from "../../components/bannerAndProfileImage/UploadItemForProfile";
 import srcMock from "../../assets/images/mock-banner-pic.png";
-import PreviewItem from "../../components/BannerAndProfileImage/PreviewItem";
+import PreviewItem from "../../components/bannerAndProfileImage/PreviewItem";
 import { useState } from "react";
 
 export default function UploadBanner() {
