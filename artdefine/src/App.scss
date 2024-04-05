@@ -554,6 +554,7 @@ h5 {
     button {
       margin: 0;
     }
+    
   }
   .content{
     flex-grow: 1;
@@ -587,11 +588,45 @@ h5 {
       }
       
     }
+
+    #upload-item-for-post{
+      display:none;
+    }
     
   }
   .form{
     padding: 0 20px;
     flex-grow: 1;
+  }
+
+  @include breakpoint(lg){
+
+    background-color: $canvas-white-light;
+    padding: 48px;
+    margin: 10px 10px 78px 10px;
+    @include border-standard(0px);
+    .tabs {
+
+      justify-content: center;
+      gap:12px ;
+
+      .cat-button:first-child {
+        display: none;
+      }
+    }
+
+    .content{
+      display: grid;
+      gap: 100px;
+      grid-template-columns: 1fr 1fr;
+      #upload-item-for-post{
+      display:block;
+    }}
+
+    >div:last-child{
+      text-align: right;
+    }
+    
   }
 }
 
@@ -675,7 +710,9 @@ h5 {
     flex-direction: row;
     justify-content: center;
     gap: 36px;
+    padding: 20px;
 
+   
     .artwork{
       max-width: 600px;
     }
