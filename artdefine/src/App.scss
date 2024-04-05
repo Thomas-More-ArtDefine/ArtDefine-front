@@ -417,7 +417,7 @@ h5 {
   height: 90px;
   padding: 16px;
   background: $color-white;
-  box-shadow: 0 4px 4px $midnight-blue;
+  box-shadow: 0 4px 8px $color-white;
 
   ul {
     display: flex;
@@ -650,4 +650,16 @@ h5 {
       @include border-standard(2px);
     }
   }
+}
+
+// ----feed----
+div.feed-btns{
+  margin-top: 8px;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  div.subnav-button{
+    @include subnavbutton($canary-yellow,$color-white, $midnight-blue, $midnight-blue);
+  }
+  
 }
