@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import placeholder from "../assets/images/mock-banner-pic.png";
+import ArtworkCard from '../components/Artwork-card';
 
 export default function Feed() {
     const [globalActive, setGlobalActive] = useState<boolean>(false);
@@ -45,7 +47,14 @@ export default function Feed() {
                 </div>            
             </div>
             <div className='feed'>
-
+                <ArtworkCard 
+                src={placeholder} 
+                title="example title"
+                creator="example creator" />
+                <ArtworkCard 
+                src={placeholder} 
+                title="example title"
+                creator="example creator" />
             </div>
         </div>
     );

@@ -654,12 +654,50 @@ h5 {
 
 // ----feed----
 div.feed-btns{
-  margin-top: 8px;
-  padding: 0 32px;
+  margin: 8px 0px;
+  padding: 0 21px;
   display: flex;
   justify-content: space-between;
   div.subnav-button{
     @include subnavbutton($canary-yellow,$color-white, $midnight-blue, $midnight-blue);
   }
-  
+}
+
+div.feed{
+  div.feed-entry{
+    margin: 20px auto;
+    height: 400px;
+    width: 380px;
+    background-color: $color-white;
+    border-radius: $corner-radius;
+    box-shadow: 0px 0px 12px $canvas-white-dark;
+    img{
+      object-fit: cover;
+      width: 372px;
+      height: 320px;
+      border-radius: $corner-radius;
+      border-color: $midnight-blue;
+      @include border-standard(4px);
+    }
+    div.work-title{
+      font-family: 'EavesSansHeavy';
+      text-transform: capitalize;
+      font-size: 32px;
+      color: $purple-dark;
+      width: 340px;
+      margin: auto;
+      text-align: start;
+      line-height: 95%;
+      margin-top: 5px;
+    }
+    div.work-creator{
+      font-family: 'EavesSansHeavy';
+      font-size: 20px;
+      width: 340px;
+      margin: auto;
+      text-align: start;
+      color: $purple-light;
+      opacity: 75%;
+    }
+  }
 }
