@@ -691,7 +691,8 @@ div.feed-btns{
 
 div.feed{
   margin-top: 210px;
-  div.feed-entry{
+  div.feed-entry{ 
+    cursor: pointer;
     margin: 20px auto;
     height: 400px;
     width: 380px;
@@ -700,7 +701,7 @@ div.feed{
     box-shadow: 0px 0px 12px $canvas-white-dark;
     img{
       object-fit: cover;
-      width: 372px;
+      width: 380px;
       height: 320px;
       border-radius: $corner-radius;
       border-color: $midnight-blue;

@@ -50,11 +50,13 @@ export default function Feed() {
                 <ArtworkCard 
                 src={placeholder} 
                 title="example title"
-                creator="example creator" />
+                creator="example creator"
+                postid='1' />
                 <ArtworkCard 
                 src={placeholder} 
                 title="example title"
-                creator="example creator" />
+                creator="example creator"
+                postid='2' />
             </div>
         </div>
     );

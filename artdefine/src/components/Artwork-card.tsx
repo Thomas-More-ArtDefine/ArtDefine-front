@@ -1,11 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function ArtworkCard({src, title, creator}: {src:string, title:string, creator:string}) {
+export default function ArtworkCard({src, title, creator, postid}: {src:string, title:string, creator:string, postid:string}) {
     return(
-        <div className='feed-entry'>
-                    <img src={src} alt="" />
-                    <div className='work-title'>{title}</div>
-                    <div className='work-creator'>{creator}</div>
-        </div>
+        <Link to={'/post/' + {postid}.postid}>
+            <div className='feed-entry'>
+                <img src={src} alt="" />
+                <div className='work-title'>{title}</div>
+                <div className='work-creator'>{creator}</div>
+            </div>
+        </Link>
     )
 }
