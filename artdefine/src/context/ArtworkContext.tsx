@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { Artwork } from "../model/PostModel";
+import { Artwork, visibility } from "../model/PostModel";
 import { getArtwork } from "../api";
 import { User } from "../model/userModel";
 
@@ -23,13 +23,14 @@ export const useArtwork = () => {
 export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [artwork, setArtwork] = useState<Artwork>(
       { 
-        post_id: 0,
+        id: "0",
         post_content: "", 
         post_title: "",
         post_description: "",
         post_medium: "",
+        post_visibility: visibility.PRIVATE,
         user: {
-          id: 0,
+          id: "0",
           user_name: "",
           user_subtitle: "",
           user_profile_picture: "",

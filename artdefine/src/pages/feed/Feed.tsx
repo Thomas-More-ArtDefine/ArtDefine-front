@@ -6,7 +6,7 @@ import ArtworkCard from "../../components/Artwork-card";
 
 
 export default function Feed() {
-    const { mock, setMock } = useFeed();
+    const { artworks } = useFeed();
     const [globalActive, setGlobalActive] = useState<boolean>(false);
     const [personalActive, setPersonalActive] = useState<boolean>(true);
     const [randomActive, setRandomActive] = useState<boolean>(false);
@@ -34,6 +34,14 @@ export default function Feed() {
         }
     };
 
+    const feedList = artworks.map(artwork =>
+        <ArtworkCard 
+                src={artwork.post_content} 
+                title={artwork.post_title}
+                creator={artwork.user.user_name}
+                postid={artwork.id} />
+      );
+
     return (
         <div className='feedpage'>
             <div className='feed-btns fixed'>
@@ -51,16 +59,12 @@ export default function Feed() {
                 </div>            
             </div>
             <div className='feed'>
-                <ArtworkCard 
-                src={placeholder} 
-                title="example title"
-                creator="example creator"
-                postid='1' />
-                <ArtworkCard 
-                src={placeholder} 
-                title="example title"
-                creator="example creator"
-                postid='2' />
+                {/* {artworks.length != null && feedList} */}
+                {artworks.length != 0 ? (
+                    <div>{feedList}</div>
+                ) : (
+                    <div className="no-posts">No posts could be loaded. Please check your connection.</div>
+                )}
             </div>
         </div>
     );

@@ -26,7 +26,6 @@ body{
   height: 100vh;
   width: 100vw;
   text-align: center;
-  background: $background-color;
 
   .page-container{
     display: flex;
@@ -495,7 +494,7 @@ h5 {
 // ## Profile page ##
 
 .profile {
-  background-image: url("./assets/component_assests/rasterframe_yellow.png");
+  background-image: url("./assets/component_assets/rasterframe_yellow.png");
   background-size: contain;
 
   .profile-main {
@@ -865,7 +864,7 @@ h5 {
 // ----feed----
 
 div.feedpage{
-  background-image: url("./assets/component_assests/rasterframe_yellow.png");
+  background-image: url("./assets/component_assets/rasterframe_yellow.png");
   background-size: contain;
   background-repeat: repeat;
   background-attachment: fixed !important;
@@ -880,6 +879,7 @@ div.feedpage{
 }
 
 div.feed-btns{
+  z-index: 80;
   top: $nav-margin;
   margin: 8px auto;
   padding: 0 21px;
@@ -932,5 +932,11 @@ div.feed{
       color: $purple-light;
       opacity: 75%;
     }
+    
+  }
+  div.no-posts{
+    margin: 35vh 0;
+    font-family: 'EavesSansHeavy';
+    color: $color-secondary;
   }
 }

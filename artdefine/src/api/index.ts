@@ -63,4 +63,24 @@ export const getArtwork = async (id: string): Promise<Artwork> => {
     throw error;
   }
 };
+
+export const getRandomFeed = async (exclude?: string[], amount?: number): Promise<Artwork[]> => {
+  try {
+    let response;
+    if (exclude != undefined && amount != undefined) {
+      response = await api.get(`/posts/feed/random?exclude=${exclude.toString()}&amount=${amount}`);
+    }else if (exclude != undefined) {
+      response = await api.get(`/posts/feed/random?exclude=${exclude.toString()}`);
+    }else if (amount != undefined) {
+      response = await api.get(`/posts/feed/random?amount=${amount}`);
+    }else{
+      response = await api.get(`/posts/feed/random`);
+    }
+    return response.data;
+    // return POSTMOCK[0];
+  } catch (error) {
+    console.error("Error while fetching one data:", error);
+    throw error;
+  }
+};
       
