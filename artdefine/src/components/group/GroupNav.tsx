@@ -46,8 +46,8 @@ const GroupNav = () => {
     return (
         <div className="group-nav">
            <CatButton text="Home" icon={HomeIcon} onClick={handleHomeClick} active={currentStep === "Home"}  />
-           <CatButton text="Home" icon={GalleryIcon} onClick={handleGalleryClick} active={currentStep === "Gallery"}  />
-           <CatButton text="Home" icon={ChatIcon} onClick={handleChatClick} active={currentStep === "Chat"}  />
+           <CatButton text="Gallery" icon={GalleryIcon} onClick={handleGalleryClick} active={currentStep === "Gallery"}  />
+           <CatButton text="Chat" icon={ChatIcon} onClick={handleChatClick} active={currentStep === "Chat"}  />
         </div>
     );
 }
