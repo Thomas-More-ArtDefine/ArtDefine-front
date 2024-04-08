@@ -11,6 +11,7 @@ import { ArtworkProvider } from './context/ArtworkContext';
 import Post from './pages/Post';
 import PostView from './pages/PostView';
 import { FeedProvider } from './context/FeedContext';
+import Group from './pages/group/Group';
 
 
 
@@ -80,6 +81,19 @@ const router = createBrowserRouter([
           {
             path: ':id/view',
             element: <PostView />,
+          },
+        ],
+      },
+      {
+        path: '/group',
+        children: [
+          {
+            index: true,
+            element: <h1>Not Found</h1>,
+          },
+          {
+            path: ':id',
+            element: <Group/>,
           },
         ],
       },
