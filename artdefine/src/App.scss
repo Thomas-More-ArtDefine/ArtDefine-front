@@ -804,7 +804,7 @@ h5 {
   @include flex-center();
   aspect-ratio: 11/10;
   background-color: $color-white;
-  box-shadow: 0px 0px 24px 0px $color-primary;
+  @include glow();
   @include border-standard(0);
   width: 100%;
   .content {
@@ -939,5 +939,60 @@ h5 {
     padding-left: 60px;
 
     @include clickable;
+  }
+}
+
+
+.text-card{
+  display: flex;
+  flex-direction: column;
+  background-color: $canvas-white-light;
+  @include border-standard(0px);
+  padding: 20px;
+  
+  text-align: left;
+  @include glow();
+
+  .title{
+    font-family: "EavesSansHeavy";
+    font-size: 24px;
+    color: $purple-dark;
+    text-align: left;
+    background-color: $canvas-white-dark;
+    padding: 4px;
+    border-radius: $corner-radius-sm;
+    
+  }
+  .content{
+    font-family: "EavesSansBook";
+    font-size: 18px;
+    margin: 4px;
+    color: $midnight-blue;
+    text-align: left;
+  }
+
+  .footer{
+    
+    .footer-top{
+      display: flex;
+     
+      justify-content: space-between;
+
+      .creationdate{
+        display: flex;
+        align-items: center ;
+        gap: 10px;
+        font-family: "EavesSansBook";
+        font-size: 16px;
+        color: $midnight-blue;
+        text-align: left;
+      }
+      .link-title{
+        font-family: "EavesSansHeavy";
+        font-size: 18px;
+        color: $purple-dark;
+        text-align: left;
+      }
+    }
   }
 }

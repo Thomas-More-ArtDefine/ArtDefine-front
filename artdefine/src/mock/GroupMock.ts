@@ -15,7 +15,8 @@ const  GROUPMOCK: GroupModel[] = [
         group_queued_deletion: false,
         group_queued_deletion_date: null,
         creator_name: "John Doe",
-        creator_id: "1"
+        creator_id: "1",
+        group_links: ["https://www.facebook.com", "https://www.instagram.com"]
     }
 ];
 

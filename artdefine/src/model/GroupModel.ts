@@ -10,4 +10,5 @@ export interface GroupModel{
     group_queued_deletion_date: string | null;
     creator_name: string;
     creator_id: string;
+    group_links: string[];
 }
