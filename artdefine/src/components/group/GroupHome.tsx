@@ -12,7 +12,7 @@ const GroupHome = ({group} : {group:GroupModel}) => {
             <TextCard title="Rules" text={group.group_rules}/>
         </div>
         <div className="members">
-            <UsersCard title="Members" users={group.group_members}/>
+            <UsersCard title="Members" users={group.group_members} maxUsers={8}/>
         </div>
         </>
     );

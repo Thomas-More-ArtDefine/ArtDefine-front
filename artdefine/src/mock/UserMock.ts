@@ -82,8 +82,87 @@ const USERMOCK:User[] = [
         user_profile_picture: profilePic,
         user_deactivated: false,
         user_deactivation_date: ""
-    }
-    
+    },
+    {
+        id: 11,
+        user_name: "Isaac Purple",
+        user_subtitle: "UI/UX Designer",
+        user_profile_picture: profilePic,
+        user_deactivated: false,
+        user_deactivation_date: ""
+    },
+    {
+        id: 12,
+        user_name: "Jack Yellow",
+        user_subtitle: "Fashion Designer",
+        user_profile_picture: profilePic,
+        user_deactivated: false,
+        user_deactivation_date: ""
+    },
+    {
+        id: 13,
+        user_name: "Karl Pink",
+        user_subtitle: "Industrial Designer",
+        user_profile_picture: profilePic,
+        user_deactivated: false,
+        user_deactivation_date: ""
+    },
+    {
+        id: 14,
+        user_name: "Liam Brown",
+        user_subtitle: "Interior Designer",
+        user_profile_picture: profilePic,
+        user_deactivated: false,
+        user_deactivation_date: ""
+    },
+    {
+        id: 15,
+        user_name: "Mia White",
+        user_subtitle: "Landscape Designer",
+        user_profile_picture: profilePic,
+        user_deactivated: false,
+        user_deactivation_date: ""
+    },
+    {
+        id: 16,
+        user_name: "Nora Black",
+        user_subtitle: "Urban Designer",
+        user_profile_picture: profilePic,
+        user_deactivated: false,
+        user_deactivation_date: ""
+    },
+    {
+        id: 17,
+        user_name: "Oscar Green",
+        user_subtitle: "Game Designer",
+        user_profile_picture: profilePic,
+        user_deactivated: false,
+        user_deactivation_date: ""
+    },
+    {
+        id: 18,
+        user_name: "Penny Red",
+        user_subtitle: "Sound Designer",
+        user_profile_picture: profilePic,
+        user_deactivated: false,
+        user_deactivation_date: ""
+    },
+    {
+        id: 19,
+        user_name: "Quinn Blue",
+        user_subtitle: "Video Editor",
+        user_profile_picture: profilePic,
+        user_deactivated: false,
+        user_deactivation_date: ""
+    },
+    {
+        id: 20,
+        user_name: "Riley Orange",
+        user_subtitle: "VFX Artist",
+        user_profile_picture: profilePic,
+        user_deactivated: false,
+        user_deactivation_date: ""
+    },
 ];
 
 export default USERMOCK;

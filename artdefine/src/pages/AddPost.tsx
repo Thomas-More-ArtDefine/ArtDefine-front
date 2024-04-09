@@ -11,6 +11,7 @@ export default function AddPost() {
   const [isChanged, setIsChanged] = useState<boolean>(false);
 
 
+  // Handle click events for each tab
   const handleUploadClick = () => {
     setCurrentStep("Upload");
   };
