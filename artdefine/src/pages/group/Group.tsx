@@ -19,7 +19,7 @@ export default function Group() {
                 <GroupBanner name={group.group_name} bannerUrl={group.group_banner_picture} alt={"Banner picture of the group."} />
                 <GroupNav handleStepChange={setCurrentStep} currentStep={currentStep}/>
                 <div className="content">
-                {currentStep === "Home" && <GroupHome title={"About"} text={group.group_bio} creationDate={group.group_creationdate} links={group.group_links} owner={group.creator_name} />}
+                {currentStep === "Home" && <GroupHome group={group}/>}
                 {currentStep === "Gallery" && <div>Gallery</div>}
                 {currentStep === "Chat" && <div>Chat</div>}
                  </div>

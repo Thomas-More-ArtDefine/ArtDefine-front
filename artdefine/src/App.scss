@@ -371,6 +371,7 @@ div.mobileMenu{
   border-radius: 16px 0px 0px 0px;
   border: 4px $canary-yellow-dark;
   border-style: solid none none solid;
+  z-index: 1;
 }
 
 div.modalbackground{
@@ -796,6 +797,12 @@ h5 {
       }
     }
 
+    >.content{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
 }
 
 // --- Components ---
@@ -943,7 +950,7 @@ h5 {
 }
 
 
-.text-card{
+.card{
   display: flex;
   flex-direction: column;
   background-color: $canvas-white-light;
@@ -963,12 +970,19 @@ h5 {
     border-radius: $corner-radius-sm;
     
   }
+
+}
+
+.text-card{
   .content{
     font-family: "EavesSansBook";
     font-size: 18px;
     margin: 4px;
     color: $midnight-blue;
     text-align: left;
+    min-height: 50px;
+    max-height: 200px;
+    overflow-y: scroll;
   }
 
   .footer{
@@ -994,5 +1008,32 @@ h5 {
         text-align: left;
       }
     }
+  }
+}
+
+.users-card{
+  .list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+.user-small-card{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 75px;
+  img{
+    width: 74px;
+    height: 74px;
+    object-fit: cover;
+    @include border-standard(3px);
+    @include border-effect("1,1");
+  }
+  .name{
+    font-family: "EavesSansHeavy";
+    font-size: 18px;
+    color: $midnight-blue;
+    text-align: center;
   }
 }

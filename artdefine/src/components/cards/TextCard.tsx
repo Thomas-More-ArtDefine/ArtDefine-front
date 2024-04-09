@@ -14,7 +14,7 @@ const TextCard = ({
   owner?: string;
 }) => {
   return (
-    <div className="text-card">
+    <div className="text-card card">
       <div className="title">{title}</div>
       {subTitle && <h3 className="subtitle">{subTitle}</h3>}
       <p className="content">{text}</p>

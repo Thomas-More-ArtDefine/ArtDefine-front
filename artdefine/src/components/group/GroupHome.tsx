@@ -1,9 +1,19 @@
-import TextCard from "../TextCard";
+import { GroupModel } from "../../model/GroupModel";
+import TextCard from "../cards/TextCard";
+import UsersCard from "../cards/UsersCard";
 
-const GroupHome = ({title, text, creationDate, links, owner} : {title:string, text:string, creationDate: string, links: string[], owner:string}) => {
+const GroupHome = ({group} : {group:GroupModel}) => {
     return (
         <>
-        <TextCard title={title}  text={text} creationDate={creationDate} links={links} owner={owner} />
+        <div className="about">
+        <TextCard title="About"  text={group.group_bio} creationDate={group.group_creationdate} links={group.group_links} owner={group.creator_name} />
+        </div>
+        <div className="rules">
+            <TextCard title="Rules" text={group.group_rules}/>
+        </div>
+        <div className="members">
+            <UsersCard title="Members" users={group.group_members}/>
+        </div>
         </>
     );
     }

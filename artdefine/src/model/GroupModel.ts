@@ -1,3 +1,5 @@
+import { User } from "./userModel";
+
 export interface GroupModel{
     id: number;
     group_name: string;
@@ -11,4 +13,6 @@ export interface GroupModel{
     creator_name: string;
     creator_id: string;
     group_links: string[];
+    group_rules: string;
+    group_members: User[];
 }

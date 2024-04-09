@@ -1,27 +1,43 @@
 import { GroupModel } from "../model/GroupModel";
-import profilePic from "../assets/images/mock-profile-pic.png"
+import profilePic from "../assets/images/mock-profile-pic.png";
 import src from "../assets/images/mock-banner-pic.png";
+import USERMOCK from "./UserMock";
 
 
-const  GROUPMOCK: GroupModel[] = [
-    {
-        id: 1,  
-        group_name: "Artists United",
-        group_creationdate: "2021-10-10",
-        group_userlimit: 100,
-        group_bio: "A community of artists from all over the world.",
-        group_profile_picture: profilePic,
-        group_banner_picture: src,
-        group_queued_deletion: false,
-        group_queued_deletion_date: null,
-        creator_name: "John Doe",
-        creator_id: "1",
-        group_links: ["https://www.facebook.com", "https://www.instagram.com"]
-    }
+
+const GROUPMOCK: GroupModel[] = [
+  {
+    id: 1,
+    group_name: "Artists United",
+    group_creationdate: "2021-10-10",
+    group_userlimit: 100,
+    group_bio: "A community of artists from all over the world.",
+    group_profile_picture: profilePic,
+    group_banner_picture: src,
+    group_queued_deletion: false,
+    group_queued_deletion_date: null,
+    creator_name: "John Doe",
+    creator_id: "1",
+    group_links: ["https://www.facebook.com", "https://www.instagram.com"],
+    group_rules: "No NSFW content allowed.",
+    group_members: USERMOCK,
+  },
+  {
+    id: 2,
+    group_name: "Design Enthusiasts",
+    group_creationdate: "2021-11-01",
+    group_userlimit: 50,
+    group_bio: "A community for design enthusiasts to share ideas and inspiration.",
+    group_profile_picture: profilePic,
+    group_banner_picture: src,
+    group_queued_deletion: false,
+    group_queued_deletion_date: null,
+    creator_name: "Jane Smith",
+    creator_id: "2",
+    group_links: ["https://www.twitter.com", "https://www.linkedin.com"],
+    group_rules: "Respect each other's work and provide constructive feedback.",
+    group_members: USERMOCK,
+  }
 ];
-
-
-
-
 
 export default GROUPMOCK;

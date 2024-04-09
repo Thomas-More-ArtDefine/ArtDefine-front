@@ -32,7 +32,7 @@ const Nav: React.FC = () => {
                     
                     </li>
                     <li className='navbutton'>
-                    <button className="primary has-icon nav" onClick={() => navigate("/groups")} ><span>Groups </span><i className="material-icons">groups</i></button>
+                    <button className="primary has-icon nav" onClick={() => navigate("/group/asdf")} ><span>Groups </span><i className="material-icons">groups</i></button>
                         
                     </li>
                     <li className='navbutton'>
