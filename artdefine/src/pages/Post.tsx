@@ -11,6 +11,7 @@ export default function Post() {
   const [artwork, setArtwork] = useState<Artwork | undefined>(undefined);
   
 
+  // Fetch the artwork data when the component mounts or when the 'id' or 'findArtwork' value changes
   useEffect(() => {
     const fetchArtwork = async () => {
       if (findArtwork) {

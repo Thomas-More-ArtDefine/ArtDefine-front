@@ -1,6 +1,7 @@
 import { User } from "../../model/userModel";
 
 
+// Function to check the length of a text and truncate if necessary
 const checkLength = (text:string) => {
     if (text.length > 9) {
         return text.slice(0, 8) + "...";
