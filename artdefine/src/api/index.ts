@@ -3,6 +3,7 @@ import { testOutput } from "../model/testOutput";
 import { User } from "../model/userModel";
 import api from "./http-common";
 import POSTMOCK from "../mock/PostMock";
+import FEEDMOCK from "../mock/FeedMock";
 
 
 export const getAll = () => {
@@ -66,18 +67,18 @@ export const getArtwork = async (id: string): Promise<Artwork> => {
 
 export const getRandomFeed = async (exclude?: string[], amount?: number): Promise<Artwork[]> => {
   try {
-    let response;
-    if (exclude != undefined && amount != undefined) {
-      response = await api.get(`/posts/feed/random?exclude=${exclude.toString()}&amount=${amount}`);
-    }else if (exclude != undefined) {
-      response = await api.get(`/posts/feed/random?exclude=${exclude.toString()}`);
-    }else if (amount != undefined) {
-      response = await api.get(`/posts/feed/random?amount=${amount}`);
-    }else{
-      response = await api.get(`/posts/feed/random`);
-    }
-    return response.data;
-    // return POSTMOCK[0];
+    // let response;
+    // if (exclude != undefined && amount != undefined) {
+    //   response = await api.get(`/posts/feed/random?exclude=${exclude.toString()}&amount=${amount}`);
+    // }else if (exclude != undefined) {
+    //   response = await api.get(`/posts/feed/random?exclude=${exclude.toString()}`);
+    // }else if (amount != undefined) {
+    //   response = await api.get(`/posts/feed/random?amount=${amount}`);
+    // }else{
+    //   response = await api.get(`/posts/feed/random`);
+    // }
+    // return response.data;
+    return FEEDMOCK;
   } catch (error) {
     console.error("Error while fetching one data:", error);
     throw error;

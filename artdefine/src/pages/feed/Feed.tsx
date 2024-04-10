@@ -59,11 +59,10 @@ export default function Feed() {
                 </div>            
             </div>
             <div className='feed'>
-                {/* {artworks.length != null && feedList} */}
                 {artworks.length != 0 ? (
                     <div>{feedList}</div>
                 ) : (
-                    <div className="no-posts">No posts could be loaded. Please check your connection.</div>
+                    <div className="no-posts">Loading...</div>
                 )}
             </div>
         </div>
