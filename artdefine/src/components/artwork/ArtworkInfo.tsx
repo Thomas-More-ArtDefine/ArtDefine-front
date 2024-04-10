@@ -1,7 +1,7 @@
 import { User } from "../../model/userModel";
 
 
-const ArtworkInfo = ({title,user,description}:{title:string,user:User,description:string}) => {
+const ArtworkInfo: React.FC<{title:string,user:User,description:string}> = ({title,user,description}) => {
 
     return (
         <>

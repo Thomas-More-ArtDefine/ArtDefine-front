@@ -2,7 +2,7 @@ import Banner from "./bannerAndProfileImage/Banner";
 import mockBannerPic from "../assets/images/mock-banner-pic.png";
 import mockprofilePic from "../assets/images/mock-profile-pic.png";
 
-const ProfileMain = ({ rank }: { rank: number }) => {
+const ProfileMain: React.FC<{ rank: number }> = ({ rank }) => {
   return (
     <div className="profile-main">
       <Banner imageUrl={mockBannerPic} imageAlt="Banner Picture" />

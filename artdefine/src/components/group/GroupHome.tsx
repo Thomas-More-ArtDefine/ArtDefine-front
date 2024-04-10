@@ -2,7 +2,7 @@ import { GroupModel } from "../../model/GroupModel";
 import TextCard from "../cards/TextCard";
 import UsersCard from "../cards/UsersCard";
 
-const GroupHome = ({group} : {group:GroupModel}) => {
+const GroupHome: React.FC<{group:GroupModel}> = ({group} ) => {
     return (
         <>
         <div className="about">
@@ -12,7 +12,7 @@ const GroupHome = ({group} : {group:GroupModel}) => {
             <TextCard title="Rules" text={group.group_rules}/>
         </div>
         <div className="members">
-            <UsersCard title="Members" users={group.group_members} maxUsers={8}/>
+            <UsersCard title="Members" users={group.group_members} maxUsers={8} hasMore={true} />
         </div>
         </>
     );

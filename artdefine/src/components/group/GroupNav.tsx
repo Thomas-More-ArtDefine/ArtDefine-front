@@ -5,25 +5,25 @@ import { ReactComponent as GalleryIcon } from "../../assets/vectors/gallery-soli
 import { ReactComponent as ChatIcon } from "../../assets/vectors/chat-solid-black.svg";
 import GroupHome from "./GroupHome";
 
-const GroupNav = ({handleStepChange:setCurrentStep, currentStep}:{handleStepChange: React.Dispatch<React.SetStateAction<string>>, currentStep:string}) => {
+const GroupNav: React.FC<{handleStepChange: React.Dispatch<React.SetStateAction<string>>, currentStep:string}> = ({handleStepChange:setCurrentStep, currentStep}) => {
   
   const [isChanged, setIsChanged] = useState<boolean>(false);
 
-  const handleHomeClick = () => {
+  const handleHomeClick = ():void => {
     setCurrentStep("Home");
   };
 
-  const handleGalleryClick = () => {
+  const handleGalleryClick = ():void => {
     setCurrentStep("Gallery");
   };
 
-  const handleChatClick = () => {
+  const handleChatClick = ():void => {
     setCurrentStep("Chat");
   };
 
   // when resizing to, or starting from (min-width: 992px) set state to "Details"
   useEffect(() => {
-    const handleResize = () => {
+    const handleResize = ():void => {
       if (window.innerWidth >= 992) {
         setCurrentStep("Home");
       }

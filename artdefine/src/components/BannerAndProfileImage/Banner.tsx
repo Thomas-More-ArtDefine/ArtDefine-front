@@ -6,7 +6,7 @@ interface BannerProps {
   imageAlt: string;
 }
 
-const Banner = ({ imageUrl: src, imageAlt: alt }: BannerProps) => {
+const Banner: React.FC<BannerProps> = ({ imageUrl: src, imageAlt: alt }) => {
 
     const handleDotsClick = (): void => {
     window.location.href = "profile/editBanner";

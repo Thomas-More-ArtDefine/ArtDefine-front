@@ -1,5 +1,5 @@
 
-const PreviewItem = ({ imageSource : newSrc, currentImageSource: currentSrc, isChanged } : {imageSource:string, currentImageSource: string, isChanged: boolean}) => {
+const PreviewItem: React.FC<{imageSource:string, currentImageSource: string, isChanged: boolean}> = ({ imageSource : newSrc, currentImageSource: currentSrc, isChanged } ) => {
   
     return (
         <div className="preview-item">

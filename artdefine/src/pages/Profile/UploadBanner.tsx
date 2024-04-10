@@ -11,7 +11,7 @@ export default function UploadBanner() {
   
     
     // Function to handle file upload
-    const handleFileChange = (file: string) => {
+    const handleFileChange = (file: string):void => {
       if (file) {
         setSrc(file);
         setIsChanged(true);

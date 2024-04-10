@@ -2,7 +2,7 @@ import { User } from "../../model/userModel";
 
 
 // Function to check the length of a text and truncate if necessary
-const checkLength = (text:string) => {
+const checkLength = (text: string): string => {
     if (text.length > 9) {
         return text.slice(0, 8) + "...";
     } else {
@@ -12,7 +12,7 @@ const checkLength = (text:string) => {
 
 
 
-const UserSmallCard = ({user}:{user:User}) => {
+const UserSmallCard: React.FC<{user:User}> = ({user}) => {
     return (
         <>
         {

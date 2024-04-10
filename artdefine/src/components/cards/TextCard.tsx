@@ -1,12 +1,14 @@
-const TextCard = ({
-  title, 
-  subTitle, // (optional)
+import Card from "./Card";
+
+
+const Content = ({
   text, 
+  subTitle, // (optional)
   creationDate, //  (optional)
   links, //  (optional)
   owner, // (optional)
 }: {
-  title: string;
+  
   subTitle?: string;
   text: string;
   creationDate?: string;
@@ -14,8 +16,7 @@ const TextCard = ({
   owner?: string;
 }) => {
   return (
-    <div className="text-card card">
-      <div className="title">{title}</div> 
+    <>
       {subTitle && <h3 className="subtitle">{subTitle}</h3>} {/* Display the subtitle if it exists */}
       <p className="content">{text}</p> 
       <div className="footer">
@@ -44,7 +45,30 @@ const TextCard = ({
           </>
         )}
       </div>
-    </div>
+      </>
+  );
+}
+
+
+const TextCard = ({
+  title, 
+  text, 
+  subTitle, // (optional)
+  creationDate, //  (optional)
+  links, //  (optional)
+  owner, // (optional)
+}: {
+  title: string;
+  subTitle?: string;
+  text: string;
+  creationDate?: string;
+  links?: string[];
+  owner?: string;
+}) => {
+  return (
+    <>
+    <Card title={title} cssProperty="text-card" content={<Content subTitle={subTitle} text={text} creationDate={creationDate} links={links} owner={owner} />} />
+    </>
   );
 };
 
