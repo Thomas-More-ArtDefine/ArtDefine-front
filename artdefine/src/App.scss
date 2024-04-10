@@ -8,6 +8,17 @@ a {
   cursor: auto;
 }
 
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+body{
+  background: $background-color;
+  background-attachment: fixed;
+}
+
 // --- App ---
 .App {
   display: flex;
@@ -15,7 +26,6 @@ a {
   height: 100vh;
   width: 100vw;
   text-align: center;
-  background: $background-color;
 
   .page-container{
     display: flex;
@@ -91,6 +101,24 @@ button.delete {
 }
 
 //--navbar--
+.navigation {
+  z-index: 90;
+  height: 100px;
+  padding: 16px;
+  background: $color-white;
+  box-shadow: 0 4px 8px $color-white;
+
+  width: 100%;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
 
 li.SearchBar {
   @include searchbar($canvas-white-light, $purple-dark, $midnight-blue, 320px, $nav-element-height);
@@ -121,7 +149,7 @@ nav.navigation{
       justify-content: space-between;
       padding: 0 16px;
       margin: $nav-element-margin;
-      width: 90px;
+      width: 122px;
       span.hamburger{
         cursor: pointer;
       }
@@ -265,7 +293,7 @@ nav.navigation{
         }
       }
       li.navlogo{
-        min-width: 300px;
+        min-width: 332px;
       }
     }
   }
@@ -348,16 +376,18 @@ nav.mobileNavigation{
 }
 
 div.mobileNav{
+  
   @include breakpoint(lg){
     display: none;
   }
 }
 
 div.mobileMenu{
+  z-index:100;
   background-color: $canvas-white-light;
   width: 368px;
   height: 810px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   border-radius: 16px 0px 0px 0px;
@@ -366,6 +396,7 @@ div.mobileMenu{
 }
 
 div.modalbackground{
+  z-index:99;
   background-color: rgba(39, 6, 6, 0.021);
   height: 100%;
   width: 100%;
@@ -431,21 +462,6 @@ h5 {
   margin-bottom: 20px;
 }
 
-// --- Nav ---
-.navigation {
-  height: 90px;
-  padding: 16px;
-  background: $color-white;
-  box-shadow: 0 4px 4px $midnight-blue;
-
-  ul {
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-}
 
 // --- Page ---
 
@@ -478,7 +494,7 @@ h5 {
 // ## Profile page ##
 
 .profile {
-  background-image: url("./assets/component_assests/rasterframe_yellow.png");
+  background-image: url("./assets/component_assets/rasterframe_yellow.png");
   background-size: contain;
 
   .profile-main {
@@ -842,5 +858,85 @@ h5 {
       border: 2px solid $midnight-blue;
       @include border-standard(2px);
     }
+  }
+}
+
+// ----feed----
+
+div.feedpage{
+  background-image: url("./assets/component_assets/rasterframe_yellow.png");
+  background-size: contain;
+  background-repeat: repeat;
+  background-attachment: fixed !important;
+}
+
+div.feedpage{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+  
+}
+
+div.feed-btns{
+  z-index: 80;
+  top: $nav-margin;
+  margin: 8px auto;
+  padding: 0 21px;
+  width: 434px;
+  display: flex;
+  justify-content: space-between;
+  div.subnav-button{
+    @include subnavbutton($canary-yellow,$color-white, $midnight-blue, $midnight-blue);
+  }
+}
+.fixed{
+  position: fixed;
+}
+
+div.feed{
+  margin-top: 210px;
+  div.feed-entry{ 
+    cursor: pointer;
+    margin: 20px auto;
+    height: 400px;
+    width: 380px;
+    background-color: $color-white;
+    border-radius: $corner-radius;
+    box-shadow: 0px 0px 12px $canvas-white-dark;
+    img{
+      object-fit: cover;
+      width: 380px;
+      height: 320px;
+      border-radius: $corner-radius;
+      border-color: $midnight-blue;
+      @include border-standard(4px);
+    }
+    div.work-title{
+      font-family: 'EavesSansHeavy';
+      text-transform: capitalize;
+      font-size: 32px;
+      color: $purple-dark;
+      width: 340px;
+      margin: auto;
+      text-align: start;
+      line-height: 95%;
+      margin-top: 5px;
+    }
+    div.work-creator{
+      font-family: 'EavesSansHeavy';
+      font-size: 20px;
+      width: 340px;
+      margin: auto;
+      text-align: start;
+      color: $purple-light;
+      opacity: 75%;
+    }
+    
+  }
+  div.no-posts{
+    margin: 35vh 0;
+    font-family: 'EavesSansHeavy';
+    color: $color-secondary;
   }
 }

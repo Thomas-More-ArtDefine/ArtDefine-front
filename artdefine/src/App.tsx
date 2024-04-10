@@ -8,6 +8,7 @@ import { AuthProvider } from './context/AuthContext';
 import Layout from './components/Layout';
 import AddPost from './pages/AddPost';
 import { ArtworkProvider } from './context/ArtworkContext';
+import Feed from './pages/feed/Feed';
 import Post from './pages/Post';
 import PostView from './pages/PostView';
 import { FeedProvider } from './context/FeedContext';
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <h1>Feed</h1>,
+            element: <Feed />,
           },
         ],
       },
