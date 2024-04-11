@@ -1,10 +1,15 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 export enum groupVisibility {
     PRIVATE = "private",
     PUBLIC = "public"
   }
+  export enum GroupJoin {
+    OPEN = "open",
+    APPLY = "apply",
+    INVITE = "invite"
+  }
+
 
 export default function CreateGroupModal({
     closeModal,
@@ -14,14 +19,21 @@ export default function CreateGroupModal({
     const [groupname, setGroupname] = useState("");
     const [userLimit, setUserLimit] = useState("10");
     const [visibility, setVisibility] = useState(false); // false = private, true = public
+    const [join, setJoin] = useState(GroupJoin.INVITE);
     const [maxUserLimit, setMaxUserLimit] = useState(10);
 
 
     const handleCreateClick =() => {
+        let groupvisibility: groupVisibility =groupVisibility.PRIVATE;
+        if (visibility) {
+            groupvisibility = groupVisibility.PUBLIC;
+        }
         const value = {
-            group_name: {groupname},
-            group_userlimit: {userLimit},
-            group_visibility: {visibility}
+            group_name: groupname,
+            group_userlimit: userLimit,
+            group_setting_visibility: groupvisibility,
+            creator_id: 1,
+            group_setting_join: join
         };
         console.log("save group");
         console.log(value);
@@ -55,6 +67,15 @@ export default function CreateGroupModal({
                         <div className='visbility'>
                             <label htmlFor="visibility">Visibility</label>
                             <input id='visibility' name="visibility" type="checkbox" checked={visibility} onChange={(e) => setVisibility(e.target.checked)} />
+                        </div>
+                        <div>
+                            <p>Join setting</p>
+                            <input type="radio" id="html" name="joinoption" checked={join === GroupJoin.INVITE} value={GroupJoin.INVITE} onChange={(e) => setJoin(GroupJoin.INVITE)} />
+                            <label htmlFor="html">Invite Only</label><br/>
+                            <input type="radio" id="css" name="joinoption" checked={join === GroupJoin.APPLY} value={GroupJoin.APPLY} onChange={(e) => setJoin(GroupJoin.APPLY)}  />
+                            <label htmlFor="css">Apply</label><br/>
+                            <input type="radio" id="open" name="joinoption" checked={join === GroupJoin.OPEN} value={GroupJoin.OPEN} onChange={(e) => setJoin(GroupJoin.OPEN)} />
+                            <label htmlFor="open">Open</label>
                         </div>
                         <div className='buttons'>
                             <button onClick={() => {
