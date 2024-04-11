@@ -12,6 +12,7 @@ import Feed from './pages/feed/Feed';
 import Post from './pages/Post';
 import PostView from './pages/PostView';
 import { FeedProvider } from './context/FeedContext';
+import Groups from './pages/groups/Groups';
 
 
 
@@ -29,6 +30,15 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <Feed />,
+          },
+        ],
+      },
+      {
+        path: '/groups',
+        children: [
+          {
+            index: true,
+            element: <Groups />,
           },
         ],
       },
