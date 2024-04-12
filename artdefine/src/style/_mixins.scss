@@ -115,17 +115,21 @@
 
   }
 
+  @mixin formLabel($text-color, $font-size){
+      display: block;
+      margin-left: 10px;
+      margin-bottom: 2px;;
+      font-family: 'EavesSansBook';
+      font-size: $font-size;
+      color:  $text-color;
+      float: left;
+  }
+
   @mixin textInput($bg-color, $text-color, $border-color, $D-width, $D-height) {
     display: block;
     margin-bottom: 10px;
     label{
-      margin-left: 10px;
-      margin-bottom: 2px;;
-      display: block;
-      font-family: 'EavesSansBook';
-      font-size: 20px;
-      color: $text-color;
-      float: left;
+      @include formLabel($midnight-blue, 20px);
     }
     input{
       padding-left: 10px;

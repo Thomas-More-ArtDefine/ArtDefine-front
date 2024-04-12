@@ -61,8 +61,10 @@ export default function CreateGroupModal({
                         </div>
                         <div className='userlimit'>
                             <label htmlFor="userlimit">User limit</label>
-                            <input type="range" name="userlimit" min="1" max={maxUserLimit} value={userLimit} onChange={(e) => setUserLimit(e.target.value)} id="userlimit"></input>
-                            <span>{userLimit}</span>
+                            <div className='slidercontainer'>
+                                <input type="range" name="userlimit" min="1" max={maxUserLimit} value={userLimit} onChange={(e) => setUserLimit(e.target.value)} id="userlimit"></input>
+                                <span>{userLimit}</span>
+                            </div>
                         </div>
                         <div className='visbility'>
                             <label htmlFor="visibility">Visibility</label>

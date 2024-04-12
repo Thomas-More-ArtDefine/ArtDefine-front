@@ -996,13 +996,7 @@ div.modalContainer{
         display: block;
         margin-bottom: 10px;
         label{
-          display: block;
-          margin-left: 10px;
-          margin-bottom: 2px;;
-          font-family: 'EavesSansBook';
-          font-size: 20px;
-          color:  $midnight-blue;
-          float: left;
+          @include formLabel($midnight-blue, 20px);
         }
         div.togglecontainer{
           width: 100%;
@@ -1018,6 +1012,32 @@ div.modalContainer{
         }
         span.toggle{
           @include toggle($canvas-white-dark, $canary-yellow,$canvas-white-light, $midnight-blue, 25%);
+        }
+      }
+      div.userlimit{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        label{
+          @include formLabel($midnight-blue, 20px);
+        }
+        div.slidercontainer{
+          display: flex;
+          align-items: center;
+          justify-content: end;
+          span{
+            margin-left: 5px;
+            width: 18px;
+            height: 100%;
+          }
+          input{
+            appearance: none;
+            background-color: $sunset-red;
+            height: 5px;
+            border-radius: $corner-radius-sm;
+            outline: none;
+          }
         }
       }
     }
