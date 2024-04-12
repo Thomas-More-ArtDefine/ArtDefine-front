@@ -993,25 +993,26 @@ div.modalContainer{
         @include textInput($color-white, $midnight-blue, $midnight-blue, 100%, 40px);
       }
       div.visbility{
-        display: block;
+        display: flex;
+        justify-content: space-between;
         margin-bottom: 10px;
         label{
           @include formLabel($midnight-blue, 20px);
         }
         div.togglecontainer{
-          width: 100%;
           display: flex;
           justify-content: center;
           align-items: center;
-          span{
-            padding: 0 10px;
+          span.option{
+            width: 60px;
+            padding-left: 10px;
             font-family: 'EavesSansBook';
             font-size: 16px;
             color: $midnight-blue;
           }
         }
         span.toggle{
-          @include toggle($canvas-white-dark, $canary-yellow,$canvas-white-light, $midnight-blue, 25%);
+          @include toggle($canvas-white-dark, $sunset-red,$canvas-white-light, $midnight-blue, 70px);
         }
       }
       div.userlimit{
@@ -1046,11 +1047,48 @@ div.modalContainer{
           @include formLabel($midnight-blue, 20px);
           margin-top: 0;
         }
-        div{
+        div.radiocontainer{
           padding-top: 5px;
           width: 100%;
           display: flex;
           justify-content: space-between;
+          div{
+            display: flex;
+            justify-content: center;
+            position: relative;
+            height: 42px;
+            width: 90px;
+            background-color: transparent;
+            span.bg{
+              background-color: $canvas-white-dark;
+              height: 42px;
+              width: 90px;
+              position: absolute;
+              left: 0;
+              @include border-standard(2px);
+            }
+            span.label{
+              position: relative;
+              z-index: 50;
+              align-self: center;
+              font-family: 'EavesSansBook';
+              font-size: 16px;
+              color: $midnight-blue;
+            }
+            input{
+              opacity: 0;
+              cursor: pointer;
+              position: absolute;
+              left: 0;
+              height: 42px;
+              width: 80px;
+              margin: 0;
+              z-index: 51;
+              &:checked + span.bg {
+                background-color: $sunset-red;
+              }
+            }
+          }
         }
       }
       div.buttons{
