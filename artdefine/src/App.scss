@@ -988,5 +988,16 @@ div.modalContainer{
       margin-bottom: 9px;
       
     }
+    form{
+      div.groupname{
+        @include textInput($color-white, $midnight-blue, $midnight-blue, 100%, 40px);
+      }
+      div.visbility{
+        span.toggle{
+          @include toggle($canvas-white-dark, $canary-yellow,$canvas-white-light, $midnight-blue, 25%);
+        }
+      }
+    }
+    
   }
 }
