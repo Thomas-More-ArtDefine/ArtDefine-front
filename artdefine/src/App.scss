@@ -993,6 +993,29 @@ div.modalContainer{
         @include textInput($color-white, $midnight-blue, $midnight-blue, 100%, 40px);
       }
       div.visbility{
+        display: block;
+        margin-bottom: 10px;
+        label{
+          display: block;
+          margin-left: 10px;
+          margin-bottom: 2px;;
+          font-family: 'EavesSansBook';
+          font-size: 20px;
+          color:  $midnight-blue;
+          float: left;
+        }
+        div.togglecontainer{
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          span{
+            padding: 0 10px;
+            font-family: 'EavesSansBook';
+            font-size: 16px;
+            color: $midnight-blue;
+          }
+        }
         span.toggle{
           @include toggle($canvas-white-dark, $canary-yellow,$canvas-white-light, $midnight-blue, 25%);
         }

@@ -18,7 +18,7 @@ export default function CreateGroupModal({
   }) {
     const [groupname, setGroupname] = useState("");
     const [userLimit, setUserLimit] = useState("10");
-    const [visibility, setVisibility] = useState(true); // false = private, true = public
+    const [visibility, setVisibility] = useState(false); // false = private, true = public
     const [join, setJoin] = useState(GroupJoin.INVITE);
     const [maxUserLimit, setMaxUserLimit] = useState(10);
 
@@ -66,12 +66,15 @@ export default function CreateGroupModal({
                         </div>
                         <div className='visbility'>
                             <label htmlFor="visibility">Visibility</label>
-                            <span className='option1'>Private</span>
-                            <span className='toggle'>
-                                <input id='visibility' name="visibility" type="checkbox" checked={visibility} onChange={(e) => setVisibility(e.target.checked)} />
-                                <span className="slider"><span className='switch'></span></span>
-                            </span>
-                            <span className='option'>Public</span>
+                            <div className='togglecontainer'>
+                                <span className='option1'>Private</span>
+                                    <span className='toggle'>
+                                        <input id='visibility' name="visibility" type="checkbox" checked={visibility} onChange={(e) => setVisibility(e.target.checked)} />
+                                        <span className="slider"><span className='switch'></span></span>
+                                    </span>
+                                <span className='option'>Public</span>
+                            </div>
+                            
                         </div>
                         <div>
                             <p>Join setting</p>
