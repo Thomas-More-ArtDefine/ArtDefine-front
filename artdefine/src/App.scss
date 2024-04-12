@@ -1040,6 +1040,32 @@ div.modalContainer{
           }
         }
       }
+      div.joinsetting{
+        display: block;
+        p{
+          @include formLabel($midnight-blue, 20px);
+          margin-top: 0;
+        }
+        div{
+          padding-top: 5px;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+      div.buttons{
+        display: flex;
+        justify-content: space-between;
+        button{
+          width: 135px;
+          height: 48px;
+          margin: 0;
+          margin-top: 15px;
+          &.cancel{
+            background-color: $canvas-white-light;
+          }
+        }
+      }
     }
     
   }

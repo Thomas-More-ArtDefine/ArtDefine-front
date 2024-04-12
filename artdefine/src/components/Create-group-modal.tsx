@@ -78,20 +78,23 @@ export default function CreateGroupModal({
                             </div>
                             
                         </div>
-                        <div>
+                        <div className='joinsetting'>
                             <p>Join setting</p>
-                            <input type="radio" id="html" name="joinoption" checked={join === GroupJoin.INVITE} value={GroupJoin.INVITE} onChange={(e) => setJoin(GroupJoin.INVITE)} />
-                            <label htmlFor="html">Invite Only</label><br/>
-                            <input type="radio" id="css" name="joinoption" checked={join === GroupJoin.APPLY} value={GroupJoin.APPLY} onChange={(e) => setJoin(GroupJoin.APPLY)}  />
-                            <label htmlFor="css">Apply</label><br/>
-                            <input type="radio" id="open" name="joinoption" checked={join === GroupJoin.OPEN} value={GroupJoin.OPEN} onChange={(e) => setJoin(GroupJoin.OPEN)} />
-                            <label htmlFor="open">Open</label>
+                            <div>
+                                <input type="radio" id="invite" name="joinoption" checked={join === GroupJoin.INVITE} value={GroupJoin.INVITE} onChange={(e) => setJoin(GroupJoin.INVITE)} />
+                                <label htmlFor="invite">Invite Only</label><br/>
+                                <input type="radio" id="apply" name="joinoption" checked={join === GroupJoin.APPLY} value={GroupJoin.APPLY} onChange={(e) => setJoin(GroupJoin.APPLY)}  />
+                                <label htmlFor="apply">Apply</label><br/>
+                                <input type="radio" id="open" name="joinoption" checked={join === GroupJoin.OPEN} value={GroupJoin.OPEN} onChange={(e) => setJoin(GroupJoin.OPEN)} />
+                                <label htmlFor="open">Open</label>
+                            </div>
+                            
                         </div>
                         <div className='buttons'>
-                            <button onClick={() => {
+                            <button className='cancel' onClick={() => {
                             closeModal(false);
                             }}>Cancel</button>
-                            <button onClick={handleCreateClick}>Create</button>
+                            <button className='create' onClick={handleCreateClick}>Create</button>
                         </div>
                     </form>
                 </div>
