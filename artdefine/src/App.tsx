@@ -8,10 +8,12 @@ import { AuthProvider } from './context/AuthContext';
 import Layout from './components/Layout';
 import AddPost from './pages/AddPost';
 import { ArtworkProvider } from './context/ArtworkContext';
+import Feed from './pages/feed/Feed';
 import Post from './pages/Post';
 import PostView from './pages/PostView';
 import { FeedProvider } from './context/FeedContext';
 import Group from './pages/group/Group';
+import Groups from './pages/groups/Groups';
 
 
 
@@ -28,7 +30,16 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <h1>Feed</h1>,
+            element: <Feed />,
+          },
+        ],
+      },
+      {
+        path: '/groups',
+        children: [
+          {
+            index: true,
+            element: <Groups />,
           },
         ],
       },

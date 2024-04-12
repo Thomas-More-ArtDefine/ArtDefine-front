@@ -1,5 +1,5 @@
 export interface User {
-    id: number,
+    id: string,
     user_name: string,
     user_subtitle: string,
     user_profile_picture: string,
