@@ -3,11 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import pfp from "../../assets/images/mock-profile-pic.png";
 import { ReactComponent as MessageIcon } from "../../assets/vectors/message-icon.svg";
 
-const MobileMenu = ({
-  closeMenu,
-}: {
+const MobileMenu: React.FC<{
   closeMenu: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
+}> = ({ closeMenu }) => {
   const navigate = useNavigate();
   return (
     <div className="mobileNav">

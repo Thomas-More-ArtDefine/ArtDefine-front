@@ -10,12 +10,13 @@ export default function UploadBanner() {
     const [isChanged, setIsChanged] = useState<boolean>(false);
   
     
-    const handleFileChange = (file: string) => {
-        if (file) {
-          setSrc(file);
-          setIsChanged(true);
-        }
-      };
+    // Function to handle file upload
+    const handleFileChange = (file: string):void => {
+      if (file) {
+        setSrc(file);
+        setIsChanged(true);
+      }
+    };
 
 
   return (

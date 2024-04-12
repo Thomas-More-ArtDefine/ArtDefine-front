@@ -4,6 +4,7 @@ import { getArtwork } from "../api";
 import { User } from "../model/userModel";
 
 
+// export {Typescript}
   interface ArtworkContextType {
     artwork: Artwork ;
     setArtwork: (value: Artwork) => void;
@@ -51,6 +52,7 @@ export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children })
         return data;
       };
       const response = await fetchData(id);
+      setArtwork(response);
       return response;
     }, []);
   

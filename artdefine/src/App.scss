@@ -1,6 +1,14 @@
 @import "./style/variables";
 @import "./style/mixins";
 
+
+
+// formatting :
+// Category = --- Category ---
+// Subcategory = // ## Subcategory ##
+
+
+
 // --- Normalize ---
 a {
   text-decoration: none;
@@ -29,12 +37,15 @@ div.pagebody{
 }
 
 // --- App ---
+
 .App {
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 100vw;
   text-align: center;
+  background: $background-color;
+  
 
   .page-container{
     display: flex;
@@ -42,7 +53,7 @@ div.pagebody{
     height: 100%;
     width: 100%;
     justify-content: center;
-   
+    overflow: auto;
   }
 }
 
@@ -137,6 +148,9 @@ li.SearchBar {
 }
 
 nav.navigation{
+  position: sticky;
+  top: 0;
+  z-index: 999;
   // nav smallest screen
   div.desktop{
     display: none;
@@ -205,8 +219,10 @@ nav.navigation{
 
   // nav large screen
   @include breakpoint(lg){
+   
     div.desktop{
       display: initial;
+     
       span.logo{
         display: none;
       }
@@ -402,6 +418,7 @@ div.mobileMenu{
   border-radius: 16px 0px 0px 0px;
   border: 4px $canary-yellow-dark;
   border-style: solid none none solid;
+  z-index: 1;
 }
 
 div.modalbackground{
@@ -471,15 +488,31 @@ h5 {
   margin-bottom: 20px;
 }
 
+// --- Nav ---
+.navigation {
+  height: 90px;
+  padding: 16px;
+  
+  background: $color-white;
+  box-shadow: 0 4px 4px $midnight-blue;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
 
 // --- Page ---
 
 .page {
+  
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   margin: 27px 18px 55px 18px;
-  overflow-y: auto;
   max-width: 1135px;
 
   @include breakpoint(lg) {
@@ -763,18 +796,78 @@ h5 {
   }
 }
 
+// ## Group page ##
+
+.group-page{
+    
+      overflow: visible;
+      
+      .group-banner{ 
+        
+        position: relative;
+        margin-bottom: 10px;
+        
+        .name-container{
+        display: flex;
+        align-items: center;
+        transform: translate(0%, -100%);
+        top: 103%;
+        left: 0%;
+        position: absolute;
+      .group-name{
+        
+        @include border-standard(3px);
+        @include border-effect("1,1");
+        background-color: $color-white;
+        padding: 4px 8px;
+        font-family: "EavesSansHeavy";
+        font-size: 32px;
+        color: $purple-dark;
+        text-align: left;
+        max-width: 250px;
+        
+      }
+        .dots{
+          position:static;
+          transform: translate(0%, 0%);
+          padding: 0px 0px 0px 20px;
+        }
+    
+    }}
+     
+
+    .group-nav{
+      display: flex;
+      justify-content: space-around;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      button{
+        margin: 0;
+      }
+    }
+
+    >.content{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+}
+
 // --- Components ---
 
 .artwork {
   @include flex-center();
   aspect-ratio: 11/10;
   background-color: $color-white;
-  box-shadow: 0px 0px 24px 0px $color-primary;
+  @include glow();
   @include border-standard(0);
-  width: 100%;
+  
+    width: fit-content;
+    height: fit-content;
   .content {
-    width: 100%;
-    height: 100%;
+    width: fit-content;
+    height: fit-content;
     display: flex;
     justify-content: center; 
     align-items: center; 
@@ -870,6 +963,152 @@ h5 {
   }
 }
 
+.banner {
+  position: relative;
+  background: $color-white;
+  overflow: hidden;
+  height: 152px;
+
+  @include border-standard(3px);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .collapse {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 100%;
+    left: 100%;
+    padding-bottom: 30px;
+    padding-right: 45px;
+
+    @include clickable;
+  }
+
+  .dots {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 100%;
+    left: 0%;
+    padding-bottom: 30px;
+    padding-left: 60px;
+
+    @include clickable;
+  }
+}
+
+
+.card{
+  display: flex;
+  flex-direction: column;
+  background-color: $canvas-white-light;
+  @include border-standard(0px);
+  padding: 20px;
+  
+  text-align: left;
+  @include glow();
+
+  .title{
+    font-family: "EavesSansHeavy";
+    font-size: 24px;
+    color: $purple-dark;
+    text-align: left;
+    background-color: $canvas-white-dark;
+    padding: 4px;
+    border-radius: $corner-radius-sm;
+    
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  
+      .button{
+      
+        margin: 0;
+      }
+    
+  
+    
+  }
+
+}
+
+.text-card{
+  .content{
+    font-family: "EavesSansBook";
+    font-size: 18px;
+    margin: 4px;
+    color: $midnight-blue;
+    text-align: left;
+    min-height: 50px;
+    
+    
+  }
+
+  .footer{
+    
+    .footer-top{
+      display: flex;
+     
+      justify-content: space-between;
+
+      .creationdate{
+        display: flex;
+        align-items: center ;
+        gap: 10px;
+        font-family: "EavesSansBook";
+        font-size: 16px;
+        color: $midnight-blue;
+        text-align: left;
+      }
+      .link-title{
+        font-family: "EavesSansHeavy";
+        font-size: 18px;
+        color: $purple-dark;
+        text-align: left;
+      }
+    }
+  }
+}
+
+.users-card{
+
+  .card-content{
+    margin-top: 10px;
+  }
+
+  .list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+
+   
+  }
+}
+
+
+.user-small-card{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 75px;
+  img{
+    width: 74px;
+    height: 74px;
+    object-fit: cover;
+    @include border-standard(3px);
+    @include border-effect("1,1");
+  }
+  .name{
+    font-family: "EavesSansHeavy";
+    font-size: 18px;
+    color: $midnight-blue;
+    text-align: center;
+
+  }
+}
 // ----feed----
 
 
@@ -998,6 +1237,6 @@ div.modalContainer{
         }
       }
     }
-    
+  
   }
 }

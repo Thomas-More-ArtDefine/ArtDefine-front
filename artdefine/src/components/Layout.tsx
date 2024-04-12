@@ -8,6 +8,7 @@ export default function Layout() {
     <>
      <Nav />
      <div className='page-container'>
+      {/* content of the pages */}
     <Outlet />
     </div>
     </>

@@ -1,17 +1,17 @@
-import { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import UploadCard from "../UploadCard";
 import { useArtwork } from "../../context/ArtworkContext";
 import ArtworkContainer from "../artwork/Artwork";
 import { ReactComponent as DeleteIcon } from "../../assets/vectors/delete-icon.svg";
 
-const UploadItemForPost = ({
-
-  isChanged,
-  setIsChanged,
-}: {
+const UploadItemForPost: React.FC<{
 
   isChanged: boolean;
   setIsChanged: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({
+
+  isChanged,
+  setIsChanged,
 }) => {
 
     const { artwork,setArtwork } = useArtwork();
