@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ReactComponent as MessageIcon } from "../assets/vectors/message-icon.svg";
-import { ReactComponent as LogoText } from "../assets/vectors/ArtDefine-LogoText.svg";
-import { ReactComponent as Logo } from "../assets/vectors/ArtDefine-Logo.svg";
-import { ReactComponent as MobileProfile } from "../assets/vectors/mobile-profile.svg";
-import { ReactComponent as Hamburger } from "../assets/vectors/Hamburger.svg";
-import pfp from "../assets/images/mock-profile-pic.png";
+import { ReactComponent as MessageIcon } from "../../assets/vectors/message-icon.svg";
+import { ReactComponent as LogoText } from "../../assets/vectors/ArtDefine-LogoText.svg";
+import { ReactComponent as Logo } from "../../assets/vectors/ArtDefine-Logo.svg";
+import { ReactComponent as MobileProfile } from "../../assets/vectors/mobile-profile.svg";
+import { ReactComponent as Hamburger } from "../../assets/vectors/Hamburger.svg";
+import pfp from "../../assets/images/mock-profile-pic.png";
 import MobileMenu from './Mobile-menu';
 
 const Nav: React.FC = () => {

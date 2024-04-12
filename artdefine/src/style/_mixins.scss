@@ -114,7 +114,87 @@
     }
 
   }
+
+  @mixin textInput($bg-color, $text-color, $border-color, $D-width, $D-height) {
+    display: block;
+    margin-bottom: 10px;
+    label{
+      margin-left: 10px;
+      margin-bottom: 2px;;
+      display: block;
+      font-family: 'EavesSansBook';
+      font-size: 20px;
+      color: $text-color;
+      float: left;
+    }
+    input{
+      padding-left: 10px;
+      padding-right: 10px;
+      width: $D-width;
+      height: $D-height;
+      @include border-standard(2px);
+      border-color: $border-color;
+      background-color: $bg-color;
+      
+    }
+    input::placeholder{
+      font-family: 'EavesSansBook';
+      font-size: 16px;
+      color: $purple-dark;
+    }
+  }
   
+  @mixin toggle($inactivecol, $activecol, $switchcol, $bordercol, $width) {
+    width: $width;
+    height: 42px;
+    position: relative;
+    display: inline-block;
+    input{
+      cursor: pointer;
+      position: absolute;
+      left: 0;
+      opacity: 0;
+      width: 100%;
+      height: 42px;
+      margin: 0;
+      z-index: 110;
+      &:checked + span.slider {
+        background-color: $activecol;
+      }
+      &:checked + span.slider > span.switch {
+        -webkit-transform: translateX(92%);
+        -ms-transform: translateX(92%);
+        transform: translateX(92%);
+      }
+    }
+    span.slider{
+      display: flex;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 42px;
+      background-color: $inactivecol;
+      border-radius: 34px;
+      border: 2px solid;
+      border-color: $bordercol;
+      -webkit-transition: .4s;
+      transition: .4s;
+      span.switch {
+        border: 2px solid;
+        border-color: $bordercol;
+        position: absolute;
+        height: 32px;
+        width: 32px;
+        left: 5%;
+        align-self: center;
+        background-color: $switchcol;
+        border-radius: 50%;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+    }
+  }
+
   // --- Breakpoints ---
 
   @mixin breakpoint($point) {

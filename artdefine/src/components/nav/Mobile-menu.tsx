@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import pfp from "../assets/images/mock-profile-pic.png";
-import { ReactComponent as MessageIcon } from "../assets/vectors/message-icon.svg";
+import pfp from "../../assets/images/mock-profile-pic.png";
+import { ReactComponent as MessageIcon } from "../../assets/vectors/message-icon.svg";
 
 const MobileMenu = ({
   closeMenu,
