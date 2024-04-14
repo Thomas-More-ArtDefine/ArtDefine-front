@@ -1,4 +1,8 @@
 import { useState } from 'react';
+import { postGroup } from '../api';
+import { GroupModel } from '../model/GroupModel';
+import { CreateGroupModel } from '../model/CreateGroupModel';
+import { useNavigate } from 'react-router-dom';
 
 export enum groupVisibility {
     PRIVATE = "private",
@@ -21,24 +25,29 @@ export default function CreateGroupModal({
     const [visibility, setVisibility] = useState(false); // false = private, true = public
     const [join, setJoin] = useState(GroupJoin.INVITE);
     const [maxUserLimit, setMaxUserLimit] = useState(10);
+    const navigate = useNavigate();
 
 
-    const handleCreateClick =() => {
+    const handleCreateClick =async () => {
         let groupvisibility: groupVisibility =groupVisibility.PRIVATE;
         if (visibility) {
             groupvisibility = groupVisibility.PUBLIC;
         }
-        const value = {
+        const value:CreateGroupModel = {
             group_name: groupname,
-            group_userlimit: userLimit,
+            group_userlimit: parseInt(userLimit),
             group_setting_visibility: groupvisibility,
-            creator_id: 1,
-            group_setting_join: join
+            creator_id: "1",
+            group_setting_join: join,
         };
-        console.log("save group");
-        console.log(value);
+        
+        postGroup(value,function(response:GroupModel){
+            navigate("/group/"+response.id);
+        });
+
         closeModal(false);
     };
+    
 
     return(
         <div className='createGroupModal'>

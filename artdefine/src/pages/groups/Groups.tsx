@@ -5,7 +5,6 @@ export default function Groups() {
     const [openModal, setOpenModal] = useState<boolean>(false);
     const handleClick = () => {
         setOpenModal(true);
-        console.log("open modal");
     };
     return (
         <div className="max-size">
