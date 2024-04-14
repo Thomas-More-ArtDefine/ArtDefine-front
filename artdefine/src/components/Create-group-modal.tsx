@@ -18,7 +18,7 @@ export default function CreateGroupModal({
   }) {
     const [groupname, setGroupname] = useState("");
     const [userLimit, setUserLimit] = useState("10");
-    const [visibility, setVisibility] = useState(true); // false = private, true = public
+    const [visibility, setVisibility] = useState(false); // false = private, true = public
     const [join, setJoin] = useState(GroupJoin.INVITE);
     const [maxUserLimit, setMaxUserLimit] = useState(10);
 
@@ -61,32 +61,52 @@ export default function CreateGroupModal({
                         </div>
                         <div className='userlimit'>
                             <label htmlFor="userlimit">User limit</label>
-                            <input type="range" name="userlimit" min="1" max={maxUserLimit} value={userLimit} onChange={(e) => setUserLimit(e.target.value)} id="userlimit"></input>
-                            <span>{userLimit}</span>
+                            <div className='slidercontainer'>
+                                <input type="range" name="userlimit" min="1" max={maxUserLimit} value={userLimit} onChange={(e) => setUserLimit(e.target.value)} id="userlimit"></input>
+                                <span>{userLimit}</span>
+                            </div>
                         </div>
                         <div className='visbility'>
-                            <label htmlFor="visibility">Visibility</label>
-                            <span className='option1'>Private</span>
-                            <span className='toggle'>
-                                <input id='visibility' name="visibility" type="checkbox" checked={visibility} onChange={(e) => setVisibility(e.target.checked)} />
-                                <span className="slider"><span className='switch'></span></span>
-                            </span>
-                            <span className='option'>Public</span>
+                        <label htmlFor="visibility">Visibility</label>
+                            <div className='togglecontainer'>
+                            
+                                {/* <span className='option1'>Private</span> */}
+                                    <span className='toggle'>
+                                        <input id='visibility' name="visibility" type="checkbox" checked={visibility} onChange={(e) => setVisibility(e.target.checked)} />
+                                        <span className="slider"><span className='switch'></span></span>
+                                    </span>
+                                <span className='option'>{visibility ? ("Public") : ("Private")}</span>
+                            </div>
+                            
                         </div>
-                        <div>
+                        <div className='joinsetting'>
                             <p>Join setting</p>
-                            <input type="radio" id="html" name="joinoption" checked={join === GroupJoin.INVITE} value={GroupJoin.INVITE} onChange={(e) => setJoin(GroupJoin.INVITE)} />
-                            <label htmlFor="html">Invite Only</label><br/>
-                            <input type="radio" id="css" name="joinoption" checked={join === GroupJoin.APPLY} value={GroupJoin.APPLY} onChange={(e) => setJoin(GroupJoin.APPLY)}  />
-                            <label htmlFor="css">Apply</label><br/>
-                            <input type="radio" id="open" name="joinoption" checked={join === GroupJoin.OPEN} value={GroupJoin.OPEN} onChange={(e) => setJoin(GroupJoin.OPEN)} />
-                            <label htmlFor="open">Open</label>
+                            <div className='radiocontainer'>
+                                <div>
+                                    
+                                    <input type="radio" id="invite" name="joinoption" checked={join === GroupJoin.INVITE} value={GroupJoin.INVITE} onChange={(e) => setJoin(GroupJoin.INVITE)} />
+                                    <span className='bg'></span>
+                                    <span className='label'>Invite Only</span>
+                                </div>
+                                <div>
+                                    <input type="radio" id="apply" name="joinoption" checked={join === GroupJoin.APPLY} value={GroupJoin.APPLY} onChange={(e) => setJoin(GroupJoin.APPLY)}  />
+                                    <span className='bg'></span>
+                                    <span className='label'>Apply</span>
+                                </div>
+                                <div>
+                                    <input type="radio" id="open" name="joinoption" checked={join === GroupJoin.OPEN} value={GroupJoin.OPEN} onChange={(e) => setJoin(GroupJoin.OPEN)} />
+                                    <span className='bg'></span>
+                                    <span className='label'>Open</span>
+                                    
+                                </div>
+                            </div>
+                            
                         </div>
                         <div className='buttons'>
-                            <button onClick={() => {
+                            <button className='cancel' onClick={() => {
                             closeModal(false);
                             }}>Cancel</button>
-                            <button onClick={handleCreateClick}>Create</button>
+                            <button className='create' onClick={handleCreateClick}>Create</button>
                         </div>
                     </form>
                 </div>
