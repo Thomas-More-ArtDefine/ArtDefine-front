@@ -66,7 +66,7 @@ export default function CreateGroupModal({
                     <form>
                         <div className='groupname'>
                             <label htmlFor="groupname">Group name</label>
-                            <input id='groupname' name="groupname"  value={groupname} onChange={(e) => setGroupname(e.target.value)} type="text" placeholder='GroupName' />
+                            <input id='groupname' required name="groupname"  value={groupname} onChange={(e) => setGroupname(e.target.value)} type="text" placeholder='GroupName' />
                         </div>
                         <div className='userlimit'>
                             <label htmlFor="userlimit">User limit</label>
