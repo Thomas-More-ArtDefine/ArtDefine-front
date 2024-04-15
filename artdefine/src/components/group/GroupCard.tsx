@@ -1,4 +1,5 @@
 import { GroupModel } from "../../model/GroupModel";
+import GroupJoinButton from "./GroupJoinButton";
 
 const GroupCard: React.FC<{group:GroupModel}> = ({group} ) => {
     return (
@@ -17,9 +18,10 @@ const GroupCard: React.FC<{group:GroupModel}> = ({group} ) => {
                 
                 <div className="description">{group.group_bio}</div>
             </div>
-            <div className="join-button">
+            <GroupJoinButton joined={false} groupjoin={group.group_setting_join} visibility={group.group_setting_visibility} src={group.id} />
+            {/* <div className="join-button">
                     {">"}
-            </div>
+            </div> */}
         </div>
         </>
     );
