@@ -1,6 +1,5 @@
 import { Artwork, visibility } from "../model/PostModel";
-import src from "../assets/images/Artwork1.jpg";
-import USERMOCK from "./UserMock";
+import FOLDERMOCK from "./FolderMock";
 
 const FEEDMOCK:Artwork[] = [
     {
@@ -17,7 +16,8 @@ const FEEDMOCK:Artwork[] = [
             user_profile_picture: "",
             user_deactivated: false,
             user_deactivation_date: ""
-        }
+        },
+        folders:FOLDERMOCK
     },
     {
         id: "9",
@@ -33,7 +33,8 @@ const FEEDMOCK:Artwork[] = [
             user_profile_picture: "",
             user_deactivated: false,
             user_deactivation_date: ""
-        }
+        },
+        folders:FOLDERMOCK
     },
     {
         id: "7",
@@ -49,7 +50,8 @@ const FEEDMOCK:Artwork[] = [
             user_profile_picture: "",
             user_deactivated: false,
             user_deactivation_date: ""
-        }
+        },
+        folders:FOLDERMOCK
     },
     {
         id: "2",
@@ -65,7 +67,8 @@ const FEEDMOCK:Artwork[] = [
             user_profile_picture: "",
             user_deactivated: false,
             user_deactivation_date: ""
-        }
+        },
+        folders:FOLDERMOCK
     },
     {
         id: "12",
@@ -81,7 +84,8 @@ const FEEDMOCK:Artwork[] = [
             user_profile_picture: "",
             user_deactivated: false,
             user_deactivation_date: ""
-        }
+        },
+        folders:FOLDERMOCK
     },
     {
         id: "11",
@@ -97,7 +101,8 @@ const FEEDMOCK:Artwork[] = [
             user_profile_picture: "",
             user_deactivated: false,
             user_deactivation_date: ""
-        }
+        },
+        folders:FOLDERMOCK
     },
     {
         id: "1",
@@ -113,7 +118,8 @@ const FEEDMOCK:Artwork[] = [
             user_profile_picture: "",
             user_deactivated: false,
             user_deactivation_date: ""
-        }
+        },
+        folders:FOLDERMOCK
     },
     {
         id: "20",
@@ -129,7 +135,8 @@ const FEEDMOCK:Artwork[] = [
             user_profile_picture: "",
             user_deactivated: false,
             user_deactivation_date: ""
-        }
+        },
+        folders:FOLDERMOCK
     },
     {
         id: "13",
@@ -145,7 +152,8 @@ const FEEDMOCK:Artwork[] = [
             user_profile_picture: "",
             user_deactivated: false,
             user_deactivation_date: ""
-        }
+        },
+        folders:FOLDERMOCK
     },
     {
         id: "18",
@@ -161,7 +169,8 @@ const FEEDMOCK:Artwork[] = [
             user_profile_picture: "",
             user_deactivated: false,
             user_deactivation_date: ""
-        }
+        },
+        folders:FOLDERMOCK
     }
 ];
 

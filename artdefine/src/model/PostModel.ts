@@ -1,3 +1,4 @@
+import { Folder } from "./FolderModel";
 import { User } from "./userModel";
 
 export enum visibility {
@@ -15,4 +16,5 @@ export interface Artwork {
     post_medium: string,
     post_visibility: visibility,
     user: User;
+    folders: Folder[];
 }

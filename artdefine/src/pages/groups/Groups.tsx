@@ -9,7 +9,7 @@ export default function Groups() {
     return (
         <div className="max-size">
             {openModal && <CreateGroupModal closeModal={setOpenModal} />}
-            <div className='groupspage pagebody'>
+            <div className='groupspage'>
                 <button onClick={() => handleClick()}>Create Group</button>
             </div>
         </div>

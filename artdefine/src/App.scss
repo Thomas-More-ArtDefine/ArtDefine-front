@@ -27,14 +27,6 @@ body{
   background-attachment: fixed;
 }
 
-div.pagebody{
-  background-image: url("./assets/component_assets/rasterframe_yellow.png");
-  background-size: contain;
-  background-repeat: repeat;
-  background-attachment: fixed !important;
-  margin-top: 12vh;
-  height: 88vh;
-}
 
 // --- App ---
 
@@ -54,6 +46,10 @@ div.pagebody{
     width: 100%;
     justify-content: center;
     overflow: auto;
+    background-image: url("./assets/component_assets/rasterframe_yellow.png");
+    background-size: contain;
+    background-repeat: repeat;
+    background-attachment: fixed !important;
   }
 }
 
@@ -488,23 +484,6 @@ h5 {
   margin-bottom: 20px;
 }
 
-// // --- Nav ---
-// .navigation {
-//   height: 90px;
-//   padding: 16px;
-  
-//   background: $color-white;
-//   box-shadow: 0 4px 4px $midnight-blue;
-
-//   ul {
-//     display: flex;
-//     justify-content: space-between;
-//     list-style: none;
-//     padding: 0;
-//     margin: 0;
-//   }
-// }
-
 // --- Page ---
 
 .page {
@@ -764,6 +743,19 @@ h5 {
 
     }
   }
+
+  .groups-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+   
+    div.title {
+      text-align: left;
+      font-family: "EavesSansHeavy";
+      font-size: 20px;
+    }
+    
+  }
 }
 
   @include breakpoint(lg){
@@ -855,6 +847,95 @@ h5 {
 }
 
 // --- Components ---
+
+div.group-card{
+  height: 112px;
+  @include border-standard(3px);
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  margin: 8px 0;
+  justify-content: space-between;
+  img.gpfp{
+    height: 80px;
+    @include border-standard(3px);
+    margin-right: 14px;
+  }
+  div.join-button{
+    cursor: pointer;
+    min-width: 42px;
+    max-width: 42px;
+    background-color: $canary-yellow;
+    height: 100%;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 14px;
+  }
+  div.group-info{
+    width: 100%;
+    .general{
+      text-align: start;
+      display: flex;
+      justify-content: space-between;
+      span.group-name{
+        font-family: "EavesSansHeavy";
+        font-size: 24px;
+        min-width: 108px;
+        max-height: 27px;
+        margin-right: 12px;
+        max-width: 258px;
+        overflow: hidden;
+        white-space:nowrap;
+        text-overflow: ellipsis;
+        @include breakpoint(sm){
+          max-width: 265px;
+          
+        }
+        @include breakpoint(md){
+          max-width: 450px;
+        }
+        // extra breakpoints for truncade
+      }
+      span.userlimit{
+        font-size: 18px;
+        span.members{
+          font-family: "EavesSansBook";
+        }
+        span.limit{
+          font-family: "EavesSansHeavy";
+        }
+      }
+    }
+    div.description{
+      max-height: 40px;
+      text-align: start;
+      font-size: 18px;
+      font-family: "EavesSansBook";
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+div.groups-container{
+  div.group-card{
+    div.group-info{
+      div.general{
+        span.group-name{
+          @include breakpoint(lg){
+            max-width: 170px;
+          }
+          @include breakpoint(xl){
+            max-width: 268px;
+          }
+        }
+      } 
+    }
+  }
+}
+
 
 .artwork {
   @include flex-center();
