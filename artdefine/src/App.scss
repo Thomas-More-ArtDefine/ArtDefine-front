@@ -1002,10 +1002,14 @@ div.group-card{
         min-width: 108px;
         max-height: 27px;
         margin-right: 12px;
-        max-width: 258px;
+        max-width: 90px;
         overflow: hidden;
         white-space:nowrap;
         text-overflow: ellipsis;
+        @include breakpoint(xs){
+          max-width: 150px;
+          
+        }
         @include breakpoint(sm){
           max-width: 265px;
           

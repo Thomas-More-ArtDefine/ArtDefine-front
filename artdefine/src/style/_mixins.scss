@@ -209,6 +209,9 @@
   // --- Breakpoints ---
 
   @mixin breakpoint($point) {
+    @if $point == xs {
+      @media (min-width: $xsBreakpoint) { @content; }
+    }
     @if $point == sm {
       @media (min-width: $smBreakpoint) { @content; }
     }
