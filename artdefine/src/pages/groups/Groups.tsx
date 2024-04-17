@@ -41,6 +41,9 @@ export default function Groups() {
             {showMyGroups && 
                 <div className="groups-list">
                     {JoinedGroupList}
+                    {JoinedGroupList}
+                    {JoinedGroupList}
+                    {JoinedGroupList}
                 </div>
             }
             {showFindGroups && 

@@ -1589,3 +1589,11 @@ div.create-group-button{
   }
 }
 
+div.groups-list{
+  //height: calc(100% - 32px) !important;
+  max-height: calc(100% - 198px);
+  height: 100%;
+  overflow: scroll;
+  padding-right: 10px;
+}
+
