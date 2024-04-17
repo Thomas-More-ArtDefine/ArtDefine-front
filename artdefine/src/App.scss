@@ -90,6 +90,9 @@ body{
   &.purple-dark{
     color: $purple-dark;
   }
+  &.canary-dark{
+    color: $canary-yellow-dark;
+  }
 
   // font sizes
   &.fs18{
@@ -1403,6 +1406,10 @@ div.createGroupModal{
   display: flex;
   align-items: center;
   justify-content: center;
+  .modalbackground{
+    background-color: $purple-dark;
+    opacity: 25%;
+  }
 }
 div.modalContainer{
   position: absolute;
@@ -1543,13 +1550,14 @@ div.modalContainer{
 }
 
 div.search-section{
-  margin-top: 16px;
+  margin: 16px 0px;
 
   div.SearchBar {
     @include searchbar($canvas-white-light, $purple-dark, $midnight-blue, 320px, $nav-element-height);
     padding: 0 16px;
     margin-right: 8px;
     height: $nav-element-height;
+    width: 100%;
   }
 
   i.material-icons{
@@ -1557,6 +1565,19 @@ div.search-section{
       font-size: 48px;
       cursor: pointer;
     }
+  }
+}
+
+div.create-group-button{
+  background-color: $canvas-white-dark;
+  height: 62px;
+  @include border-standard(2px);
+  border-color: $canary-yellow-dark;
+  margin-bottom: 16px;
+  transition: background-color 0.5s;
+  cursor: pointer;
+  &:hover{
+    background-color: #faf4cf;
   }
 }
 

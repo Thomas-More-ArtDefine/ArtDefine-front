@@ -6,13 +6,14 @@ export default function Groups() {
     const [openModal, setOpenModal] = useState<boolean>(false);
     const [showMyGroups, setShowMyGroups] = useState<boolean>(true);
     const [showFindGroups, setShowFindGroups] = useState<boolean>(false);
-    const handleClick = () => {
+    const handleCreateClick = () => {
         setOpenModal(true);
     };
     return (
         <>
+        {openModal && <CreateGroupModal closeModal={setOpenModal} />}
         <div className="max-size white-card">
-            {openModal && <CreateGroupModal closeModal={setOpenModal} />}
+            
             {/* <div className='groupspage'>
                 <button onClick={() => handleClick()}>Create Group</button>
             </div> */}
@@ -25,6 +26,12 @@ export default function Groups() {
                 <i className="material-icons filter font">tune</i>
             </div>
             
+            <div className="create-group-button flex align-center justify-center" onClick={() => handleCreateClick()}>
+                <div className="flex justify-center align-center font eaves book fs18 canary-dark">
+                    <i className="material-icons filter">add</i>
+                    <span> Create a group</span>
+                </div>
+            </div>
         </div>
         
         </>
