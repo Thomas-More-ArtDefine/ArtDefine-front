@@ -999,16 +999,14 @@ div.group-card{
       span.group-name{
         font-family: "EavesSansHeavy";
         font-size: 24px;
-        min-width: 108px;
         max-height: 27px;
-        margin-right: 12px;
-        max-width: 90px;
+        max-width: 116px;
         overflow: hidden;
         white-space:nowrap;
         text-overflow: ellipsis;
         @include breakpoint(xs){
           max-width: 150px;
-          
+          margin-right: 12px;
         }
         @include breakpoint(sm){
           max-width: 265px;
@@ -1021,6 +1019,11 @@ div.group-card{
       }
       span.userlimit{
         font-size: 18px;
+        display: none;
+        @include breakpoint(xs){
+          max-width: 150px;
+          display: initial;
+        }
         span.members{
           font-family: "EavesSansBook";
         }
