@@ -1392,8 +1392,9 @@ div.white-card{
   background-color: $canvas-white-light;
   border-radius: $corner-radius;
   margin: 16px;
-  padding: 8px;
+  padding: 16px;
   height: calc(100% - 32px) !important;
+  max-width: 500px;
 }
 
 div.max-size{
