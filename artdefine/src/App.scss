@@ -419,6 +419,7 @@ nav.mobileNavigation{
   
   ul{
     padding-left: 27px;
+    padding-right: 27px;
   }
   li{
     list-style: none;
@@ -441,13 +442,13 @@ nav.mobileNavigation{
 
   li.SearchBar {
     margin: 16px 0px 0px 0px;
-    max-width: 296px;
+    max-width: 320px;
   }
 
 
   button.nav{
     margin: 16px 0px 0px 0px;
-    width: 332px;
+    width: 320px;
   }
 
   li.navprofile{
@@ -1540,3 +1541,22 @@ div.modalContainer{
   
   }
 }
+
+div.search-section{
+  margin-top: 16px;
+
+  div.SearchBar {
+    @include searchbar($canvas-white-light, $purple-dark, $midnight-blue, 320px, $nav-element-height);
+    padding: 0 16px;
+    margin-right: 8px;
+    height: $nav-element-height;
+  }
+
+  i.material-icons{
+    &.filter{
+      font-size: 48px;
+      cursor: pointer;
+    }
+  }
+}
+

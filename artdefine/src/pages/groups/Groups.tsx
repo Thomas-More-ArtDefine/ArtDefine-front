@@ -10,12 +10,23 @@ export default function Groups() {
         setOpenModal(true);
     };
     return (
+        <>
         <div className="max-size white-card">
             {openModal && <CreateGroupModal closeModal={setOpenModal} />}
             {/* <div className='groupspage'>
                 <button onClick={() => handleClick()}>Create Group</button>
             </div> */}
             < Tabs NameTab1="Joined Groups" NameTab2="Find Groups" ShowTab1={showMyGroups} setShowTab1={setShowMyGroups} ShowTab2={showFindGroups} setShowTab2={setShowFindGroups} / >
+            <div className="flex justify-spacebetween align-center search-section">
+                <div className='SearchBar'>
+                    <input className='search' type="text" placeholder='Search...' />
+                    <i className="material-icons">search</i>
+                </div>
+                <i className="material-icons filter font">tune</i>
+            </div>
+            
         </div>
+        
+        </>
         );
 }
