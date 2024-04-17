@@ -55,6 +55,101 @@ body{
 
 // --- Styles ---
 
+.position{
+  &.relative{
+    position: relative;
+  }
+  &.absolute{
+    position: absolute;
+  }
+}
+
+.opacity{
+  &.p75{
+    opacity: 75%;
+  }
+  &.p50{
+    opacity: 50%;
+  }
+  &.p25{
+    opacity: 25%;
+  }
+  &.p0{
+    opacity: 0%;
+  }
+}
+
+.font{
+  // default color
+  color: $midnight-blue;
+
+  // font colors
+  &.sunset{
+    color: $sunset-red;
+  }
+  &.purple-dark{
+    color: $purple-dark;
+  }
+
+  // font sizes
+  &.fs18{
+    font-size: 18px;
+  }
+  &.fs32{
+    font-size: 32px;
+  }
+
+  // align
+  &.align-left{
+    text-align: start;
+  }
+
+  // font families
+  &.eaves{
+    &.light{
+      font-family: EavesSansLight;
+    }
+    &.book{
+      font-family: EavesSansBook;
+    }
+    &.heavy{
+      font-family: EavesSansHeavy;
+    }
+  }
+  &.icecream{
+    font-family: Icecream;
+  }
+}
+
+div.flex{
+  display: flex;
+  &.align-center{
+    align-items: center;
+  }
+  &.justify-center{
+    justify-content: center;
+  }
+  &.justify-spacebetween{
+    justify-content: space-between;
+  }
+}
+
+div.divider{
+  height: 4px;
+  width: 100%;
+  border-radius: $corner-radius-sm;
+  background-color: #4F296B;
+  &.red-dark{
+    background-color: $sunset-red-dark;
+  }
+  &.purple{
+    background-color: $purple-dark;
+  }
+  &.thick{
+    height: 7px;
+  }
+}
+
 .border-effect{
   @include border-effect("1,1");
 
@@ -321,6 +416,7 @@ nav.navigation{
 }
 
 nav.mobileNavigation{
+  
   ul{
     padding-left: 27px;
   }
@@ -397,14 +493,17 @@ nav.mobileNavigation{
 }
 
 div.mobileNav{
-  
+  position: absolute;
+  z-index: 9999;
+  height: 100%;
+  width: 100%;
   @include breakpoint(lg){
     display: none;
   }
 }
 
 div.mobileMenu{
-  z-index:100;
+  z-index:999;
   background-color: $canvas-white-light;
   width: 368px;
   height: 810px;
@@ -414,7 +513,6 @@ div.mobileMenu{
   border-radius: 16px 0px 0px 0px;
   border: 4px $canary-yellow-dark;
   border-style: solid none none solid;
-  z-index: 1;
 }
 
 div.modalbackground{
@@ -848,6 +946,17 @@ h5 {
 
 // --- Components ---
 
+div.navtabs{
+  div.tab{
+    width: 100%;
+    cursor: pointer;
+    &.active{
+      cursor: auto;
+    }
+  }
+}
+
+
 div.group-card{
   height: 112px;
   @include border-standard(3px);
@@ -1270,11 +1379,13 @@ div.feed{
 }
 
 // groups
-div.divider{
-    height: 5px;
-    width: 100%;
-    border-radius: $corner-radius-sm;
-    background-color: #4F296B;
+
+div.white-card{
+  background-color: $canvas-white-light;
+  border-radius: $corner-radius;
+  margin: 16px;
+  padding: 8px;
+  height: calc(100% - 32px) !important;
 }
 
 div.max-size{
@@ -1305,9 +1416,6 @@ div.modalContainer{
       h3{
         margin: 0;
         color: $sunset-red-dark;
-      }
-      div.divider{
-        background-color: $sunset-red-dark;
       }
       margin-bottom: 9px;
       

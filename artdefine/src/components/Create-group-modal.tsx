@@ -61,7 +61,7 @@ export default function CreateGroupModal({
                 <div className='modal'>
                     <div className='title'>
                         <h3>New Group</h3>
-                        <div className="divider"></div>
+                        <div className="divider red-dark"></div>
                     </div>
                     <form>
                         <div className='groupname'>
