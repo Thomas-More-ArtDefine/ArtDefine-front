@@ -1,6 +1,5 @@
 import { useFeed } from "../../context/FeedContext";
 import React, { useState } from 'react';
-import placeholder from "../../assets/images/mock-banner-pic.png";
 import ArtworkCard from "../../components/Artwork-card";
 
 
@@ -39,11 +38,12 @@ export default function Feed() {
                 src={artwork.post_content} 
                 title={artwork.post_title}
                 creator={artwork.user.user_name}
-                postid={artwork.id} />
+                postid={artwork.id}
+                key={artwork.id} />
       );
 
     return (
-        <div className='feedpage pagebody'>
+        <div className='feedpage'>
             <div className='feed-btns fixed'>
                 <div className='subnav-button'>
                     <button className={((globalActive) ? "active": "")} onClick={() => handleFeedButtonClick("global")}><i className="material-icons">public</i></button>
@@ -59,7 +59,7 @@ export default function Feed() {
                 </div>            
             </div>
             <div className='feed'>
-                {artworks.length != 0 ? (
+                {artworks.length !== 0 ? (
                     <div>{feedList}</div>
                 ) : (
                     <div className="no-posts">Loading...</div>

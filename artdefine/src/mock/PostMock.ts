@@ -1,6 +1,7 @@
 import { Artwork, visibility } from "../model/PostModel";
 import src from "../assets/images/Artwork1.jpg";
 import USERMOCK from "./UserMock";
+import FOLDERMOCK from "./FolderMock";
 
 const POSTMOCK:Artwork[] = [
     {
@@ -10,7 +11,8 @@ const POSTMOCK:Artwork[] = [
         post_description: "Venturing into the magical realms of my imagination, where every tree tells a tale. 🌳✨",
         post_medium: "Digital Art",
         post_visibility: visibility.PRIVATE,
-        user: USERMOCK[0]
+        user: USERMOCK[0],
+        folders:FOLDERMOCK
     }
 ];
 
