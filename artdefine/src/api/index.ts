@@ -6,7 +6,12 @@ import POSTMOCK from "../mock/PostMock";
 import FEEDMOCK from "../mock/FeedMock";
 import { GroupModel } from "../model/GroupModel";
 import { CreateGroupModel } from "../model/CreateGroupModel";
+import { GroupJoin, groupVisibility } from "../components/Create-group-modal";
 
+export enum orderBy {
+  DESC = "DESC",
+  ASC = "ASC"
+}
 
 export const getAll = () => {
     const data = {
@@ -86,6 +91,55 @@ export const getRandomFeed = async (exclude?: string[], amount?: number): Promis
     throw error;
   }
 };
+
+export const getGroupsByName = async (query:string, amount: number, skip: number, orderby: string): Promise<any[]> => {
+  let filter = orderBy.DESC;
+  if (orderby.toUpperCase() === orderBy.ASC) {
+    filter = orderBy.ASC;
+  }
+  
+  try {
+    const response: any[] = await api.get(`/groups/search/name/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`);
+    // response[0] = groups, response[1] = total count in database
+    return response;
+  } catch (error) {
+    console.error("Error while fetching one data:", error);
+    throw error;
+  }
+};
+
+export const getGroupsByJoinMethod = async (query:GroupJoin, amount: number, skip: number, orderby: string): Promise<any[]> => {
+  let filter = orderBy.DESC;
+  if (orderby.toUpperCase() === orderBy.ASC) {
+    filter = orderBy.ASC;
+  }
+  
+  try {
+    const response: any[] = await api.get(`/groups/search/join/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`);
+    // response[0] = groups, response[1] = total count in database
+    return response;
+  } catch (error) {
+    console.error("Error while fetching one data:", error);
+    throw error;
+  }
+};
+
+export const getGroupsByVisibility = async (query:groupVisibility, amount: number, skip: number, orderby: string): Promise<any[]> => {
+  let filter = orderBy.DESC;
+  if (orderby.toUpperCase() === orderBy.ASC) {
+    filter = orderBy.ASC;
+  }
+  
+  try {
+    const response: any[] = await api.get(`/groups/search/visibility/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`);
+    // response[0] = groups, response[1] = total count in database
+    return response;
+  } catch (error) {
+    console.error("Error while fetching one data:", error);
+    throw error;
+  }
+};
+
 
 export const postGroup = async (group:CreateGroupModel, callback:Function): Promise<void|GroupModel> => {
   try {
