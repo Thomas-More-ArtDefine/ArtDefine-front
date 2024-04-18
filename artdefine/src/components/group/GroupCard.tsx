@@ -19,9 +19,6 @@ const GroupCard: React.FC<{group:GroupModel}> = ({group} ) => {
                 <div className="description">{group.group_bio}</div>
             </div>
             <GroupJoinButton joined={false} groupjoin={group.group_setting_join} visibility={group.group_setting_visibility} src={group.id} />
-            {/* <div className="join-button">
-                    {">"}
-            </div> */}
         </div>
         </>
     );
