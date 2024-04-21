@@ -2,11 +2,15 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import pfp from "../../assets/images/mock-profile-pic.png";
 import { ReactComponent as MessageIcon } from "../../assets/vectors/message-icon.svg";
+import { useAuth } from "../../context/AuthContext";
 
 const MobileMenu: React.FC<{
   closeMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }> = ({ closeMenu }) => {
   const navigate = useNavigate();
+
+  const {user} = useAuth();
+
   return (
     <div className="mobileNav">
       <div
@@ -28,7 +32,7 @@ const MobileMenu: React.FC<{
                 <div className="profile-block">
                   <img src={pfp} alt="profile picture" />
                   <div className="profile-info">
-                    <div className="username">[username]</div>
+                    <div className="username">{user?.user_name}</div>
                     <div className="profile">Profile</div>
                   </div>
                 </div>

@@ -63,14 +63,41 @@ export const getOne = async (id: string): Promise<User> => {
 
 export const getArtwork = async (id: string): Promise<Artwork> => {
   try {
-    //const response = await api.get(`/posts/${id}`);
-    //return response.data;
-    return POSTMOCK[0];
+    //TODO: Implement API call
+    //const response = await api.get(`/posts/${id}`); 
+    const response = await api.get(`/posts/1`);
+    const userResponse = await api.get(`/users/${response.data.user_id}`);
+    response.data.user = userResponse.data;
+    return response.data;
+    
   } catch (error) {
     console.error("Error while fetching one data:", error);
     throw error;
   }
 };
+
+export const postArtwork = async (artwork: Artwork): Promise<Artwork> => {
+  try {
+    const artworkForPost = {
+      post_content: artwork.post_content,
+      post_title: artwork.post_title,
+      post_description: artwork.post_description,
+      post_medium: artwork.post_medium,
+      post_visibility: artwork.post_visibility,
+      user_id: artwork.user.id,
+      folders: [
+        {
+            "id": "3"
+        }
+    ]
+    };
+    const response = await api.post('/posts', artworkForPost);
+    return response.data;
+  } catch (error) {
+    console.error("Error while fetching one data:", error);
+    throw error;
+  }
+}
 
 export const getRandomFeed = async (exclude?: string[], amount?: number): Promise<Artwork[]> => {
   try {

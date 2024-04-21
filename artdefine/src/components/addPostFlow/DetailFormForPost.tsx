@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+
+import React from "react";
 import { useArtwork } from "../../context/ArtworkContext";
+import { Artwork } from "../../model/PostModel";
 
-const DetailFormForPost = () => {
-  const { artwork, setArtwork } = useArtwork();
+const DetailFormForPost: React.FC<{
+  artwork: Artwork;
+  setArtwork: (value: Artwork) => void;
 
+}> = ({
+  artwork,
+  setArtwork,
+ 
+}) => {
   
-
   return (
     <div className="form">
       <form>

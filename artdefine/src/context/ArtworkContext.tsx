@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { Artwork, visibility } from "../model/PostModel";
-import { getArtwork } from "../api";
+import { getArtwork, postArtwork } from "../api";
 import { User } from "../model/userModel";
 
 
@@ -9,6 +9,7 @@ import { User } from "../model/userModel";
     artwork: Artwork ;
     setArtwork: (value: Artwork) => void;
     findArtwork: (id: string) => Promise<Artwork | undefined>;
+    uploadArtwork: (artwork: Artwork) => Promise<Artwork | undefined>;
   }
   
 export const ArtworkContext = createContext<ArtworkContextType | null>(null);
@@ -31,20 +32,34 @@ export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children })
         post_medium: "",
         post_visibility: visibility.PRIVATE,
         user: {
-          id: "0",
+          id: "1",
           user_name: "",
           user_subtitle: "",
           user_profile_picture: "",
           user_deactivated: false,
           user_deactivation_date: ""
         }, 
-        folders: []
+        folders: [
+        ]
       }
     );
 
     useEffect(() => {
       console.log("artwork: ", artwork);
     }, [artwork]);
+
+
+    const uploadArtwork = useCallback(async (artwork: Artwork): Promise<Artwork | undefined> => {
+      try {
+         const response = await postArtwork(artwork);
+         console.log("Artwork uploaded: ", artwork);
+         return response;
+       
+      } catch (error) {
+        console.error("Error while uploading artwork:", error);
+        throw error;
+      }
+    }, []);
    
     const findArtwork = useCallback(async (id: string): Promise<Artwork | undefined> => {
       const fetchData = async (id:string) => {
@@ -57,7 +72,7 @@ export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children })
       return response;
     }, []);
   
-    const value = useMemo(() => ({ artwork, setArtwork,findArtwork }), [artwork, setArtwork, findArtwork]);
+    const value = useMemo(() => ({ artwork, setArtwork,findArtwork, uploadArtwork }), [artwork, setArtwork, findArtwork, uploadArtwork]);
   
     return (
       <ArtworkContext.Provider value={value}>

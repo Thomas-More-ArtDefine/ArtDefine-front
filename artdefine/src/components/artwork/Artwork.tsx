@@ -1,6 +1,5 @@
 
 
-
 const ArtworkContainer: React.FC<{src:string}> = ({src}) => {
     return (
         <div className="artwork">
