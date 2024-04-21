@@ -7,10 +7,12 @@ import { ReactComponent as MobileProfile } from "../../assets/vectors/mobile-pro
 import { ReactComponent as Hamburger } from "../../assets/vectors/Hamburger.svg";
 import pfp from "../../assets/images/mock-profile-pic.png";
 import MobileMenu from './Mobile-menu';
+import { useAuth } from '../../context/AuthContext';
 
 const Nav: React.FC = () => {
     const [openMenu, setOpenMenu] = useState<boolean>(false);
     const navigate = useNavigate();
+    const {user} = useAuth();
 
     const handleMenuClick = () => {
         setOpenMenu(true);
@@ -50,7 +52,7 @@ const Nav: React.FC = () => {
                         <Link to="/profile">
                             <div className='profile-block'>
                                 <div className='profile-info'>
-                                    <div className='username'>[username]</div> 
+                                    <div className='username'>{user?.user_name}</div> 
                                     <div className='profile'>Profile</div>
                                 </div>
                                 <img src={pfp} alt="profile picture" /> 

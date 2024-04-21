@@ -6,6 +6,9 @@ import { useAuth } from "../../context/AuthContext";
 export default function Profile() {
   
     const {user} = useAuth();
+
+    console.log(user);
+
     return (
         <>
         <div className="page profile own-profile">

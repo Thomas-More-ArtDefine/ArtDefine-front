@@ -3,18 +3,20 @@ import UploadCard from "../UploadCard";
 import { useArtwork } from "../../context/ArtworkContext";
 import ArtworkContainer from "../artwork/Artwork";
 import { ReactComponent as DeleteIcon } from "../../assets/vectors/delete-icon.svg";
+import { Artwork } from "../../model/PostModel";
 
 const UploadItemForPost: React.FC<{
-
+  artwork: Artwork;
+  setArtwork: (value: Artwork) => void;
   isChanged: boolean;
   setIsChanged: React.Dispatch<React.SetStateAction<boolean>>;
 }> = ({
-
+  artwork,
+  setArtwork,
   isChanged,
   setIsChanged,
 }) => {
 
-    const { artwork,setArtwork } = useArtwork();
   const [src, setSrc] = useState<string>(artwork.post_content);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {

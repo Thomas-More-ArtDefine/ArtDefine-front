@@ -19,12 +19,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     useEffect(() => {
         const fetchData = async () => {
             const data = await getAllUsers();
-            console.log(data);
+            console.log("in Context:",data);
             setUsers(data);
+            setUser(data[0]);
         };
 
         fetchData();
-        setUser(users[0]);
     }, []);
 
     const value = useMemo(() => ({ users, user }), [users, user]);

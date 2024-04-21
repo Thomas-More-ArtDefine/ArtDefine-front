@@ -1,19 +1,18 @@
 import Card from "./Card";
 
 
-const Content = ({
-  text, 
-  subTitle, // (optional)
-  creationDate, //  (optional)
-  links, //  (optional)
-  owner, // (optional)
-}: {
-  
+const Content: React.FC<{
   subTitle?: string;
   text: string;
   creationDate?: string;
   links?: string[];
   owner?: string;
+}> = ({
+  text,
+  subTitle,
+  creationDate,
+  links,
+  owner,
 }) => {
   return (
     <>
@@ -50,24 +49,28 @@ const Content = ({
 }
 
 
-const TextCard = ({
-  title, 
-  text, 
-  subTitle, // (optional)
-  creationDate, //  (optional)
-  links, //  (optional)
-  owner, // (optional)
-}: {
+const TextCard: React.FC<{
   title: string;
   subTitle?: string;
   text: string;
   creationDate?: string;
   links?: string[];
   owner?: string;
+}> = ({
+  title,
+  text,
+  subTitle,
+  creationDate,
+  links,
+  owner,
 }) => {
   return (
     <>
-    <Card title={title} cssProperty="text-card" content={<Content subTitle={subTitle} text={text} creationDate={creationDate} links={links} owner={owner} />} />
+      <Card
+        title={title}
+        cssProperty="text-card"
+        content={<Content subTitle={subTitle} text={text} creationDate={creationDate} links={links} owner={owner} />}
+      />
     </>
   );
 };
