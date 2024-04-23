@@ -17,6 +17,15 @@ export default function GroupSettings() {
     const [minUserLimit, setMinUserLimit] = useState(5);
 
     // api calls to be added
+    const handlePrivacyUpdateClick =async () => {
+        console.log("save new privacy settings");
+        setCurrentStep("Menu")
+    };
+
+    const handleGeneralUpdateClick =async () => {
+        console.log("save new general settings");
+        setCurrentStep("Menu")
+    };
 
     return (
         <>
@@ -50,6 +59,7 @@ export default function GroupSettings() {
                 <div className="settings">
                     
                 </div>
+                <button className="setting-update-btn" onClick={() => handleGeneralUpdateClick()}>Update</button>
             </div>
         </>}
 
@@ -100,7 +110,7 @@ export default function GroupSettings() {
                             </div>
                         </div>
 
-                        <button className="setting-update-btn">Update</button>
+                        <button className="setting-update-btn" onClick={() => handlePrivacyUpdateClick()}>Update</button>
                         
                     </div>
                     
