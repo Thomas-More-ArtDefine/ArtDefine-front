@@ -14,6 +14,7 @@ import PostView from './pages/PostView';
 import { FeedProvider } from './context/FeedContext';
 import Group from './pages/group/Group';
 import Groups from './pages/groups/Groups';
+import GroupSettings from './pages/group/GroupSettings';
 
 
 
@@ -105,6 +106,10 @@ const router = createBrowserRouter([
           {
             path: ':id',
             element: <Group/>,
+          },
+          {
+            path: ':id/settings',
+            element: <GroupSettings/>,
           },
         ],
       },

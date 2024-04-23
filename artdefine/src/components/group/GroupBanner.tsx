@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { ReactComponent as ArrowIcon } from "../../assets/vectors/arrow-down-yellow.svg";
 import { ReactComponent as DotsIcon } from "../../assets/vectors/dots-yellow.svg";
-import Dropdown from "../dropdown";
+import Dropdown from "../Dropdown";
 import { DropdownButtonModel } from "../../model/DropdownButtonsModel";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 const GroupBanner: React.FC<{
   name: string;
@@ -12,7 +12,7 @@ const GroupBanner: React.FC<{
 }> = ({ name, bannerUrl: src, alt }) => {
   const [openDropdown, setOpenDropdown] = useState<boolean>(false);
   const navigate = useNavigate();
-  const group_id: string = useLocation().pathname.split("/")[2];
+  const { id } = useParams<{ id: string }>();
   
   const buttons: DropdownButtonModel[] = [
     {
@@ -27,14 +27,14 @@ const GroupBanner: React.FC<{
       class: "navigate",
       text: "Group details",
       icon: "pending",
-      function: () => {navigate("/group/"+group_id+"/details")}
+      function: () => {navigate("/group/"+id)}
     },
     {
       divider:false,
       class: "navigate",
       text: "Settings",
       icon: "settings",
-      function: () => {navigate("/group/"+group_id+"/settings")}
+      function: () => {navigate("/group/"+id+"/settings")}
     },
     {
         divider: true,
