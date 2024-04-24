@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
-const UnderlinedTitleSmall: React.FC<{title:string, icon?:boolean}> = ({title, icon = false} ) => {
+const UnderlinedTitleSmall: React.FC<{title:string, icon?:boolean, set?:React.Dispatch<React.SetStateAction<boolean>>}> = ({title, icon = false, set} ) => {
     const navigate = useNavigate();
     return (
         <>
             <div className="title">
-            {icon ? 
-                (<h4 className="flex justify-spacebetween align-end settings-page"><span>{title}</span><i className="material-icons clickable" onClick={() => console.log("open folder modal")}>folder</i></h4>)
+            {icon && set !== undefined ? 
+                (<h4 className="flex justify-spacebetween align-end settings-page"><span>{title}</span><i className="material-icons clickable" onClick={() => set(true)}>folder</i></h4>)
                 :
                 (<h4>{title}</h4>)
                 }
