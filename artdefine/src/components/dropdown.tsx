@@ -23,12 +23,14 @@ const Dropdown: React.FC<{ openDropdown: React.Dispatch<React.SetStateAction<boo
     //     }
     // ]
     
-
+    let index=0;
     const buttonList = buttonModels.map(values => {
         if (values.divider === true) {
-            return <div className="divider red"></div>
+            index++;
+            return <div className="divider red" key={index}></div>
         }else{
-            return <button className={"dropdown-btn flex justify-spacebetween align-center " + values.class} onClick={values.function}><span>{values.text}</span><i className="material-icons">{values.icon}</i></button> 
+            index++;
+            return <button className={"dropdown-btn flex justify-spacebetween align-center " + values.class} key={index} onClick={values.function}><span>{values.text}</span><i className="material-icons">{values.icon}</i></button> 
         }
     })
     

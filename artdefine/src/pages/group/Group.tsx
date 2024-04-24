@@ -6,6 +6,7 @@ import { useState } from "react";
 import GroupBanner from "../../components/group/GroupBanner";
 import GroupNav from "../../components/group/GroupNav";
 import GroupHome from "../../components/group/GroupHome";
+import Gallery from "../../components/general/Gallery";
 
 export default function Group() {
 
@@ -20,8 +21,8 @@ export default function Group() {
                 <GroupNav handleStepChange={setCurrentStep} currentStep={currentStep}/>
                 <div className="content">
                 {currentStep === "Home" && <GroupHome group={group}/>}
-                {currentStep === "Gallery" && <div>Gallery</div>}
-                {currentStep === "Chat" && <div>Chat</div>}
+                {currentStep === "Gallery" && <Gallery folders={group.folders}/>}
+                {/* {currentStep === "Chat" && <div>Chat</div>} */}
                  </div>
             </div>
 

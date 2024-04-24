@@ -3,6 +3,7 @@ import profilePic from "../assets/images/mock-profile-pic.png";
 import src from "../assets/images/mock-banner-pic.png";
 import USERMOCK from "./UserMock";
 import { GroupJoin, groupVisibility } from "../components/Create-group-modal";
+import GROUPFOLDERMOCK from "./GroupFolderMock";
 
 
 
@@ -24,6 +25,7 @@ const GROUPMOCK: GroupModel[] = [
     group_links: ["https://www.facebook.com", "https://www.instagram.com"],
     group_rules: "No NSFW content allowed.",
     group_members: USERMOCK,
+    folders: GROUPFOLDERMOCK
   },
   {
     id: "2",
@@ -42,6 +44,7 @@ const GROUPMOCK: GroupModel[] = [
     group_links: ["https://www.twitter.com", "https://www.linkedin.com"],
     group_rules: "Respect each other's work and provide constructive feedback.",
     group_members: USERMOCK,
+    folders: GROUPFOLDERMOCK
   }
 ];
 

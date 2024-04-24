@@ -1368,47 +1368,47 @@ div.feed-btns{
 .fixed{
   position: fixed;
 }
-
+div.feed-entry{ 
+  cursor: pointer;
+  margin: 20px auto;
+  height: 400px;
+  width: 380px;
+  background-color: $color-white;
+  border-radius: $corner-radius;
+  box-shadow: 0px 0px 12px $canvas-white-dark;
+  img{
+    object-fit: cover;
+    width: 380px;
+    height: 320px;
+    border-radius: $corner-radius;
+    border-color: $midnight-blue;
+    @include border-standard(4px);
+  }
+  div.work-title{
+    font-family: 'EavesSansHeavy';
+    text-transform: capitalize;
+    font-size: 32px;
+    color: $purple-dark;
+    width: 340px;
+    margin: auto;
+    text-align: start;
+    line-height: 95%;
+    margin-top: 5px;
+  }
+  div.work-creator{
+    font-family: 'EavesSansHeavy';
+    font-size: 20px;
+    width: 340px;
+    margin: auto;
+    text-align: start;
+    color: $purple-light;
+    opacity: 75%;
+  }
+  
+}
 div.feed{
   margin-top: 100px;
-  div.feed-entry{ 
-    cursor: pointer;
-    margin: 20px auto;
-    height: 400px;
-    width: 380px;
-    background-color: $color-white;
-    border-radius: $corner-radius;
-    box-shadow: 0px 0px 12px $canvas-white-dark;
-    img{
-      object-fit: cover;
-      width: 380px;
-      height: 320px;
-      border-radius: $corner-radius;
-      border-color: $midnight-blue;
-      @include border-standard(4px);
-    }
-    div.work-title{
-      font-family: 'EavesSansHeavy';
-      text-transform: capitalize;
-      font-size: 32px;
-      color: $purple-dark;
-      width: 340px;
-      margin: auto;
-      text-align: start;
-      line-height: 95%;
-      margin-top: 5px;
-    }
-    div.work-creator{
-      font-family: 'EavesSansHeavy';
-      font-size: 20px;
-      width: 340px;
-      margin: auto;
-      text-align: start;
-      color: $purple-light;
-      opacity: 75%;
-    }
-    
-  }
+  
   div.no-posts{
     margin: 35vh 0;
     font-family: 'EavesSansHeavy';
@@ -1715,6 +1715,11 @@ button{
           font-size: 40px;
         }
       }
+      h4{
+        margin-bottom: 0;
+        margin-top: 0;
+        text-align: start;
+      }
     }
     .buttons{
       button{
@@ -1737,5 +1742,14 @@ button{
       width: 200px;
       height: 48px;
     }
+  }
+}
+
+.gallery{
+  button{
+    height: 40px;
+    width: 160px;
+    border-radius: $corner-radius;
+    margin-top: 8px;
   }
 }
