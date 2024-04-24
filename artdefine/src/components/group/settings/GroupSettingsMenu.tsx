@@ -7,7 +7,7 @@ const GroupSettingsMenu: React.FC<{group:GroupModel, setCurrentStep: React.Dispa
         <>
         <GroupBanner name={group.group_name} bannerUrl={group.group_banner_picture} alt={"Banner picture of the group."} />
                     <div className="content">
-                        <UnderlinedTitle title="Group Settings" />
+                        <UnderlinedTitle title="Group Settings" navigateTo={"/group/"+group.id}/>
                         <div className="buttons flex direction-column">
                             <button className="icon" onClick={() => setCurrentStep("General")}><span>General</span><i className="material-icons">public</i></button>
                             <button className="icon" onClick={() => setCurrentStep("Privacy")}><span>Privacy Settings</span><i className="material-icons">visibility_off</i></button>

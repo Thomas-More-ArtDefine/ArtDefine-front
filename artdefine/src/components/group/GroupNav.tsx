@@ -51,12 +51,12 @@ const GroupNav: React.FC<{handleStepChange: React.Dispatch<React.SetStateAction<
           onClick={handleGalleryClick}
           active={currentStep === "Gallery"}
         />
-        <CatButton
+        {/* <CatButton
           text="Chat"
           icon={ChatIcon}
           onClick={handleChatClick}
           active={currentStep === "Chat"}
-        />
+        /> */}
       </div>
       
     </>

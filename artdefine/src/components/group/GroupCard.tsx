@@ -10,7 +10,7 @@ const GroupCard: React.FC<{group:GroupModel}> = ({group} ) => {
                 <div className="general">
                     <span className="group-name">{group.group_name}</span>
                     <span className="userlimit">
-                        <span className="members">{group.group_members.length}</span>
+                        <span className="members">{group.members.length}</span>
                         / 
                         <span className="limit">{group.group_userlimit}</span>
                     </span>

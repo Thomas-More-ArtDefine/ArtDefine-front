@@ -27,14 +27,14 @@ const GroupBanner: React.FC<{
       class: "navigate",
       text: "Group details",
       icon: "pending",
-      function: () => {navigate("/group/"+id)}
+      function: () => {navigate("/group/"+id);}
     },
     {
       divider:false,
       class: "navigate",
       text: "Settings",
       icon: "settings",
-      function: () => {navigate("/group/"+id+"/settings")}
+      function: () => {navigate("/group/"+id+"/settings"); document.body.classList.remove("no-scroll");}
     },
     {
         divider: true,

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { GroupModel } from "../../model/GroupModel";
 import GROUPMOCK from "../../mock/GroupMock";
 import GroupSettingsMenu from "../../components/group/settings/GroupSettingsMenu";
@@ -7,7 +7,7 @@ import GroupSettingsPrivacy from "../../components/group/settings/GroupsSettings
 import UnderlinedTitle from "../../components/general/UnderlinedTitled";
 
 export default function GroupSettings() {
-
+    const navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
     const [group, setGroup] = useState<GroupModel>(GROUPMOCK[0]);
     const [currentStep, setCurrentStep] = useState("Menu");
