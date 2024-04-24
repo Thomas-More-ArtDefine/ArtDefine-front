@@ -1,4 +1,24 @@
-const GalleryFolderModal: React.FC<{openMenu: React.Dispatch<React.SetStateAction<boolean>>}> = ({ openMenu }) => {
+import { Folder } from "../../model/FolderModel";
+import placeholder from "../../assets/images/mock-banner-pic.png";
+
+const GalleryFolderModal: React.FC<{openMenu: React.Dispatch<React.SetStateAction<boolean>>, folders: Folder[]}> = ({ openMenu, folders }) => {
+    const foldercards = folders.map(folder =>{
+        if (folder.posts !== undefined && folder.posts.length !== 0) {
+            return <div key={folder.id} className="foldercard flex direction-column direction-column align-center justify-spacebetween">
+                <img src={folder.posts[0].post_content} alt="" />
+                <div>{folder.folder_name}</div>
+            </div>
+        }else{
+            return <div key={folder.id} className="foldercard flex direction-column direction-column align-center justify-spacebetween">
+                <img src={placeholder} alt="" />
+                <div>{folder.folder_name}</div>
+            </div>
+        }
+    }
+        
+    )
+    
+    
     return (
         <div className="folder-modal">  
         <div
@@ -10,34 +30,7 @@ const GalleryFolderModal: React.FC<{openMenu: React.Dispatch<React.SetStateActio
             <div className="slideout-modal">
                 <div className="header flex align-center justify-spacebetween"><span className="title">Folders</span><i className="material-icons clickable" onClick={() => console.log("open edit folder window")}>brush</i></div>
                 <div className="content flex align-center direction-column">
-                    <div className="foldercard flex direction-column direction-column align-center justify-spacebetween">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Die_Gartenlaube_%281893%29_b_181.jpg/619px-Die_Gartenlaube_%281893%29_b_181.jpg?20210827153319" alt="" />
-                        <div>folder title</div>
-                    </div>
-                    <div className="foldercard flex direction-column align-center justify-spacebetween">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Die_Gartenlaube_%281893%29_b_181.jpg/619px-Die_Gartenlaube_%281893%29_b_181.jpg?20210827153319" alt="" />
-                        <div>folder title</div>
-                    </div>
-                    <div className="foldercard flex direction-column align-center justify-spacebetween">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Die_Gartenlaube_%281893%29_b_181.jpg/619px-Die_Gartenlaube_%281893%29_b_181.jpg?20210827153319" alt="" />
-                        <div>folder title</div>
-                    </div>
-                    <div className="foldercard flex direction-column align-center justify-spacebetween">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Die_Gartenlaube_%281893%29_b_181.jpg/619px-Die_Gartenlaube_%281893%29_b_181.jpg?20210827153319" alt="" />
-                        <div>folder title</div>
-                    </div>
-                    <div className="foldercard flex direction-column align-center justify-spacebetween">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Die_Gartenlaube_%281893%29_b_181.jpg/619px-Die_Gartenlaube_%281893%29_b_181.jpg?20210827153319" alt="" />
-                        <div>folder title</div>
-                    </div>
-                    <div className="foldercard flex direction-column align-center justify-spacebetween">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Die_Gartenlaube_%281893%29_b_181.jpg/619px-Die_Gartenlaube_%281893%29_b_181.jpg?20210827153319" alt="" />
-                        <div>folder title</div>
-                    </div>
-                    <div className="foldercard flex direction-column align-center justify-spacebetween">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Die_Gartenlaube_%281893%29_b_181.jpg/619px-Die_Gartenlaube_%281893%29_b_181.jpg?20210827153319" alt="" />
-                        <div>folder title</div>
-                    </div>
+                    {foldercards}
                 </div>
             </div>
         </div>

@@ -32,7 +32,7 @@ const Gallery: React.FC<{folders: Folder[]}> = ({folders}) => {
     return (
         <>
         <div className="gallery">
-        {openModal && <GalleryFolderModal openMenu={setOpenModal} />}
+        {openModal && <GalleryFolderModal folders={folders} openMenu={setOpenModal} />}
               
           
             <UnderlinedTitleSmall icon={true} title={folders[activeFolder].folder_name} set={setOpenModal} />
