@@ -18,6 +18,6 @@ export interface GroupModel{
     creator_id: string;
     group_links: string[];
     group_rules: string;
-    group_members: User[];
+    members: User[];
     folders: Folder[];
 }

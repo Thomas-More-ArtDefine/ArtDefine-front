@@ -68,6 +68,7 @@ export const getArtwork = async (id: string): Promise<Artwork> => {
     const response = await api.get(`/posts/1`);
     const userResponse = await api.get(`/users/${response.data.user_id}`);
     response.data.user = userResponse.data;
+    console.log(response);
     return response.data;
     
   } catch (error) {
