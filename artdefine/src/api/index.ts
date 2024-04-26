@@ -64,8 +64,8 @@ export const getOne = async (id: string): Promise<User> => {
 export const getArtwork = async (id: string): Promise<Artwork> => {
   try {
     //TODO: Implement API call
-    //const response = await api.get(`/posts/${id}`); 
-    const response = await api.get(`/posts/1`);
+    const response = await api.get(`/posts/${id}`); 
+    // const response = await api.get(`/posts/1`);
     const userResponse = await api.get(`/users/${response.data.user_id}`);
     response.data.user = userResponse.data;
     console.log(response);
@@ -102,18 +102,18 @@ export const postArtwork = async (artwork: Artwork): Promise<Artwork> => {
 
 export const getRandomFeed = async (exclude?: string[], amount?: number): Promise<Artwork[]> => {
   try {
-    // let response;
-    // if (exclude != undefined && amount != undefined) {
-    //   response = await api.get(`/posts/feed/random?exclude=${exclude.toString()}&amount=${amount}`);
-    // }else if (exclude != undefined) {
-    //   response = await api.get(`/posts/feed/random?exclude=${exclude.toString()}`);
-    // }else if (amount != undefined) {
-    //   response = await api.get(`/posts/feed/random?amount=${amount}`);
-    // }else{
-    //   response = await api.get(`/posts/feed/random`);
-    // }
-    // return response.data;
-    return FEEDMOCK;
+    let response;
+    if (exclude !== undefined && amount !== undefined) {
+      response = await api.get(`/posts/feed/random?exclude=${exclude.toString()}&amount=${amount}`);
+    }else if (exclude !== undefined) {
+      response = await api.get(`/posts/feed/random?exclude=${exclude.toString()}`);
+    }else if (amount !== undefined) {
+      response = await api.get(`/posts/feed/random?amount=${amount}`);
+    }else{
+      response = await api.get(`/posts/feed/random`);
+    }
+    return response.data;
+    //return FEEDMOCK;
   } catch (error) {
     console.error("Error while fetching one data:", error);
     throw error;

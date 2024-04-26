@@ -9,7 +9,6 @@ export default function Post() {
   const { id } = useParams<{ id: string }>();
   const { findArtwork } = useContext(ArtworkContext) || {};
   const [artwork, setArtwork] = useState<Artwork | undefined>(undefined);
-  
 
   // Fetch the artwork data when the component mounts or when the 'id' or 'findArtwork' value changes
   useEffect(() => {
@@ -35,7 +34,7 @@ export default function Post() {
       <div className="page artwork-page">
         {artwork ? (
           <>
-          <div className="clickable" onClick={handleClick}>
+          <div className="clickable flex direction-column align-center" onClick={handleClick}>
             
             <ArtworkContainer src={artwork?.post_content} />
             </div>

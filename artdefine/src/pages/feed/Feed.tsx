@@ -10,6 +10,12 @@ export default function Feed() {
     const [personalActive, setPersonalActive] = useState<boolean>(true);
     const [randomActive, setRandomActive] = useState<boolean>(false);
 
+    setTimeout(() => {
+        if (document.getElementsByClassName("no-posts")[0] !== undefined) {
+            document.getElementsByClassName("no-posts")[0].innerHTML = "No posts could be loaded."
+        }
+    }, 3000);
+
     const handleFeedButtonClick = (button:string) => {
         switch (button) {
             case "global":
