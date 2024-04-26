@@ -1,11 +1,13 @@
 import { GroupModel } from "../../model/GroupModel";
 import GroupJoinButton from "./GroupJoinButton";
+import placeholderpfp from "../../assets/images/mock-profile-pic.png";
 
 const GroupCard: React.FC<{group:GroupModel}> = ({group} ) => {
+    const image = (group.group_profile_picture !== null && group.group_profile_picture !== undefined && group.group_profile_picture !== '') ? <img src={group.group_profile_picture} alt="" className="gpfp" /> : <img src={placeholderpfp} alt="" className="gpfp" />
     return (
         <>
         <div className="group-card">
-            <img src={group.group_profile_picture} alt="" className="gpfp" />
+            {image}
             <div className="group-info">
                 <div className="general">
                     <span className="group-name">{group.group_name}</span>

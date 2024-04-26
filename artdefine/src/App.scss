@@ -808,8 +808,15 @@ h5 {
 
   
   .artwork{
-    height: 50vh;
-   
+    width: 100%;
+    align-items: start;
+    .content{
+      height: 100%;
+      img{
+        max-height: 100%;
+        max-width: 100%;
+      }
+    }
   }
 
   .artwork-info {
@@ -821,6 +828,9 @@ h5 {
     flex-direction: column;
     padding: 20px;
     padding-top: 0;
+    h3{
+      margin-top: 12px;
+    }
     .title{
       padding-top: 0;
       margin-right: 40px
