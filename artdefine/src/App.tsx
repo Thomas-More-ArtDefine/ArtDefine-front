@@ -15,6 +15,7 @@ import { FeedProvider } from './context/FeedContext';
 import Group from './pages/group/Group';
 import Groups from './pages/groups/Groups';
 import GroupSettings from './pages/group/GroupSettings';
+import { GroupsProvider } from './context/GroupsContext';
 
 
 
@@ -128,7 +129,9 @@ function App() {
         <ItemsProvider>
           <ArtworkProvider>
             <FeedProvider>
-              <RouterProvider router={router} />
+              <GroupsProvider>
+                <RouterProvider router={router} />
+              </GroupsProvider>
             </FeedProvider>
           </ArtworkProvider>
         </ItemsProvider>
