@@ -1,11 +1,12 @@
 import { GroupModel } from "../../../model/GroupModel";
 import UnderlinedTitle from "../../general/UnderlinedTitled";
 import GroupBanner from "../GroupBanner";
+import placeholderBanner from "../../../assets/images/mock-banner-pic.png"
 
 const GroupSettingsMenu: React.FC<{group:GroupModel, setCurrentStep: React.Dispatch<React.SetStateAction<string>>}> = ({group,setCurrentStep} ) => {
     return (
         <>
-        <GroupBanner name={group.group_name} bannerUrl={group.group_banner_picture} alt={"Banner picture of the group."} />
+        <GroupBanner name={group.group_name} bannerUrl={group.group_banner_picture !== '' ? group.group_banner_picture: placeholderBanner} alt={"Banner picture of the group."} />
                     <div className="content">
                         <UnderlinedTitle title="Group Settings" navigateTo={"/group/"+group.id}/>
                         <div className="buttons flex direction-column">

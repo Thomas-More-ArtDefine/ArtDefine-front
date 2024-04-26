@@ -1,16 +1,29 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { GroupModel } from "../../model/GroupModel";
 import GROUPMOCK from "../../mock/GroupMock";
 import GroupSettingsMenu from "../../components/group/settings/GroupSettingsMenu";
 import GroupSettingsPrivacy from "../../components/group/settings/GroupsSettingsPrivacy";
 import UnderlinedTitle from "../../components/general/UnderlinedTitled";
+import { GroupContext } from "../../context/GroupContext";
 
 export default function GroupSettings() {
     const navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
-    const [group, setGroup] = useState<GroupModel>(GROUPMOCK[0]);
+    //const [group, setGroup] = useState<GroupModel>(GROUPMOCK[0]);
     const [currentStep, setCurrentStep] = useState("Menu");
+    const { findGroup, group } = useContext(GroupContext) || {};
+
+    useEffect(() => {
+        const fetchArtwork = async () => {
+          if (findGroup) {
+            const artwork = await findGroup(id ?? "");
+            console.log(artwork);
+          }
+        };
+    
+        fetchArtwork();
+      }, [id, findGroup]);
     
 
     // api calls to be added
@@ -21,6 +34,9 @@ export default function GroupSettings() {
 
     return (
         <>
+        {
+            group ? 
+            (
             <div className="page group-page">
             {currentStep === "Menu" && 
                 <GroupSettingsMenu group={group} setCurrentStep={setCurrentStep}/>
@@ -59,6 +75,12 @@ export default function GroupSettings() {
             }
 
             </div>
+            ) 
+            : 
+            (
+                <div>loading...</div>
+            )
+        }
 
         </>
         

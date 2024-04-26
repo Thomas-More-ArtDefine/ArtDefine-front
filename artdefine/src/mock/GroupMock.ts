@@ -24,7 +24,7 @@ const GROUPMOCK: GroupModel[] = [
     creator_id: "1",
     group_links: ["https://www.facebook.com", "https://www.instagram.com"],
     group_rules: "No NSFW content allowed.",
-    members: USERMOCK,
+    members: [],
     folders: GROUPFOLDERMOCK
   },
   {
@@ -43,7 +43,7 @@ const GROUPMOCK: GroupModel[] = [
     creator_id: "2",
     group_links: ["https://www.twitter.com", "https://www.linkedin.com"],
     group_rules: "Respect each other's work and provide constructive feedback.",
-    members: USERMOCK,
+    members: [],
     folders: GROUPFOLDERMOCK
   }
 ];

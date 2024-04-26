@@ -16,6 +16,7 @@ import Group from './pages/group/Group';
 import Groups from './pages/groups/Groups';
 import GroupSettings from './pages/group/GroupSettings';
 import { GroupsProvider } from './context/GroupsContext';
+import { GroupProvider } from './context/GroupContext';
 
 
 
@@ -130,7 +131,9 @@ function App() {
           <ArtworkProvider>
             <FeedProvider>
               <GroupsProvider>
-                <RouterProvider router={router} />
+                <GroupProvider>
+                  <RouterProvider router={router} />
+                </GroupProvider>
               </GroupsProvider>
             </FeedProvider>
           </ArtworkProvider>
