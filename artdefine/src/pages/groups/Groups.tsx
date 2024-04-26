@@ -1,18 +1,35 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CreateGroupModal from "../../components/Create-group-modal";
 import Tabs from "../../components/Tabs";
 import GroupCard from "../../components/group/GroupCard";
 import GROUPMOCK from "../../mock/GroupMock";
+import { GroupsContext, useGroups } from "../../context/GroupsContext";
+import { GroupModel } from "../../model/GroupModel";
 
 export default function Groups() {
     const [openModal, setOpenModal] = useState<boolean>(false);
     const [showMyGroups, setShowMyGroups] = useState<boolean>(true);
     const [showFindGroups, setShowFindGroups] = useState<boolean>(false);
-    const handleCreateClick = () => {
+    const { findUsersGroups, groups } = useContext(GroupsContext) || {};
+    const id = '1';// temp id 1
+
+    useEffect(() => {
+        const fetchUserGroups = async () => {
+          if (findUsersGroups) {
+            await findUsersGroups(id ?? ""); 
+          }
+        };
+    
+        fetchUserGroups();
+      }, [id, findUsersGroups]);
+
+      const handleCreateClick = () => {
         setOpenModal(true);
     };
-
-    const JoinedGroupList = GROUPMOCK.map( group => <GroupCard group={group} key={group.id} />);
+    
+    const JoinedGroupList = groups !== undefined ? groups.map( group => <GroupCard group={group} key={group.id} />) : 'no groups - placeholder';
+    
+    //implement search feature
     const FoundGroupList = GROUPMOCK.map( group => <GroupCard group={group} key={group.id} />);
     return (
         <>
@@ -40,9 +57,6 @@ export default function Groups() {
 
             {showMyGroups && 
                 <div className="groups-list">
-                    {JoinedGroupList}
-                    {JoinedGroupList}
-                    {JoinedGroupList}
                     {JoinedGroupList}
                 </div>
             }

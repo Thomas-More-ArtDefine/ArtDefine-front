@@ -168,6 +168,16 @@ export const getGroupsByVisibility = async (query:groupVisibility, amount: numbe
   }
 };
 
+export const getGroupsByUserId = async (id:string): Promise<GroupModel[]> => {
+  try {
+    const response = await api.get(`/users/`+id+'/groups');
+    return response.data;
+  } catch (error) {
+    console.error("Error while fetching one data:", error);
+    throw error;
+  }
+};
+
 
 export const postGroup = async (group:CreateGroupModel, callback:Function): Promise<void|GroupModel> => {
   try {
