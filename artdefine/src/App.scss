@@ -1419,11 +1419,13 @@ div.feed-entry{
 div.feed{
   margin-top: 100px;
   
-  div.no-posts{
-    margin: 35vh 0;
-    font-family: 'EavesSansHeavy';
-    color: $color-secondary;
-  }
+  
+}
+
+div.no-posts , div.no-posts-folder{
+  margin: 100px 0;
+  font-family: 'EavesSansHeavy';
+  color: $color-secondary;
 }
 
 // groups
@@ -1762,6 +1764,28 @@ button{
     width: 160px;
     border-radius: $corner-radius;
     margin-top: 8px;
+  }
+  .description{
+    background-color: $canvas-white-light;
+    border-radius: $corner-radius;
+    margin-top: 18px;
+    padding: 8px;
+    .title{
+      background-color: $canvas-white-dark;
+      border-radius: $corner-radius-sm;
+      padding: 8px;
+      text-align: start;
+      font-family: 'EavesSansHeavy';
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: $purple-dark;
+    }
+    .content{
+      padding: 8px;
+      text-align: start;
+      font-family: 'EavesSansBook';
+      color: $midnight-blue;
+    }
   }
 }
 
