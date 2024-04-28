@@ -42,8 +42,8 @@ const Gallery: React.FC<{folders: Folder[]}> = ({folders}) => {
             <UnderlinedTitleSmall icon={true} title={folders[activeFolder].folder_name} set={setOpenModal} />
             {/* <button className="flex justify-spacebetween align-center"><span>Submit</span><i className="material-icons">upload</i></button> */}
             {folders[activeFolder].folder_description !== '' ?
-            (<div className="description">
-            <div className="title">Description</div>
+            (<div className="description detail-card">
+            <div className="card-title">Description</div>
             <div className="content">{folders[activeFolder].folder_description}</div>
           </div>)
             :

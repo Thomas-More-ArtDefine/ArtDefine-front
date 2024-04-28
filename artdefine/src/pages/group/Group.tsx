@@ -6,6 +6,7 @@ import GroupHome from "../../components/group/GroupHome";
 import Gallery from "../../components/general/Gallery";
 import { GroupContext } from "../../context/GroupContext";
 import placeholderBanner from "../../assets/images/mock-banner-pic.png"
+import GroupDetails from "../../components/group/GroupDetails";
 
 export default function Group() {
 
@@ -37,7 +38,7 @@ export default function Group() {
                     {currentStep === "Home" && <GroupHome group={group}/>}
                     {currentStep === "Gallery" && <Gallery folders={group.folders}/>}
                     {/* {currentStep === "Chat" && <div>Chat</div>} */}
-                    {currentStep === "Details" && <div>details page</div>}
+                    {currentStep === "Details" && <GroupDetails group={group}/>}
                     
                     </div>
                 </div>

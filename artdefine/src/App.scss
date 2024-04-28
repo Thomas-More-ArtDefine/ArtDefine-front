@@ -1758,6 +1758,24 @@ button{
   }
 }
 
+.detail-card{
+  background-color: $canvas-white-light;
+  border-radius: $corner-radius;
+  margin-top: 18px;
+  padding: 8px;
+  .card-title{
+    background-color: $canvas-white-dark;
+    border-radius: $corner-radius-sm;
+    padding: 8px;
+    text-align: start;
+    font-family: 'EavesSansHeavy';
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: $purple-dark;
+  }
+}
+
+
 .gallery{
   button{
     height: 40px;
@@ -1766,20 +1784,8 @@ button{
     margin-top: 8px;
   }
   .description{
-    background-color: $canvas-white-light;
-    border-radius: $corner-radius;
-    margin-top: 18px;
-    padding: 8px;
-    .title{
-      background-color: $canvas-white-dark;
-      border-radius: $corner-radius-sm;
-      padding: 8px;
-      text-align: start;
-      font-family: 'EavesSansHeavy';
-      font-size: 20px;
-      margin-bottom: 8px;
-      color: $purple-dark;
-    }
+    
+    
     .content{
       padding: 8px;
       text-align: start;
@@ -1855,5 +1861,31 @@ button{
     font-family: 'EavesSansBook';
     font-size: 16px;
     width: 100%;
+  }
+}
+
+.group-details{
+  width: 480px;
+  margin: auto;
+}
+
+tr{
+  td{
+    text-align: start;
+    width: 25vw;
+    font-family: 'EavesSansBook';
+    color: $midnight-blue;
+
+    &.table-title{
+      font-family: 'EavesSansHeavy';
+    }
+
+    a{
+      color: $sunset-red;
+
+      &:hover{
+        color: $sunset-red-dark;
+      }
+    }
   }
 }

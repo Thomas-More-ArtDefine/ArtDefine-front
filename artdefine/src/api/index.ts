@@ -43,7 +43,6 @@ export const getAllUsers = async (): Promise<User[]> => {
     const response = await api.get('/users');
     console.log('fire in the hole')
     console.log('api response', response.data)
-    
     return response.data;
   } catch (error) {
     console.error("Error while fetching all data:", error);
@@ -51,9 +50,10 @@ export const getAllUsers = async (): Promise<User[]> => {
   }
 };
 
-export const getOne = async (id: string): Promise<User> => {
+export const getUserById = async (id: string): Promise<User> => {
   try {
     const response = await api.get(`/users/${id}`);
+    
     return response.data;
   } catch (error) {
     console.error("Error while fetching one data:", error);
