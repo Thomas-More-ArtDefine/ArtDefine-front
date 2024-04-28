@@ -3,13 +3,14 @@ import { ReactComponent as ArrowIcon } from "../../assets/vectors/arrow-down-yel
 import { ReactComponent as DotsIcon } from "../../assets/vectors/dots-yellow.svg";
 import Dropdown from "../general/Dropdown";
 import { DropdownButtonModel } from "../../model/DropdownButtonsModel";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const GroupBanner: React.FC<{
   name: string;
   bannerUrl: string;
   alt: string;
-}> = ({ name, bannerUrl: src, alt }) => {
+  handleStepChange?: React.Dispatch<React.SetStateAction<string>>;
+}> = ({ name, bannerUrl: src, alt, handleStepChange:setCurrentStep }) => {
   const [openDropdown, setOpenDropdown] = useState<boolean>(false);
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
@@ -27,7 +28,7 @@ const GroupBanner: React.FC<{
       class: "navigate",
       text: "Group details",
       icon: "pending",
-      function: () => {navigate("/group/"+id);}
+      function: () => {setCurrentStep? setCurrentStep('Details') : navigate("/group/"+id, {state: {state: "Details"}});}
     },
     {
       divider:false,

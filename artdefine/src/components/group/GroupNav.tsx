@@ -22,19 +22,19 @@ const GroupNav: React.FC<{handleStepChange: React.Dispatch<React.SetStateAction<
   };
 
   // when resizing to, or starting from (min-width: 992px) set state to "Details"
-  useEffect(() => {
-    const handleResize = ():void => {
-      if (window.innerWidth >= 992) {
-        setCurrentStep("Home");
-      }
-    };
+  // useEffect(() => {
+  //   const handleResize = ():void => {
+  //     if (window.innerWidth >= 992) {
+  //       setCurrentStep("Home");
+  //     }
+  //   };
 
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  //   window.addEventListener("resize", handleResize);
+  //   handleResize();
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
 
   return (
     <>

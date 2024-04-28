@@ -10,7 +10,6 @@ import { GroupContext } from "../../context/GroupContext";
 export default function GroupSettings() {
     const navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
-    //const [group, setGroup] = useState<GroupModel>(GROUPMOCK[0]);
     const [currentStep, setCurrentStep] = useState("Menu");
     const { findGroup, group } = useContext(GroupContext) || {};
 
