@@ -127,9 +127,9 @@ export const getGroupsByName = async (query:string, amount: number, skip: number
   }
   
   try {
-    const response: any[] = await api.get(`/groups/search/name/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`);
+    const response = await api.get(`/groups/search/name/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`);
     // response[0] = groups, response[1] = total count in database
-    return response;
+    return response.data;
   } catch (error) {
     console.error("Error while fetching one data:", error);
     throw error;
