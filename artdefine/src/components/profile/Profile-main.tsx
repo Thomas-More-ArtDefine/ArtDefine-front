@@ -1,6 +1,6 @@
-import Banner from "./bannerAndProfileImage/Banner";
-import mockBannerPic from "../assets/images/mock-banner-pic.png";
-import mockprofilePic from "../assets/images/mock-profile-pic.png";
+import Banner from "../bannerAndProfileImage/Banner";
+import mockBannerPic from "../../assets/images/mock-banner-pic.png";
+import mockprofilePic from "../../assets/images/mock-profile-pic.png";
 
 const ProfileMain: React.FC<{ rank: number }> = ({ rank }) => {
   return (

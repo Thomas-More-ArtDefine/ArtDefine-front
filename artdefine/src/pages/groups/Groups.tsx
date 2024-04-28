@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import CreateGroupModal from "../../components/Create-group-modal";
-import Tabs from "../../components/Tabs";
-import GroupCard from "../../components/group/GroupCard";
+import CreateGroupModal from "../../components/group/Create-group-modal";
+import Tabs from "../../components/general/Tabs";
+import GroupCard from "../../components/cards/GroupCard";
 import { GroupsContext } from "../../context/GroupsContext";
 
 export default function Groups() {

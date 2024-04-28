@@ -2,7 +2,7 @@ import { GroupModel } from "../model/GroupModel";
 import profilePic from "../assets/images/mock-profile-pic.png";
 import src from "../assets/images/mock-banner-pic.png";
 import USERMOCK from "./UserMock";
-import { GroupJoin, groupVisibility } from "../components/Create-group-modal";
+import { GroupJoin, groupVisibility } from "../components/group/Create-group-modal";
 import GROUPFOLDERMOCK from "./GroupFolderMock";
 
 

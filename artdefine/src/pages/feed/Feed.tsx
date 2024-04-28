@@ -1,6 +1,6 @@
 import { useFeed } from "../../context/FeedContext";
 import React, { useState } from 'react';
-import ArtworkCard from "../../components/Artwork-card";
+import ArtworkCard from "../../components/cards/Artwork-card";
 
 
 

@@ -1,7 +1,7 @@
 import { Folder } from "../../model/FolderModel";
 import { GroupModel } from "../../model/GroupModel";
 import { User } from "../../model/userModel";
-import GroupCard from "../group/GroupCard";
+import GroupCard from "../cards/GroupCard";
 import profilePic from "../../assets/images/mock-profile-pic.png"
 
 const ArtworkInfo: React.FC<{title:string,user:User,description:string, folders:Folder[]}> = ({title,user,description,folders}) => {

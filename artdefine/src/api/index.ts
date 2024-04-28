@@ -6,7 +6,7 @@ import POSTMOCK from "../mock/PostMock";
 import FEEDMOCK from "../mock/FeedMock";
 import { GroupModel } from "../model/GroupModel";
 import { CreateGroupModel } from "../model/CreateGroupModel";
-import { GroupJoin, groupVisibility } from "../components/Create-group-modal";
+import { GroupJoin, groupVisibility } from "../components/group/Create-group-modal";
 
 export enum orderBy {
   DESC = "DESC",

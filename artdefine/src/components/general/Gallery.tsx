@@ -1,12 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import { Folder } from "../../model/FolderModel";
 import { useState } from "react";
 import UnderlinedTitleSmall from "./UnderlinedTitledSmall";
-import ArtworkCard from "../Artwork-card";
+import ArtworkCard from "../cards/Artwork-card";
 import GalleryFolderModal from "./GalleryFolderModal";
 
 const Gallery: React.FC<{folders: Folder[]}> = ({folders}) => {
-    const navigate = useNavigate();
     const [activeFolder, setActiveFolder] = useState<number>(0);
     const [openModal, setOpenModal] = useState<boolean>(false);
     // sort folders on order

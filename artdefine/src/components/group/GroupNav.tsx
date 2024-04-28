@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CatButton from "../buttons/CatBotton";
+import CatButton from "../general/buttons/CatBotton";
 import { ReactComponent as HomeIcon } from "../../assets/vectors/home-solid-black.svg";
 import { ReactComponent as GalleryIcon } from "../../assets/vectors/gallery-solid-black.svg";
 import { ReactComponent as ChatIcon } from "../../assets/vectors/chat-solid-black.svg";

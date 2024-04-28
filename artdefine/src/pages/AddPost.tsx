@@ -1,4 +1,4 @@
-import CatButton from "../components/buttons/CatBotton";
+import CatButton from "../components/general/buttons/CatBotton";
 import { ReactComponent as CrossIcon } from "../assets/Vectors/cross-black.svg";
 import React, { useEffect, useState } from "react";
 import UploadItemForPost from "../components/addPostFlow/UploadItemForPost";

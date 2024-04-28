@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ReactComponent as ArrowIcon } from "../../assets/vectors/arrow-down-yellow.svg";
 import { ReactComponent as DotsIcon } from "../../assets/vectors/dots-yellow.svg";
-import Dropdown from "../Dropdown";
+import Dropdown from "../general/Dropdown";
 import { DropdownButtonModel } from "../../model/DropdownButtonsModel";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
