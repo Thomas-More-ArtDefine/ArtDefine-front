@@ -28,7 +28,8 @@ const GroupBanner: React.FC<{
       class: "navigate",
       text: "Group details",
       icon: "pending",
-      function: () => {setCurrentStep? setCurrentStep('Details') : navigate("/group/"+id, {state: {state: "Details"}});}
+      function: () => {setCurrentStep? setCurrentStep('Details') : navigate("/group/"+id, {state: {state: "Details"}});
+                        setOpenDropdown(false)}
     },
     {
       divider:false,
