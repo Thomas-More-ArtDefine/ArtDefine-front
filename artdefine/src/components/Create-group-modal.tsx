@@ -1,8 +1,7 @@
-import { useState } from 'react';
-import { postGroup } from '../api';
-import { GroupModel } from '../model/GroupModel';
+import { useContext, useState } from 'react';
 import { CreateGroupModel } from '../model/CreateGroupModel';
 import { useNavigate } from 'react-router-dom';
+import { GroupContext } from '../context/GroupContext';
 
 export enum groupVisibility {
     PRIVATE = "private",
@@ -25,10 +24,11 @@ export default function CreateGroupModal({
     const [visibility, setVisibility] = useState(false); // false = private, true = public
     const [join, setJoin] = useState(GroupJoin.INVITE);
     const [maxUserLimit, setMaxUserLimit] = useState(10);
+    const { postNewGroup } = useContext(GroupContext) || {};
     const navigate = useNavigate();
 
 
-    const handleCreateClick =async () => {
+    const handleCreateClick = async () => {
         let groupvisibility: groupVisibility =groupVisibility.PRIVATE;
         if (visibility) {
             groupvisibility = groupVisibility.PUBLIC;
@@ -40,11 +40,14 @@ export default function CreateGroupModal({
             creator_id: "1",
             group_setting_join: join,
         };
-        
-        postGroup(value,function(response:GroupModel){
-            navigate("/group/"+response.id);
-        });
 
+        
+        if (postNewGroup) {
+            const data = await postNewGroup(value);
+            if (data) {
+               navigate("/group/"+data); 
+            }
+        }
         closeModal(false);
     };
     
@@ -63,7 +66,7 @@ export default function CreateGroupModal({
                         <h3>New Group</h3>
                         <div className="divider red-dark"></div>
                     </div>
-                    <form>
+                    <div className='form'>
                         <div className='groupname'>
                             <label htmlFor="groupname">Group name</label>
                             <input id='groupname' required name="groupname"  value={groupname} onChange={(e) => setGroupname(e.target.value)} type="text" placeholder='GroupName' />
@@ -117,7 +120,7 @@ export default function CreateGroupModal({
                             }}>Cancel</button>
                             <button className='create' onClick={handleCreateClick}>Create</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
             

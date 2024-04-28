@@ -127,9 +127,9 @@ export const getGroupsByName = async (query:string, amount: number, skip: number
   }
   
   try {
-    const response: any[] = await api.get(`/groups/search/name/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`);
+    const response = await api.get(`/groups/search/name/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`);
     // response[0] = groups, response[1] = total count in database
-    return response;
+    return response.data;
   } catch (error) {
     console.error("Error while fetching one data:", error);
     throw error;
@@ -189,20 +189,21 @@ export const getGroupsByUserId = async (id:string): Promise<GroupModel[]> => {
 };
 
 
-export const postGroup = async (group:CreateGroupModel, callback:Function): Promise<void|GroupModel> => {
+export const postGroup = async (group:CreateGroupModel): Promise<any> => {
   try {
-    api.post('/groups', { 
+    const response = await api.post('/groups', { 
             group_name: group.group_name,
             group_userlimit: group.group_userlimit,
             group_setting_visibility: group.group_setting_visibility,
             creator_id: group.creator_id,
             group_setting_join: group.group_setting_join,
      })
-    .then(res => {
-      // console.log(res);
-      // console.log(res.data);
-      callback(res.data)
-    })
+    // .then(res => {
+    //   // console.log(res);
+    //   // console.log(res.data);
+    //   callback(res.data)
+    // })
+    return response;
     
   } catch (error) {
     console.error("Error while fetching one data:", error);

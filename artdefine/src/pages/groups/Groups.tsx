@@ -2,15 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import CreateGroupModal from "../../components/Create-group-modal";
 import Tabs from "../../components/Tabs";
 import GroupCard from "../../components/group/GroupCard";
-import GROUPMOCK from "../../mock/GroupMock";
-import { GroupsContext, useGroups } from "../../context/GroupsContext";
-import { GroupModel } from "../../model/GroupModel";
+import { GroupsContext } from "../../context/GroupsContext";
 
 export default function Groups() {
     const [openModal, setOpenModal] = useState<boolean>(false);
     const [showMyGroups, setShowMyGroups] = useState<boolean>(true);
     const [showFindGroups, setShowFindGroups] = useState<boolean>(false);
-    const { findUsersGroups, groups } = useContext(GroupsContext) || {};
+    const { findUsersGroups, joinedGroups, findGroupsByName, foundGroups } = useContext(GroupsContext) || {};
     const id = '1';// temp id 1
 
     useEffect(() => {
@@ -21,22 +19,32 @@ export default function Groups() {
         };
     
         fetchUserGroups();
-      }, [id, findUsersGroups]);
+    }, [id, findUsersGroups]);
 
-      const handleCreateClick = () => {
+    const findByName = async (query: string) => {
+        console.log(query);
+        if (findGroupsByName) {
+            console.log(await findGroupsByName(query ?? ''));
+        }
+    };
+
+
+    const handleCreateClick = () => {
         setOpenModal(true);
     };
     
-    const JoinedGroupList = groups !== undefined ? groups.map( group => <GroupCard group={group} key={group.id} />) : 'no groups - placeholder';
-    
-    //implement search feature
-    const FoundGroupList = GROUPMOCK.map( group => <GroupCard group={group} key={group.id} />);
+    const JoinedGroupList = joinedGroups !== undefined && joinedGroups.length !== 0 ? joinedGroups.map( group => <GroupCard group={group} key={group.id} />) : "You haven't joined any groups yet";
+    const FoundGroupList = foundGroups !== undefined && foundGroups.length !== 0 ? foundGroups.map( group => <GroupCard group={group} key={group.id} />): 'no groups found';
     return (
         <>
         {openModal && <CreateGroupModal closeModal={setOpenModal} />}
         <div className="max-size white-card">
             
             < Tabs NameTab1="Joined Groups" NameTab2="Find Groups" ShowTab1={showMyGroups} setShowTab1={setShowMyGroups} ShowTab2={showFindGroups} setShowTab2={setShowFindGroups} / >
+            
+            
+            {showMyGroups && 
+            <>
             <div className="flex justify-spacebetween align-center search-section">
                 <div className='SearchBar'>
                     <input className='search' type="text" placeholder='Search...' />
@@ -44,14 +52,14 @@ export default function Groups() {
                 </div>
                 <i className="material-icons filter font">tune</i>
             </div>
-            
-            {showMyGroups && 
-                <div className="create-group-button flex align-center justify-center" onClick={() => handleCreateClick()}>
+            <div className="create-group-button flex align-center justify-center" onClick={() => handleCreateClick()}>
                     <div className="flex justify-center align-center font eaves book fs18 canary-dark">
                         <i className="material-icons filter">add</i>
                         <span> Create a group</span>
                     </div>
                 </div>
+            </>
+                
             }
             
 
@@ -61,9 +69,19 @@ export default function Groups() {
                 </div>
             }
             {showFindGroups && 
-                <div className="groups-list">
+            <>
+            <div className="flex justify-spacebetween align-center search-section">
+                <div className='SearchBar'>
+                    <input className='search' type="text" placeholder='Search...' onChange={e => findByName(e.target.value)} />
+                    <i className="material-icons">search</i>
+                </div>
+                <i className="material-icons filter font">tune</i>
+            </div>
+            <div className="groups-list">
                     {FoundGroupList}
                 </div>
+            </>
+                
             }
         </div>
         

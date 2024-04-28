@@ -1560,7 +1560,8 @@ div.modalContainer{
       margin-bottom: 9px;
       
     }
-    form{
+    div.form{
+      margin-top: 10px;
       div.groupname{
         @include textInput($color-white, $midnight-blue, $midnight-blue, 100%, 40px);
       }
