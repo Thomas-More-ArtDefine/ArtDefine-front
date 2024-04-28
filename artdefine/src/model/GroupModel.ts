@@ -1,5 +1,6 @@
 import { GroupJoin, groupVisibility } from "../components/Create-group-modal";
 import { Folder } from "./FolderModel";
+import { GroupMember } from "./GroupMember";
 import { User } from "./userModel";
 
 export interface GroupModel{
@@ -18,6 +19,6 @@ export interface GroupModel{
     creator_id: string;
     group_links: string[];
     group_rules: string;
-    members: User[];
+    members: GroupMember[];
     folders: Folder[];
 }

@@ -2,19 +2,21 @@ import { User } from "../../model/userModel";
 import UserSmallCard from "./UserSmallCard";
 import { ReactComponent as ArrowIcon } from "../../assets/vectors/arrow-right-black-.svg";
 import Card from "./Card";
+import { GroupMember } from "../../model/GroupMember";
 
 const Content: React.FC<{
-  users: User[];
+  members: GroupMember[];
   maxUsers?: number;
 }> = ({
-  users,
+  members,
   maxUsers = 12, // optional
 }) => {
+  console.log(members)
   return (
     <>
         <div className=" list">
-          {users.slice(0, maxUsers).map((user, index) => (
-            <UserSmallCard key={index} user={user} />
+          {members.slice(0, maxUsers).map((member, index) => (
+            <UserSmallCard key={index} user={member.member} />
           ))}
           
         </div>
@@ -24,20 +26,20 @@ const Content: React.FC<{
 
 const UsersCard: React.FC<{
   title: string;
-  users: User[];
+  members: GroupMember[];
   maxUsers?: number;
   hasMore?: boolean;
   moreClickHandler?: () => void;
 }> = ({
   title,
-  users,
+  members,
   maxUsers = 12, // optional
   hasMore = false, // optional
   moreClickHandler = () => console.log("not yet implemented"), // optional
 }) => {
   return (
    <>
-   <Card title={title} cssProperty={"users-card"} hasMore={hasMore} moreClickHandler={moreClickHandler} content={<Content users={users} maxUsers={maxUsers} />} />
+   <Card title={title} cssProperty={"users-card"} hasMore={hasMore} moreClickHandler={moreClickHandler} content={<Content members={members} maxUsers={maxUsers} />} />
    </>
   );
 };

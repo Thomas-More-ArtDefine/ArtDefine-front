@@ -3,6 +3,7 @@ import TextCard from "../cards/TextCard";
 import UsersCard from "../cards/UsersCard";
 
 const GroupHome: React.FC<{group:GroupModel}> = ({group} ) => {
+    console.log(group.members);
     return (
         <>
         <div className="about">
@@ -12,7 +13,7 @@ const GroupHome: React.FC<{group:GroupModel}> = ({group} ) => {
             <TextCard title="Rules" text={group.group_rules}/>
         </div>
         <div className="members">
-            <UsersCard title="Members" users={group.members} maxUsers={8} hasMore={true} />
+            <UsersCard title="Members" members={group.members} maxUsers={8} hasMore={true} />
         </div>
         </>
     );
