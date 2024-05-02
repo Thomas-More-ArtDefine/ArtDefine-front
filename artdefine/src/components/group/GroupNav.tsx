@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CatButton from "../buttons/CatBotton";
+import CatButton from "../general/buttons/CatBotton";
 import { ReactComponent as HomeIcon } from "../../assets/vectors/home-solid-black.svg";
 import { ReactComponent as GalleryIcon } from "../../assets/vectors/gallery-solid-black.svg";
 import { ReactComponent as ChatIcon } from "../../assets/vectors/chat-solid-black.svg";
@@ -22,19 +22,19 @@ const GroupNav: React.FC<{handleStepChange: React.Dispatch<React.SetStateAction<
   };
 
   // when resizing to, or starting from (min-width: 992px) set state to "Details"
-  useEffect(() => {
-    const handleResize = ():void => {
-      if (window.innerWidth >= 992) {
-        setCurrentStep("Home");
-      }
-    };
+  // useEffect(() => {
+  //   const handleResize = ():void => {
+  //     if (window.innerWidth >= 992) {
+  //       setCurrentStep("Home");
+  //     }
+  //   };
 
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  //   window.addEventListener("resize", handleResize);
+  //   handleResize();
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
 
   return (
     <>

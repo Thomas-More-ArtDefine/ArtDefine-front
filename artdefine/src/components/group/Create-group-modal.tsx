@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
-import { CreateGroupModel } from '../model/CreateGroupModel';
+import { CreateGroupModel } from '../../model/CreateGroupModel';
 import { useNavigate } from 'react-router-dom';
-import { GroupContext } from '../context/GroupContext';
+import { GroupContext } from '../../context/GroupContext';
 
 export enum groupVisibility {
     PRIVATE = "private",

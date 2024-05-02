@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { GroupModel } from "../../../model/GroupModel";
-import { GroupJoin, groupVisibility } from "../../Create-group-modal";
+import { GroupJoin, groupVisibility } from "../Create-group-modal";
 import UnderlinedTitle from "../../general/UnderlinedTitled";
 
 const GroupSettingsPrivacy: React.FC<{group:GroupModel, setCurrentStep: React.Dispatch<React.SetStateAction<string>>}> = ({group,setCurrentStep} ) => {

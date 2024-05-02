@@ -1,10 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { GroupJoin, groupVisibility } from "../Create-group-modal";
+import { GroupJoin, groupVisibility } from "../group/Create-group-modal";
 
 const GroupJoinButton: React.FC<{joined:boolean, groupjoin:GroupJoin, visibility:groupVisibility, src:string}> = ({joined,groupjoin,visibility,src} ) => {
     const navigate = useNavigate();
-    
-    
     
     let button;
     if (groupjoin === GroupJoin.OPEN && joined === false) {
@@ -15,8 +13,14 @@ const GroupJoinButton: React.FC<{joined:boolean, groupjoin:GroupJoin, visibility
         button = <div className="join-button inspect" onClick={() => navigate("/group/"+src)}><i className="material-icons">pageview</i></div>;
     }else if (joined === true) {
         button = <div className="join-button" onClick={() => navigate("/group/"+src)}><i className="material-icons">arrow_right</i></div>;
-    }else if (visibility === groupVisibility.PRIVATE) {
+    }
+    
+    if (visibility === groupVisibility.PRIVATE) {
         button = <div className="join-button private"><i className="material-icons">lock</i></div>;
+    }
+
+    if (joined) {
+        button = <div className="join-button inspect"><i className="material-icons" onClick={() => navigate("/group/"+src)}>chevron_right</i></div>;
     }
     
     return (

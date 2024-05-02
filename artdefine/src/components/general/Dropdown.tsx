@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { DropdownButtonModel } from "../model/DropdownButtonsModel";
+import { DropdownButtonModel } from "../../model/DropdownButtonsModel";
 
 const Dropdown: React.FC<{ openDropdown: React.Dispatch<React.SetStateAction<boolean>>; buttonModels: DropdownButtonModel[]; }> = ({ openDropdown, buttonModels }) => {
     // const navigate = useNavigate();

@@ -13,9 +13,8 @@ const GalleryFolderModal: React.FC<{openMenu: React.Dispatch<React.SetStateActio
                         <img src={placeholder} alt="" />
                         <div>{folder.folder_name}</div>
                     </div>
+            }
         }
-    }
-        
     )
     
     

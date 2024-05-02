@@ -1,4 +1,4 @@
-import { GroupJoin, groupVisibility } from "../components/Create-group-modal";
+import { GroupJoin, groupVisibility } from "../components/group/Create-group-modal";
 import { Folder } from "./FolderModel";
 import { GroupMember } from "./GroupMember";
 import { User } from "./userModel";

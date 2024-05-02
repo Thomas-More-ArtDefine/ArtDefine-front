@@ -1,9 +1,13 @@
 import { GroupModel } from "../../model/GroupModel";
 import GroupJoinButton from "./GroupJoinButton";
 import placeholderpfp from "../../assets/images/mock-profile-pic.png";
+import { useContext } from "react";
+import { GroupsContext } from "../../context/GroupsContext";
 
 const GroupCard: React.FC<{group:GroupModel}> = ({group} ) => {
     const image = (group.group_profile_picture !== null && group.group_profile_picture !== undefined && group.group_profile_picture !== '') ? <img src={group.group_profile_picture} alt="" className="gpfp" /> : <img src={placeholderpfp} alt="" className="gpfp" />
+    const { joinedGroups } = useContext(GroupsContext) || {};
+    
     return (
         <>
         <div className="group-card">
@@ -20,7 +24,7 @@ const GroupCard: React.FC<{group:GroupModel}> = ({group} ) => {
                 
                 <div className="description">{group.group_bio}</div>
             </div>
-            <GroupJoinButton joined={false} groupjoin={group.group_setting_join} visibility={group.group_setting_visibility} src={group.id} />
+            <GroupJoinButton joined={joinedGroups?.find(joinedgroup => {return joinedgroup.id === group.id;})? true : false} groupjoin={group.group_setting_join} visibility={group.group_setting_visibility} src={group.id} />
         </div>
         </>
     );

@@ -1,4 +1,4 @@
-import { GroupJoin, groupVisibility } from "../components/Create-group-modal";
+import { GroupJoin, groupVisibility } from "../components/group/Create-group-modal";
 
 export interface CreateGroupModel{
     group_name: string;

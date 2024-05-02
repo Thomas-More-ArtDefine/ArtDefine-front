@@ -1,4 +1,4 @@
-import ProfileMain from "../../components/Profile-main";
+import ProfileMain from "../../components/profile/Profile-main";
 import { useAuth } from "../../context/AuthContext";
 
 
