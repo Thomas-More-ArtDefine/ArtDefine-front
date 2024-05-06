@@ -80,7 +80,8 @@ const MobileMenu: React.FC<{
               </button>
             </li>
             <li className="SearchBar">
-              <input className="search" type="text" placeholder="Search..." />
+              <div className='trigger clickable' onClick={() => {navigate("/search"); closeMenu(false);}}></div>
+              <input disabled className="search" type="text" placeholder="Search..." />
               <i className="material-icons">search</i>
             </li>
             <div className="divider" />
