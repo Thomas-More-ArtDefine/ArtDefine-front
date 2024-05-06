@@ -22,11 +22,14 @@ const UploadItemForPost: React.FC<{
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0] || null;
     if (file) {
-      const fileURL = URL.createObjectURL(file);
-      setArtwork({...artwork, post_content: fileURL});
-        setSrc(fileURL);
-      setIsChanged(true);
-      
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result as string;
+        setArtwork({...artwork, post_content: base64String});
+        setSrc(base64String);
+        setIsChanged(true);
+      };
+      reader.readAsDataURL(file);
     }
   };
 

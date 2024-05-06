@@ -1,6 +1,7 @@
 import React, { createContext, useState, useMemo, useContext, useEffect, ReactNode } from 'react';
 import { getAllUsers } from '../api';
 import { User } from '../model/userModel';
+import USERMOCK from '../mock/UserMock';
 
 
 interface AuthContextType {
@@ -20,6 +21,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         const fetchData = async () => {
             const data = await getAllUsers();
             console.log("Users in Context:",data);
+           
             setUsers(data);
             setUser(data[0]);
         };
