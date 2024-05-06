@@ -3,23 +3,24 @@ import CreateGroupModal from "../../components/group/Create-group-modal";
 import Tabs from "../../components/general/Tabs";
 import GroupCard from "../../components/cards/GroupCard";
 import { GroupsContext } from "../../context/GroupsContext";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Groups() {
     const [openModal, setOpenModal] = useState<boolean>(false);
     const [showMyGroups, setShowMyGroups] = useState<boolean>(true);
     const [showFindGroups, setShowFindGroups] = useState<boolean>(false);
     const { findUsersGroups, joinedGroups, findGroupsByName, foundGroups } = useContext(GroupsContext) || {};
-    const id = '1';// temp id 1
+    const {user} = useAuth();
 
     useEffect(() => {
-        const fetchUserGroups = async () => {
-          if (findUsersGroups) {
-            await findUsersGroups(id ?? ""); 
-          }
-        };
+            const fetchUserGroups = async () => {
+                if (findUsersGroups && user) {
+                    await findUsersGroups(user.id ?? ""); 
+                }
+            };
     
-        fetchUserGroups();
-    }, [id, findUsersGroups]);
+            fetchUserGroups();
+    }, [ findUsersGroups, user]);
 
     const findByName = async (query: string) => {
         console.log(query);

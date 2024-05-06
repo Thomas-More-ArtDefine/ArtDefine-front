@@ -19,7 +19,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     useEffect(() => {
         const fetchData = async () => {
             const data = await getAllUsers();
-            console.log("in Context:",data);
+            console.log("Users in Context:",data);
             setUsers(data);
             setUser(data[0]);
         };

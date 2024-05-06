@@ -2,6 +2,7 @@ import { ReactNode, createContext, useCallback, useContext, useEffect, useMemo, 
 import { Artwork, visibility } from "../model/PostModel";
 import { getArtwork, postArtwork } from "../api";
 import { User } from "../model/userModel";
+import { useAuth } from "./AuthContext";
 
 
 // export {Typescript}
@@ -23,7 +24,9 @@ export const useArtwork = () => {
   };
 
 export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [artwork, setArtwork] = useState<Artwork>(
+  
+  
+  const [artwork, setArtwork] = useState<Artwork>(
       { 
         id: "0",
         post_content: "", 
@@ -51,6 +54,8 @@ export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children })
 
     const uploadArtwork = useCallback(async (artwork: Artwork): Promise<Artwork | undefined> => {
       try {
+       
+        console.log("Uploading artwork: ", artwork);
          const response = await postArtwork(artwork);
          console.log("Artwork uploaded: ", artwork);
          return response;

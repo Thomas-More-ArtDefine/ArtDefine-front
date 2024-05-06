@@ -87,9 +87,7 @@ export const postArtwork = async (artwork: Artwork): Promise<Artwork> => {
       post_visibility: artwork.post_visibility,
       user_id: artwork.user.id,
       folders: [
-        {
-            "id": "3"
-        }
+      
     ]
     };
     const response = await api.post('/posts', artworkForPost);

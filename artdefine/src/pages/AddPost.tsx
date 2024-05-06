@@ -7,11 +7,13 @@ import { ReactComponent as UploadIcon } from "../assets/vectors/upload-icon-blac
 import { ReactComponent as DetailsIcon } from "../assets/vectors/details-icon-black.svg";
 import { Artwork } from "../model/PostModel";
 import { useArtwork } from "../context/ArtworkContext";
+import { useAuth } from "../context/AuthContext";
 
 export default function AddPost() {
   const [currentStep, setCurrentStep] = useState("Upload");
   const [isChanged, setIsChanged] = useState<boolean>(false);
   const {artwork, setArtwork, uploadArtwork} = useArtwork(); 
+  const {user} = useAuth();
 
   // Handle click events for each tab
   const handleUploadClick = () => {
@@ -48,7 +50,12 @@ export default function AddPost() {
  
 
   const onUpload = () => {
-    uploadArtwork(artwork);
+    if (user) {
+      artwork.user = user;
+      uploadArtwork(artwork);
+    } else {
+      console.log("User not logged in");
+    }
   }
 
   return (
