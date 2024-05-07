@@ -9,8 +9,8 @@ import Layout from './components/Layout';
 import AddPost from './pages/AddPost';
 import { ArtworkProvider } from './context/ArtworkContext';
 import Feed from './pages/feed/Feed';
-import Post from './pages/Post';
-import PostView from './pages/PostView';
+import Post from './pages/post/Post';
+import PostView from './pages/post/PostView';
 import { FeedProvider } from './context/FeedContext';
 import Group from './pages/group/Group';
 import Groups from './pages/groups/Groups';
@@ -18,6 +18,7 @@ import GroupSettings from './pages/group/GroupSettings';
 import { GroupsProvider } from './context/GroupsContext';
 import { GroupProvider } from './context/GroupContext';
 import { UserProvider } from './context/UserContext';
+import PostFeedback from './pages/post/PostFeedback';
 
 
 
@@ -96,6 +97,14 @@ const router = createBrowserRouter([
           {
             path: ':id/view',
             element: <PostView />,
+          },
+          {
+            path: ':id/feedback',
+            element: <PostFeedback />,
+          },
+          {
+            path: ':id/feedback/:feedback_id',
+            element: <PostFeedback />,
           },
         ],
       },

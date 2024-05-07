@@ -1,16 +1,17 @@
-import ArtworkInfo from "../components/artwork/ArtworkInfo";
+import ArtworkInfo from "../../components/artwork/ArtworkInfo";
 import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { ArtworkContext } from "../context/ArtworkContext";
-import { Artwork } from "../model/PostModel";
-import ArtworkContainer from "../components/artwork/Artwork";
+import { ArtworkContext } from "../../context/ArtworkContext";
+import { Artwork } from "../../model/PostModel";
+import ArtworkContainer from "../../components/artwork/Artwork";
 
-export default function Post() {
+export default function PostView() {
   const { id } = useParams<{ id: string }>();
   const { findArtwork } = useContext(ArtworkContext) || {};
   const [artwork, setArtwork] = useState<Artwork | undefined>(undefined);
+  
 
-  // Fetch the artwork data when the component mounts or when the 'id' or 'findArtwork' value changes
+  // Fetch artwork data when the component mounts or when the id or findArtwork function changes
   useEffect(() => {
     const fetchArtwork = async () => {
       if (findArtwork) {
@@ -31,14 +32,10 @@ export default function Post() {
 
   return (
     <>
-      <div className="page artwork-page">
+      <div className="page post-view-page">
         {artwork ? (
-          <>
-          <div className="clickable flex direction-column align-center" onClick={handleClick}>
-            
+        <>
             <ArtworkContainer src={artwork?.post_content} />
-            </div>
-            <div className="artwork-info"><ArtworkInfo title={artwork.post_title} user={artwork.user} description={artwork.post_description} folders={artwork.folders} /></div>
           </>
         ) : (
           <div>Loading...</div>
