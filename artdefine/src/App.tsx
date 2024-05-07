@@ -19,6 +19,7 @@ import { GroupsProvider } from './context/GroupsContext';
 import { GroupProvider } from './context/GroupContext';
 import { UserProvider } from './context/UserContext';
 import PostFeedback from './pages/post/PostFeedback';
+import Search from './pages/search/Search';
 
 
 
@@ -106,6 +107,15 @@ const router = createBrowserRouter([
             path: ':id/feedback/:feedback_id',
             element: <PostFeedback />,
           },
+        ],
+      },
+      {
+        path: '/search',
+        children: [
+          {
+            index: true,
+            element: <Search/>,
+          }
         ],
       },
       {

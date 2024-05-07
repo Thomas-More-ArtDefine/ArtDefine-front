@@ -41,8 +41,9 @@ const Nav: React.FC = () => {
                         <button className="primary has-icon nav" onClick={() => navigate("/add")} ><span>Upload </span><i className="material-icons">upload</i></button>
                     
                     </li>
-                    <li className='SearchBar'>
-                        <input className='search' type="text" placeholder='Search...' />
+                    <li className='SearchBar' >
+                        <div className='trigger clickable' onClick={() => navigate("/search")}></div>
+                        <input disabled className='search' type="text" placeholder='Search...'  />
                         <i className="material-icons">search</i>
                     </li>
                     <li className='navprofile'>

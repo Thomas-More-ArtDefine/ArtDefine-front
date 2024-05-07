@@ -61,6 +61,17 @@ export const getUserById = async (id: string): Promise<User> => {
   }
 };
 
+export const getBasicUserById = async (id: string): Promise<User> => {
+  try {
+    const response = await api.get(`/users/${id}/basic`);
+    
+    return response.data;
+  } catch (error) {
+    console.error("Error while fetching one data:", error);
+    throw error;
+  }
+};
+
 export const getArtwork = async (id: string): Promise<Artwork> => {
   try {
     //TODO: Implement API call
@@ -205,6 +216,21 @@ export const postGroup = async (group:CreateGroupModel): Promise<any> => {
     
   } catch (error) {
     console.error("Error while fetching one data:", error);
+    throw error;
+  }
+};
+
+export const getPostsByTag = async (query:string, amount: number, skip: number, orderby: string): Promise<any[]> => {
+  let filter = orderBy.DESC;
+  if (orderby.toUpperCase() === orderBy.ASC) {
+    filter = orderBy.ASC;
+  }
+  
+  try {
+    const response = await api.get(`/posts/tag/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error while fetching data:", error);
     throw error;
   }
 };
