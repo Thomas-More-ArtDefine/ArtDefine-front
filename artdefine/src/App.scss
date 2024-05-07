@@ -1966,3 +1966,18 @@ tr{
     
   }
 }
+
+.feedback-radial{
+  input{
+    accent-color: $purple-dark;
+    
+    &:checked{
+      accent-color: $sunset-red;
+    }
+  }
+
+  .options{
+    text-align: start;
+  }
+  
+}
