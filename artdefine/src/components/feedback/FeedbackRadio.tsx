@@ -1,6 +1,12 @@
+import { useState } from "react";
 
 const FeedbackRadio: React.FC< { title:string, empty:boolean, options:string[], active?:number }> = ({title, empty, options, active }) => {
-    
+    const [selected, setSelected] = useState<number>(0);
+
+    const handleRadioClick = (val: number) => {
+        setSelected(val);
+    };
+
     let index = 0;
     const mappedoptions = empty?options.map((option) =>{
         index++;
