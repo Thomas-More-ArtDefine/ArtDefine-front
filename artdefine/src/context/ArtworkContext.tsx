@@ -1,15 +1,17 @@
 import { ReactNode, createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { Artwork, visibility } from "../model/PostModel";
-import { getArtwork, postArtwork } from "../api";
+import { getArtwork, getPostsByTag, postArtwork } from "../api";
 import { User } from "../model/userModel";
 
 
 // export {Typescript}
   interface ArtworkContextType {
     artwork: Artwork ;
+    artworks: Artwork[];
     setArtwork: (value: Artwork) => void;
     findArtwork: (id: string) => Promise<Artwork | undefined>;
     uploadArtwork: (artwork: Artwork) => Promise<Artwork | undefined>;
+    findArtworkByTag: (tag: string, amount:number, skip:number) => Promise<Artwork[] | undefined>;
   }
   
 export const ArtworkContext = createContext<ArtworkContextType | null>(null);
@@ -44,6 +46,8 @@ export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children })
       }
     );
 
+    const [artworks, setArtworks] = useState<Artwork[]>([]);
+
     useEffect(() => {
       console.log("artwork: ", artwork);
     }, [artwork]);
@@ -71,8 +75,18 @@ export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children })
       setArtwork(response);
       return response;
     }, []);
+
+    const findArtworkByTag = useCallback(async (tag: string, amount: number, skip: number): Promise<Artwork[] | undefined> => {
+      const fetchData = async (str:string) => {
+        const data = await getPostsByTag(str, amount, skip, 'desc');
+        return data;
+      };
+      const response = await fetchData(tag);
+      setArtworks(response);
+      return response;
+    }, []);
   
-    const value = useMemo(() => ({ artwork, setArtwork,findArtwork, uploadArtwork }), [artwork, setArtwork, findArtwork, uploadArtwork]);
+    const value = useMemo(() => ({ artwork, artworks, setArtwork,findArtwork, uploadArtwork, findArtworkByTag }), [artwork, artworks, setArtwork, findArtwork, uploadArtwork, findArtworkByTag]);
   
     return (
       <ArtworkContext.Provider value={value}>
