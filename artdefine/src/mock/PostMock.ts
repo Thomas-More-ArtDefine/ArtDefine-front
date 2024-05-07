@@ -6,6 +6,7 @@ import FOLDERMOCK from "./FolderMock";
 const POSTMOCK:Artwork[] = [
     {
         id: "1",
+        user_id: "1",
         post_content: src,
         post_title: "Whimsical Woodland",
         post_description: "Venturing into the magical realms of my imagination, where every tree tells a tale. 🌳✨",

@@ -259,6 +259,12 @@ li.SearchBar {
   padding: 0 16px;
   margin: $nav-element-margin;
   height: $nav-element-height;
+  .trigger{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 999999;
+  }
 }
 
 nav.navigation{
@@ -1614,7 +1620,7 @@ div.modalContainer{
 
 div.search-section{
   margin: 16px 0px;
-
+  width: 100%;
   div.SearchBar {
     @include searchbar($canvas-white-light, $purple-dark, $midnight-blue, 320px, $nav-element-height);
     padding: 0 16px;
@@ -1886,6 +1892,22 @@ tr{
       &:hover{
         color: $sunset-red-dark;
       }
+    }
+  }
+}
+
+.search-page{
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+  .feed-btns{
+    padding: 0;
+    min-width: 340px;
+    max-width: 434px;
+    width: auto;
+    button{
+      margin-left: 5px;
+      margin-right: 5px;
     }
   }
 }

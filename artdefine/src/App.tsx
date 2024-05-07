@@ -18,6 +18,7 @@ import GroupSettings from './pages/group/GroupSettings';
 import { GroupsProvider } from './context/GroupsContext';
 import { GroupProvider } from './context/GroupContext';
 import { UserProvider } from './context/UserContext';
+import Search from './pages/search/Search';
 
 
 
@@ -97,6 +98,15 @@ const router = createBrowserRouter([
             path: ':id/view',
             element: <PostView />,
           },
+        ],
+      },
+      {
+        path: '/search',
+        children: [
+          {
+            index: true,
+            element: <Search/>,
+          }
         ],
       },
       {
