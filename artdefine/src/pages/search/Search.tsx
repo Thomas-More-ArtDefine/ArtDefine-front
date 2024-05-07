@@ -1,6 +1,8 @@
 import react, { useContext, useState } from "react";
 import { ArtworkContext } from "../../context/ArtworkContext";
 import ArtworkCard from "../../components/cards/Artwork-card";
+import { UserContext } from "../../context/UserContext";
+import { User } from "../../model/userModel";
 
 
 export default function Search() {
@@ -8,6 +10,8 @@ export default function Search() {
     const [groupActive, setGroupActive] = useState<boolean>(false);
     const [usersActive, setUsersActive] = useState<boolean>(false);
     const { findArtworkByTag, artworks } = useContext(ArtworkContext) || {};
+    const { findBasicUserById } = useContext(UserContext) || {};
+    const users: User[] = [];
     
 
     const handleCategoryButtonClick = (button:string) => {
@@ -33,12 +37,12 @@ export default function Search() {
         }
     };
 
-    const handleInputChange = (e: string) => {
+    const handleInputChange = async (e: string) => {
         console.log(e);
         if (e[0] == "#" && e.length > 1) {
             console.log("=> tag");
             if (findArtworkByTag) {
-                findArtworkByTag(e.slice(1), 5, 0);
+                await findArtworkByTag(e.slice(1), 5, 0);
             }
         }else{
             console.log("=> no tag");
@@ -47,16 +51,17 @@ export default function Search() {
     }
 
     const works = artworks != undefined && artworks.length !== 0 ? artworks.map(
-        artwork =>
-          <ArtworkCard 
-                  src={artwork.post_content} 
-                  title={artwork.post_title}
-                //   creator={artwork.user.user_name}
-                  creator="temp: fix in backend" // user info needed
-                  postid={artwork.id}
-                  key={artwork.id} />
+        artwork => {
+                return <ArtworkCard 
+                src={artwork.post_content} 
+                title={artwork.post_title}
+                creator={artwork.user.user_name}
+                postid={artwork.id}
+                key={artwork.id} />
+        }
+          
       ):
-      ("");
+      (<></>);
 
   return (
     <>
@@ -84,7 +89,8 @@ export default function Search() {
                 </div>            
         </div>
 
-        {
+            {works}
+        {/* {
                   works?.length !== 0 && works ?
                   (works)
                   : works?.length !== 0 ?
@@ -95,7 +101,7 @@ export default function Search() {
                   (
                     <div className="no-posts">Type something to search</div>
                   )
-                }
+                } */}
     </div>
         
     </>

@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { Artwork, visibility } from "../model/PostModel";
-import { getArtwork, getPostsByTag, postArtwork } from "../api";
+import { getArtwork, getBasicUserById, getPostsByTag, postArtwork } from "../api";
 import { User } from "../model/userModel";
 
 
@@ -28,6 +28,7 @@ export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children })
     const [artwork, setArtwork] = useState<Artwork>(
       { 
         id: "0",
+        user_id: "1",
         post_content: "", 
         post_title: "",
         post_description: "",
@@ -79,6 +80,8 @@ export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children })
     const findArtworkByTag = useCallback(async (tag: string, amount: number, skip: number): Promise<Artwork[] | undefined> => {
       const fetchData = async (str:string) => {
         const data = await getPostsByTag(str, amount, skip, 'desc');
+        data.forEach(async (work) => { work.user = await getBasicUserById(work.user_id);});
+        console.log(data);
         return data;
       };
       const response = await fetchData(tag);

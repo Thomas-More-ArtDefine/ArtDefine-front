@@ -10,6 +10,7 @@ export enum visibility {
 
 export interface Artwork {
     id: string,
+    user_id: string,
     post_content: string,
     post_title: string,
     post_description: string,
