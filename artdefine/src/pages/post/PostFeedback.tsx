@@ -17,6 +17,7 @@ export default function PostFeedback() {
             <FeedbackStars title="Give a rating:"  empty={true} />
             <FeedbackRadio title="Select an option:" empty={true} options={['test1', 'test2', 'test3']} />
             <FeedbackOpen title="open title:" empty={true} />
+            <button className="upload-feedback">Upload Feedback</button>
         </div>
     </div>   
     </>

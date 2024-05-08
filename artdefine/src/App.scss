@@ -1932,7 +1932,7 @@ tr{
 
 
 .feedback-page{
-  height: 97%;
+  height: 95%;
 }
 
 .feedback-stars{
@@ -2035,3 +2035,22 @@ tr{
     }
   }
 }
+
+.feedback-page{
+  margin-top: 8px;
+  position: relative;
+  .upload-feedback{
+    width: 318px;
+    height: 48px;
+    margin: 0;
+    box-shadow: 4px 4px $midnight-blue;
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+  }
+
+  h3{
+    margin: 16px 0;
+  }
+}
+
