@@ -28,7 +28,7 @@ const FeedbackStars: React.FC< { title:string, empty:boolean, starAmount?:number
     return (
 
                     <div className="feedback-stars">
-                        <div className="font fs20 eaves book purple-dark align-start">{title}</div>
+                        <div className="feedback-title font fs20 eaves book purple-dark align-start">{title}</div>
                         <div className="stars flex justify-spacebetween">
                             <i className="material-icons set star" id="star1" onClick={()=> handleStarClick(1)}>star</i>
                             <i className="material-icons set star" id="star2" onClick={()=> handleStarClick(2)}>star</i>

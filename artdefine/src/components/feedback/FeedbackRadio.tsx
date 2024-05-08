@@ -22,7 +22,7 @@ const FeedbackRadio: React.FC< { title:string, empty:boolean, options:string[], 
 
     return (
         <div className="feedback-radial">
-        <div className="font fs20 eaves book purple-dark align-start">{title}</div>
+        <div className="feedback-title font fs20 eaves book purple-dark align-start">{title}</div>
         <div className="options">
             {mappedoptions}
         </div>

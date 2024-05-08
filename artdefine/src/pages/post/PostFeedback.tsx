@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import FeedbackStars from "../../components/feedback/FeedbackStars";
 import FeedbackRadio from "../../components/feedback/FeedbackRadio";
+import FeedbackOpen from "../../components/feedback/FeedbackOpen";
 
 
 export default function PostFeedback() {
@@ -15,6 +16,7 @@ export default function PostFeedback() {
             <h3>Giving Feedback</h3>
             <FeedbackStars title="Give a rating:"  empty={true} />
             <FeedbackRadio title="Select an option:" empty={true} options={['test1', 'test2', 'test3']} />
+            <FeedbackOpen title="open title:" empty={true} />
         </div>
     </div>   
     </>
