@@ -68,6 +68,37 @@ body{
   }
 }
 
+.bg-card{
+  background-color: $canvas-white-light;
+  border-radius: $corner-radius;
+}
+
+.full-height{
+  height: 100%;
+}
+
+.full-width{
+  width: 100%;
+}
+
+.padding{
+  &.pd8{
+    padding: 8px;
+  }
+  &.pd16{
+    padding: 16px;
+  }
+}
+
+.margin{
+  &.mg8{
+    margin: 8px;
+  }
+  &.mg16{
+    margin: 16px;
+  }
+}
+
 .opacity{
   &.p75{
     opacity: 75%;
@@ -148,6 +179,9 @@ body{
   }
   &.justify-spacebetween{
     justify-content: space-between;
+  }
+  &.justify-spacearound{
+    justify-content: space-around;
   }
   &.direction-column{
     flex-direction: column;
@@ -1896,6 +1930,64 @@ tr{
   }
 }
 
+
+.feedback-page{
+  height: 95%;
+}
+
+.feedback-stars{
+  .stars{
+    margin-top: 5px;
+    i{
+      color: $canvas-white-dark;
+      -webkit-text-stroke: 2px $midnight-blue;
+      font-size: 50px;
+
+      transition: color 0.3s, -webkit-text-stroke 1s;
+      &.active{
+        color: $sunset-red;
+
+        &:hover{
+          color: #ff9683;
+        }
+      }
+      &:hover{
+        color: $canvas-white-light;
+        -webkit-text-stroke: 2px $color-black;
+      }
+      &.set{
+        &.active{
+          color: $sunset-red;
+          &:hover{
+            color: $sunset-red;
+          }
+        }  
+        &:hover{
+            color: $canvas-white-dark;
+            -webkit-text-stroke: 2px $midnight-blue;
+        }
+        
+      }
+    }
+
+    
+  }
+}
+
+.feedback-radial{
+  input{
+    accent-color: $purple-dark;
+    
+    &:checked{
+      accent-color: $sunset-red;
+    }
+  }
+
+  .options{
+    text-align: start;
+  }
+  
+
 .search-page{
   width: 100%;
   height: 100%;
@@ -1910,4 +2002,55 @@ tr{
       margin-right: 5px;
     }
   }
+}}
+
+.feedback-title{
+  margin-bottom: 10px;
+  margin-top: 18px;
 }
+
+.feedback-open{
+  div{
+    textarea{
+      width: 100%;
+      height: 100px;
+      @include border-standard(2px);
+      border-radius: $corner-radius-sm;
+      resize: none;
+      background-color: $canvas-white-light;
+      color: $purple-dark;
+      opacity: 80%;
+      &:focus{
+        accent-color: $color-primary;
+      }
+    }
+    .filled-field{
+      color: $midnight-blue;
+      font-size: 18px;
+    }
+    .empty-field{
+      background-color: $canvas-white-dark;
+      border-radius: $corner-radius-sm;
+      height: 26px;
+    }
+  }
+}
+
+.feedback-page{
+  margin-top: 8px;
+  position: relative;
+  .upload-feedback{
+    width: 318px;
+    height: 48px;
+    margin: 0;
+    box-shadow: 4px 4px $midnight-blue;
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+  }
+
+  h3{
+    margin: 16px 0;
+  }
+}
+
