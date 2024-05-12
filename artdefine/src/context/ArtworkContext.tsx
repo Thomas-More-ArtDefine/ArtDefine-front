@@ -47,7 +47,8 @@ export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children })
           user_deactivated: false,
           user_deactivation_date: "",
           user_creationdate: '',
-          links:[]
+          links:[],
+          folders: []
         }, 
         folders: [
         ]

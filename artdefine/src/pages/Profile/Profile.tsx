@@ -45,7 +45,7 @@ export default function Profile() {
         <div className="page profile own-profile">
             <ProfileMain rank={1} profileActive={profileActive} groupsActive={groupsActive} galleryActive={galleryActive} handleCategoryButtonClick={handleCategoryButtonClick} />
             {profileActive && !galleryActive && !groupsActive? <ProfileHome rank={1} user={user}/>
-            :galleryActive && !profileActive && !groupsActive? <ProfileGallery rank={1}/>
+            :galleryActive && !profileActive && !groupsActive? <ProfileGallery rank={1} folders={user?.folders}/>
             :groupsActive && !profileActive && !galleryActive? <ProfileGroups rank={1}/>
             : <p>Something went wrong - please reload the page</p>}
             </div>

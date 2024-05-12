@@ -1,9 +1,21 @@
-const ProfileGallery: React.FC<{ rank: number }> = ({ rank }) => {
+import { Folder } from "../../model/FolderModel";
+import Gallery from "../general/Gallery";
+
+const ProfileGallery: React.FC<{ rank: number, folders?: Folder[] }> = ({ rank, folders }) => {
   
     return (
-      <div className="profile-gallery">
-        gallery
-      </div>
+      <>
+      {
+        folders?
+          <div className="profile-gallery">
+            <Gallery folders={folders}/>
+          </div>
+          :
+          "Something went wrong"
+      }
+      </>
+      
+      
     );
   };
   

@@ -1,3 +1,4 @@
+import { Folder } from "./FolderModel";
 import { Link } from "./LinkModel";
 
 export interface User {
@@ -10,5 +11,6 @@ export interface User {
     user_deactivated: boolean,
     user_deactivation_date: string,
     user_creationdate: string,
-    links: Link[]
+    links: Link[],
+    folders: Folder[]
 }
