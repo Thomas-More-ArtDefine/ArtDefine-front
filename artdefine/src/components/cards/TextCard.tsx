@@ -38,12 +38,17 @@ const Content: React.FC<{
               <p className="link-title">Links:</p> {/* Display the "Links:" title if there are links */}
             </>
           )}
-           {creationDate && owner && (
+           {creationDate && owner ? 
             <div className="creationdate">
               <p >Created on: {creationDate}</p> {/* Display the creation date and owner if they exist */}
               <p className="owner">By {owner}</p> 
             </div>
-          )}
+          : creationDate && !owner?
+          <div className="creationdate">
+              <p >Joined: {creationDate}</p> {/* Display the creation date if they exist */}
+            </div>
+            : ''
+          }
         </div>
         {links && links.length > 0 && (
           <>
