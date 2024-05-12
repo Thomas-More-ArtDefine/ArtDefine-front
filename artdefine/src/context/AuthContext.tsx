@@ -1,5 +1,5 @@
 import React, { createContext, useState, useMemo, useContext, useEffect, ReactNode } from 'react';
-import { getAllUsers } from '../api';
+import { getAllUsers, getUserById } from '../api';
 import { User } from '../model/userModel';
 import USERMOCK from '../mock/UserMock';
 
@@ -19,11 +19,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await getAllUsers();
+            const data = await getUserById("1");
             console.log("Users in Context:",data);
            
-            setUsers(data);
-            setUser(data[0]);
+            setUser(data);
         };
 
         fetchData();

@@ -1,6 +1,7 @@
 import { GroupJoin, groupVisibility } from "../components/group/Create-group-modal";
 import { Folder } from "./FolderModel";
 import { GroupMember } from "./GroupMember";
+import { Link } from "./LinkModel";
 import { User } from "./userModel";
 
 export interface GroupModel{
@@ -17,7 +18,7 @@ export interface GroupModel{
     group_queued_deletion_date: string | null;
     creator_name: string;
     creator_id: string;
-    group_links: string[];
+    group_links: Link[];
     group_rules: string;
     members: GroupMember[];
     folders: Folder[];

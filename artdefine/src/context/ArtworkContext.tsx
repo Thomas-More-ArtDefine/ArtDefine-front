@@ -41,9 +41,13 @@ export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children })
           id: "1",
           user_name: "",
           user_subtitle: "",
+          user_bio: "",
+          user_pronouns: '',
           user_profile_picture: "",
           user_deactivated: false,
-          user_deactivation_date: ""
+          user_deactivation_date: "",
+          user_creationdate: '',
+          links:[]
         }, 
         folders: [
         ]

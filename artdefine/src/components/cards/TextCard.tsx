@@ -1,3 +1,4 @@
+import { Link } from "../../model/LinkModel";
 import Card from "./Card";
 
 
@@ -5,7 +6,7 @@ const Content: React.FC<{
   subTitle?: string;
   text: string;
   creationDate?: string;
-  links?: string[];
+  links?: Link[];
   owner?: string;
 }> = ({
   text,
@@ -37,7 +38,7 @@ const Content: React.FC<{
             <ul className="links">
               {links.map((link, index) => (
                 <li key={index} className="link">
-                  <a href={link}>{link}</a> {/* Display each link id they exist */}
+                  <a href={link.link_url}>{link.link_name}</a> {/* Display each link id they exist */}
                 </li>
               ))}
             </ul>
@@ -54,7 +55,7 @@ const TextCard: React.FC<{
   subTitle?: string;
   text: string;
   creationDate?: string;
-  links?: string[];
+  links?: Link[];
   owner?: string;
 }> = ({
   title,

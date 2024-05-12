@@ -1,7 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { GroupModel } from "../../model/GroupModel";
-import GROUPMOCK from "../../mock/GroupMock";
 import GroupSettingsMenu from "../../components/group/settings/GroupSettingsMenu";
 import GroupSettingsPrivacy from "../../components/group/settings/GroupsSettingsPrivacy";
 import UnderlinedTitle from "../../components/general/UnderlinedTitled";
