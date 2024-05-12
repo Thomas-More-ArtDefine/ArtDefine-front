@@ -3,33 +3,12 @@ import mockBannerPic from "../../assets/images/mock-banner-pic.png";
 import mockprofilePic from "../../assets/images/mock-profile-pic.png";
 import { useState } from "react";
 
-const ProfileMain: React.FC<{ rank: number }> = ({ rank }) => {
-  const [profileActive, setProfileActive] = useState<boolean>(true);
-  const [galleryActive, setGalleryActive] = useState<boolean>(false);
-  const [groupsActive, setGroupsActive] = useState<boolean>(false);
-
-  const handleCategoryButtonClick = (button:string) => {
-    switch (button) {
-        case "profile":
-          setProfileActive(true);
-          setGalleryActive(false);
-          setGroupsActive(false);
-            break;
-    
-        case "gallery":
-          setProfileActive(false);
-          setGalleryActive(true);
-          setGroupsActive(false);
-            break;
-        case "groups":
-          setProfileActive(false);
-          setGalleryActive(false);
-          setGroupsActive(true);
-            break;
-        default:
-            break;
-    }
-};
+const ProfileMain: React.FC<{ 
+  rank: number, 
+  profileActive:boolean,
+  galleryActive:boolean, 
+  groupsActive:boolean, 
+  handleCategoryButtonClick:any}> = ({ rank, profileActive, galleryActive, groupsActive, handleCategoryButtonClick}) => {
 
   return (
     <div className="profile-main">
