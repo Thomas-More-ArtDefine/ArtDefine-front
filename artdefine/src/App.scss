@@ -731,7 +731,7 @@ h5 {
     .profile-btns {
       display: grid;
       flex-grow: 1;
-      max-height: 150px;
+      max-height: 70px;
 
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(2, 1fr);
@@ -2051,6 +2051,27 @@ tr{
 
   h3{
     margin: 16px 0;
+  }
+}
+
+.feed-btns{
+ &.profile{
+  margin: auto;
+  width: 100%;
+  padding: 0;
+ }
+}
+
+.profile-btns{
+  button{
+    &:nth-child(1){
+      justify-self: start;
+    }
+    &:nth-child(3){
+      justify-self: end;
+    }
+    height: 42px;
+    width: 112px;
   }
 }
 
