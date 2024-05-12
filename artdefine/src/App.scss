@@ -140,6 +140,9 @@ body{
   &.fs20{
     font-size: 20px;
   }
+  &.fs24{
+    font-size: 24px;
+  }
   &.fs32{
     font-size: 32px;
   }
@@ -622,6 +625,20 @@ h5 {
 }
 
 // --- links ---
+
+.links{
+  padding-left: 0;
+  list-style: none;
+  .link{
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    i{
+      color: $midnight-blue;
+      padding-right: 16px;
+    }
+  }
+}
 
 .link > a {
   color: $color-secondary;
@@ -1293,9 +1310,6 @@ div.groups-container{
   @include glow();
 
   .title{
-    font-family: "EavesSansHeavy";
-    font-size: 24px;
-    color: $purple-dark;
     text-align: left;
     background-color: $canvas-white-dark;
     padding: 4px;
@@ -1334,6 +1348,7 @@ div.groups-container{
       display: flex;
      
       justify-content: space-between;
+      max-height: 32px;
 
       .creationdate{
         display: flex;
@@ -1350,6 +1365,19 @@ div.groups-container{
         color: $purple-dark;
         text-align: left;
       }
+    }
+  }
+
+  .card-content{
+    margin: 0 8px;
+    .subtitle{
+      color: $purple-light;
+      opacity: 75%;
+      font-size: 20px;
+      margin: 8px 0;
+    }
+    .content{
+      margin: 8px 0;
     }
   }
 }
@@ -1817,6 +1845,9 @@ button{
 
 
 .gallery{
+  h4{
+    margin-bottom: 0;
+  }
   button{
     height: 40px;
     width: 160px;
@@ -2075,4 +2106,6 @@ tr{
     width: 112px;
   }
 }
+
+
 

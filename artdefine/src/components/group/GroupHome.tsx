@@ -7,10 +7,10 @@ const GroupHome: React.FC<{group:GroupModel}> = ({group} ) => {
     return (
         <>
         <div className="about">
-        <TextCard title="About"  text={group.group_bio} creationDate={group.group_creationdate} links={group.group_links} owner={group.creator_name} />
+        <TextCard isUser={false} title="About"  text={group.group_bio} creationDate={group.group_creationdate} links={group.group_links} owner={group.creator_name} />
         </div>
         <div className="rules">
-            <TextCard title="Rules" text={group.group_rules}/>
+            <TextCard isUser={false} title="Rules" text={group.group_rules}/>
         </div>
         <div className="members">
             <UsersCard title="Members" members={group.members} maxUsers={8} hasMore={true} />

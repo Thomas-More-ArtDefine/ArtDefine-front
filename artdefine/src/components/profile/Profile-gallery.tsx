@@ -11,7 +11,7 @@ const ProfileGallery: React.FC<{ rank: number, folders?: Folder[] }> = ({ rank, 
             <Gallery folders={folders}/>
           </div>
           :
-          "Something went wrong"
+          "Folders couldn't be loaded."
       }
       </>
       

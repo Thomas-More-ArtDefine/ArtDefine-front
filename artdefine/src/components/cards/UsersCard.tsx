@@ -39,7 +39,7 @@ const UsersCard: React.FC<{
 }) => {
   return (
    <>
-   <Card title={title} cssProperty={"users-card"} hasMore={hasMore} moreClickHandler={moreClickHandler} content={<Content members={members} maxUsers={maxUsers} />} />
+   <Card isUser={false} title={title} cssProperty={"users-card"} hasMore={hasMore} moreClickHandler={moreClickHandler} content={<Content members={members} maxUsers={maxUsers} />} />
    </>
   );
 };
