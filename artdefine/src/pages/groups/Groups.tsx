@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import CreateGroupModal from "../../components/group/Create-group-modal";
-import Tabs from "../../components/general/Tabs";
+import GroupsTabs from "../../components/general/GroupTabs";
 import GroupCard from "../../components/cards/GroupCard";
 import { GroupsContext } from "../../context/GroupsContext";
 import { useAuth } from "../../context/AuthContext";
@@ -41,7 +41,7 @@ export default function Groups() {
         {openModal && <CreateGroupModal closeModal={setOpenModal} />}
         <div className="max-size white-card">
             
-            < Tabs NameTab1="Joined Groups" NameTab2="Find Groups" ShowTab1={showMyGroups} setShowTab1={setShowMyGroups} ShowTab2={showFindGroups} setShowTab2={setShowFindGroups} / >
+            <GroupsTabs NameTab1="Joined Groups" NameTab2="Find Groups" ShowTab1={showMyGroups} setShowTab1={setShowMyGroups} ShowTab2={showFindGroups} setShowTab2={setShowFindGroups} / >
             
             
             {showMyGroups && 
