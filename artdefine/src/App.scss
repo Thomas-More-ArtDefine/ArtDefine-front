@@ -177,6 +177,9 @@ body{
   &.align-end{
     align-items: end;
   }
+  &.justify-start{
+    justify-content: start;
+  }
   &.justify-center{
     justify-content: center;
   }
@@ -1054,6 +1057,12 @@ div.navtabs{
   }
 }
 
+img.gpfp{
+  height: 80px;
+  @include border-standard(3px);
+  margin-right: 14px;
+}
+
 
 div.group-card{
   height: 112px;
@@ -1063,11 +1072,7 @@ div.group-card{
   padding: 12px;
   margin: 8px 0;
   justify-content: space-between;
-  img.gpfp{
-    height: 80px;
-    @include border-standard(3px);
-    margin-right: 14px;
-  }
+  
   div.join-button{
     cursor: pointer;
     min-width: 42px;
@@ -2115,17 +2120,25 @@ tr{
 }
 
 .profile-groups{
+  margin: auto;
   .white-card{
     margin: 0;
-    padding: 8px;
+    padding: 16px;
     height: 50vh !important;
-  }
-  .navtabs{
-    .tab{
-      font-size: 16px;
+    min-width: 300px;
+    .navtabs{
+      margin-bottom: 16px;
+    }
+    @include breakpoint('sm'){
+      min-width: 325px;
     }
   }
 }
 
-
-
+.simple-user-card{
+  transition: background-color 0.5s;
+  border-radius: $corner-radius-sm;
+  &:hover{
+    background-color: #fff6b867;
+  }
+}

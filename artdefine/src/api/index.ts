@@ -234,4 +234,26 @@ export const getPostsByTag = async (query:string, amount: number, skip: number, 
     throw error;
   }
 };
+
+export const getFollowers = async (id:string): Promise<any[]> => {
+  
+  try {
+    const response = await api.get(`/users/${id}/followers`);
+    return response.data;
+  } catch (error) {
+    console.error("Error while fetching data:", error);
+    throw error;
+  }
+};
+
+export const getFollowing = async (id:string): Promise<any[]> => {
+  
+  try {
+    const response = await api.get(`/users/${id}/following`);
+    return response.data;
+  } catch (error) {
+    console.error("Error while fetching data:", error);
+    throw error;
+  }
+};
       
