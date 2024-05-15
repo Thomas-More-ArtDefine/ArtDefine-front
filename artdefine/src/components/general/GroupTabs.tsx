@@ -1,4 +1,4 @@
-const tabs: React.FC<{
+const GroupsTabs: React.FC<{
     setShowTab1: React.Dispatch<React.SetStateAction<boolean>>;
     setShowTab2: React.Dispatch<React.SetStateAction<boolean>>;
     ShowTab1: boolean;
@@ -40,4 +40,4 @@ const tabs: React.FC<{
     );
 };
 
-export default tabs;
+export default GroupsTabs;
