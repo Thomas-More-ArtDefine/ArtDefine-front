@@ -122,6 +122,19 @@
 
   }
 
+  @mixin pop-up($bg-color) {
+    z-index:999;
+    background-color: $bg-color;
+    width: 368px;
+    height: 90vh;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    border-radius: 16px 0px 0px 0px;
+    border: 4px $canary-yellow-dark;
+    border-style: solid none none solid;
+  }
+
   @mixin formLabel($text-color, $font-size){
       display: block;
       margin-left: 10px;
