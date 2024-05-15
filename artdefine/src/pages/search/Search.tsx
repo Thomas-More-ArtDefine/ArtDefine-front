@@ -1,8 +1,9 @@
-import react, { useContext, useState } from "react";
+import react, { useCallback, useContext, useState } from "react";
 import { ArtworkContext } from "../../context/ArtworkContext";
 import ArtworkCard from "../../components/cards/Artwork-card";
 import { UserContext } from "../../context/UserContext";
 import { User } from "../../model/userModel";
+import CriteriaComponent from "../../components/search/CriteriaComponent";
 
 
 export default function Search() {
@@ -12,7 +13,7 @@ export default function Search() {
     const { findArtworkByTag, artworks } = useContext(ArtworkContext) || {};
     const { findBasicUserById } = useContext(UserContext) || {};
     const users: User[] = [];
-    
+    const [openFilter, setOpenFilter] = useState<boolean>(false);
 
     const handleCategoryButtonClick = (button:string) => {
         switch (button) {
@@ -63,15 +64,26 @@ export default function Search() {
       ):
       (<></>);
 
+    const openAndCloseSearchCriteria = useCallback(() => {
+        setOpenFilter(!openFilter);
+    }, [openFilter]);
+
   return (
     <>
     <div className="search-page">
+
+        <div className="search-criteria" style={{display: openFilter ? "block" : "none"}}>
+            <CriteriaComponent setClose={openAndCloseSearchCriteria} />
+        </div>
         <div className="flex justify-spacebetween align-center search-section">
             <div className='SearchBar'>
                 <input className='search' type="text" placeholder='Search...' onChange={(e) => handleInputChange(e.target.value)} />
                 <i className="material-icons">search</i>
             </div>
-            <i className="material-icons filter font">tune</i>
+            <div>
+            <i className="material-icons filter font" onClick={openAndCloseSearchCriteria}>tune</i>
+            </div>
+           
         </div>
 
         <div className='feed-btns'>
