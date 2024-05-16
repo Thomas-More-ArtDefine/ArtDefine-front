@@ -144,6 +144,9 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+
+  console.log(process.env.REACT_APP_API);
+
   return (
     <div className="App">
       <AuthProvider>
