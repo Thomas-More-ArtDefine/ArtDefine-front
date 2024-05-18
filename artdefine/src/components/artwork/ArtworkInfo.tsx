@@ -5,7 +5,7 @@ import GroupCard from "../cards/GroupCard";
 import profilePic from "../../assets/images/mock-profile-pic.png"
 import { useNavigate } from "react-router-dom";
 
-const ArtworkInfo: React.FC<{title:string,user:User,description:string, folders:Folder[]}> = ({title,user,description,folders}) => {
+const ArtworkInfo: React.FC<{title:string,user:User,description:string, folders:Folder[], tags: string}> = ({title,user,description,folders, tags}) => {
     const navigate = useNavigate();
     const groups:GroupModel[] = [];
     folders.forEach((folder) =>{
@@ -37,13 +37,17 @@ const ArtworkInfo: React.FC<{title:string,user:User,description:string, folders:
                 <div className="username">{user.user_name}</div>
             </div>
             {description !== null && description !== undefined && description !== '' ? (<div className="item-description-container"><div>Description</div><div className="item-description">{description}</div></div>) : ('')}
-            
-            <div className="groups-container">
+            <div className="post-tags">{tags? tags: ''}</div>
+            { groups && groups.length !== 0?
+              <div className="groups-container">
                 <div className="title">Groups</div>
                 <div>
                     {groupMap}
                 </div>
-            </div>
+            </div>  :
+            ''
+            }
+            
 
         </>
     )

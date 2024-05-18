@@ -1009,7 +1009,7 @@ div.search-criteria-overlay{
       margin-left: -8px;
       margin-right: -8px;
       font-family: "EavesSansBook";
-      font-size: 16px;
+      font-size: 18px;
       color: $midnight-blue;
       text-align: left;
       background-color: rgba(255, 245, 184, 0.25);
@@ -2229,4 +2229,13 @@ tr{
     max-height: 75vh;
     height: 100%;
   }
+}
+
+.post-tags{
+  font-family: 'EavesSansBook';
+    color: $midnight-blue;
+  text-align: left;
+  font-size: 16px;
+  opacity: 75%;
+  margin: 8px 0;
 }
