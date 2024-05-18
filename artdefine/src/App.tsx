@@ -20,6 +20,7 @@ import { UserProvider } from './context/UserContext';
 import PostFeedback from './pages/post/PostFeedback';
 import Search from './pages/search/Search';
 import UserProfile from './pages/profile/UserProfile';
+import { FolderProvider } from './context/FolderContext';
 
 
 
@@ -163,7 +164,9 @@ function App() {
               <GroupsProvider>
                 <GroupProvider>
                   <UserProvider>
-                    <RouterProvider router={router} />
+                    <FolderProvider>
+                      <RouterProvider router={router} />
+                    </FolderProvider>
                   </UserProvider>
                 </GroupProvider>
               </GroupsProvider>

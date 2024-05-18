@@ -256,4 +256,26 @@ export const getFollowing = async (id:string): Promise<any[]> => {
     throw error;
   }
 };
+
+export const getFoldersByGroupId = async (id:string): Promise<any[]> => {
+  
+  try {
+    const response = await api.get(`/folders/group/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error while fetching data:", error);
+    throw error;
+  }
+};
+
+export const getFoldersByUserId = async (id:string): Promise<any[]> => {
+  
+  try {
+    const response = await api.get(`/folders/user/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error while fetching data:", error);
+    throw error;
+  }
+};
       

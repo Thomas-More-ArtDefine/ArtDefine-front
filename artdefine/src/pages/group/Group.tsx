@@ -7,6 +7,7 @@ import Gallery from "../../components/general/Gallery";
 import { GroupContext } from "../../context/GroupContext";
 import placeholderBanner from "../../assets/images/mock-banner-pic.png"
 import GroupDetails from "../../components/group/GroupDetails";
+import { FolderContext } from "../../context/FolderContext";
 
 export default function Group() {
 
@@ -15,6 +16,7 @@ export default function Group() {
     const state = location.state ? location.state.state : 'Home';
     const [currentStep, setCurrentStep] = useState(state);
     const { findGroup, group } = useContext(GroupContext) || {};
+    const { findFoldersByGroupId, folders } = useContext(FolderContext) || {};
 
     useEffect(() => {
         const fetchGroup = async () => {
@@ -22,9 +24,16 @@ export default function Group() {
             await findGroup(id ?? "");
           }
         };
+
+        const fetchFolders = async () => {
+            if (findFoldersByGroupId) {
+              await findFoldersByGroupId(id ?? "");
+            }
+          };
     
         fetchGroup();
-      }, [id, findGroup]);
+        fetchFolders();
+      }, [id, findGroup,findFoldersByGroupId]);
 
     return (
         <>
@@ -36,7 +45,7 @@ export default function Group() {
                     <GroupNav handleStepChange={setCurrentStep} currentStep={currentStep}/>
                     <div className="content">
                     {currentStep === "Home" && <GroupHome group={group}/>}
-                    {currentStep === "Gallery" && <Gallery folders={group.folders}/>}
+                    {currentStep === "Gallery" && <Gallery folders={folders? folders: group.folders}/>}
                     {/* {currentStep === "Chat" && <div>Chat</div>} */}
                     {currentStep === "Details" && <GroupDetails group={group}/>}
                     

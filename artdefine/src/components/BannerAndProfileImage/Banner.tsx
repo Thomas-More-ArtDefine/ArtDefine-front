@@ -15,9 +15,9 @@ const Banner: React.FC<BannerProps> = ({ imageUrl: src, imageAlt: alt }) => {
   return (
     <div className="banner">
       <img src={src} alt={alt} />
-      <div className="collapse">
+      {/* <div className="collapse">
         <ArrowIcon />
-      </div>
+      </div> */}
       <div className="dots" onClick={handleDotsClick}>
         <DotsIcon />
       </div>

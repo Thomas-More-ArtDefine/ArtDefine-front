@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { Folder } from "../../model/FolderModel";
 import placeholder from "../../assets/images/mock-banner-pic.png";
 
-const ProfileHome: React.FC<{ rank: number, user?: User|null, handleCategoryButtonClick:any }> = ({ rank, user, handleCategoryButtonClick }) => {
+const ProfileHome: React.FC<{ rank: number, user?: User|null, handleCategoryButtonClick:any, folders:Folder[] }> = ({ rank, user, handleCategoryButtonClick, folders }) => {
     //TODO: one image from the folder as tumbnail
 
     function compare(a:Folder,b:Folder) {
@@ -19,9 +19,7 @@ const ProfileHome: React.FC<{ rank: number, user?: User|null, handleCategoryButt
 
     useEffect(() => {
         if (user) {
-            user.folders.sort(compare);
-
-            
+            folders.sort(compare);
         }
       }, []);
     
@@ -43,32 +41,32 @@ const ProfileHome: React.FC<{ rank: number, user?: User|null, handleCategoryButt
                     moreClickHandler={moreClickHandler}
                     content={
                         <div className="flex justify-spacebetween">
-                        {user.folders.length === 3?
+                        {folders.length === 3?
                         <><div onClick={() => {console.log("navigate to gallery & select folder")}} key={user.folders[0].id} className="clickable foldercard flex direction-column direction-column align-center justify-spacebetween">
-                        <img src={placeholder} alt="" />
-                        <div>{user.folders[0].folder_name}</div>
+                        <img src={folders[0].posts? folders[0].posts[0].post_content:placeholder} alt="" />
+                        <div>{folders[0].folder_name}</div>
                         </div>
                         <div onClick={() => {console.log("navigate to gallery & select folder")}} key={user.folders[1].id} className="clickable foldercard flex direction-column direction-column align-center justify-spacebetween">
-                        <img src={placeholder} alt="" />
-                        <div>{user.folders[1].folder_name}</div>
+                        <img src={folders[1].posts? folders[1].posts[0].post_content:placeholder} alt="" />
+                        <div>{folders[1].folder_name}</div>
                         </div>
                         <div onClick={() => {console.log("navigate to gallery & select folder")}} key={user.folders[2].id} className="clickable foldercard flex direction-column direction-column align-center justify-spacebetween">
-                        <img src={placeholder} alt="" />
-                        <div>{user.folders[2].folder_name}</div>
+                        <img src={folders[2].posts? folders[2].posts[0].post_content:placeholder} alt="" />
+                        <div>{folders[2].folder_name}</div>
                         </div></>
-                        :user.folders.length === 2?
+                        :folders.length === 2?
                         <><div onClick={() => {console.log("navigate to gallery & select folder")}} key={user.folders[0].id} className="clickable foldercard flex direction-column direction-column align-center justify-spacebetween">
-                        <img src={placeholder} alt="" />
-                        <div>{user.folders[0].folder_name}</div>
+                        <img src={folders[0].posts? folders[0].posts[0].post_content:placeholder} alt="" />
+                        <div>{folders[0].folder_name}</div>
                         </div>
                         <div onClick={() => {console.log("navigate to gallery & select folder")}} key={user.folders[1].id} className="clickable foldercard flex direction-column direction-column align-center justify-spacebetween">
-                        <img src={placeholder} alt="" />
-                        <div>{user.folders[1].folder_name}</div>
+                        <img src={folders[1].posts? folders[1].posts[0].post_content:placeholder} alt="" />
+                        <div>{folders[1].folder_name}</div>
                         </div></>
-                        :user.folders.length === 1?
+                        :folders.length === 1?
                         <><div onClick={() => {console.log("navigate to gallery & select folder")}} key={user.folders[0].id} className="clickable foldercard flex direction-column direction-column align-center justify-spacebetween">
-                        <img src={placeholder} alt="" />
-                        <div>{user.folders[0].folder_name}</div>
+                        <img src={folders[0].posts? folders[0].posts[0].post_content:placeholder} alt="" />
+                        <div>{folders[0].folder_name}</div>
                         </div></>
                         :
                         "Folders couldn't be loaded"
