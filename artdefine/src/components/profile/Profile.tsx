@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { useAuth } from "../../context/AuthContext";
 import ProfileMain from "./Profile-main";
 import ProfileHome from "./Profile-home";
 import ProfileGallery from "./Profile-gallery";
@@ -11,7 +10,7 @@ const Profile: React.FC<{ user?:User|null }> = ({ user }) => {
     const [profileActive, setProfileActive] = useState<boolean>(true);
     const [galleryActive, setGalleryActive] = useState<boolean>(false);
     const [groupsActive, setGroupsActive] = useState<boolean>(false);
-    const { findFoldersByGroupId, folders } = useContext(FolderContext) || {};
+    const { findFoldersByUserId, folders } = useContext(FolderContext) || {};
 
     const handleCategoryButtonClick = (button:string) => {
         switch (button) {
@@ -38,13 +37,13 @@ const Profile: React.FC<{ user?:User|null }> = ({ user }) => {
 
 useEffect(() => {
     const fetchFolders = async () => {
-        if (findFoldersByGroupId && user) {
-          await findFoldersByGroupId(user.id ?? "");
+        if (findFoldersByUserId && user) {
+          await findFoldersByUserId(user.id ?? "");
         }
       };
 
     fetchFolders();
-  }, [user, findFoldersByGroupId]);
+  }, [user, findFoldersByUserId]);
 
     return (
         <>
