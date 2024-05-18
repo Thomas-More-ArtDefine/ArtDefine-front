@@ -7,7 +7,7 @@ import { User } from "../../model/userModel";
 import { FolderContext } from "../../context/FolderContext";
 import { useParams } from "react-router-dom";
 
-const Profile: React.FC<{ user?:User|null }> = ({ user }) => {
+const Profile: React.FC<{ user:User }> = ({ user }) => {
     const [profileActive, setProfileActive] = useState<boolean>(true);
     const [galleryActive, setGalleryActive] = useState<boolean>(false);
     const [groupsActive, setGroupsActive] = useState<boolean>(false);
@@ -50,6 +50,7 @@ useEffect(() => {
     return (
         <>
         <div className="page profile own-profile">
+            
             <ProfileMain rank={id && id !== "1"?1:0} profileActive={profileActive} groupsActive={groupsActive} galleryActive={galleryActive} handleCategoryButtonClick={handleCategoryButtonClick} profileImg={user?.user_profile_picture} bannerImg={user?.user_banner_picture} />
             {profileActive && !galleryActive && !groupsActive? <ProfileHome rank={1} user={user} folders={folders? folders: []} handleCategoryButtonClick={handleCategoryButtonClick}/>
             :galleryActive && !profileActive && !groupsActive? <ProfileGallery rank={1} folders={folders? folders :user?.folders}/>

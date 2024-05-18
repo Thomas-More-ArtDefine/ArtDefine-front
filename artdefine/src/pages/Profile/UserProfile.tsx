@@ -24,7 +24,10 @@ export default function UserProfile() {
 
     return (
         <>
-            <Profile user={id&&user? founduser :user} />
+        {
+          user?<Profile user={founduser? founduser :user} />: <div>something went wrong</div>
+        }
+            
         </>
     );
 

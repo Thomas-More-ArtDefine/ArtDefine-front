@@ -278,4 +278,18 @@ export const getFoldersByUserId = async (id:string): Promise<any[]> => {
     throw error;
   }
 };
-      
+
+export const postFollowing = async (loggedUserId:string, followed:User[]): Promise<any> => {
+  try {
+    const response = await api.patch('/users/follow/'+loggedUserId, {following: followed})
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+    })
+    return response;
+    
+  } catch (error) {
+    console.error("Error while fetching one data:", error);
+    throw error;
+  }
+};
