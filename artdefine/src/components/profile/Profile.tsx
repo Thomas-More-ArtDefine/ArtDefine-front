@@ -1,13 +1,12 @@
 import { useState } from "react";
-import ProfileMain from "../../components/profile/Profile-main";
 import { useAuth } from "../../context/AuthContext";
-import ProfileHome from "../../components/profile/Profile-home";
-import ProfileGallery from "../../components/profile/Profile-gallery";
-import ProfileGroups from "../../components/profile/Profile-groups";
+import ProfileMain from "./Profile-main";
+import ProfileHome from "./Profile-home";
+import ProfileGallery from "./Profile-gallery";
+import ProfileGroups from "./Profile-groups";
+import { User } from "../../model/userModel";
 
-
-
-export default function Profile() {
+const Profile: React.FC<{ user?:User|null }> = ({ user }) => {
     const [profileActive, setProfileActive] = useState<boolean>(true);
     const [galleryActive, setGalleryActive] = useState<boolean>(false);
     const [groupsActive, setGroupsActive] = useState<boolean>(false);
@@ -35,15 +34,10 @@ export default function Profile() {
     }
 };
 
-  
-    const {user} = useAuth();
-
-    console.log(user);
-
     return (
         <>
         <div className="page profile own-profile">
-            <ProfileMain rank={1} profileActive={profileActive} groupsActive={groupsActive} galleryActive={galleryActive} handleCategoryButtonClick={handleCategoryButtonClick} />
+            <ProfileMain rank={1} profileActive={profileActive} groupsActive={groupsActive} galleryActive={galleryActive} handleCategoryButtonClick={handleCategoryButtonClick} profileImg={user?.user_profile_picture} />
             {profileActive && !galleryActive && !groupsActive? <ProfileHome rank={1} user={user} handleCategoryButtonClick={handleCategoryButtonClick}/>
             :galleryActive && !profileActive && !groupsActive? <ProfileGallery rank={1} folders={user?.folders}/>
             :groupsActive && !profileActive && !galleryActive? <ProfileGroups userid={user?.id} rank={1} user={user?user:undefined}/>
@@ -52,4 +46,7 @@ export default function Profile() {
         </>
     );
 
-}
+};
+  
+  export default Profile;
+  

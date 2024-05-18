@@ -8,18 +8,20 @@ const ProfileMain: React.FC<{
   profileActive:boolean,
   galleryActive:boolean, 
   groupsActive:boolean, 
-  handleCategoryButtonClick:any}> = ({ rank, profileActive, galleryActive, groupsActive, handleCategoryButtonClick}) => {
+  bannerImg?:string,
+  profileImg?:string
+  handleCategoryButtonClick:any}> = ({ rank, profileActive, galleryActive, groupsActive, handleCategoryButtonClick, bannerImg, profileImg}) => {
 
   return (
     <div className="profile-main">
-      <Banner imageUrl={mockBannerPic} imageAlt="Banner Picture" />
+      <Banner imageUrl={bannerImg? bannerImg: mockBannerPic} imageAlt="Banner Picture" />
 
       <div className="profile-btns">
         {rank === 0 ? (<div></div>) : (<button>Message</button> )}
-        <div></div>
+        <div className="flex justify-center"><img src={profileImg? profileImg: mockprofilePic} alt="Profile Picture" /></div>
         {rank === 0 ? (<div></div>) : (<button>Follow</button>)}
         
-        <img src={mockprofilePic} alt="Profile Picture" />
+        
       </div>
       <div className='feed-btns profile'>
                 <div className='subnav-button'>

@@ -782,9 +782,7 @@ div.search-criteria-overlay{
 
 
 .profile {
-  background-image: url("./assets/component_assets/rasterframe_yellow.png");
   background-size: contain;
-
   .profile-main {
     height: 296px;
     display: flex;
@@ -835,10 +833,8 @@ div.search-criteria-overlay{
       grid-template-rows: repeat(2, 1fr);
 
       img {
-        position: absolute;
         width: 110px;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(0, -50%);
         aspect-ratio: 1/1;
         object-fit: cover;
         @include border-standard(3px);
