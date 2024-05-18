@@ -5,15 +5,35 @@ import UploadItemForPost from "../components/addPostFlow/UploadItemForPost";
 import DetailFormForPost from "../components/addPostFlow/DetailFormForPost";
 import { ReactComponent as UploadIcon } from "../assets/vectors/upload-icon-black-fill.svg";
 import { ReactComponent as DetailsIcon } from "../assets/vectors/details-icon-black.svg";
-import { Artwork } from "../model/PostModel";
+import { Artwork, visibility } from "../model/PostModel";
 import { useArtwork } from "../context/ArtworkContext";
 import { useAuth } from "../context/AuthContext";
+import { User } from "../model/userModel";
+import FeedbackQuestionTypeCard from "../components/addPostFlow/FeedbackQuestionTypesCard";
+import FeedbackItemsForPost from "../components/addPostFlow/FeedbackItemsforPost";
+import { FeedbackItemModel } from "../model/FeedbackItemModel";
 
 export default function AddPost() {
   const [currentStep, setCurrentStep] = useState("Upload");
   const [isChanged, setIsChanged] = useState<boolean>(false);
-  const {artwork, setArtwork, uploadArtwork} = useArtwork(); 
+  const [feedbackStack, setFeedbackStack] = useState<FeedbackItemModel[]>([]);
+  const { setArtwork, uploadArtwork} = useArtwork(); 
   const {user} = useAuth();
+
+  const artwork: Artwork = {
+    
+      id: "0",
+      user_id: "1",
+      post_content: "", 
+      post_title: "",
+      post_description: "",
+      post_medium: "",
+      post_visibility: visibility.PRIVATE,
+      user: user ? user : {} as User, 
+      folders: [
+      ]
+    
+  };
 
   // Handle click events for each tab
   const handleUploadClick = () => {
@@ -77,7 +97,7 @@ export default function AddPost() {
           active={currentStep === "Details"}
         />
          <CatButton
-          text="Groups"
+          text="Places"
           icon={DetailsIcon}
           onClick={handleGroupsClick}
           active={currentStep === "Groups"}
@@ -116,7 +136,7 @@ export default function AddPost() {
         </div>
       {currentStep === "Details" && <>{isChanged? <DetailFormForPost artwork={artwork} setArtwork={setArtwork}/> : <div>UPload content first</div>}</>}
       {currentStep === "Groups" && <div>{<div>Not yet implemented</div>}</div>}
-      {currentStep === "Feedback" && <div>{<div>Not yet implemented</div>}</div>}
+      {currentStep === "Feedback" && <>{<><FeedbackItemsForPost feedbackStack={feedbackStack} setFeedbackStack={setFeedbackStack}  /></>}</>}
       </div>
       <div>
         <button className="primary border-effect" onClick={onUpload}>Upload</button>

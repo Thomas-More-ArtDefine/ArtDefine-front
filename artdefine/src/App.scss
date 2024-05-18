@@ -195,6 +195,10 @@ body{
   &.direction-column{
     flex-direction: column;
   }
+
+  .self-center{
+    align-self: center;
+  }
 }
 
 div.divider{
@@ -303,6 +307,12 @@ button.text-under-icon{
       padding: 4px;
     }
   }
+}
+
+button.delete{
+  width: 192px;
+  height: 48px;
+  @include button($sunset-red, $color-black, $midnight-blue);
 }
 
 //--navbar--
@@ -691,7 +701,7 @@ h5 {
 // --- Page ---
 
 .page {
-  
+  overflow: hidden;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -705,6 +715,8 @@ h5 {
 }
 
 // ## Misc page elements ##
+
+
 
 div.search-criteria-overlay{
   @include pop-up($color-white);
@@ -769,6 +781,80 @@ div.search-criteria-overlay{
       margin: 0;
     }
   }
+}
+
+.feedback-templates{
+  background-color: $canvas-white-light;
+  position: absolute;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+  bottom: 0;
+  right: 2.5%;
+  border: solid 4px $midnight-blue;
+  width: 95%;
+  border-radius: 16px 16px 0 0;
+ 
+  .container{
+    display: flex;
+    flex-direction: column;
+    background-image: url("./assets/component_assets/rasterframe_yellow.png");
+    background-size: contain;
+    background-repeat: repeat;
+    background-attachment: fixed !important;
+    margin: 16px;
+    flex-grow: 1;
+  }
+  
+  h3{
+    margin: 10px 10px;
+  }
+  .open,.bullet,.star{
+    background-color: $canvas-white-light;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    justify-items: start;
+    margin: 10px 0 0 0;
+    padding: 0 10px;
+    
+
+    .img{
+      justify-self: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    
+
+    &.active{
+      background-color: $canvas-white-dark;
+    }
+
+    
+  }
+  input{
+    margin: 25px 0;
+    padding: 12px;
+    width: 100%;
+  }
+  button{
+    padding: 12px;
+  }
+}
+
+.feedback-card{
+  background-color: $canvas-white-light;
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+  padding: 16px;
+  @include border-standard(4px);
+     
 }
 
 // ## Profile page ##
@@ -864,7 +950,8 @@ div.search-criteria-overlay{
   }
   .content{
     flex-grow: 1;
-   
+    overflow-y: scroll;
+    overflow-x: visible;
     .not-uploaded {
       display: flex;
       flex-direction: column;
@@ -898,6 +985,15 @@ div.search-criteria-overlay{
     #upload-item-for-post{
       display:none;
     }
+
+    .feedback-items-for-post{
+      
+      .feedback-items-list{
+        overflow: scroll;
+      }
+    }
+
+
     
   }
   .form{
@@ -1320,6 +1416,16 @@ div.groups-container{
   }
 }
 
+
+input,
+textarea, select {
+  padding: 10px;
+  font-family: "EavesSansBook";
+  font-size: 16px;
+  border: 2px solid $midnight-blue;
+  @include border-standard(2px);
+  width: 100%;
+}
 .form {
   margin-top: -20px;
   .form-item {
@@ -1333,14 +1439,7 @@ div.groups-container{
       text-align: left;
       padding-left: 12px;
     }
-    input,
-    textarea, select {
-      padding: 10px;
-      font-family: "EavesSansBook";
-      font-size: 16px;
-      border: 2px solid $midnight-blue;
-      @include border-standard(2px);
-    }
+   
   }
 }
 
