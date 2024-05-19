@@ -2038,7 +2038,8 @@ button{
 }
 
 .group-details{
-  width: 480px;
+  min-width: 280px;
+  max-width: 480px;
   margin: auto;
 }
 
