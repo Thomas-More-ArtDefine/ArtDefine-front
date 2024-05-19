@@ -2,7 +2,7 @@ import { GroupModel } from "../../model/GroupModel";
 import TextCard from "../cards/TextCard";
 import UsersCard from "../cards/UsersCard";
 
-const GroupHome: React.FC<{group:GroupModel}> = ({group} ) => {
+const GroupHome: React.FC<{group:GroupModel; membersClickHandler?: () => void;}> = ({group, membersClickHandler = () => console.log("not yet implemented"),} ) => {
     console.log(group.members);
     return (
         <>
@@ -17,7 +17,7 @@ const GroupHome: React.FC<{group:GroupModel}> = ({group} ) => {
         }
         
         <div className="members">
-            <UsersCard title="Members" members={group.members} maxUsers={8} hasMore={true} />
+            <UsersCard moreClickHandler={membersClickHandler} title="Members" members={group.members} maxUsers={8} hasMore={true} />
         </div>
         </>
     );

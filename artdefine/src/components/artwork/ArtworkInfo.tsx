@@ -52,7 +52,7 @@ const ArtworkInfo: React.FC<{title:string,user:User,description:string, folders:
             { feedback?
               <div className="container">
                 <div className="title">Feedback</div>
-                {feedback && <button className="primary has-icon" onClick={()=>navigate('/post/'+id+'/feedback')}>Give Feedback<i className="material-icons">Reviews</i></button>} 
+                {feedback && <button className="primary has-icon" onClick={()=>navigate('/post/'+id+'/feedback')}>Give Feedback<i className="material-icons">reviews</i></button>} 
                 <div>
                     
                 </div>
