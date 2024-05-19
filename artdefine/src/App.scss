@@ -1018,7 +1018,7 @@ div.search-criteria-overlay{
     }
   }
 
-  .groups-container {
+  .container {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -1027,6 +1027,10 @@ div.search-criteria-overlay{
       text-align: left;
       font-family: "EavesSansHeavy";
       font-size: 20px;
+    }
+
+    button{
+      width: 100%;
     }
     
   }

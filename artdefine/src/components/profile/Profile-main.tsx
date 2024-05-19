@@ -5,7 +5,6 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import { User } from "../../model/userModel";
-import { useAuth } from "../../context/AuthContext";
 
 const ProfileMain: React.FC<{ 
   rank: number, 
