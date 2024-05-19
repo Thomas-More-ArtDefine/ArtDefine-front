@@ -42,29 +42,29 @@ const ProfileHome: React.FC<{ rank: number, user?: User|null, handleCategoryButt
                     content={
                         <div className="flex justify-spacebetween">
                         {folders.length === 3?
-                        <><div onClick={() => {console.log("navigate to gallery & select folder")}} key={folders[0].id} className="clickable foldercard flex direction-column direction-column align-center justify-spacebetween">
+                        <><div onClick={() => {console.log("navigate to gallery & select folder"); handleCategoryButtonClick('gallery');}} key={folders[0].id} className="clickable foldercard flex direction-column direction-column align-center justify-spacebetween">
                         <img src={folders[0].posts? folders[0].posts[0].post_content:placeholder} alt="" />
                         <div>{folders[0].folder_name}</div>
                         </div>
-                        <div onClick={() => {console.log("navigate to gallery & select folder")}} key={folders[1].id} className="clickable foldercard flex direction-column direction-column align-center justify-spacebetween">
+                        <div onClick={() => {console.log("navigate to gallery & select folder"); handleCategoryButtonClick('gallery');}} key={folders[1].id} className="clickable foldercard flex direction-column direction-column align-center justify-spacebetween">
                         <img src={folders[1].posts? folders[1].posts[0].post_content:placeholder} alt="" />
                         <div>{folders[1].folder_name}</div>
                         </div>
-                        <div onClick={() => {console.log("navigate to gallery & select folder")}} key={folders[2].id} className="clickable foldercard flex direction-column direction-column align-center justify-spacebetween">
+                        <div onClick={() => {console.log("navigate to gallery & select folder"); handleCategoryButtonClick('gallery');}} key={folders[2].id} className="clickable foldercard flex direction-column direction-column align-center justify-spacebetween">
                         <img src={folders[2].posts? folders[2].posts[0].post_content:placeholder} alt="" />
                         <div>{folders[2].folder_name}</div>
                         </div></>
                         :folders.length === 2?
-                        <><div onClick={() => {console.log("navigate to gallery & select folder")}} key={folders[0].id} className="clickable foldercard flex direction-column direction-column align-center justify-spacebetween">
+                        <><div onClick={() => {console.log("navigate to gallery & select folder"); handleCategoryButtonClick('gallery');}} key={folders[0].id} className="clickable foldercard flex direction-column direction-column align-center justify-spacebetween">
                         <img src={folders[0].posts? folders[0].posts[0].post_content:placeholder} alt="" />
                         <div>{folders[0].folder_name}</div>
                         </div>
-                        <div onClick={() => {console.log("navigate to gallery & select folder")}} key={folders[1].id} className="clickable foldercard flex direction-column direction-column align-center justify-spacebetween">
+                        <div onClick={() => {console.log("navigate to gallery & select folder"); handleCategoryButtonClick('gallery');}} key={folders[1].id} className="clickable foldercard flex direction-column direction-column align-center justify-spacebetween">
                         <img src={folders[1].posts? folders[1].posts[0].post_content:placeholder} alt="" />
                         <div>{folders[1].folder_name}</div>
                         </div></>
                         :folders.length === 1?
-                        <><div onClick={() => {console.log("navigate to gallery & select folder")}} key={folders[0].id} className="clickable foldercard flex direction-column direction-column align-center justify-spacebetween">
+                        <><div onClick={() => {console.log("navigate to gallery & select folder"); handleCategoryButtonClick('gallery');}} key={folders[0].id} className="clickable foldercard flex direction-column direction-column align-center justify-spacebetween">
                         <img src={folders[0].posts? folders[0].posts[0].post_content:placeholder} alt="" />
                         <div>{folders[0].folder_name}</div>
                         </div></>
