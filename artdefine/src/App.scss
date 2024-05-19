@@ -784,6 +784,7 @@ div.search-criteria-overlay{
 .profile {
   background-size: contain;
   .profile-main {
+    position: relative;
     height: 296px;
     display: flex;
     flex-direction: column;
@@ -1072,7 +1073,7 @@ div.search-criteria-overlay{
     
       overflow: visible;
       
-      .group-banner{ 
+      .page-banner{ 
         
         position: relative;
         margin-bottom: 10px;
@@ -1807,18 +1808,31 @@ div.groups-list{
   padding-right: 10px;
 }
 
+.page-banner{
+  &.profile{
+    .dropdown{
+      left: 0;
+    }
+  }
+  &.group{
+    .dropdown{
+      right: 0;
+      @include breakpoint('xs'){
+        left: 120px;
+      };
+    }
+  }
+}
+
 div.dropdown{
   z-index: 900;
   width: 238px;
   padding: 8px 16px;
-  right: 0;
   background-color: $canvas-white-dark;
   @include border-standard(4px);
 
 
-  @include breakpoint('xs'){
-    left: 200px;
-  };
+  
 
   
   .dropdown-btn{
@@ -1856,12 +1870,13 @@ button{
 
 .dropdownbackground{
   height: 100vh;
-  width: 100vw;
+  width: 150vw;
   position: absolute;
   top: -18px;
-  left: -18px;
+  left: -25vw;
   background-color: $purple-dark;
   opacity: 25%;
+  z-index: 50;
 }
 
 .no-scroll{
@@ -2181,6 +2196,7 @@ tr{
   width: 100%;
   padding: 0;
   margin-bottom: 20px;
+  z-index: 0;
  }
 }
 

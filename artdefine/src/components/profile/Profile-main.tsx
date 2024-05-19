@@ -86,7 +86,7 @@ const ProfileMain: React.FC<{
 
   return (
     <div className="profile-main">
-      <Banner imageUrl={bannerImg? bannerImg: mockBannerPic} imageAlt="Banner Picture" />
+      <Banner myProfile={rank===0? true: false} imageUrl={bannerImg? bannerImg: mockBannerPic} imageAlt="Banner Picture" />
 
       <div className="profile-btns">
         {rank === 0 ? (<div></div>) : (<button>Message</button> )}

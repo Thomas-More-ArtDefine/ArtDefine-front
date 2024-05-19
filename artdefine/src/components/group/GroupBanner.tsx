@@ -56,12 +56,12 @@ const GroupBanner: React.FC<{
   };
 
   return (
-    <div className="group-banner">
+    <div className="page-banner group">
       <div className=" banner">
         <img src={src} alt={alt} />
-        <div className="collapse">
+        {/* <div className="collapse">
           <ArrowIcon />
-        </div>
+        </div> */}
       </div>
       <div className="name-container">
         <div className="group-name">{name} </div>
