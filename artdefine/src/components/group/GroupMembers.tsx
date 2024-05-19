@@ -8,7 +8,8 @@ const GroupMembers: React.FC<{members: GroupMember[]}> = ({members}) => {
 )
     return (
       <>
-      <div className="white-card">
+      <div className="flex justify-center">
+        <div className="white-card members-card">
         <div className="title">
             <h4>Members ({members.length})</h4>
             <div className="divider purple opacity p75"></div>
@@ -19,6 +20,8 @@ const GroupMembers: React.FC<{members: GroupMember[]}> = ({members}) => {
         </div>
         
         </div>
+      </div>
+      
         
       </>
     );
