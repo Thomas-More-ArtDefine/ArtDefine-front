@@ -20,7 +20,7 @@ const GroupJoinButton: React.FC<{joined:boolean, groupjoin:GroupJoin, visibility
     }
 
     if (joined) {
-        button = <div className="join-button inspect"><i className="material-icons" onClick={() => navigate("/group/"+src)}>chevron_right</i></div>;
+        button = <div className="join-button inspect" onClick={() => navigate("/group/"+src)}><i className="material-icons" >chevron_right</i></div>;
     }
     
     return (
