@@ -841,9 +841,44 @@ div.search-criteria-overlay{
     margin: 25px 0;
     padding: 12px;
     width: 100%;
+
+    &.question{
+      margin: 0;
+    }
   }
   button{
     padding: 12px;
+  }
+
+  .type-question{
+    div{
+      margin: 10px 0 5px 0;
+    }
+  }
+
+  .bulletpoint-options{
+    padding: 10px 0 0 20px;
+
+    .option{
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+     
+      input{
+        margin: 0;
+        
+      }
+
+      button{
+        margin: 0;
+        height: 48px;
+        width: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
 }
 
@@ -987,6 +1022,26 @@ div.search-criteria-overlay{
     }
 
     .feedback-items-for-post{
+      display: flex;
+      flex-direction: column;
+      > label{
+        padding: 10px 0;
+        input{
+          padding: 0;
+          border-radius: 0;
+          width: 20px;
+        }
+        .text{
+          flex-grow: 1;
+          text-align: left;
+        }
+      }
+
+      >button{
+        height: 15vh;
+        background-color: $canvas-white-dark;
+        border-radius: 10px;
+      }
       
       .feedback-items-list{
         overflow: scroll;

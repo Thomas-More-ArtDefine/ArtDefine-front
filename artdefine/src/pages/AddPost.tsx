@@ -72,6 +72,9 @@ export default function AddPost() {
   const onUpload = () => {
     if (user) {
       artwork.user = user;
+      if (feedbackStack.length > 0) {
+        artwork.feedbackStack = feedbackStack;
+      }
       uploadArtwork(artwork);
     } else {
       console.log("User not logged in");

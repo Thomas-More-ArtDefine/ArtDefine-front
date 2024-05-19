@@ -12,7 +12,7 @@ const FeedbackQuestionTypeCard:React.FC<{
 }) => {
     const [selectedOption, setSelectedOption] = useState('');
     const [question, setQuestion] = useState('');
-   
+    const [bulletPoints, setBulletPoints] = useState(['']);
 
     const handleAddFeedback = (option: string) => {
         setSelectedOption(option);
@@ -24,37 +24,57 @@ const FeedbackQuestionTypeCard:React.FC<{
             switch (selectedOption) {
                 case 'open':
                     return {
+                        type: 'open',
                         title: 'Open Question',
                         empty: true
                     };
                 case 'bullet':
                     return {
+                        type: 'bulletpoints',
                         title: 'Bullet Question',
                         empty: true,
-                        options: ['']
+                        content: bulletPoints
                     };
                 case 'star':
                     return {
+                        type: 'stars',
                         title: 'Rating Question',
                         empty: true,
                         starAmount: 5
                     };
                 default:
                     return {
+                        type: '',
                         title: '',
                         empty: true
                     };
             }
         };
 
+
+        const content = () => {
+            if (selectedOption === 'bullet') {
+                return bulletPoints;
+            }
+            return [];
+        }
         const feedbackItem: FeedbackItemModel = {
             id: Math.random().toString(),
             question: question,
-            type: type()
+            type: type(),
+            
         };
         feedbackStack.push(feedbackItem);
         console.log(feedbackStack);
         setOpenFeedback(false);
+    };
+
+    const addBulletPoint = () => { 
+        setBulletPoints([...bulletPoints, '']);
+    };
+
+    const removeBulletPoint = (indexToRemove: number) => { // New function to remove a bullet point
+        setBulletPoints(bulletPoints.filter((_, index) => index !== indexToRemove));
     };
 
     return (
@@ -73,10 +93,33 @@ const FeedbackQuestionTypeCard:React.FC<{
                     </button>
                     {selectedOption && (
                         <>
-                            <div>
-                                <input className='input' type="text" placeholder="Enter question" onChange={(e) => setQuestion(e.target.value)} />
+                            <div className='type-question'>
+                                <div className='sub-title font eaves heavy fs24 align-left '>Question</div>
+                                <input className='input question' type="text" placeholder="Enter question" onChange={(e) => setQuestion(e.target.value)} />
                             </div>
+                            {selectedOption === 'bullet' && (
+                <div className='bulletpoint-options'>
+                    <div className='sub-title font eaves heavy fs24 align-left'>Options:</div>
+                    {bulletPoints.map((bulletPoint, index) => (
+                        <div className='option' key={index}>
+                            <input
+                                type="text"
+                                value={bulletPoint}
+                                onChange={(e) => {
+                                    const newBulletPoints = [...bulletPoints];
+                                    newBulletPoints[index] = e.target.value;
+                                    setBulletPoints(newBulletPoints);
+                                }}
+                            />
+                            <button className='delete' onClick={() => removeBulletPoint(index)}>-</button>
+                            {index === bulletPoints.length - 1 && <button className='add' onClick={addBulletPoint}>+</button>}
+                        </div>
+                    ))}
+                    
+                </div>
+            )}
                             <button className='add-feedback' onClick={addFeedback}>Add Feedback</button>
+                            <button className='cancel' onClick={() => setOpenFeedback(false)}>Cancel</button>
                         </>
                     )}
                 </div>

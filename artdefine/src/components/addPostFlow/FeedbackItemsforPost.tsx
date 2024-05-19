@@ -34,23 +34,23 @@ const FeedbackItemsForPost: React.FC<FeedbackItemsForPostProps> = ({
 
     return (
         <div className='feedback-items-for-post'>
-            <label>
-                Enable Feedback:
+            <label className='flex'>
                 <input
                     type="radio"
                     checked={isFeedbackEnabled}
                     onChange={handleFeedbackToggle}
                 />
+                <div className='text'>Enable Feedback</div>
             </label>
 
-            <button onClick={handleOpenFeedbackQuestionType}>
-                Open Feedback Question Type
+            <button className='font eaves book ' onClick={handleOpenFeedbackQuestionType}>
+               Add Feedback Question ...
             </button>
             {openFeedback && <FeedbackQuestionTypeCard feedbackStack={feedbackStack} setOpenFeedback={setOpenFeedback} />}
 
             <div className='feedback-items-list'>
                 {feedbackStack.map((item, index) => (
-                    < FeedbackShortCard key={index} feedbackItem={item} onDelete={deleteFeedbackItemFromStack} />
+                    <FeedbackShortCard key={index} feedbackItem={item} onDelete={deleteFeedbackItemFromStack} />
                 ))}
             </div>
         </div>

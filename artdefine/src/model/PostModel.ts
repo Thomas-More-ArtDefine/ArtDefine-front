@@ -1,3 +1,4 @@
+import { FeedbackItemModel } from "./FeedbackItemModel";
 import { Folder } from "./FolderModel";
 import { User } from "./userModel";
 
@@ -18,4 +19,5 @@ export interface Artwork {
     post_visibility: visibility,
     user: User;
     folders: Folder[];
+    feedbackStack?: FeedbackItemModel[];
 }
