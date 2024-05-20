@@ -22,18 +22,16 @@ export default function AddPost() {
   const {user, joinedGroups} = useAuth();
 
   const artwork: Artwork = {
-    
-      id: "0",
-      user_id: "1",
-      post_content: "", 
-      post_title: "",
-      post_description: "",
-      post_medium: "",
-      post_visibility: visibility.PRIVATE,
-      user: user ? user : {} as User, 
-      folders: [
-      ]
-    
+    id: "0",
+    user_id: "1",
+    post_content: "",
+    post_title: "",
+    post_description: "",
+    post_medium: "",
+    post_visibility: visibility.PRIVATE,
+    user: user ? user : {} as User,
+    folders: [],
+    post_tags: ""
   };
 
   // Handle click events for each tab

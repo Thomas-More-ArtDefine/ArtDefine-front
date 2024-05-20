@@ -17,8 +17,18 @@ const GroupsForPost: React.FC<Props> = ({ userGroups }) => {
     }
   };
 
+  console.log(userGroups);
   return (
     <div>
+        <div>
+        <label htmlFor="own-profile" className="checkbox">
+          <input
+            type="checkbox"
+            id="own-profile"
+             />
+          <div className="text">My Profile</div>
+        </label>
+      </div>
       {userGroups.map((group) => {
         const image =
           group.group_profile_picture !== null &&
@@ -49,17 +59,7 @@ const GroupsForPost: React.FC<Props> = ({ userGroups }) => {
           </div>
         );
       })}
-      <div>
-        <label htmlFor="own-profile" className="checkbox">
-          <input
-            type="checkbox"
-            id="own-profile"
-            checked={selectedGroups.length === 0}
-            onChange={() => setSelectedGroups([])}
-          />
-          <div className="text">My Profile</div>
-        </label>
-      </div>
+      
     </div>
   );
 };
