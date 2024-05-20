@@ -2422,3 +2422,45 @@ tr {
 .members{
   margin-top: 20px;
 }
+
+
+.profile-home, .profile-groups{
+  margin-top: 20px;
+}
+
+.login-container{
+  max-width: 450px;
+  min-width: 371px;
+  width: 100%;
+  text-align: left;
+  padding: 14px 48px;
+  h2{
+    color: $purple-dark;
+    font-size: 40px;
+  }
+
+  .input{
+    margin-bottom: 20px;
+    color: $midnight-blue;
+  }
+
+  button{
+    width: 200px;
+    height: 48px;
+    margin-top: 40px;
+  }
+
+  .links{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    a{
+      color: $color-secondary;
+      cursor: pointer;
+      text-decoration: underline;
+      &:hover{
+        color: #ff9683;
+      }
+    }
+  }
+}
