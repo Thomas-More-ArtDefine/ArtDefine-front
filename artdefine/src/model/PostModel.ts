@@ -1,3 +1,4 @@
+import { FeedbackItemModel } from "./FeedbackItemModel";
 import { Folder } from "./FolderModel";
 import { User } from "./userModel";
 
@@ -19,4 +20,5 @@ export interface Artwork {
     post_tags: string,
     user: User;
     folders: Folder[];
+    feedbackStack?: FeedbackItemModel[];
 }

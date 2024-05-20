@@ -102,12 +102,39 @@ export const postArtwork = async (artwork: Artwork): Promise<Artwork> => {
     ]
     };
     const response = await api.post('/posts', artworkForPost);
+    if (artwork.feedbackStack) {
+      console.log("Feedbackstack:", artwork.feedbackStack);
+      const feedbackTemplateForPost = {
+        post_id: response.data.id,
+        questions: artwork.feedbackStack.map((item) => {
+          let question = {
+            question_title: item.question,
+            question_type: item.type.type,
+            content: null as string | null,
+          };
+          console.log("item.type:", item.type);
+          if ('content' in item.type) {
+            question.content = JSON.stringify(item.type.content);
+            console.log("Question", question);
+          }
+      
+          return question;
+        }),
+      }
+      await api.post(`/feedback-templates`, feedbackTemplateForPost);
+    }
+
+    
     return response.data;
   } catch (error) {
     console.error("Error while fetching one data:", error);
     throw error;
   }
 }
+
+
+
+
 
 export const getRandomFeed = async (exclude?: string[], amount?: number): Promise<Artwork[]> => {
   try {
