@@ -28,7 +28,7 @@ const GroupDetails: React.FC<{group:GroupModel}> = ({group} ) => {
                         <tbody>
                             <tr>
                                 <td className="table-title">Creator:</td>
-                                <td><Link to={"/user/"+group.creator_id.toString()}>{user?.user_name}</Link></td>
+                                <td><Link to={"/profile/"+group.creator_id.toString()}>{user?.user_name}</Link></td>
                             </tr>
                             <tr>
                                 <td className="table-title">Created on:</td>

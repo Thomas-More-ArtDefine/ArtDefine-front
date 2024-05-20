@@ -227,8 +227,9 @@ export const getPostsByTag = async (query:string, amount: number, skip: number, 
   }
   
   try {
-    const response = await api.get(`/posts/tag/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`);
-    return response.data;
+    const response = await api.get(`/posts/tag/${query}?amount=${amount}&orderby=${filter}&skipAmount=${skip}`);
+    console.log(response.data);
+    return response.data[0];
   } catch (error) {
     console.error("Error while fetching data:", error);
     throw error;
