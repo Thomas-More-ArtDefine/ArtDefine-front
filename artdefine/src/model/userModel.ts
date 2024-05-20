@@ -8,6 +8,7 @@ export interface User {
     user_pronouns: string,
     user_bio: string,
     user_profile_picture: string,
+    user_banner_picture: string,
     user_deactivated: boolean,
     user_deactivation_date: string,
     user_creationdate: string,

@@ -36,6 +36,7 @@ export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children })
         post_title: "",
         post_description: "",
         post_medium: "",
+        post_tags: '',
         post_visibility: visibility.PRIVATE,
         user: {
           id: "1",
@@ -43,6 +44,7 @@ export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children })
           user_subtitle: "",
           user_bio: "",
           user_pronouns: '',
+          user_banner_picture: '',
           user_profile_picture: "",
           user_deactivated: false,
           user_deactivation_date: "",
