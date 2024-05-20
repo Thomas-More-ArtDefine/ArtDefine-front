@@ -254,8 +254,9 @@ export const getPostsByTag = async (query:string, amount: number, skip: number, 
   }
   
   try {
-    const response = await api.get(`/posts/tag/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`);
-    return response.data;
+    const response = await api.get(`/posts/tag/${query}?amount=${amount}&orderby=${filter}&skipAmount=${skip}`);
+    console.log(response.data);
+    return response.data[0];
   } catch (error) {
     console.error("Error while fetching data:", error);
     throw error;
@@ -283,4 +284,40 @@ export const getFollowing = async (id:string): Promise<any[]> => {
     throw error;
   }
 };
-      
+
+export const getFoldersByGroupId = async (id:string): Promise<any[]> => {
+  
+  try {
+    const response = await api.get(`/folders/group/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error while fetching data:", error);
+    throw error;
+  }
+};
+
+export const getFoldersByUserId = async (id:string): Promise<any[]> => {
+  
+  try {
+    const response = await api.get(`/folders/user/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error while fetching data:", error);
+    throw error;
+  }
+};
+
+export const postFollowing = async (loggedUserId:string, followed:User[]): Promise<any> => {
+  try {
+    const response = await api.patch('/users/follow/'+loggedUserId, {following: followed})
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+    })
+    return response;
+    
+  } catch (error) {
+    console.error("Error while fetching one data:", error);
+    throw error;
+  }
+};

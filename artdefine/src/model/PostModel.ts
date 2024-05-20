@@ -17,6 +17,7 @@ export interface Artwork {
     post_description: string,
     post_medium: string,
     post_visibility: visibility,
+    post_tags: string,
     user: User;
     folders: Folder[];
     feedbackStack?: FeedbackItemModel[];

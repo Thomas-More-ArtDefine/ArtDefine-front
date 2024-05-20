@@ -896,10 +896,9 @@ div.search-criteria-overlay {
 }
 
 .profile {
-  background-image: url("./assets/component_assets/rasterframe_yellow.png");
   background-size: contain;
-
   .profile-main {
+    position: relative;
     height: 296px;
     display: flex;
     flex-direction: column;
@@ -949,10 +948,8 @@ div.search-criteria-overlay {
       grid-template-rows: repeat(2, 1fr);
 
       img {
-        position: absolute;
         width: 110px;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(0, -50%);
         aspect-ratio: 1/1;
         object-fit: cover;
         @include border-standard(3px);
@@ -1120,8 +1117,9 @@ div.search-criteria-overlay {
     flex-direction: column;
     padding: 20px;
     padding-top: 0;
-    h3 {
-      margin-top: 12px;
+    h3{
+      margin-top: 18px;
+      margin-bottom: 18px;
     }
     .title {
       padding-top: 0;
@@ -1148,29 +1146,30 @@ div.search-criteria-overlay {
       }
     }
 
-    .item-description-container {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
+  .item-description-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+   
+    :first-child { // desctiption title
+      text-align: left;
+      font-family: "EavesSansHeavy";
+      font-size: 20px;
+    }
+    .item-description {
+      min-height: 60px;
+      margin-top: 4px;
+      padding: 8px;
+      margin-left: -8px;
+      margin-right: -8px;
+      font-family: "EavesSansBook";
+      font-size: 18px;
+      color: $midnight-blue;
+      text-align: left;
+      background-color: rgba(255, 245, 184, 0.25);
+      @include border-standard(0);
 
-      :first-child {
-        // desctiption title
-        text-align: left;
-        font-family: "EavesSansHeavy";
-        font-size: 20px;
-      }
-      .item-description {
-        margin-top: 4px;
-        padding: 8px;
-        margin-left: -8px;
-        margin-right: -8px;
-        font-family: "EavesSansBook";
-        font-size: 16px;
-        color: $midnight-blue;
-        text-align: left;
-        background-color: rgba(255, 245, 184, 0.25);
-        @include border-standard(0);
-      }
+    
     }
 
     .groups-container {
@@ -1186,7 +1185,27 @@ div.search-criteria-overlay {
     }
   }
 
-  @include breakpoint(lg) {
+  .container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+   
+    div.title {
+      text-align: left;
+      font-family: "EavesSansHeavy";
+      font-size: 20px;
+    }
+
+    button{
+      width: 100%;
+      margin: 10px 0;
+    }
+    
+  }
+}
+
+  @include breakpoint(lg){
+
     flex-direction: row;
     justify-content: center;
     gap: 36px;
@@ -1216,21 +1235,24 @@ div.search-criteria-overlay {
 
 // ## Group page ##
 
-.group-page {
-  overflow: visible;
-
-  .group-banner {
-    position: relative;
-    margin-bottom: 10px;
-
-    .name-container {
-      display: flex;
-      align-items: center;
-      transform: translate(0%, -100%);
-      top: 103%;
-      left: 0%;
-      position: absolute;
-      .group-name {
+.group-page{
+    
+      overflow: visible;
+      
+      .page-banner{ 
+        
+        position: relative;
+        margin-bottom: 10px;
+        
+        .name-container{
+        display: flex;
+        align-items: center;
+        transform: translate(0%, -100%);
+        top: 103%;
+        left: 0%;
+        position: absolute;
+      .group-name{
+        
         @include border-standard(3px);
         @include border-effect("1,1");
         background-color: $color-white;
@@ -1946,11 +1968,26 @@ div.groups-list {
   padding-right: 10px;
 }
 
-div.dropdown {
+.page-banner{
+  &.profile{
+    .dropdown{
+      left: 0;
+    }
+  }
+  &.group{
+    .dropdown{
+      right: 0;
+      @include breakpoint('xs'){
+        left: 120px;
+      };
+    }
+  }
+}
+
+div.dropdown{
   z-index: 900;
   width: 238px;
   padding: 8px 16px;
-  right: 0;
   background-color: $canvas-white-dark;
   @include border-standard(4px);
 
@@ -1994,12 +2031,13 @@ button {
 
 .dropdownbackground {
   height: 100vh;
-  width: 100vw;
+  width: 150vw;
   position: absolute;
   top: -18px;
-  left: -18px;
+  left: -25vw;
   background-color: $purple-dark;
   opacity: 25%;
+  z-index: 50;
 }
 
 .no-scroll {
@@ -2156,8 +2194,9 @@ button {
   }
 }
 
-.group-details {
-  width: 480px;
+.group-details{
+  min-width: 280px;
+  max-width: 480px;
   margin: auto;
 }
 
@@ -2303,13 +2342,14 @@ tr {
   }
 }
 
-.feed-btns {
-  &.profile {
-    margin: auto;
-    width: 100%;
-    padding: 0;
-    margin-bottom: 20px;
-  }
+.feed-btns{
+ &.profile{
+  margin: auto;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 20px;
+  z-index: 0;
+ }
 }
 
 .profile-btns {
@@ -2351,4 +2391,34 @@ tr {
   &:hover {
     background-color: #fff6b867;
   }
+}
+
+
+.post-view-page{
+  width: 100vw;
+  .artwork{
+    max-width: 100%;
+    max-height: 75vh;
+    height: 100%;
+  }
+}
+
+.post-tags{
+  font-family: 'EavesSansBook';
+    color: $midnight-blue;
+  text-align: left;
+  font-size: 16px;
+  opacity: 75%;
+  margin: 8px 0;
+}
+
+.members-card{
+  min-width: 220px;
+  max-width: 420px;
+  width: 100%;
+}
+
+
+.members{
+  margin-top: 20px;
 }

@@ -38,7 +38,7 @@ export default function Post() {
             
             <ArtworkContainer src={artwork?.post_content} />
             </div>
-            <div className="artwork-info"><ArtworkInfo title={artwork.post_title} user={artwork.user} description={artwork.post_description} folders={artwork.folders} /></div>
+            <div className="artwork-info"><ArtworkInfo feedback={true} tags={artwork.post_tags} title={artwork.post_title} user={artwork.user} description={artwork.post_description} folders={artwork.folders} /></div>
           </>
         ) : (
           <div>Loading...</div>

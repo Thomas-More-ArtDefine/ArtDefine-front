@@ -41,7 +41,7 @@ export default function Search() {
     const handleInputChange = async (e: string) => {
         console.log(e);
         if (e[0] == "#" && e.length > 1) {
-            console.log("=> tag");
+            console.log("=> tag: "+e.slice(1));
             if (findArtworkByTag) {
                 await findArtworkByTag(e.slice(1), 5, 0);
             }

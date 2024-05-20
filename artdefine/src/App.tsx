@@ -1,6 +1,5 @@
 import { ItemsProvider } from './context/ItemContext';
 import { Navigate, createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Profile from './pages/profile/Profile';
 import UploadBanner from './pages/profile/UploadBanner';
 import UploadProfilePic from './pages/profile/UploadProfilePic';
 import ListPage from './pages/Listpage';
@@ -20,6 +19,9 @@ import { GroupProvider } from './context/GroupContext';
 import { UserProvider } from './context/UserContext';
 import PostFeedback from './pages/post/PostFeedback';
 import Search from './pages/search/Search';
+import UserProfile from './pages/profile/UserProfile';
+import { FolderProvider } from './context/FolderContext';
+import { ProfileProvider } from './context/ProfileContext';
 
 
 
@@ -63,7 +65,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Profile />,
+            element: <UserProfile />,
           },
           {
             path: 'editBanner',
@@ -72,6 +74,10 @@ const router = createBrowserRouter([
           {
             path: 'uploadProfilePic',
             element: <UploadProfilePic />,
+          },
+          {
+            path: ':id',
+            element: <UserProfile />,
           },
         ],
       },
@@ -159,7 +165,11 @@ function App() {
               <GroupsProvider>
                 <GroupProvider>
                   <UserProvider>
-                    <RouterProvider router={router} />
+                    <FolderProvider>
+                      <ProfileProvider>
+                        <RouterProvider router={router} />
+                      </ProfileProvider>
+                    </FolderProvider>
                   </UserProvider>
                 </GroupProvider>
               </GroupsProvider>
