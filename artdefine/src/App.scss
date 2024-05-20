@@ -1,13 +1,9 @@
 @import "./style/variables";
 @import "./style/mixins";
 
-
-
 // formatting :
 // Category = --- Category ---
 // Subcategory = // ## Subcategory ##
-
-
 
 // --- Normalize ---
 a {
@@ -22,11 +18,10 @@ a {
   -webkit-box-sizing: border-box;
 }
 
-body{
+body {
   background: $background-color;
   background-attachment: fixed;
 }
-
 
 // --- App ---
 
@@ -37,9 +32,8 @@ body{
   width: 100vw;
   text-align: center;
   background: $background-color;
-  
 
-  .page-container{
+  .page-container {
     display: flex;
     flex-direction: row;
     height: 100%;
@@ -55,177 +49,176 @@ body{
 
 // --- Styles ---
 
-.clickable{
+.clickable {
   @include clickable();
 }
 
-.position{
-  &.relative{
+.position {
+  &.relative {
     position: relative;
   }
-  &.absolute{
+  &.absolute {
     position: absolute;
   }
 }
 
-.bg-card{
+.bg-card {
   background-color: $canvas-white-light;
   border-radius: $corner-radius;
 }
 
-.full-height{
+.full-height {
   height: 100%;
 }
 
-.full-width{
+.full-width {
   width: 100%;
 }
 
-.padding{
-  &.pd8{
+.padding {
+  &.pd8 {
     padding: 8px;
   }
-  &.pd16{
+  &.pd16 {
     padding: 16px;
   }
 }
 
-.margin{
-  &.mg8{
+.margin {
+  &.mg8 {
     margin: 8px;
   }
-  &.mg16{
+  &.mg16 {
     margin: 16px;
   }
 }
 
-.opacity{
-  &.p100{
+.opacity {
+  &.p100 {
     opacity: 100%;
   }
-  &.p75{
+  &.p75 {
     opacity: 75%;
   }
-  &.p50{
+  &.p50 {
     opacity: 50%;
   }
-  &.p25{
+  &.p25 {
     opacity: 25%;
   }
-  &.p0{
+  &.p0 {
     opacity: 0%;
   }
 }
 
-.font{
+.font {
   // default color
   color: $midnight-blue;
 
   // font colors
-  &.sunset{
+  &.sunset {
     color: $sunset-red;
   }
-  &.purple-dark{
+  &.purple-dark {
     color: $purple-dark;
   }
-  &.canary-dark{
+  &.canary-dark {
     color: $canary-yellow-dark;
   }
 
-  &.align-start{
+  &.align-start {
     text-align: start;
   }
 
   // font sizes
-  &.fs18{
+  &.fs18 {
     font-size: 18px;
   }
-  &.fs20{
+  &.fs20 {
     font-size: 20px;
   }
-  &.fs24{
+  &.fs24 {
     font-size: 24px;
   }
-  &.fs32{
+  &.fs32 {
     font-size: 32px;
   }
 
   // align
-  &.align-left{
+  &.align-left {
     text-align: start;
   }
 
   // font families
-  &.eaves{
-    &.light{
+  &.eaves {
+    &.light {
       font-family: EavesSansLight;
     }
-    &.book{
+    &.book {
       font-family: EavesSansBook;
     }
-    &.heavy{
+    &.heavy {
       font-family: EavesSansHeavy;
     }
   }
-  &.icecream{
+  &.icecream {
     font-family: Icecream;
   }
 }
 
-.flex{
+.flex {
   display: flex;
-  &.align-center{
+  &.align-center {
     align-items: center;
   }
-  &.align-end{
+  &.align-end {
     align-items: end;
   }
-  &.justify-start{
+  &.justify-start {
     justify-content: start;
   }
-  &.justify-center{
+  &.justify-center {
     justify-content: center;
   }
-  &.justify-spacebetween{
+  &.justify-spacebetween {
     justify-content: space-between;
   }
-  &.justify-spacearound{
+  &.justify-spacearound {
     justify-content: space-around;
   }
-  &.direction-column{
+  &.direction-column {
     flex-direction: column;
   }
 
-  .self-center{
+  .self-center {
     align-self: center;
   }
 }
 
-div.divider{
+div.divider {
   height: 4px;
   width: 100%;
   border-radius: $corner-radius-sm;
-  background-color: #4F296B;
-  &.red-dark{
+  background-color: #4f296b;
+  &.red-dark {
     background-color: $sunset-red-dark;
   }
-  &.red{
+  &.red {
     background-color: $sunset-red;
   }
-  &.purple{
+  &.purple {
     background-color: $purple-dark;
   }
-  &.thick{
+  &.thick {
     height: 7px;
   }
 }
 
-.border-effect{
+.border-effect {
   @include border-effect("1,1");
-
 }
 
-.clickable{
+.clickable {
   cursor: pointer;
 }
 
@@ -260,7 +253,7 @@ button.delete {
   width: 91px;
   display: flex;
   flex-direction: column;
-  
+
   .icon {
     padding: 2px 20px;
     @include flex-center();
@@ -272,16 +265,16 @@ button.delete {
     @include flex-center();
   }
 
-  &.active{
-    .button{
-       .icon{
+  &.active {
+    .button {
+      .icon {
         @include button($color-white, $midnight-blue, $midnight-blue);
-       }
+      }
     }
   }
 }
 
-button.text-under-icon{
+button.text-under-icon {
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -294,22 +287,22 @@ button.text-under-icon{
   border: none;
   background-color: transparent;
   gap: 4px;
-  :first-child{
+  :first-child {
     background-color: $color-primary;
     border-radius: $corner-radius-sm;
   }
 
-  &.red{
-    :first-child{
+  &.red {
+    :first-child {
       background-color: $sunset-red;
-     
+
       aspect-ratio: 1/1;
       padding: 4px;
     }
   }
 }
 
-button.delete{
+button.delete {
   width: 192px;
   height: 48px;
   @include button($sunset-red, $color-black, $midnight-blue);
@@ -334,13 +327,18 @@ button.delete{
   }
 }
 
-
 li.SearchBar {
-  @include searchbar($canvas-white-light, $purple-dark, $midnight-blue, 320px, $nav-element-height);
+  @include searchbar(
+    $canvas-white-light,
+    $purple-dark,
+    $midnight-blue,
+    320px,
+    $nav-element-height
+  );
   padding: 0 16px;
   margin: $nav-element-margin;
   height: $nav-element-height;
-  .trigger{
+  .trigger {
     height: 100%;
     width: 100%;
     position: absolute;
@@ -348,199 +346,190 @@ li.SearchBar {
   }
 }
 
-nav.navigation{
+nav.navigation {
   position: sticky;
   top: 0;
   z-index: 999;
   // nav smallest screen
-  div.desktop{
+  div.desktop {
     display: none;
   }
-  div.mobile{
-    span.logo{
+  div.mobile {
+    span.logo {
       display: none;
     }
-    li.navlogo{
+    li.navlogo {
       display: flex;
       align-items: end;
       margin: $nav-element-margin;
     }
-    li.navprofile{
+    li.navprofile {
       height: $nav-element-height;
       display: flex;
       align-items: end;
       justify-content: space-between;
       margin: $nav-element-margin;
       width: 122px;
-      span.hamburger{
+      span.hamburger {
         cursor: pointer;
       }
-      a{
+      a {
         cursor: pointer;
       }
     }
-    
   }
 
-  button.nav{
+  button.nav {
     margin-top: 20px;
     margin-bottom: 0;
   }
-  
-  
-  li.navlogo{
-    span.logo{
+
+  li.navlogo {
+    span.logo {
       cursor: pointer;
       margin: 10px;
     }
-    span.text{
+    span.text {
       cursor: pointer;
       margin: 10px;
     }
   }
-  
-  
 
   // nav small to medium screen
-  @include breakpoint(sm){
-    div.mobile{
-      span.logo{
+  @include breakpoint(sm) {
+    div.mobile {
+      span.logo {
         display: initial;
       }
-      li.navlogo{
+      li.navlogo {
         display: flex;
         align-items: end;
         padding: 0 16px;
-        margin: 0px 10px 0px 10px;;
+        margin: 0px 10px 0px 10px;
       }
     }
   }
 
   // nav large screen
-  @include breakpoint(lg){
-   
-    div.desktop{
+  @include breakpoint(lg) {
+    div.desktop {
       display: initial;
-     
-      span.logo{
+
+      span.logo {
         display: none;
       }
-      li.navlogo{
+      li.navlogo {
         display: flex;
         align-items: center;
         padding: 0 16px;
         margin: $nav-element-margin;
       }
-      button.primary{
+      button.primary {
         width: 130px;
         font-size: 20px;
       }
 
-      li.navprofile{
-          display: flex;
-          align-items: flex-end;
-          justify-content: space-between;
-          min-width: 100px;
+      li.navprofile {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        min-width: 100px;
       }
 
-      div.navmessage{
-        svg{
+      div.navmessage {
+        svg {
           cursor: pointer;
         }
-        
       }
-      
-      div.profile-block{
+
+      div.profile-block {
         cursor: pointer;
         width: 52px;
         height: 52px;
-        div.profile-info{
+        div.profile-info {
           display: none;
         }
-        img{
+        img {
           @include border-standard(2px);
           height: $nav-element-height;
         }
       }
     }
-    div.mobile{
+    div.mobile {
       display: none;
     }
   }
   // nav extra large screen
-  @include breakpoint(xxl){
-    div.desktop{
-      span.logo{
+  @include breakpoint(xxl) {
+    div.desktop {
+      span.logo {
         display: initial;
       }
-      div.profile-block{
-        div.profile-info{
+      div.profile-block {
+        div.profile-info {
           display: initial;
         }
       }
-      div.navmessage{
+      div.navmessage {
         margin-left: 0px;
       }
-      button.primary{
+      button.primary {
         width: 192px;
         font-size: 24px;
       }
-      li.navlogo{
+      li.navlogo {
         display: flex;
         align-items: end;
         padding: 0 16px;
-        margin: 0px 10px 0px 10px;;
+        margin: 0px 10px 0px 10px;
       }
-      li.navprofile{
+      li.navprofile {
         min-width: 250px;
-        div.profile-block{
+        div.profile-block {
           width: 200px;
           display: flex;
         }
-        div.profile-info{
+        div.profile-info {
           padding-right: 15px;
           height: $nav-element-height;
           text-align: end;
           color: $midnight-blue;
-            div.username{
-              font-family: 'IceCream';
-              font-weight: regular;
-              font-size: 24px;
-            }
-            div.profile{
-              font-family: 'EavesSansBook';
-              font-weight: bold;
-              font-size: 20px;
-              line-height: 75%;
-            
-            }
+          div.username {
+            font-family: "IceCream";
+            font-weight: regular;
+            font-size: 24px;
+          }
+          div.profile {
+            font-family: "EavesSansBook";
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 75%;
+          }
         }
       }
-      li.navlogo{
+      li.navlogo {
         min-width: 332px;
       }
     }
   }
 }
 
-nav.mobileNavigation{
-  
-  ul{
+nav.mobileNavigation {
+  ul {
     padding-left: 27px;
     padding-right: 27px;
   }
-  li{
+  li {
     list-style: none;
   }
-  div.navmessage{
+  div.navmessage {
     padding-right: 20px;
-    svg{
+    svg {
       cursor: pointer;
     }
-    
   }
 
-  div.divider{
+  div.divider {
     margin: 16px 0px 0px 0px;
     width: 332px;
     background-color: $canvas-white-dark;
@@ -553,77 +542,73 @@ nav.mobileNavigation{
     max-width: 320px;
   }
 
-
-  button.nav{
+  button.nav {
     margin: 16px 0px 0px 0px;
     width: 320px;
   }
 
-  li.navprofile{
+  li.navprofile {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 332px;
     margin-bottom: 20px;
   }
-  
-  div.profile-block{
+
+  div.profile-block {
     cursor: pointer;
     width: 250px;
     height: 72px;
     display: flex;
     align-items: center;
-    
-    div.profile-info{
+
+    div.profile-info {
       padding-right: 15px;
       height: $nav-element-height;
       text-align: start;
       color: $midnight-blue;
-      div.username{
-        font-family: 'IceCream';
+      div.username {
+        font-family: "IceCream";
         font-weight: regular;
         font-size: 24px;
       }
-      div.profile{
-        font-family: 'EavesSansBook';
+      div.profile {
+        font-family: "EavesSansBook";
         font-weight: bold;
         font-size: 20px;
         line-height: 75%;
-            
       }
     }
-    img{
+    img {
       @include border-standard(2px);
       height: 72px;
       margin-right: 16px;
     }
   }
-  
 }
 
-div.mobileNav{
+div.mobileNav {
   position: absolute;
   z-index: 9999;
   height: 100%;
   width: 100%;
-  @include breakpoint(lg){
+  @include breakpoint(lg) {
     display: none;
   }
 }
 
-div.mobileMenu{
- @include pop-up($color-white)
+div.mobileMenu {
+  @include pop-up($color-white);
 }
 
-div.modalbackground{
-  z-index:99;
+div.modalbackground {
+  z-index: 99;
   background-color: $purple-dark;
   opacity: 25%;
   height: 100%;
   width: 100%;
   position: absolute;
 }
-
 
 // --- Headers ---
 h1 {
@@ -661,15 +646,15 @@ h5 {
 
 // --- links ---
 
-.links{
+.links {
   padding-left: 0;
   list-style: none;
   margin: 0;
-  .link{
+  .link {
     padding: 8px 0;
     display: flex;
     align-items: center;
-    i{
+    i {
       color: $midnight-blue;
       padding-right: 16px;
     }
@@ -710,63 +695,60 @@ h5 {
 
   @include breakpoint(lg) {
     margin: 27px 36px 0 36px;
-    
   }
 }
 
 // ## Misc page elements ##
 
-
-
-div.search-criteria-overlay{
+div.search-criteria-overlay {
   @include pop-up($color-white);
   overflow: hidden;
 
-  div.header{
+  div.header {
     border-bottom: 4px solid $midnight-blue;
-   
+
     background-color: $canvas-white-dark;
-    h4{
+    h4 {
       margin: 0;
       margin-left: 12px;
       padding: 12px;
     }
-    
-    button{
+
+    button {
       border: none;
       margin: 0;
       border-left: 4px solid $midnight-blue;
       border-radius: 0;
-      height:max-content;
+      height: max-content;
       aspect-ratio: 1/1;
     }
   }
 
-  .sort{
-    svg{
+  .sort {
+    svg {
       border: 4px solid $sunset-red;
 
-      &.active{
+      &.active {
         border: 4px solid $midnight-blue;
       }
     }
   }
 
-  .tags{
-    label{
+  .tags {
+    label {
       padding-left: 0;
     }
-    textarea{
+    textarea {
       margin-top: 12px;
     }
   }
 
-  .filter{
-    div.form-item{
+  .filter {
+    div.form-item {
       margin-top: 8px;
       margin-bottom: 4px;
 
-      label{
+      label {
         font-size: 24px;
       }
     }
@@ -783,7 +765,8 @@ div.search-criteria-overlay{
   }
 }
 
-.feedback-templates{
+.feedback-templates {
+  overflow: scroll;
   background-color: $canvas-white-light;
   position: absolute;
   height: 70%;
@@ -792,11 +775,13 @@ div.search-criteria-overlay{
   z-index: 999;
   bottom: 0;
   right: 2.5%;
-  border: solid 4px $midnight-blue;
+  @include border-standard(4px);
   width: 95%;
   border-radius: 16px 16px 0 0;
- 
-  .container{
+
+  
+
+  .container {
     display: flex;
     flex-direction: column;
     background-image: url("./assets/component_assets/rasterframe_yellow.png");
@@ -806,11 +791,13 @@ div.search-criteria-overlay{
     margin: 16px;
     flex-grow: 1;
   }
-  
-  h3{
+
+  h3 {
     margin: 10px 10px;
   }
-  .open,.bullet,.star{
+  .open,
+  .bullet,
+  .star {
     background-color: $canvas-white-light;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -820,87 +807,93 @@ div.search-criteria-overlay{
     justify-items: start;
     margin: 10px 0 0 0;
     padding: 0 10px;
-    
 
-    .img{
+    .img {
       justify-self: center;
       display: flex;
       justify-content: center;
       align-items: center;
     }
-    
-    
 
-    &.active{
+    &.active {
       background-color: $canvas-white-dark;
     }
-
-    
   }
-  input{
+  input {
     margin: 25px 0;
     padding: 12px;
     width: 100%;
 
-    &.question{
+    &.question {
       margin: 0;
     }
   }
-  button{
+  button {
     padding: 12px;
   }
 
-  .type-question{
-    div{
+  .type-question {
+    div {
       margin: 10px 0 5px 0;
     }
   }
 
-  .bulletpoint-options{
+  .bulletpoint-options-container {
     padding: 10px 0 0 20px;
+    overflow: scroll;
 
-    .option{
-      margin: 0;
-      display: flex;
-      align-items: center;
+    .bullet-options {
       gap: 10px;
-     
-      input{
-        margin: 0;
-        
-      }
 
-      button{
+      .option {
         margin: 0;
-        height: 48px;
-        width: 48px;
         display: flex;
-        justify-content: center;
         align-items: center;
+        gap: 10px;
+
+        input {
+          margin: 0;
+        }
+
+        button {
+          margin: 0;
+          height: 48px;
+          width: 48px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &.add {
+            background-color: rgb(160, 238, 160);
+          }
+        }
       }
     }
   }
+
+  .add-feedback{
+    margin-top: 60px;
+  }
 }
 
-.feedback-card{
+.feedback-card {
   background-color: $canvas-white-light;
   display: flex;
   flex-direction: column;
-  margin: 16px;
+  margin: 10px;
   padding: 16px;
-  @include border-standard(4px);
-     
+  @include border-standard(2px);
 }
 
 // ## Profile page ##
 
-.dots, .collapse {
+.dots,
+.collapse {
   @include clickable;
-  &:hover{
+  &:hover {
     filter: sepia(40%);
   }
 }
-
 
 .profile {
   background-image: url("./assets/component_assets/rasterframe_yellow.png");
@@ -981,9 +974,8 @@ div.search-criteria-overlay{
     button {
       margin: 0;
     }
-    
   }
-  .content{
+  .content {
     flex-grow: 1;
     overflow-y: scroll;
     overflow-x: visible;
@@ -1007,83 +999,96 @@ div.search-criteria-overlay{
       }
       > div {
         display: flex;
-        button.delete{
+        button.delete {
           display: flex;
           flex-grow: 1;
           margin: 20px;
           margin-bottom: 60px;
         }
       }
-      
     }
 
-    #upload-item-for-post{
-      display:none;
+    #upload-item-for-post {
+      display: none;
     }
 
-    .feedback-items-for-post{
+    .radio, .checkbox{
+      display: flex;
+      margin: 10px;
+      align-items: center;
+      background-color: $canvas-white-dark;
+      border-radius: 10px;
+      border: 2px solid $midnight-blue;
+      padding: 10px 0;
+      > input{
+        width: 20px;
+      }
+
+      .text{
+        flex-grow: 1;
+    text-align: left;
+      }
+    }
+
+
+    .feedback-items-for-post {
       display: flex;
       flex-direction: column;
-      > label{
+      > label {
         padding: 10px 0;
-        input{
+        input {
           padding: 0;
           border-radius: 0;
           width: 20px;
         }
-        .text{
+        .text {
           flex-grow: 1;
           text-align: left;
         }
       }
 
-      >button{
+      > button {
         height: 15vh;
         background-color: $canvas-white-dark;
         border-radius: 10px;
       }
-      
-      .feedback-items-list{
+
+      .feedback-items-list {
         overflow: scroll;
       }
     }
-
-
-    
   }
-  .form{
+  .form {
     padding: 0 20px;
     flex-grow: 1;
   }
 
-  @include breakpoint(lg){
-
+  @include breakpoint(lg) {
     background-color: $canvas-white-light;
     padding: 48px;
     margin: 10px 10px 78px 10px;
     @include border-standard(0px);
     .tabs {
-
       justify-content: center;
-      gap:12px ;
+      gap: 12px;
 
       .cat-button:first-child {
         display: none;
       }
     }
 
-    .content{
+    .content {
       display: grid;
       gap: 100px;
       grid-template-columns: 1fr 1fr;
-      #upload-item-for-post{
-      display:block;
-    }}
+      #upload-item-for-post {
+        display: block;
+      }
+    }
 
-    >div:last-child{
+    > div:last-child {
       text-align: right;
     }
-    
   }
 }
 
@@ -1095,13 +1100,12 @@ div.search-criteria-overlay{
   flex-direction: column;
   gap: 16px;
 
-  
-  .artwork{
+  .artwork {
     width: 100%;
     align-items: start;
-    .content{
+    .content {
       height: 100%;
-      img{
+      img {
         max-height: 100%;
         max-width: 100%;
       }
@@ -1109,7 +1113,6 @@ div.search-criteria-overlay{
   }
 
   .artwork-info {
-    
     height: fit-content;
     background-color: $canvas-white-light;
     @include border-standard(0px);
@@ -1117,97 +1120,93 @@ div.search-criteria-overlay{
     flex-direction: column;
     padding: 20px;
     padding-top: 0;
-    h3{
+    h3 {
       margin-top: 12px;
     }
-    .title{
+    .title {
       padding-top: 0;
-      margin-right: 40px
+      margin-right: 40px;
     }
-    .user-card{
+    .user-card {
       display: flex;
       align-items: center;
-      
-      img{
+
+      img {
         width: 53px;
         height: 53px;
         object-fit: cover;
         @include border-standard(3px);
         @include border-effect("1,1");
       }
-      .username{
+      .username {
         margin-left: 20px;
         font-family: "EavesSansHeavy";
         font-size: 24px;
         color: $midnight-blue;
         flex-grow: 1;
         text-align: left;
-        
       }
     }
 
-  .item-description-container {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-   
-    :first-child { // desctiption title
-      text-align: left;
-      font-family: "EavesSansHeavy";
-      font-size: 20px;
-    }
-    .item-description {
-      margin-top: 4px;
-      padding: 8px;
-      margin-left: -8px;
-      margin-right: -8px;
-      font-family: "EavesSansBook";
-      font-size: 16px;
-      color: $midnight-blue;
-      text-align: left;
-      background-color: rgba(255, 245, 184, 0.25);
-      @include border-standard(0);
+    .item-description-container {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
 
+      :first-child {
+        // desctiption title
+        text-align: left;
+        font-family: "EavesSansHeavy";
+        font-size: 20px;
+      }
+      .item-description {
+        margin-top: 4px;
+        padding: 8px;
+        margin-left: -8px;
+        margin-right: -8px;
+        font-family: "EavesSansBook";
+        font-size: 16px;
+        color: $midnight-blue;
+        text-align: left;
+        background-color: rgba(255, 245, 184, 0.25);
+        @include border-standard(0);
+      }
+    }
+
+    .groups-container {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+
+      div.title {
+        text-align: left;
+        font-family: "EavesSansHeavy";
+        font-size: 20px;
+      }
     }
   }
 
-  .groups-container {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-   
-    div.title {
-      text-align: left;
-      font-family: "EavesSansHeavy";
-      font-size: 20px;
-    }
-    
-  }
-}
-
-  @include breakpoint(lg){
-
+  @include breakpoint(lg) {
     flex-direction: row;
     justify-content: center;
     gap: 36px;
     padding: 20px;
 
-   
-    .artwork{
+    .artwork {
       max-width: 600px;
     }
-    .artwork-info{
+    .artwork-info {
       max-width: 550px;
-      .title{
+      .title {
         padding-top: 20px;
         margin-right: 0px;
       }
-      .user-card{
-        img{
+      .user-card {
+        img {
           width: 72px;
           height: 72px;
         }
-        .username{
+        .username {
           font-size: $font-size-xxl;
         }
       }
@@ -1217,24 +1216,21 @@ div.search-criteria-overlay{
 
 // ## Group page ##
 
-.group-page{
-    
-      overflow: visible;
-      
-      .group-banner{ 
-        
-        position: relative;
-        margin-bottom: 10px;
-        
-        .name-container{
-        display: flex;
-        align-items: center;
-        transform: translate(0%, -100%);
-        top: 103%;
-        left: 0%;
-        position: absolute;
-      .group-name{
-        
+.group-page {
+  overflow: visible;
+
+  .group-banner {
+    position: relative;
+    margin-bottom: 10px;
+
+    .name-container {
+      display: flex;
+      align-items: center;
+      transform: translate(0%, -100%);
+      top: 103%;
+      left: 0%;
+      position: absolute;
+      .group-name {
         @include border-standard(3px);
         @include border-effect("1,1");
         background-color: $color-white;
@@ -1244,55 +1240,51 @@ div.search-criteria-overlay{
         color: $purple-dark;
         text-align: left;
         max-width: 250px;
-        
       }
-        .dots{
-          position:static;
-          transform: translate(0%, 0%);
-          padding: 0px 0px 0px 20px;
-        }
-    
-    }}
-     
-
-    .group-nav{
-      display: flex;
-      justify-content: space-around;
-      margin-top: 10px;
-      margin-bottom: 20px;
-      button{
-        margin: 0;
+      .dots {
+        position: static;
+        transform: translate(0%, 0%);
+        padding: 0px 0px 0px 20px;
       }
     }
+  }
 
-    >.content{
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+  .group-nav {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    button {
+      margin: 0;
     }
+  }
 
+  > .content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 
 // --- Components ---
 
-div.navtabs{
-  div.tab{
+div.navtabs {
+  div.tab {
     width: 100%;
     cursor: pointer;
-    &.active{
+    &.active {
       cursor: auto;
     }
   }
 }
 
-img.gpfp{
+img.gpfp {
   height: 80px;
   @include border-standard(3px);
   margin-right: 14px;
 }
 
-
-div.group-card{
+div.group-card {
   height: 112px;
   @include border-standard(3px);
   display: flex;
@@ -1300,8 +1292,8 @@ div.group-card{
   padding: 12px;
   margin: 8px 0;
   justify-content: space-between;
-  
-  div.join-button{
+
+  div.join-button {
     cursor: pointer;
     min-width: 42px;
     max-width: 42px;
@@ -1312,54 +1304,53 @@ div.group-card{
     align-items: center;
     justify-content: center;
     margin-left: 14px;
-    &.private{
+    &.private {
       cursor: auto;
       background-color: $color-gray;
     }
   }
-  div.group-info{
+  div.group-info {
     width: 100%;
-    .general{
+    .general {
       text-align: start;
       display: flex;
       justify-content: space-between;
-      span.group-name{
+      span.group-name {
         font-family: "EavesSansHeavy";
         font-size: 24px;
         max-height: 27px;
         max-width: 116px;
         overflow: hidden;
-        white-space:nowrap;
+        white-space: nowrap;
         text-overflow: ellipsis;
-        @include breakpoint(xs){
+        @include breakpoint(xs) {
           max-width: 150px;
           margin-right: 12px;
         }
-        @include breakpoint(sm){
+        @include breakpoint(sm) {
           max-width: 265px;
-          
         }
-        @include breakpoint(md){
+        @include breakpoint(md) {
           max-width: 450px;
         }
         // extra breakpoints for truncade
       }
-      span.userlimit{
+      span.userlimit {
         font-size: 18px;
         display: none;
-        @include breakpoint(xs){
+        @include breakpoint(xs) {
           max-width: 150px;
           display: initial;
         }
-        span.members{
+        span.members {
           font-family: "EavesSansBook";
         }
-        span.limit{
+        span.limit {
           font-family: "EavesSansHeavy";
         }
       }
     }
-    div.description{
+    div.description {
       max-height: 40px;
       text-align: start;
       font-size: 18px;
@@ -1370,23 +1361,22 @@ div.group-card{
   }
 }
 
-div.groups-container{
-  div.group-card{
-    div.group-info{
-      div.general{
-        span.group-name{
-          @include breakpoint(lg){
+div.groups-container {
+  div.group-card {
+    div.group-info {
+      div.general {
+        span.group-name {
+          @include breakpoint(lg) {
             max-width: 170px;
           }
-          @include breakpoint(xl){
+          @include breakpoint(xl) {
             max-width: 268px;
           }
         }
-      } 
+      }
     }
   }
 }
-
 
 .artwork {
   @include flex-center();
@@ -1394,15 +1384,15 @@ div.groups-container{
   background-color: $color-white;
   @include glow();
   @include border-standard(0);
-  
-    width: fit-content;
-    height: fit-content;
+
+  width: fit-content;
+  height: fit-content;
   .content {
     width: fit-content;
     height: fit-content;
     display: flex;
-    justify-content: center; 
-    align-items: center; 
+    justify-content: center;
+    align-items: center;
     img {
       max-width: 100%;
       max-height: 100%;
@@ -1471,9 +1461,9 @@ div.groups-container{
   }
 }
 
-
 input,
-textarea, select {
+textarea,
+select {
   padding: 10px;
   font-family: "EavesSansBook";
   font-size: 16px;
@@ -1494,7 +1484,6 @@ textarea, select {
       text-align: left;
       padding-left: 12px;
     }
-   
   }
 }
 
@@ -1535,70 +1524,61 @@ textarea, select {
   }
 }
 
-
-.card{
+.card {
   display: flex;
   flex-direction: column;
   background-color: $canvas-white-light;
   @include border-standard(0px);
   padding: 20px;
-  
+
   text-align: left;
   @include glow();
 
-  .title{
+  .title {
     text-align: left;
     background-color: $canvas-white-dark;
     padding: 4px;
     border-radius: $corner-radius-sm;
-    
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-  
-      .button{
-      
-        margin: 0;
-      }
-    
-  
-    
-  }
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .button {
+      margin: 0;
+    }
+  }
 }
 
-.text-card{
-  .content{
+.text-card {
+  .content {
     font-family: "EavesSansBook";
     font-size: 18px;
     margin: 4px;
     color: $midnight-blue;
     text-align: left;
     min-height: 50px;
-    
-    
   }
 
-  .footer{
-    
-    .footer-top{
+  .footer {
+    .footer-top {
       display: flex;
-     
+
       justify-content: space-between;
       align-items: center;
       max-height: 32px;
 
-      .creationdate{
+      .creationdate {
         opacity: 75%;
         display: flex;
-        align-items: center ;
+        align-items: center;
         gap: 10px;
         font-family: "EavesSansBook";
         font-size: 16px;
         color: $midnight-blue;
         text-align: left;
       }
-      .link-title{
+      .link-title {
         font-family: "EavesSansHeavy";
         font-size: 18px;
         color: $purple-dark;
@@ -1607,70 +1587,62 @@ textarea, select {
     }
   }
 
-  .card-content{
+  .card-content {
     margin: 0 8px;
-    .subtitle{
+    .subtitle {
       color: $purple-light;
       opacity: 75%;
       font-size: 20px;
       margin: 8px 0;
     }
-    .content{
+    .content {
       margin: 8px 0;
     }
   }
 }
 
-.users-card{
-
-  .card-content{
+.users-card {
+  .card-content {
     margin-top: 10px;
   }
 
-  .list{
+  .list {
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
-
-   
   }
 }
 
-
-.user-small-card{
+.user-small-card {
   display: flex;
   align-items: center;
   gap: 10px;
   max-width: 75px;
-  img{
+  img {
     width: 74px;
     height: 74px;
     object-fit: cover;
     @include border-standard(3px);
     @include border-effect("1,1");
   }
-  .name{
+  .name {
     font-family: "EavesSansHeavy";
     font-size: 18px;
     color: $midnight-blue;
     text-align: center;
     width: 74px;
-
   }
 }
 // ----feed----
 
-
-
-div.feedpage{
+div.feedpage {
   width: 100%;
   display: flex;
   justify-content: center;
   height: fit-content;
-  
 }
 
-div.feed-btns{
+div.feed-btns {
   z-index: 80;
   top: $nav-margin;
   margin: 8px auto;
@@ -1678,14 +1650,19 @@ div.feed-btns{
   width: 434px;
   display: flex;
   justify-content: space-between;
-  div.subnav-button{
-    @include subnavbutton($canary-yellow,$color-white, $midnight-blue, $midnight-blue);
+  div.subnav-button {
+    @include subnavbutton(
+      $canary-yellow,
+      $color-white,
+      $midnight-blue,
+      $midnight-blue
+    );
   }
 }
-.fixed{
+.fixed {
   position: fixed;
 }
-div.feed-entry{ 
+div.feed-entry {
   cursor: pointer;
   margin: 20px auto;
   height: 400px;
@@ -1693,7 +1670,7 @@ div.feed-entry{
   background-color: $color-white;
   border-radius: $corner-radius;
   box-shadow: 0px 0px 12px $canvas-white-dark;
-  img{
+  img {
     object-fit: cover;
     width: 380px;
     height: 320px;
@@ -1701,8 +1678,8 @@ div.feed-entry{
     border-color: $midnight-blue;
     @include border-standard(4px);
   }
-  div.work-title{
-    font-family: 'EavesSansHeavy';
+  div.work-title {
+    font-family: "EavesSansHeavy";
     text-transform: capitalize;
     font-size: 32px;
     color: $purple-dark;
@@ -1712,8 +1689,8 @@ div.feed-entry{
     line-height: 95%;
     margin-top: 5px;
   }
-  div.work-creator{
-    font-family: 'EavesSansHeavy';
+  div.work-creator {
+    font-family: "EavesSansHeavy";
     font-size: 20px;
     width: 340px;
     margin: auto;
@@ -1721,23 +1698,21 @@ div.feed-entry{
     color: $purple-light;
     opacity: 75%;
   }
-  
 }
-div.feed{
+div.feed {
   margin-top: 100px;
-  
-  
 }
 
-div.no-posts , div.no-posts-folder{
+div.no-posts,
+div.no-posts-folder {
   margin: 100px 0;
-  font-family: 'EavesSansHeavy';
+  font-family: "EavesSansHeavy";
   color: $color-secondary;
 }
 
 // groups
 
-div.white-card{
+div.white-card {
   background-color: $canvas-white-light;
   border-radius: $corner-radius;
   margin: 16px;
@@ -1746,55 +1721,61 @@ div.white-card{
   max-width: 480px;
 }
 
-div.max-size{
+div.max-size {
   width: 100%;
   height: 100%;
 }
-div.groupspage{
+div.groupspage {
   width: 100%;
 }
-div.createGroupModal{
+div.createGroupModal {
   position: absolute;
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  .modalbackground{
+  .modalbackground {
     background-color: $purple-dark;
     opacity: 25%;
   }
 }
 
-div.togglecontainer{
+div.togglecontainer {
   display: flex;
   justify-content: start;
   align-items: center;
-  span.option{
+  span.option {
     width: 60px;
     padding-left: 10px;
-    font-family: 'EavesSansBook';
+    font-family: "EavesSansBook";
     font-size: 18px;
     color: $midnight-blue;
   }
 }
-span.toggle{
-  @include toggle($canvas-white-dark, $sunset-red,$canvas-white-light, $midnight-blue, 70px);
+span.toggle {
+  @include toggle(
+    $canvas-white-dark,
+    $sunset-red,
+    $canvas-white-light,
+    $midnight-blue,
+    70px
+  );
 }
 
-div.radiocontainer{
+div.radiocontainer {
   padding-top: 5px;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  div{
+  div {
     display: flex;
     justify-content: center;
     position: relative;
     height: 42px;
     width: 90px;
     background-color: transparent;
-    span.bg{
+    span.bg {
       background-color: $canvas-white-dark;
       height: 42px;
       width: 90px;
@@ -1802,15 +1783,15 @@ div.radiocontainer{
       left: 0;
       @include border-standard(2px);
     }
-    span.label{
+    span.label {
       position: relative;
       z-index: 50;
       align-self: center;
-      font-family: 'EavesSansBook';
+      font-family: "EavesSansBook";
       font-size: 16px;
       color: $midnight-blue;
     }
-    input{
+    input {
       opacity: 0;
       cursor: pointer;
       position: absolute;
@@ -1826,16 +1807,16 @@ div.radiocontainer{
   }
 }
 
-div.slidercontainer{
+div.slidercontainer {
   display: flex;
   align-items: center;
   justify-content: start;
-  span{
+  span {
     margin-left: 5px;
     width: 18px;
     height: 100%;
   }
-  input{
+  input {
     appearance: none;
     background-color: $sunset-red;
     height: 5px;
@@ -1843,102 +1824,108 @@ div.slidercontainer{
     outline: none;
   }
 
-  &.setting{
+  &.setting {
     width: 100%;
-    input{
+    input {
       width: 100%;
     }
   }
 }
 
-
-div.modalContainer{
+div.modalContainer {
   position: absolute;
   z-index: 100;
-  div.modal{
+  div.modal {
     padding: 18px;
     width: 325px;
     @include border-standard(2px);
     border-color: $midnight-blue;
     background-color: $canvas-white-light;
-    div.title{
-      h3{
+    div.title {
+      h3 {
         margin: 0;
         color: $sunset-red-dark;
       }
       margin-bottom: 9px;
-      
     }
-    div.form{
+    div.form {
       margin-top: 10px;
-      div.groupname{
-        @include textInput($color-white, $midnight-blue, $midnight-blue, 100%, 40px);
+      div.groupname {
+        @include textInput(
+          $color-white,
+          $midnight-blue,
+          $midnight-blue,
+          100%,
+          40px
+        );
       }
-      div.visbility{
+      div.visbility {
         display: flex;
         justify-content: space-between;
         margin-bottom: 10px;
-        label{
+        label {
           @include formLabel($midnight-blue, 20px);
         }
-        
       }
-      div.userlimit{
+      div.userlimit {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 10px;
-        label{
+        label {
           @include formLabel($midnight-blue, 20px);
         }
-        
       }
-      div.joinsetting{
+      div.joinsetting {
         display: block;
-        p{
+        p {
           @include formLabel($midnight-blue, 20px);
           margin-top: 0;
         }
-        
       }
-      div.buttons{
+      div.buttons {
         display: flex;
         justify-content: space-between;
-        button{
+        button {
           width: 135px;
           height: 48px;
           margin: 0;
           margin-top: 15px;
-          &.cancel{
+          &.cancel {
             background-color: $canvas-white-light;
           }
         }
       }
     }
-  
   }
 }
 
-div.search-section{
+div.search-section {
   margin: 16px 0px;
   width: 100%;
   div.SearchBar {
-    @include searchbar($canvas-white-light, $purple-dark, $midnight-blue, 320px, $nav-element-height);
+    @include searchbar(
+      $canvas-white-light,
+      $purple-dark,
+      $midnight-blue,
+      320px,
+      $nav-element-height
+    );
     padding: 0 16px;
     margin-right: 8px;
     height: $nav-element-height;
     width: 100%;
   }
 
-  i.material-icons{
-    &.filter{
+  i.material-icons {
+    &.filter {
       font-size: 48px;
       cursor: pointer;
     }
   }
 }
 
-div.create-group-button{
+div.create-group-button {
   background-color: $canvas-white-dark;
   height: 62px;
   @include border-standard(2px);
@@ -1946,12 +1933,12 @@ div.create-group-button{
   margin-bottom: 16px;
   transition: background-color 0.5s;
   cursor: pointer;
-  &:hover{
+  &:hover {
     background-color: #faf4cf;
   }
 }
 
-div.groups-list{
+div.groups-list {
   //height: calc(100% - 32px) !important;
   max-height: calc(100% - 198px);
   height: 100%;
@@ -1959,7 +1946,7 @@ div.groups-list{
   padding-right: 10px;
 }
 
-div.dropdown{
+div.dropdown {
   z-index: 900;
   width: 238px;
   padding: 8px 16px;
@@ -1967,13 +1954,11 @@ div.dropdown{
   background-color: $canvas-white-dark;
   @include border-standard(4px);
 
-
-  @include breakpoint('xs'){
+  @include breakpoint("xs") {
     left: 200px;
-  };
+  }
 
-  
-  .dropdown-btn{
+  .dropdown-btn {
     text-align: start;
     margin: 8px 0;
     width: 200px;
@@ -1981,32 +1966,33 @@ div.dropdown{
     @include border-standard(2px);
     border-radius: 8px;
 
-    &.link{
+    &.link {
       background-color: $canvas-white-light;
     }
-    &.navigate{}
-    &.disabled{
+    &.navigate {
+    }
+    &.disabled {
       opacity: 75%;
     }
-    &.warning{
+    &.warning {
       background-color: $sunset-red;
     }
   }
 }
 
-button{
-  &.icon{
+button {
+  &.icon {
     text-align: start;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  &.warning{
+  &.warning {
     background-color: $sunset-red;
   }
 }
 
-.dropdownbackground{
+.dropdownbackground {
   height: 100vh;
   width: 100vw;
   position: absolute;
@@ -2016,96 +2002,92 @@ button{
   opacity: 25%;
 }
 
-.no-scroll{
-  .page-container{
+.no-scroll {
+  .page-container {
     overflow: hidden !important;
   }
 }
 
-.group-page{
-  .content{
-    .title{
-      h3{
+.group-page {
+  .content {
+    .title {
+      h3 {
         margin-bottom: 0;
-        &.settings-page{
+        &.settings-page {
           margin-top: 8px;
         }
-        i{
-          
+        i {
           font-size: 40px;
         }
       }
-      h4{
+      h4 {
         margin-bottom: 0;
         margin-top: 0;
         text-align: start;
       }
     }
-    .buttons{
-      button{
+    .buttons {
+      button {
         height: 48px;
         margin: 20px 30px;
       }
     }
-    .settings{
-      div.font{
+    .settings {
+      div.font {
         margin: 20px 0 10px 0;
       }
     }
-    .setting-update-btn{
+    .setting-update-btn {
       position: absolute;
       bottom: 10px;
-      left: 0; 
-      right: 0; 
-      margin-left: auto; 
-      margin-right: auto; 
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
       width: 200px;
       height: 48px;
     }
   }
 }
 
-.detail-card{
+.detail-card {
   background-color: $canvas-white-light;
   border-radius: $corner-radius;
   margin-top: 18px;
   padding: 8px;
-  .card-title{
+  .card-title {
     background-color: $canvas-white-dark;
     border-radius: $corner-radius-sm;
     padding: 8px;
     text-align: start;
-    font-family: 'EavesSansHeavy';
+    font-family: "EavesSansHeavy";
     font-size: 20px;
     margin-bottom: 8px;
     color: $purple-dark;
   }
 }
 
-
-.gallery{
-  h4{
+.gallery {
+  h4 {
     margin-bottom: 0;
   }
-  button{
+  button {
     height: 40px;
     width: 160px;
     border-radius: $corner-radius;
     margin-top: 8px;
   }
-  .description{
-    
-    
-    .content{
+  .description {
+    .content {
       padding: 8px;
       text-align: start;
-      font-family: 'EavesSansBook';
+      font-family: "EavesSansBook";
       color: $midnight-blue;
     }
   }
 }
 
-.slideout-modal{
+.slideout-modal {
   background-color: $canvas-white-light;
   @include border-standard(2px);
   border-radius: $corner-radius 0 0 0;
@@ -2116,14 +2098,14 @@ button{
   right: 0;
   z-index: 900;
 
-  .content{
+  .content {
     width: 100%;
     height: 100%;
     padding-top: 50px;
     overflow: scroll;
   }
 
-  .header{
+  .header {
     height: 50px;
     background-color: $color-primary;
     @include border-standard(2px);
@@ -2134,17 +2116,17 @@ button{
     width: 200px;
     text-align: start;
     padding: 0 16px;
-    font-family: 'EavesSansHeavy';
+    font-family: "EavesSansHeavy";
     font-size: 24px;
     color: $midnight-blue;
-    i{
+    i {
       font-size: 28px;
     }
   }
 }
 
-.folder-modal{
-  .modalbackground{
+.folder-modal {
+  .modalbackground {
     height: 100%;
     width: 100vw;
     position: absolute;
@@ -2153,138 +2135,132 @@ button{
   }
 }
 
-.foldercard{
+.foldercard {
   min-height: 155px;
   width: 125px;
   background-color: $canvas-white-light;
   @include border-standard(2px);
   padding: 10px;
   margin: 10px 0;
-  img{
+  img {
     object-fit: cover;
     height: 105px;
     width: 100px;
     @include border-standard(2px);
   }
-  div{
+  div {
     text-align: start;
-    font-family: 'EavesSansBook';
+    font-family: "EavesSansBook";
     font-size: 16px;
     width: 100%;
   }
 }
 
-.group-details{
+.group-details {
   width: 480px;
   margin: auto;
 }
 
-tr{
-  td{
+tr {
+  td {
     text-align: start;
     width: 25vw;
-    font-family: 'EavesSansBook';
+    font-family: "EavesSansBook";
     color: $midnight-blue;
 
-    &.table-title{
-      font-family: 'EavesSansHeavy';
+    &.table-title {
+      font-family: "EavesSansHeavy";
     }
 
-    a{
+    a {
       color: $sunset-red;
 
-      &:hover{
+      &:hover {
         color: $sunset-red-dark;
       }
     }
   }
 }
 
-
-.feedback-page{
+.feedback-page {
   height: 95%;
 }
 
-.feedback-stars{
-  .stars{
+.feedback-stars {
+  .stars {
     margin-top: 5px;
-    i{
+    i {
       color: $canvas-white-dark;
       -webkit-text-stroke: 2px $midnight-blue;
       font-size: 50px;
 
       transition: color 0.3s, -webkit-text-stroke 1s;
-      &.active{
+      &.active {
         color: $sunset-red;
 
-        &:hover{
+        &:hover {
           color: #ff9683;
         }
       }
-      &:hover{
+      &:hover {
         color: $canvas-white-light;
         -webkit-text-stroke: 2px $color-black;
       }
-      &.set{
-        &.active{
+      &.set {
+        &.active {
           color: $sunset-red;
-          &:hover{
+          &:hover {
             color: $sunset-red;
           }
-        }  
-        &:hover{
-            color: $canvas-white-dark;
-            -webkit-text-stroke: 2px $midnight-blue;
         }
-        
+        &:hover {
+          color: $canvas-white-dark;
+          -webkit-text-stroke: 2px $midnight-blue;
+        }
       }
     }
-
-    
   }
 }
 
-.feedback-radial{
-  input{
+.feedback-radial {
+  input {
     accent-color: $purple-dark;
-    
-    &:checked{
+
+    &:checked {
       accent-color: $sunset-red;
     }
   }
 
-  .options{
+  .options {
     text-align: start;
   }
 }
 
-.search-page{
+.search-page {
   width: 100%;
   height: 100%;
   padding: 0 20px;
   max-width: 800px;
-  .feed-btns{
+  .feed-btns {
     padding: 0;
     min-width: 340px;
     max-width: 434px;
     width: auto;
-    button{
+    button {
       margin-left: 5px;
       margin-right: 5px;
     }
   }
-
-  
 }
 
-.feedback-title{
+.feedback-title {
   margin-bottom: 10px;
   margin-top: 18px;
 }
 
-.feedback-open{
-  div{
-    textarea{
+.feedback-open {
+  div {
+    textarea {
       width: 100%;
       height: 100px;
       @include border-standard(2px);
@@ -2293,15 +2269,15 @@ tr{
       background-color: $canvas-white-light;
       color: $purple-dark;
       opacity: 80%;
-      &:focus{
+      &:focus {
         accent-color: $color-primary;
       }
     }
-    .filled-field{
+    .filled-field {
       color: $midnight-blue;
       font-size: 18px;
     }
-    .empty-field{
+    .empty-field {
       background-color: $canvas-white-dark;
       border-radius: $corner-radius-sm;
       height: 26px;
@@ -2309,10 +2285,10 @@ tr{
   }
 }
 
-.feedback-page{
+.feedback-page {
   margin-top: 8px;
   position: relative;
-  .upload-feedback{
+  .upload-feedback {
     width: 318px;
     height: 48px;
     margin: 0;
@@ -2322,26 +2298,26 @@ tr{
     left: 16px;
   }
 
-  h3{
+  h3 {
     margin: 16px 0;
   }
 }
 
-.feed-btns{
- &.profile{
-  margin: auto;
-  width: 100%;
-  padding: 0;
-  margin-bottom: 20px;
- }
+.feed-btns {
+  &.profile {
+    margin: auto;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+  }
 }
 
-.profile-btns{
-  button{
-    &:nth-child(1){
+.profile-btns {
+  button {
+    &:nth-child(1) {
       justify-self: start;
     }
-    &:nth-child(3){
+    &:nth-child(3) {
       justify-self: end;
     }
     height: 42px;
@@ -2349,30 +2325,30 @@ tr{
   }
 }
 
-.gallery-tumbnail{
+.gallery-tumbnail {
   margin-top: 16px;
 }
 
-.profile-groups{
+.profile-groups {
   margin: auto;
-  .white-card{
+  .white-card {
     margin: 0;
     padding: 16px;
     height: 50vh !important;
     min-width: 300px;
-    .navtabs{
+    .navtabs {
       margin-bottom: 16px;
     }
-    @include breakpoint('sm'){
+    @include breakpoint("sm") {
       min-width: 325px;
     }
   }
 }
 
-.simple-user-card{
+.simple-user-card {
   transition: background-color 0.5s;
   border-radius: $corner-radius-sm;
-  &:hover{
+  &:hover {
     background-color: #fff6b867;
   }
 }

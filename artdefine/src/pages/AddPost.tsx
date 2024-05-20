@@ -12,13 +12,14 @@ import { User } from "../model/userModel";
 import FeedbackQuestionTypeCard from "../components/addPostFlow/FeedbackQuestionTypesCard";
 import FeedbackItemsForPost from "../components/addPostFlow/FeedbackItemsforPost";
 import { FeedbackItemModel } from "../model/FeedbackItemModel";
+import GroupsForPost from "../components/addPostFlow/GroupsForPost";
 
 export default function AddPost() {
   const [currentStep, setCurrentStep] = useState("Upload");
   const [isChanged, setIsChanged] = useState<boolean>(false);
   const [feedbackStack, setFeedbackStack] = useState<FeedbackItemModel[]>([]);
   const { setArtwork, uploadArtwork} = useArtwork(); 
-  const {user} = useAuth();
+  const {user, joinedGroups} = useAuth();
 
   const artwork: Artwork = {
     
@@ -138,7 +139,7 @@ export default function AddPost() {
               />
         </div>
       {currentStep === "Details" && <>{isChanged? <DetailFormForPost artwork={artwork} setArtwork={setArtwork}/> : <div>UPload content first</div>}</>}
-      {currentStep === "Groups" && <div>{<div>Not yet implemented</div>}</div>}
+      {currentStep === "Groups" && <>{<GroupsForPost userGroups={joinedGroups} />}</>}
       {currentStep === "Feedback" && <>{<><FeedbackItemsForPost feedbackStack={feedbackStack} setFeedbackStack={setFeedbackStack}  /></>}</>}
       </div>
       <div>

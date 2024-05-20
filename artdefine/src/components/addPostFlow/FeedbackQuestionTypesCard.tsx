@@ -52,12 +52,7 @@ const FeedbackQuestionTypeCard:React.FC<{
         };
 
 
-        const content = () => {
-            if (selectedOption === 'bullet') {
-                return bulletPoints;
-            }
-            return [];
-        }
+        
         const feedbackItem: FeedbackItemModel = {
             id: Math.random().toString(),
             question: question,
@@ -73,7 +68,7 @@ const FeedbackQuestionTypeCard:React.FC<{
         setBulletPoints([...bulletPoints, '']);
     };
 
-    const removeBulletPoint = (indexToRemove: number) => { // New function to remove a bullet point
+    const removeBulletPoint = (indexToRemove: number) => { 
         setBulletPoints(bulletPoints.filter((_, index) => index !== indexToRemove));
     };
 
@@ -98,8 +93,9 @@ const FeedbackQuestionTypeCard:React.FC<{
                                 <input className='input question' type="text" placeholder="Enter question" onChange={(e) => setQuestion(e.target.value)} />
                             </div>
                             {selectedOption === 'bullet' && (
-                <div className='bulletpoint-options'>
+                <div className='bulletpoint-options-container'>
                     <div className='sub-title font eaves heavy fs24 align-left'>Options:</div>
+                    <div className='bullet-options flex direction-column'>
                     {bulletPoints.map((bulletPoint, index) => (
                         <div className='option' key={index}>
                             <input
@@ -115,15 +111,16 @@ const FeedbackQuestionTypeCard:React.FC<{
                             {index === bulletPoints.length - 1 && <button className='add' onClick={addBulletPoint}>+</button>}
                         </div>
                     ))}
-                    
+                    </div>
                 </div>
             )}
                             <button className='add-feedback' onClick={addFeedback}>Add Feedback</button>
-                            <button className='cancel' onClick={() => setOpenFeedback(false)}>Cancel</button>
+                           
                         </>
                     )}
+                     <button className='cancel' onClick={() => setOpenFeedback(false)}>Cancel</button>
                 </div>
-            
+               
         </div>
     );
 };

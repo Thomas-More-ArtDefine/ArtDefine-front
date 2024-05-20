@@ -34,9 +34,9 @@ const FeedbackItemsForPost: React.FC<FeedbackItemsForPostProps> = ({
 
     return (
         <div className='feedback-items-for-post'>
-            <label className='flex'>
+            <label className='checkbox'>
                 <input
-                    type="radio"
+                    type="checkbox"
                     checked={isFeedbackEnabled}
                     onChange={handleFeedbackToggle}
                 />
