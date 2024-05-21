@@ -8,7 +8,7 @@ export default function ForgotPassword() {
     
     return (
         <>
-        <div className="flex direction-column align-center">
+        <div className="flex direction-column align-center page-login">
             <div className="login-img"><img src={login_mobile} alt="" /></div>
         <div className="login-container password">
             <h2>Forgot Password</h2>

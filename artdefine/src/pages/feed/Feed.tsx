@@ -1,5 +1,5 @@
 import { useFeed } from "../../context/FeedContext";
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ArtworkCard from "../../components/cards/Artwork-card";
 
 
@@ -9,6 +9,8 @@ export default function Feed() {
     const [globalActive, setGlobalActive] = useState<boolean>(false);
     const [personalActive, setPersonalActive] = useState<boolean>(true);
     const [randomActive, setRandomActive] = useState<boolean>(false);
+
+    const { isTop } = useFeed();
 
     setTimeout(() => {
         if (document.getElementsByClassName("no-posts")[0] !== undefined) {
@@ -49,19 +51,19 @@ export default function Feed() {
       );
 
     return (
-        <div className='feedpage'>
+        <div className='feedpage '  >
             <div className='feed-btns fixed'>
                 <div className='subnav-button'>
                     <button className={((globalActive) ? "active": "")} onClick={() => handleFeedButtonClick("global")}><i className="material-icons">public</i></button>
-                    <div className='button-text'>Global</div>
+                    {isTop && <div className='button-text'>Global</div>}
                 </div>
                 <div className='subnav-button'>
                     <button className={((personalActive) ? "active": "")} onClick={() => handleFeedButtonClick("personal")}><i className="material-icons">home</i></button>
-                    <div className='button-text'>My feed</div>
+                    {isTop && <div className='button-text'>My feed</div>}
                 </div>
                 <div className='subnav-button'>
                     <button className={((randomActive) ? "active": "")} onClick={() => handleFeedButtonClick("random")}><i className="material-icons">shuffle</i></button>
-                    <div className='button-text'>Random</div>
+                    {isTop && <div className='button-text'>Random</div>}
                 </div>            
             </div>
             <div className='feed'>

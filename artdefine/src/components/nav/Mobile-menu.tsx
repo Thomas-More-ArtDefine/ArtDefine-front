@@ -85,7 +85,7 @@ const MobileMenu: React.FC<{
               <button
                 className="primary has-icon nav"
                 onClick={() => {
-                  navigate("/listpage");
+                  navigate("/add");
                   closeMenu(false);
                 }}
               >

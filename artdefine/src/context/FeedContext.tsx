@@ -7,6 +7,8 @@ interface FeedContextType {
     // mock: string;
     // setMock: (value: string) => void;
     artworks: Artwork[];
+    isTop: boolean;
+    setIsTop: (value: boolean) => void;
 }
 
 export const FeedContext = createContext<FeedContextType | null>(null);
@@ -15,6 +17,7 @@ export const useFeed = () => useContext(FeedContext)!;
 
 export const FeedProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [artworks, setArtworks] = useState<Artwork[]>([]);
+    const [isTop, setIsTop] = useState<boolean>(true);
     // const [mock, setMock] = useState<string>("")
 
     useEffect(() => {
@@ -29,7 +32,7 @@ export const FeedProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         
     }, []);
 
-    const value = useMemo(() => ({ artworks }), [artworks]);
+    const value = useMemo(() => ({ artworks, isTop, setIsTop }), [artworks, isTop, setIsTop]);
 
     return (
         <FeedContext.Provider value={value}>
