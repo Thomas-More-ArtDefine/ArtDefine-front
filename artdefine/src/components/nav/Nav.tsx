@@ -46,18 +46,18 @@ const Nav: React.FC = () => {
                         <input disabled className='search' type="text" placeholder='Search...'  />
                         <i className="material-icons">search</i>
                     </li>
-                    {!user ?<li className='navprofile'>
+                    {user ?<li className='navprofile'>
                         <div className='navmessage'>
                             <Link to="/messages"><MessageIcon /></Link>
                         </div>
                          <Link to="/profile">
-                            {/* <div className='profile-block'>
+                             <div className='profile-block'>
                                 <div className='profile-info'>
                                     <div className='username'>{user?.user_name}</div> 
                                     <div className='profile'>Profile</div>
                                 </div>
                                 <img src={user?.user_profile_picture} alt="profile picture" /> 
-                            </div> */}
+                            </div> 
                             
                         </Link></li>:<li className='navprofile'>
                         <div>
