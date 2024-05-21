@@ -57,7 +57,7 @@ const Nav: React.FC = () => {
                                     <div className='profile'>Profile</div>
                                 </div>
                                 <img src={user?.user_profile_picture} alt="profile picture" /> 
-                            </div>
+                            </div> 
                             
                         </Link></li>:<li className='navprofile'>
                         <div>
