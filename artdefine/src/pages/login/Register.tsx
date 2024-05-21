@@ -1,10 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
+import login_mobile from "../../assets/images/login-mobile-img.png";
 
 export default function Register() {
     const navigate = useNavigate();
     
     return (
         <>
+        <div className="flex direction-column align-center">
+            <div className="login-img"><img src={login_mobile} alt="" /></div>
         <div className="login-container">
             <h2>Register</h2>
             <div className='input font eaves heavy'>
@@ -32,7 +35,7 @@ export default function Register() {
             </div>
             
         </div>
-         
+        </div>
 
         </>
     );

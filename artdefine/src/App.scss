@@ -2429,11 +2429,14 @@ tr {
 }
 
 .login-container{
+  position: relative;
   max-width: 450px;
-  min-width: 371px;
+  min-width: 320px;
   width: 100%;
   text-align: left;
   padding: 14px 48px;
+  margin-top: 25vh;
+  height: 580px;
   h2{
     color: $purple-dark;
     font-size: 40px;
@@ -2462,5 +2465,16 @@ tr {
         color: #ff9683;
       }
     }
+  }
+}
+
+.login-img{
+  width: 100vw;
+  overflow: hidden;
+  
+  img{
+    position: absolute;
+    left: calc(-450px + 50vw);
+    top: 0;
   }
 }

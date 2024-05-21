@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import login_mobile from "../../assets/images/login-mobile-img.png";
 
 export default function ForgotPassword() {
     const navigate = useNavigate();
@@ -7,7 +8,9 @@ export default function ForgotPassword() {
     
     return (
         <>
-        <div className="login-container">
+        <div className="flex direction-column align-center">
+            <div className="login-img"><img src={login_mobile} alt="" /></div>
+        <div className="login-container password">
             <h2>Forgot Password</h2>
             {currentStep === 'email' && <><div className='input font eaves heavy'>
                 <label htmlFor="email">Email</label>
@@ -37,7 +40,7 @@ export default function ForgotPassword() {
             <div className="flex justify-center">
                 <button onClick={()=>{navigate('/login')}}>Submit</button>
             </div></>}
-        </div>
+        </div></div>
          
 
         </>
