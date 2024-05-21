@@ -540,25 +540,25 @@ nav.mobileNavigation {
 
   li.SearchBar {
     margin: 16px 0px 0px 0px;
-    max-width: 320px;
+    max-width: 225px;
   }
 
   button.nav {
     margin: 16px 0px 0px 0px;
-    width: 320px;
+    width: 225px;
   }
 
   li.navprofile {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 332px;
+    width: 200px;
     margin-bottom: 20px;
   }
 
   div.profile-block {
     cursor: pointer;
-    width: 250px;
+    width: 200px;
     height: 72px;
     display: flex;
     align-items: center;
@@ -600,6 +600,8 @@ div.mobileNav {
 
 div.mobileMenu {
   @include pop-up($color-white);
+  width: 100%;
+  max-width: 280px;
 }
 
 div.modalbackground {
