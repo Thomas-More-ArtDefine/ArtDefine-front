@@ -18,12 +18,12 @@ export default function AddPost() {
   const [currentStep, setCurrentStep] = useState("Upload");
   const [isChanged, setIsChanged] = useState<boolean>(false);
   const [feedbackStack, setFeedbackStack] = useState<FeedbackItemModel[]>([]);
-  const { setArtwork, uploadArtwork} = useArtwork(); 
+  const { uploadArtwork} = useArtwork(); 
   const {user, joinedGroups} = useAuth();
 
-  const artwork: Artwork = {
+  const [tempArtwork, setTempArtwork] = useState<Artwork>({
     id: "0",
-    user_id: "1",
+    user_id: user?.id ? user.id : "0",
     post_content: "",
     post_title: "",
     post_description: "",
@@ -32,7 +32,9 @@ export default function AddPost() {
     user: user ? user : {} as User,
     folders: [],
     post_tags: ""
-  };
+  });
+
+
 
   // Handle click events for each tab
   const handleUploadClick = () => {
@@ -70,11 +72,11 @@ export default function AddPost() {
 
   const onUpload = () => {
     if (user) {
-      artwork.user = user;
+      tempArtwork.user = user;
       if (feedbackStack.length > 0) {
-        artwork.feedbackStack = feedbackStack;
+        tempArtwork.feedbackStack = feedbackStack;
       }
-      uploadArtwork(artwork);
+      uploadArtwork(tempArtwork);
     } else {
       console.log("User not logged in");
     }
@@ -120,8 +122,8 @@ export default function AddPost() {
               <UploadItemForPost
                 isChanged={isChanged}
                 setIsChanged={setIsChanged}
-                artwork={artwork}
-                setArtwork={setArtwork}
+                artwork={tempArtwork}
+                setArtwork={setTempArtwork}
               />
             </>
           }
@@ -132,11 +134,11 @@ export default function AddPost() {
               <UploadItemForPost
                 isChanged={isChanged}
                 setIsChanged={setIsChanged}
-                artwork={artwork}
-                setArtwork={setArtwork}
+                artwork={tempArtwork}
+                setArtwork={setTempArtwork}
               />
         </div>
-      {currentStep === "Details" && <>{isChanged? <DetailFormForPost artwork={artwork} setArtwork={setArtwork}/> : <div>UPload content first</div>}</>}
+      {currentStep === "Details" && <>{isChanged? <DetailFormForPost artwork={tempArtwork} setArtwork={setTempArtwork}/> : <div>UPload content first</div>}</>}
       {currentStep === "Groups" && <>{<GroupsForPost userGroups={joinedGroups} />}</>}
       {currentStep === "Feedback" && <>{<><FeedbackItemsForPost feedbackStack={feedbackStack} setFeedbackStack={setFeedbackStack}  /></>}</>}
       </div>
