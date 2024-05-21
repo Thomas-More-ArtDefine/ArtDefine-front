@@ -1,6 +1,5 @@
 
 import React from "react";
-import { useArtwork } from "../../context/ArtworkContext";
 import { Artwork } from "../../model/PostModel";
 
 const DetailFormForPost: React.FC<{
