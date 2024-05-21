@@ -22,7 +22,7 @@ const MobileMenu: React.FC<{
       <div className="mobileMenu">
         <nav className="mobileNavigation">
           <ul>
-            <li className="navprofile">
+            {user?<li className="navprofile">
               <Link
                 to="/profile"
                 onClick={() => {
@@ -36,13 +36,27 @@ const MobileMenu: React.FC<{
                     <div className="profile">Profile</div>
                   </div>
                 </div>
-              </Link>
-              <div className="navmessage">
+              </Link><div className="navmessage">
                 <Link to="/messages">
                   <MessageIcon />
                 </Link>
+              </div></li>:<li className="navprofile">
+              <Link
+              to="/login"
+              onClick={() => {
+                closeMenu(false);
+              }}
+            >
+              <div className="profile-block">
+                <img src={pfp} alt="profile picture" />
+                <div className="profile-info">
+                  <div className="username">Guest</div>
+                </div>
               </div>
-            </li>
+            </Link>
+                
+              
+            </li>}
             <li className="navbutton">
               <button
                 className="primary has-icon nav"
