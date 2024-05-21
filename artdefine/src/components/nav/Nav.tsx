@@ -46,21 +46,26 @@ const Nav: React.FC = () => {
                         <input disabled className='search' type="text" placeholder='Search...'  />
                         <i className="material-icons">search</i>
                     </li>
-                    <li className='navprofile'>
+                    {!user ?<li className='navprofile'>
                         <div className='navmessage'>
                             <Link to="/messages"><MessageIcon /></Link>
                         </div>
-                        <Link to="/profile">
-                            <div className='profile-block'>
+                         <Link to="/profile">
+                            {/* <div className='profile-block'>
                                 <div className='profile-info'>
                                     <div className='username'>{user?.user_name}</div> 
                                     <div className='profile'>Profile</div>
                                 </div>
                                 <img src={user?.user_profile_picture} alt="profile picture" /> 
-                            </div>
+                            </div> */}
                             
-                        </Link> 
-                    </li>
+                        </Link></li>:<li className='navprofile'>
+                        <div>
+                           <button>Login</button> 
+                           <button>Register</button>
+                        </div>
+                        
+                    </li> }
                 </ul>
             </div>
             
@@ -71,9 +76,13 @@ const Nav: React.FC = () => {
                         <Link to="/"><span className='logo'><Logo  /></span><span className='text'><LogoText  /></span></Link>
                     </li>
                     <li className='navprofile'>
-                        <Link to="/profile">
+                        {
+                            user?<Link to="/profile">
                             <MobileProfile />
-                        </Link> 
+                        </Link> :
+                        ''
+                        }
+                        
                         <span className='hamburger'>
                             <Hamburger onClick={handleMenuClick}  />
                         </span>

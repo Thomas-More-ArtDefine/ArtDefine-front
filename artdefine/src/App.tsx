@@ -22,6 +22,9 @@ import Search from './pages/search/Search';
 import UserProfile from './pages/profile/UserProfile';
 import { FolderProvider } from './context/FolderContext';
 import { ProfileProvider } from './context/ProfileContext';
+import Login from './pages/login/Login';
+import Register from './pages/login/Register';
+import ForgotPassword from './pages/login/Forgot';
 
 
 
@@ -31,7 +34,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Navigate replace to="/feed" />,
+        element: <Navigate replace to="/login" />,
       },
       {
         path: '/feed',
@@ -144,6 +147,23 @@ const router = createBrowserRouter([
       {
         path: '*',
         element: <h1>Not Found</h1>,
+      },
+      {
+        path: '/login',
+        children: [
+          {
+            index: true,
+            element: <Login/>,
+          },
+          {
+            path: 'register',
+            element: <Register/>,
+          },
+          {
+            path: 'forgot-password',
+            element: <ForgotPassword/>,
+          },
+        ],
       },
     ],
   },
