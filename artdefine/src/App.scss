@@ -21,6 +21,7 @@ a {
 body {
   background: $background-color;
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 // --- App ---
@@ -1669,7 +1670,8 @@ div.feed-btns {
   top: $nav-margin;
   margin: 8px auto;
   padding: 0 21px;
-  width: 434px;
+  min-width: 300px;
+  max-width: 434px;
   display: flex;
   justify-content: space-between;
   div.subnav-button {
@@ -1679,6 +1681,14 @@ div.feed-btns {
       $midnight-blue,
       $midnight-blue
     );
+    button{
+      min-width: 80px;
+      max-width: 106px;
+      width: auto;
+      @include breakpoint('sm'){
+        width: 106px;
+      }
+    }
   }
 }
 .fixed {
@@ -1687,34 +1697,46 @@ div.feed-btns {
 div.feed-entry {
   cursor: pointer;
   margin: 20px auto;
-  height: 400px;
-  width: 380px;
+  // height: 400px;
+  height: 340px;
+  min-width: 300px;
+  max-width: 300px;
+  // max-width: 380px;
   background-color: $color-white;
   border-radius: $corner-radius;
   box-shadow: 0px 0px 12px $canvas-white-dark;
   img {
     object-fit: cover;
-    width: 380px;
-    height: 320px;
+    min-width: 300px;
+    max-width: 300px;
+    // max-width: 380px;
+    // height: 320px;
+    height: 260px;
     border-radius: $corner-radius;
     border-color: $midnight-blue;
     @include border-standard(4px);
   }
   div.work-title {
+    padding-left: 20px;
     font-family: "EavesSansHeavy";
     text-transform: capitalize;
     font-size: 32px;
     color: $purple-dark;
-    width: 340px;
+    min-width: 260px;
+    max-width: 300px;
+    // max-width: 340px;
     margin: auto;
     text-align: start;
     line-height: 95%;
     margin-top: 5px;
   }
   div.work-creator {
+    padding-left: 20px;
     font-family: "EavesSansHeavy";
     font-size: 20px;
-    width: 340px;
+    min-width: 260px;
+    max-width: 300px;
+    // max-width: 340px;
     margin: auto;
     text-align: start;
     color: $purple-light;
@@ -2471,7 +2493,6 @@ tr {
 .login-img{
   width: 100vw;
   overflow: hidden;
-  
   img{
     position: absolute;
     left: calc(-450px + 50vw);
