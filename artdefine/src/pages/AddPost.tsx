@@ -13,6 +13,7 @@ import FeedbackQuestionTypeCard from "../components/addPostFlow/FeedbackQuestion
 import FeedbackItemsForPost from "../components/addPostFlow/FeedbackItemsforPost";
 import { FeedbackItemModel } from "../model/FeedbackItemModel";
 import GroupsForPost from "../components/addPostFlow/GroupsForPost";
+import { useNavigate } from "react-router-dom";
 
 export default function AddPost() {
   const [currentStep, setCurrentStep] = useState("Upload");
@@ -20,6 +21,7 @@ export default function AddPost() {
   const [feedbackStack, setFeedbackStack] = useState<FeedbackItemModel[]>([]);
   const { uploadArtwork} = useArtwork(); 
   const {user, joinedGroups} = useAuth();
+  const navigate = useNavigate();
 
   const [tempArtwork, setTempArtwork] = useState<Artwork>({
     id: "0",
@@ -70,13 +72,18 @@ export default function AddPost() {
   }, []);
  
 
-  const onUpload = () => {
+  const onUpload = async() => {
     if (user) {
       tempArtwork.user = user;
       if (feedbackStack.length > 0) {
         tempArtwork.feedbackStack = feedbackStack;
       }
-      uploadArtwork(tempArtwork);
+      const upload: Artwork | undefined = await uploadArtwork(tempArtwork);
+      if (upload) {
+        navigate(`/post/${upload.id}`);
+      } else {
+        console.log("Failed to upload");
+      }
     } else {
       console.log("User not logged in");
     }
