@@ -64,7 +64,7 @@ export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children })
     }, [artwork]);
 
 
-    const uploadArtwork = useCallback(async (artwork: Artwork): Promise<Artwork | undefined> => {
+    const uploadArtwork = useCallback(async (artwork: Artwork): Promise<Artwork> => {
       try {
        
         console.log("Uploading artwork: ", artwork);
