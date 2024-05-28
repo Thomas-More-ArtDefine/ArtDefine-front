@@ -1,11 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import login_mobile from "../../assets/images/login-mobile-img.png";
+import WelcomeCard from "../../components/WelcomeCard";
+
 
 export default function Login() {
     const navigate = useNavigate();
     
     return (
         <>
+       <WelcomeCard />
         <div className="flex direction-column align-center page-login">
             <div className="login-img"><img src={login_mobile} alt="" /></div>
             <div className="login-container">

@@ -769,6 +769,30 @@ div.search-criteria-overlay {
   }
 }
 
+.welcome-pop-up {
+  @include pop-up($canvas-white-light);
+  .card-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+  }
+  .card-body {
+    padding: 0 20px 20px 20px;
+    
+    h3{
+      margin-top: 0;
+      margin-bottom: 18px;
+    }
+    p {
+      font-size: 18px;
+    }
+  }
+
+  &.close {
+    display: none;
+  }
+}
+
 .feedback-templates {
   overflow: scroll;
   background-color: $canvas-white-light;

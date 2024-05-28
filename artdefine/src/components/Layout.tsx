@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Nav from './nav/Nav';
 import { useEffect, useRef, useState } from 'react';
 import { useFeed } from '../context/FeedContext';
+import WelcomeCard from './WelcomeCard';
 
 export default function Layout() {
 
