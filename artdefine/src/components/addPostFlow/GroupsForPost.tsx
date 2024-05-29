@@ -19,8 +19,8 @@ const GroupsForPost: React.FC<Props> = ({ userGroups }) => {
 
   console.log(userGroups);
   return (
-    <div>
-        <div>
+    <div className="groups-for-post">
+        <div className="own-profile">
         <label htmlFor="own-profile" className="checkbox">
           <input
             type="checkbox"

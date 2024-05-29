@@ -978,8 +978,12 @@ div.search-criteria-overlay {
   }
   .content {
     flex-grow: 1;
-    overflow-y: scroll;
-    overflow-x: visible;
+    overflow: auto;
+    
+    > div {
+      overflow: auto;
+    }
+    
     .not-uploaded {
       display: flex;
       flex-direction: column;
@@ -997,6 +1001,8 @@ div.search-criteria-overlay {
 
       .artwork {
         flex-grow: 1;
+        height: auto;
+        width: auto;
       }
       > div {
         display: flex;
@@ -1049,14 +1055,12 @@ div.search-criteria-overlay {
       }
 
       > button {
-        height: 15vh;
+        height: 100px;
         background-color: $canvas-white-dark;
         border-radius: 10px;
       }
 
-      .feedback-items-list {
-        overflow: scroll;
-      }
+      
     }
   }
   .form {
