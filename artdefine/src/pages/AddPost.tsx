@@ -145,7 +145,7 @@ export default function AddPost() {
                 setArtwork={setTempArtwork}
               />
         </div>
-      {currentStep === "Details" && <>{isChanged? <DetailFormForPost artwork={tempArtwork} setArtwork={setTempArtwork}/> : <div>UPload content first</div>}</>}
+      {currentStep === "Details" && <>{ <DetailFormForPost artwork={tempArtwork} setArtwork={setTempArtwork}/>}</>}
       {currentStep === "Groups" && <>{<GroupsForPost userGroups={joinedGroups} />}</>}
       {currentStep === "Feedback" && <>{<><FeedbackItemsForPost feedbackStack={feedbackStack} setFeedbackStack={setFeedbackStack}  /></>}</>}
       </div>
