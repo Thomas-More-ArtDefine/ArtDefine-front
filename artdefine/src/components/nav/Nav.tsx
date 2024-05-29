@@ -27,7 +27,7 @@ const Nav: React.FC = () => {
             <div className='desktop'>
                 <ul>
                     <li className='navlogo'>
-                        <Link to="/"><span className='logo'><Logo  /></span><span className='text'><LogoText  /></span></Link>
+                        <Link to="/feed"><span className='logo'><Logo  /></span><span className='text'><LogoText  /></span></Link>
                     </li>
                     <li className='navbutton'>
                         <button className="primary has-icon nav" onClick={() => navigate("/feed")} ><span>Discover </span><i className="material-icons">travel_explore</i></button>
