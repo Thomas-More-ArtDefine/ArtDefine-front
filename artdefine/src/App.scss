@@ -757,6 +757,13 @@ div.search-criteria-overlay {
       }
     }
   }
+
+  > button{
+    @include button($color-primary, $midnight-blue, $midnight-blue);
+    width: 200px;
+    height: 50px;
+    margin-top: 20px;
+  }
 }
 
 .upload-banner-page {

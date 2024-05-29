@@ -34,7 +34,10 @@ const CriteriaComponent: React.FC<CriteriaComponentProps> = ({ setClose }) => {
     setOrientationFilter(event.target.value);
   };
 
-  const applyFilters = useCallback(() => {}, [
+  const applyFilters = useCallback(() => {
+    console.log("Filters applied");
+    closeWindow();
+  }, [
     sortOption,
     searchQuery,
     mediumFilter,
@@ -137,6 +140,8 @@ return (
                 </div>
             </div>
         </div>
+
+        <button className="btn" onClick={applyFilters}>Apply</button>
     
     </div>
 );
