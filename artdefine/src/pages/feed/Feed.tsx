@@ -53,14 +53,15 @@ export default function Feed() {
     return (
         <div className='feedpage '  >
             <div className='feed-btns fixed'>
+            <div className='subnav-button'>
+                    <button className={((personalActive) ? "active": "")} onClick={() => handleFeedButtonClick("personal")}><i className="material-icons">home</i></button>
+                    {isTop && <div className='button-text'>My feed</div>}
+                </div>
                 <div className='subnav-button'>
                     <button className={((globalActive) ? "active": "")} onClick={() => handleFeedButtonClick("global")}><i className="material-icons">public</i></button>
                     {isTop && <div className='button-text'>Global</div>}
                 </div>
-                <div className='subnav-button'>
-                    <button className={((personalActive) ? "active": "")} onClick={() => handleFeedButtonClick("personal")}><i className="material-icons">home</i></button>
-                    {isTop && <div className='button-text'>My feed</div>}
-                </div>
+                
                 <div className='subnav-button'>
                     <button className={((randomActive) ? "active": "")} onClick={() => handleFeedButtonClick("random")}><i className="material-icons">shuffle</i></button>
                     {isTop && <div className='button-text'>Random</div>}
