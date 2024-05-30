@@ -19,7 +19,7 @@ export default function Group() {
     const { id } = useParams<{ id: string }>();
     const state = location.state ? location.state.state : 'Home';
     const [currentStep, setCurrentStep] = useState(state);
-    const { findGroup, group } = useContext(GroupContext) || {};
+    const { findGroup, group, joinGroup } = useContext(GroupContext) || {};
     const { findFoldersByGroupId, folders } = useContext(FolderContext) || {};
     const { findUsersGroups, joinedGroups } = useContext(GroupsContext) || {};
     const {user} = useAuth();
@@ -59,6 +59,19 @@ export default function Group() {
         return joined;
       }
 
+      const handleJoinClick = async () =>{
+        if (group?.group_setting_join === GroupJoin.APPLY && joinGroup && user ) {
+          console.log('handel apply click - create new group member for demo')
+          await joinGroup(group, user);
+          window.location.reload();
+        }
+        if (group?.group_setting_join === GroupJoin.OPEN && joinGroup && user) {
+          console.log('handel join click -  create new group member')
+          await joinGroup(group, user);
+          window.location.reload();
+        }
+      }
+
     return (
         <>
         {
@@ -76,8 +89,8 @@ export default function Group() {
                     
                     </div>
                     {
-                      (group.group_setting_join !== GroupJoin.INVITE || !checkUserInGroup()) &&
-                       <button className="join-button clickable">{group.group_setting_join === GroupJoin.APPLY? 'Apply': 'Join'}</button> 
+                      (!checkUserInGroup()) &&
+                       <button className="join-button clickable" onClick={() =>{handleJoinClick()}}>{group.group_setting_join === GroupJoin.APPLY? 'Apply': 'Join'}</button> 
                     }
                    
                 </div>

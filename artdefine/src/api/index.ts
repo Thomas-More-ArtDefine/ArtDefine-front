@@ -347,3 +347,26 @@ export const postFollowing = async (
     throw error;
   }
 };
+
+export const postGroupMember = async (
+  group: GroupModel,
+  user: User
+): Promise<any> => {
+  try {
+    const response = await api
+      .post("/group-members", 
+      {
+        member: user,
+        group: group,
+        rank: null
+      })
+      .then((res) => {
+        // console.log(res);
+        // console.log(res.data);
+      });
+    return response;
+  } catch (error) {
+    console.error("Error while fetching one data:", error);
+    throw error;
+  }
+};
