@@ -5,6 +5,9 @@ import { UserContext } from "../../context/UserContext";
 import { User } from "../../model/userModel";
 import CriteriaComponent from "../../components/search/CriteriaComponent";
 import SimpleUserCard from "../../components/cards/SimpleUserCard";
+import { GroupContext } from "../../context/GroupContext";
+import { GroupsContext } from "../../context/GroupsContext";
+import GroupCard from "../../components/cards/GroupCard";
 
 
 export default function Search() {
@@ -13,6 +16,7 @@ export default function Search() {
     const [usersActive, setUsersActive] = useState<boolean>(false);
     const { findArtworkByTag, artworks, findArtworkByTitle } = useContext(ArtworkContext) || {};
     const { users, findUsersByUsername } = useContext(UserContext) || {};
+    const { foundGroups, findGroupsByName } = useContext(GroupsContext) || {};
     const [openFilter, setOpenFilter] = useState<boolean>(false);
 
     const handleCategoryButtonClick = (button:string) => {
@@ -49,11 +53,10 @@ export default function Search() {
                 await findArtworkByTitle(e);
             } 
         }
-        if (groupActive) {
-            console.log('api call groups');
+        if (groupActive && findGroupsByName) {
+            await findGroupsByName(e);
         }
         if (usersActive&& findUsersByUsername) {
-            console.log('api call user');
             await findUsersByUsername(e);
         }
     }
@@ -75,6 +78,14 @@ export default function Search() {
       const usercards = users != undefined && users.length !== 0 ? users.map(
         user => {
                 return <SimpleUserCard user={user}/>;
+        }
+          
+      ):
+      (<></>);
+
+      const groupsCards = foundGroups != undefined && foundGroups.length !== 0 ? foundGroups.map(
+        group => {
+                return <GroupCard group={group}/>;
         }
           
       ):
@@ -119,7 +130,7 @@ export default function Search() {
 
             {artActive && works}
             {usersActive && usercards}
-            {groupActive && works}
+            {groupActive && groupsCards}
         {/* {
                   works?.length !== 0 && works ?
                   (works)

@@ -1346,6 +1346,7 @@ img.gpfp {
 }
 
 div.group-card {
+  background-color: $canvas-white-light;
   height: 112px;
   @include border-standard(3px);
   display: flex;
@@ -2446,10 +2447,14 @@ tr {
 }
 
 .simple-user-card {
+  background-color: $canvas-white-light;
   transition: background-color 0.5s;
   border-radius: $corner-radius-sm;
   &:hover {
     background-color: #fff6b867;
+  }
+  img{
+    width: 80px;
   }
 }
 
