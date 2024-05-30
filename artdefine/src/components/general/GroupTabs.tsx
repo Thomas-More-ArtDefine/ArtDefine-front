@@ -11,26 +11,26 @@ const GroupsTabs: React.FC<{
                 <div className="flex justify-spacebetween">
                     {ShowTab1 ? (
                         <div className="tab active position relative">
-                            <div className="font eaves heavy fs32 purple-dark">{NameTab1}</div>
+                            <div className="font eaves heavy purple-dark">{NameTab1}</div>
                             <div className="divider purple thick position absolute"></div>
                         </div>
                             
                         ) : (
                             <div className="tab position relative">
-                                <div className=" font eaves book fs32 purple-dark opacity p75" onClick={() => {setShowTab2(false); setShowTab1(true);}}>{NameTab1}</div>
+                                <div className=" font eaves book purple-dark opacity p75" onClick={() => {setShowTab2(false); setShowTab1(true);}}>{NameTab1}</div>
                             </div>
                         )}
                         
 
                     {ShowTab2 ? (
                         <div className="tab active position relative">
-                            <div className="font eaves heavy fs32 purple-dark">{NameTab2}</div>
+                            <div className="font eaves heavy purple-dark">{NameTab2}</div>
                             <div className="divider purple thick position absolute"></div>
                         </div>
                             
                         ) : (
                             <div className="tab position relative">
-                                <div className=" font eaves book fs32 purple-dark opacity p75" onClick={() => {setShowTab2(true); setShowTab1(false);}}>{NameTab2}</div>
+                                <div className=" font eaves book purple-dark opacity p75" onClick={() => {setShowTab2(true); setShowTab1(false);}}>{NameTab2}</div>
                             </div>
                         )}
                 </div>

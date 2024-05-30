@@ -80,7 +80,44 @@ export const getArtwork = async (id: string): Promise<Artwork> => {
     const userResponse = await api.get(`/users/${response.data.user_id}`);
     response.data.user = userResponse.data;
     console.log(response);
-    return response.data;
+
+    if (response.status !== 200) {
+      return response.data;
+    }
+
+    const cleanArtwork: Artwork = {
+      id: response.data.id,
+      post_content: response.data.post_content,
+      post_title: response.data.post_title,
+      post_description: response.data.post_description,
+      post_medium: response.data.post_medium,
+      post_visibility: response.data.post_visibility,
+      user: response.data.user,
+      user_id: response.data.user_id,
+      folders: response.data.folders,
+      post_tags: response.data.post_tags,
+      feedbackStack: response.data.feedback_template?.questions.map(
+        (item: any) => {
+          let question = {
+            id: item.id,
+            question: item.question_title,
+            type: {
+              type: item.question_type,
+              title:
+                item.question_type === "star_rating"
+                  ? "Give a rating:"
+                  : item.question_type === "bulletpoints"
+                  ? "Select an option:"
+                  : "Open title:",
+                  content: item.content ? (item.question_type === 'bulletpoints' ? JSON.parse(item.content) : item.content) : null,
+            },
+          };
+          return question;
+        }
+      ),
+    };
+
+    return cleanArtwork;
   } catch (error) {
     console.error("Error while fetching one data:", error);
     throw error;
@@ -348,6 +385,7 @@ export const postFollowing = async (
   }
 };
 
+
 export const postGroupMember = async (
   group: GroupModel,
   user: User
@@ -365,6 +403,50 @@ export const postGroupMember = async (
         // console.log(res.data);
       });
     return response;
+
+
+export const getPostsByName = async (
+  query: string,
+  amount: number,
+  skip: number,
+  orderby: string
+): Promise<any[]> => {
+  let filter = orderBy.DESC;
+  if (orderby.toUpperCase() === orderBy.ASC) {
+    filter = orderBy.ASC;
+  }
+
+  try {
+    const response = await api.get(
+      `/posts/search/title/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`
+    );
+    // response[0] = groups, response[1] = total count in database
+    return response.data;
+
+  } catch (error) {
+    console.error("Error while fetching one data:", error);
+    throw error;
+  }
+};
+
+
+export const getUsersByName = async (
+  query: string,
+  amount: number,
+  skip: number,
+  orderby: string
+): Promise<any[]> => {
+  let filter = orderBy.DESC;
+  if (orderby.toUpperCase() === orderBy.ASC) {
+    filter = orderBy.ASC;
+  }
+
+  try {
+    const response = await api.get(
+      `/users/search/username/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`
+    );
+    // response[0] = groups, response[1] = total count in database
+    return response.data;
   } catch (error) {
     console.error("Error while fetching one data:", error);
     throw error;
