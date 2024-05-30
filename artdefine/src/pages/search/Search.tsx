@@ -10,8 +10,7 @@ export default function Search() {
     const [artActive, setArtActive] = useState<boolean>(true);
     const [groupActive, setGroupActive] = useState<boolean>(false);
     const [usersActive, setUsersActive] = useState<boolean>(false);
-    const { findArtworkByTag, artworks } = useContext(ArtworkContext) || {};
-    const { findBasicUserById } = useContext(UserContext) || {};
+    const { findArtworkByTag, artworks, findArtworkByTitle } = useContext(ArtworkContext) || {};
     const users: User[] = [];
     const [openFilter, setOpenFilter] = useState<boolean>(false);
 
@@ -40,25 +39,36 @@ export default function Search() {
 
     const handleInputChange = async (e: string) => {
         console.log(e);
-        if (e[0] == "#" && e.length > 1) {
-            console.log("=> tag: "+e.slice(1));
-            if (findArtworkByTag) {
-                await findArtworkByTag(e.slice(1), 5, 0);
-            }
-        }else{
-            console.log("=> no tag");
-            //search by name
+        if (artActive && findArtworkByTitle && findArtworkByTag) {
+           
+            if (e[0] == "#" && e.length > 1) {
+                console.log("=> tag: "+e.slice(1));
+                if (findArtworkByTag) {
+                    await findArtworkByTag(e.slice(1), 5, 0);
+                }
+            }else{
+                console.log('api call post');
+                await findArtworkByTitle(e);
+            } 
+        }
+        if (groupActive) {
+            console.log('api call group');
+        }
+        if (usersActive) {
+            console.log('api call user');
         }
     }
 
     const works = artworks != undefined && artworks.length !== 0 ? artworks.map(
         artwork => {
+            console.log(artwork);
                 return <ArtworkCard 
                 src={artwork.post_content} 
                 title={artwork.post_title}
                 creator={artwork.user.user_name}
                 postid={artwork.id}
                 key={artwork.id} />
+                // return <></>;
         }
           
       ):
@@ -101,7 +111,9 @@ export default function Search() {
                 </div>            
         </div>
 
-            {works}
+            {artActive && works}
+            {usersActive && works}
+            {groupActive && works}
         {/* {
                   works?.length !== 0 && works ?
                   (works)

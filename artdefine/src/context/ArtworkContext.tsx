@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { Artwork, visibility } from "../model/PostModel";
-import { getArtwork, getBasicUserById, getPostsByTag, postArtwork } from "../api";
+import { getArtwork, getBasicUserById, getPostsByName, getPostsByTag, postArtwork } from "../api";
 import { User } from "../model/userModel";
 import { useAuth } from "./AuthContext";
 
@@ -13,6 +13,7 @@ import { useAuth } from "./AuthContext";
     findArtwork: (id: string) => Promise<Artwork | undefined>;
     uploadArtwork: (artwork: Artwork) => Promise<Artwork | undefined>;
     findArtworkByTag: (tag: string, amount:number, skip:number) => Promise<Artwork[] | undefined>;
+    findArtworkByTitle: (title: string) => Promise<Artwork[] | undefined>;
   }
   
 export const ArtworkContext = createContext<ArtworkContextType | null>(null);
@@ -89,6 +90,22 @@ export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children })
       return response;
     }, []);
 
+    const findArtworkByTitle = useCallback(async (name: string): Promise<Artwork[] | undefined> => {
+      const fetchData = async (name:string) => {
+        if (name) {
+          const data = await getPostsByName(name, 10,0,'desc');
+          console.log(data);
+          return data[0];
+        }else{
+          return [];
+        }
+        
+      };
+      const response = await fetchData(name);
+      setArtworks(response);
+      return response;
+    }, []);
+
     const findArtworkByTag = useCallback(async (tag: string, amount: number, skip: number): Promise<Artwork[] | undefined> => {
       const fetchData = async (str:string) => {
         const data = await getPostsByTag(str, amount, skip, 'desc');
@@ -101,7 +118,7 @@ export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children })
       return response;
     }, []);
   
-    const value = useMemo(() => ({ artwork, artworks, setArtwork,findArtwork, uploadArtwork, findArtworkByTag }), [artwork, artworks, setArtwork, findArtwork, uploadArtwork, findArtworkByTag]);
+    const value = useMemo(() => ({ artwork, artworks, setArtwork,findArtwork, uploadArtwork, findArtworkByTag, findArtworkByTitle }), [artwork, artworks, setArtwork, findArtwork, uploadArtwork, findArtworkByTag, findArtworkByTitle]);
   
     return (
       <ArtworkContext.Provider value={value}>

@@ -1,15 +1,17 @@
 import React, { createContext, useState, useMemo, useContext, useEffect, ReactNode, useCallback } from 'react';
 import { User } from '../model/userModel';
-import { getBasicUserById, getFollowers, getFollowing, getUserById, postFollowing } from '../api';
+import { getBasicUserById, getFollowers, getFollowing, getUserById, getUsersByName, postFollowing } from '../api';
 
 
 interface UserContextType {
     user: User | undefined;
+    users: User[] | undefined;
     following: User[] | undefined;
     findUserById: (id: string) => Promise<User | undefined>;
     findBasicUserById: (id: string) => Promise<User | undefined>;
     findFollowing: (id: string) => Promise<User[] | undefined>;
     updateFollowing: (loggedUserId: string, following:User[]) => Promise<void>;
+    findUsersByUsername: (name: string) => Promise<User[] | undefined>;
 }
 
 export const UserContext = createContext<UserContextType | null>(null);
@@ -18,6 +20,7 @@ export const useUser = () => useContext(UserContext)!;
 
 export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [user, setUser] = useState<User>();
+    const [users, setUsers] = useState<User[]>();
     const [following, setFollowing] = useState<User[]>();
 
     useEffect(() => {}, []);
@@ -29,6 +32,16 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         };
         const response = await fetchData(id);
         setUser(response);
+        return response;
+      }, []);
+
+      const findUsersByUsername = useCallback(async (id: string): Promise<User[] | undefined> => {
+        const fetchData = async (name:string) => {
+          const data = await getUsersByName(name, 10, 0, 'desc');
+          return data[0];
+        };
+        const response = await fetchData(id);
+        setUsers(response);
         return response;
       }, []);
 
@@ -60,7 +73,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         const response = await fetchData(loggedUserId);
       }, []);
 
-    const value = useMemo(() => ({ user, following, findUserById, findBasicUserById,findFollowing, updateFollowing }), [user, following, findUserById, findBasicUserById,findFollowing, updateFollowing]);
+    const value = useMemo(() => ({ user, users, following, findUserById, findBasicUserById,findFollowing, updateFollowing, findUsersByUsername }), [user, users, following, findUserById, findBasicUserById,findFollowing, updateFollowing, findUsersByUsername]);
 
     return (
         <UserContext.Provider value={value}>
