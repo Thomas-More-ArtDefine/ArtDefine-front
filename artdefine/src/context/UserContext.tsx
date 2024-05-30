@@ -1,6 +1,6 @@
 import React, { createContext, useState, useMemo, useContext, useEffect, ReactNode, useCallback } from 'react';
 import { User } from '../model/userModel';
-import { getBasicUserById, getFollowers, getFollowing, getUserById, getUsersByName, postFollowing } from '../api';
+import { getBasicUserById, getFollowing, getUserById, getUsersByName, postFollowing } from '../api';
 
 
 interface UserContextType {
@@ -37,8 +37,13 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
       const findUsersByUsername = useCallback(async (id: string): Promise<User[] | undefined> => {
         const fetchData = async (name:string) => {
-          const data = await getUsersByName(name, 10, 0, 'desc');
+          if (name) {
+            const data = await getUsersByName(name, 10, 0, 'desc');
           return data[0];
+          }else{
+            return [];
+          }
+          
         };
         const response = await fetchData(id);
         setUsers(response);

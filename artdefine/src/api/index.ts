@@ -385,7 +385,7 @@ export const getUsersByName = async (
 
   try {
     const response = await api.get(
-      `/users/search/name/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`
+      `/users/search/username/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`
     );
     // response[0] = groups, response[1] = total count in database
     return response.data;

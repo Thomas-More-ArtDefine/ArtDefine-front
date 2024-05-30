@@ -4,6 +4,7 @@ import ArtworkCard from "../../components/cards/Artwork-card";
 import { UserContext } from "../../context/UserContext";
 import { User } from "../../model/userModel";
 import CriteriaComponent from "../../components/search/CriteriaComponent";
+import SimpleUserCard from "../../components/cards/SimpleUserCard";
 
 
 export default function Search() {
@@ -11,7 +12,7 @@ export default function Search() {
     const [groupActive, setGroupActive] = useState<boolean>(false);
     const [usersActive, setUsersActive] = useState<boolean>(false);
     const { findArtworkByTag, artworks, findArtworkByTitle } = useContext(ArtworkContext) || {};
-    const users: User[] = [];
+    const { users, findUsersByUsername } = useContext(UserContext) || {};
     const [openFilter, setOpenFilter] = useState<boolean>(false);
 
     const handleCategoryButtonClick = (button:string) => {
@@ -38,30 +39,27 @@ export default function Search() {
     };
 
     const handleInputChange = async (e: string) => {
-        console.log(e);
         if (artActive && findArtworkByTitle && findArtworkByTag) {
            
             if (e[0] == "#" && e.length > 1) {
-                console.log("=> tag: "+e.slice(1));
                 if (findArtworkByTag) {
                     await findArtworkByTag(e.slice(1), 5, 0);
                 }
             }else{
-                console.log('api call post');
                 await findArtworkByTitle(e);
             } 
         }
         if (groupActive) {
-            console.log('api call group');
+            console.log('api call groups');
         }
-        if (usersActive) {
+        if (usersActive&& findUsersByUsername) {
             console.log('api call user');
+            await findUsersByUsername(e);
         }
     }
 
     const works = artworks != undefined && artworks.length !== 0 ? artworks.map(
         artwork => {
-            console.log(artwork);
                 return <ArtworkCard 
                 src={artwork.post_content} 
                 title={artwork.post_title}
@@ -69,6 +67,14 @@ export default function Search() {
                 postid={artwork.id}
                 key={artwork.id} />
                 // return <></>;
+        }
+          
+      ):
+      (<></>);
+
+      const usercards = users != undefined && users.length !== 0 ? users.map(
+        user => {
+                return <SimpleUserCard user={user}/>;
         }
           
       ):
@@ -112,7 +118,7 @@ export default function Search() {
         </div>
 
             {artActive && works}
-            {usersActive && works}
+            {usersActive && usercards}
             {groupActive && works}
         {/* {
                   works?.length !== 0 && works ?
