@@ -51,7 +51,7 @@ const ProfileGroups: React.FC<{ rank: number, userid?:string, user?:User }> = ({
     };
 
     fetchUserGroups();
-}, [ findUsersGroups, findFollowers, findFollowing, userid, followers, following]);
+}, [ findUsersGroups, findFollowers, findFollowing, userid]);
 
   const JoinedGroupList = joinedGroups !== undefined && joinedGroups.length !== 0 ? joinedGroups.map( group => <GroupCard group={group} key={group.id} />) : <div className="error-text">You haven't joined any groups yet</div>;
   const followersList = followers !== undefined && followers.length !== 0 ? followers.map( follower => <SimpleUserCard key={follower.id} user={follower}/>) : <div className="error-text">No one had followed you yet</div>;
