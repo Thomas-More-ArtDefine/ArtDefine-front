@@ -6,7 +6,6 @@ import UnderlinedTitle from "../../components/general/UnderlinedTitled";
 import { GroupContext } from "../../context/GroupContext";
 
 export default function GroupSettings() {
-    const navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
     const [currentStep, setCurrentStep] = useState("Menu");
     const { findGroup, group } = useContext(GroupContext) || {};
@@ -14,8 +13,7 @@ export default function GroupSettings() {
     useEffect(() => {
         const fetchArtwork = async () => {
           if (findGroup) {
-            const artwork = await findGroup(id ?? "");
-            console.log(artwork);
+            await findGroup(id ?? "");
           }
         };
     
@@ -25,7 +23,6 @@ export default function GroupSettings() {
 
     // api calls to be added
     const handleGeneralUpdateClick =async () => {
-        console.log("save new general settings");
         setCurrentStep("Menu")
     };
 
