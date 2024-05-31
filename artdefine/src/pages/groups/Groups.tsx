@@ -34,8 +34,8 @@ export default function Groups() {
         setOpenModal(true);
     };
     
-    const JoinedGroupList = joinedGroups !== undefined && joinedGroups.length !== 0 ? joinedGroups.map( group => <GroupCard group={group} key={group.id} />) : "You haven't joined any groups yet";
-    const FoundGroupList = foundGroups !== undefined && foundGroups.length !== 0 ? foundGroups.map( group => <GroupCard group={group} key={group.id} />): 'no groups found';
+    const JoinedGroupList = joinedGroups !== undefined && joinedGroups.length !== 0 ? joinedGroups.map( group => <GroupCard group={group} key={group.id} />) : <div className="error-text">You haven't joined any groups yet</div>;
+    const FoundGroupList = foundGroups !== undefined && foundGroups.length !== 0 ? foundGroups.map( group => <GroupCard group={group} key={group.id} />): <div className="error-text">No groups found</div>;
     return (
         <>
         {openModal && <CreateGroupModal closeModal={setOpenModal} />}

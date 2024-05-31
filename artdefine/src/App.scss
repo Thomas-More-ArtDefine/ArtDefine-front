@@ -2352,6 +2352,14 @@ tr {
       margin-right: 5px;
     }
   }
+  .simple-user-card{
+    margin: 14px auto;
+    max-width: 434px;
+  }
+  .group-card{
+    margin: 14px auto;
+    max-width: 434px;
+  }
 }
 
 .feedback-title {
@@ -2557,4 +2565,9 @@ tr {
   font-size: 40px;
   height: 64px;
   width: 160px;
+}
+
+.error-text{
+  color: $sunset-red;
+  font-family: 'EavesSansHeavy';
 }
