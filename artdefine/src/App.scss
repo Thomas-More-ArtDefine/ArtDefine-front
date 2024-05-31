@@ -2433,16 +2433,15 @@ tr {
 
 .profile-groups {
   margin: auto;
+  width: 100%;
+  min-width: 312px;
   .white-card {
-    margin: 0;
+    margin: 0 auto;
     padding: 16px;
     height: 50vh !important;
-    min-width: 300px;
+    width: 100%;
     .navtabs {
       margin-bottom: 16px;
-    }
-    @include breakpoint("sm") {
-      min-width: 325px;
     }
   }
 }
