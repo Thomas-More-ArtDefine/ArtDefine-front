@@ -4,16 +4,13 @@ import FeedbackRadio from "../../components/feedback/FeedbackRadio";
 import FeedbackOpen from "../../components/feedback/FeedbackOpen";
 import { useArtwork } from "../../context/ArtworkContext";
 import { useEffect, useState } from "react";
-import { Artwork } from "../../model/PostModel";
 import { FeedbackItemModel, FeedbackRatioModel } from "../../model/FeedbackItemModel";
 
 export default function PostFeedback() {
   const { id } = useParams<{ id: string }>();
 
   const { findArtwork } = useArtwork();
-  const { feedback_id } = useParams<{ feedback_id: string }>();
   const navigate = useNavigate();
-  const [artwork, setArtwork] = useState<Artwork>();
 
   const [feedbackQuestions, setFeedbackQuestions] = useState<
     FeedbackItemModel[]
@@ -23,7 +20,6 @@ export default function PostFeedback() {
     if (id) {
       findArtwork(id).then((res) => {
         if (res) {
-          setArtwork(res);
           if (res.feedbackStack) {
             setFeedbackQuestions(res.feedbackStack);
           } else {
@@ -32,7 +28,7 @@ export default function PostFeedback() {
         }
       });
     }
-  }, [id]);
+  }, [id, findArtwork]);
 
   return (
     <>
@@ -59,6 +55,8 @@ export default function PostFeedback() {
               );
             } else if (question.type.type === "open") {
               return <FeedbackOpen title={question.question} empty={true} />;
+            }else{
+              return '';
             }
           })}
           <button className="upload-feedback">Upload Feedback</button>
