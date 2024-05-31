@@ -403,52 +403,57 @@ export const postGroupMember = async (
         // console.log(res.data);
       });
     return response;
+    }catch (error) {
+      console.error("Error while fetching one data:", error);
+      throw error;
+    }
+  };
 
-
-export const getPostsByName = async (
-  query: string,
-  amount: number,
-  skip: number,
-  orderby: string
-): Promise<any[]> => {
-  let filter = orderBy.DESC;
-  if (orderby.toUpperCase() === orderBy.ASC) {
-    filter = orderBy.ASC;
-  }
-
-  try {
-    const response = await api.get(
-      `/posts/search/title/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`
-    );
-    // response[0] = groups, response[1] = total count in database
-    return response.data;
-
-  } catch (error) {
-    console.error("Error while fetching one data:", error);
-    throw error;
-  }
-};
-
-
-export const getUsersByName = async (
-  query: string,
-  amount: number,
-  skip: number,
-  orderby: string
-): Promise<any[]> => {
-  let filter = orderBy.DESC;
-  if (orderby.toUpperCase() === orderBy.ASC) {
-    filter = orderBy.ASC;
-  }
-
-  try {
-    const response = await api.get(
-      `/users/search/username/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`
-    );
-    // response[0] = groups, response[1] = total count in database
-    return response.data;
-  } catch (error) {
-    console.error("Error while fetching one data:", error);
-    throw error;
-  }
-};
+    export const getPostsByName = async (
+      query: string,
+      amount: number,
+      skip: number,
+      orderby: string
+    ): Promise<any[]> => {
+      let filter = orderBy.DESC;
+      if (orderby.toUpperCase() === orderBy.ASC) {
+        filter = orderBy.ASC;
+      }
+    
+      try {
+        const response = await api.get(
+          `/posts/search/title/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`
+        );
+        // response[0] = groups, response[1] = total count in database
+        return response.data;
+    
+      } catch (error) {
+        console.error("Error while fetching one data:", error);
+        throw error;
+      }
+    };
+    
+    
+    export const getUsersByName = async (
+      query: string,
+      amount: number,
+      skip: number,
+      orderby: string
+    ): Promise<any[]> => {
+      let filter = orderBy.DESC;
+      if (orderby.toUpperCase() === orderBy.ASC) {
+        filter = orderBy.ASC;
+      }
+    
+      try {
+        const response = await api.get(
+          `/users/search/username/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`
+        );
+        // response[0] = groups, response[1] = total count in database
+        return response.data;
+      } catch (error) {
+        console.error("Error while fetching one data:", error);
+        throw error;
+      }
+    };
+    
