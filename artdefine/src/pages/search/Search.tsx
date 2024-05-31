@@ -75,7 +75,7 @@ export default function Search() {
 
       const usercards = users !== undefined && users.length !== 0 ? users.map(
         user => {
-                return <SimpleUserCard user={user}/>;
+                return <SimpleUserCard key={user.id} user={user}/>;
         }
           
       ):
@@ -83,7 +83,7 @@ export default function Search() {
 
       const groupsCards = foundGroups !== undefined && foundGroups.length !== 0 ? foundGroups.map(
         group => {
-                return <GroupCard group={group}/>;
+                return <GroupCard key={group.id} group={group}/>;
         }
           
       ):
