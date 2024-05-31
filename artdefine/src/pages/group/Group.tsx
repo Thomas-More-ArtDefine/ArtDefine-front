@@ -9,6 +9,9 @@ import placeholderBanner from "../../assets/images/mock-banner-pic.png"
 import GroupDetails from "../../components/group/GroupDetails";
 import { FolderContext } from "../../context/FolderContext";
 import GroupMembers from "../../components/group/GroupMembers";
+import { GroupJoin } from "../../components/group/Create-group-modal";
+import { GroupsContext } from "../../context/GroupsContext";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Group() {
 
@@ -16,9 +19,11 @@ export default function Group() {
     const { id } = useParams<{ id: string }>();
     const state = location.state ? location.state.state : 'Home';
     const [currentStep, setCurrentStep] = useState(state);
-    const { findGroup, group } = useContext(GroupContext) || {};
+    const { findGroup, group, joinGroup } = useContext(GroupContext) || {};
     const { findFoldersByGroupId, folders } = useContext(FolderContext) || {};
-
+    const { findUsersGroups, joinedGroups } = useContext(GroupsContext) || {};
+    const {user} = useAuth();
+    
     useEffect(() => {
         const fetchGroup = async () => {
           if (findGroup) {
@@ -31,10 +36,41 @@ export default function Group() {
               await findFoldersByGroupId(id ?? "");
             }
           };
-    
+
+          const fetchUserGroups = async () => {
+            if (findUsersGroups && user) {
+                await findUsersGroups(user.id ?? ""); 
+            }
+        };
+        fetchUserGroups();
         fetchGroup();
         fetchFolders();
       }, [id, findGroup,findFoldersByGroupId]);
+
+      const checkUserInGroup = () => {
+        let joined: boolean = false;
+        joinedGroups?.forEach((joinedgroup) => {
+          console.log(joinedgroup.id)
+          console.log(group?.id)
+          if (group && joinedgroup.id === group.id) {
+            joined = true;
+          }
+        })
+        return joined;
+      }
+
+      const handleJoinClick = async () =>{
+        if (group?.group_setting_join === GroupJoin.APPLY && joinGroup && user ) {
+          console.log('handel apply click - create new group member for demo')
+          await joinGroup(group, user);
+          window.location.reload();
+        }
+        if (group?.group_setting_join === GroupJoin.OPEN && joinGroup && user) {
+          console.log('handel join click -  create new group member')
+          await joinGroup(group, user);
+          window.location.reload();
+        }
+      }
 
     return (
         <>
@@ -52,6 +88,11 @@ export default function Group() {
                     {currentStep === "Members" && <GroupMembers members={group.members} />}
                     
                     </div>
+                    {
+                      (!checkUserInGroup()) &&
+                       <button className="join-button clickable" onClick={() =>{handleJoinClick()}}>{group.group_setting_join === GroupJoin.APPLY? 'Apply': 'Join'}</button> 
+                    }
+                   
                 </div>
             ) 
             : 

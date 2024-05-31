@@ -386,6 +386,25 @@ export const postFollowing = async (
 };
 
 
+export const postGroupMember = async (
+  group: GroupModel,
+  user: User
+): Promise<any> => {
+  try {
+    const response = await api
+      .post("/group-members", 
+      {
+        member: user,
+        group: group,
+        rank: null
+      })
+      .then((res) => {
+        // console.log(res);
+        // console.log(res.data);
+      });
+    return response;
+
+
 export const getPostsByName = async (
   query: string,
   amount: number,
@@ -403,11 +422,13 @@ export const getPostsByName = async (
     );
     // response[0] = groups, response[1] = total count in database
     return response.data;
+
   } catch (error) {
     console.error("Error while fetching one data:", error);
     throw error;
   }
 };
+
 
 export const getUsersByName = async (
   query: string,
