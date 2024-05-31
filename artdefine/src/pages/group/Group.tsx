@@ -12,6 +12,8 @@ import GroupMembers from "../../components/group/GroupMembers";
 import { GroupJoin } from "../../components/group/Create-group-modal";
 import { GroupsContext } from "../../context/GroupsContext";
 import { useAuth } from "../../context/AuthContext";
+import { User } from "../../model/userModel";
+import { GroupMember } from "../../model/GroupMember";
 
 export default function Group() {
 
@@ -47,12 +49,17 @@ export default function Group() {
         fetchFolders();
       }, [id, findGroup,findFoldersByGroupId]);
 
-      const checkUserInGroup = () => {
+      const checkUserInGroup = (members: GroupMember[]) => {
         let joined: boolean = false;
-        joinedGroups?.forEach((joinedgroup) => {
-          console.log(joinedgroup.id)
-          console.log(group?.id)
-          if (group && joinedgroup.id === group.id) {
+        // joinedGroups?.forEach((joinedgroup) => {
+        //   console.log(joinedgroup.id)
+        //   console.log(group?.id)
+        //   if (group && joinedgroup.id === group.id) {
+        //     joined = true;
+        //   }
+        // })
+        members.forEach((member)=>{
+          if (member.member.id === user?.id) {
             joined = true;
           }
         })
@@ -89,8 +96,14 @@ export default function Group() {
                     
                     </div>
                     {
-                      (!checkUserInGroup()) &&
-                       <button className="join-button clickable" onClick={() =>{handleJoinClick()}}>{group.group_setting_join === GroupJoin.APPLY? 'Apply': 'Join'}</button> 
+                      checkUserInGroup(group.members)?
+                      ''
+                       : group.group_setting_join === GroupJoin.INVITE?
+                       ''
+                       : !group?
+                       ''
+                       :
+                       <button className="group-join-button clickable" onClick={() =>{handleJoinClick()}}>{group.group_setting_join === GroupJoin.APPLY? 'Apply': 'Join'}</button> 
                     }
                    
                 </div>
