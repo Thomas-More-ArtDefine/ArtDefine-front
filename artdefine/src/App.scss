@@ -2571,3 +2571,30 @@ tr {
   color: $sunset-red;
   font-family: 'EavesSansHeavy';
 }
+
+.general-settings{
+  width: 100%;
+  max-width: 1135px;
+  margin: 27px 18px 55px 18px;
+  
+  
+  button{
+    width: 100%;
+    height: 48px;
+    margin: 18px auto;
+    max-width: 340px;
+  }
+}
+
+.messages{
+  width: 100%;
+  max-width: 1135px;
+  margin: 27px 18px 55px 18px;
+}
+
+.title{
+    margin-bottom: 24px;
+    h3{
+      margin: 0;
+    }
+  }
