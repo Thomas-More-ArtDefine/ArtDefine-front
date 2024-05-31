@@ -2,8 +2,6 @@ import { Artwork } from "../model/PostModel";
 import { testOutput } from "../model/testOutput";
 import { User } from "../model/userModel";
 import api from "./http-common";
-import POSTMOCK from "../mock/PostMock";
-import FEEDMOCK from "../mock/FeedMock";
 import { GroupModel } from "../model/GroupModel";
 import { CreateGroupModel } from "../model/CreateGroupModel";
 import {

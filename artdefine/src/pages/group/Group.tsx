@@ -12,7 +12,6 @@ import GroupMembers from "../../components/group/GroupMembers";
 import { GroupJoin } from "../../components/group/Create-group-modal";
 import { GroupsContext } from "../../context/GroupsContext";
 import { useAuth } from "../../context/AuthContext";
-import { User } from "../../model/userModel";
 import { GroupMember } from "../../model/GroupMember";
 
 export default function Group() {
@@ -23,7 +22,7 @@ export default function Group() {
     const [currentStep, setCurrentStep] = useState(state);
     const { findGroup, group, joinGroup } = useContext(GroupContext) || {};
     const { findFoldersByGroupId, folders } = useContext(FolderContext) || {};
-    const { findUsersGroups, joinedGroups } = useContext(GroupsContext) || {};
+    const { findUsersGroups } = useContext(GroupsContext) || {};
     const {user} = useAuth();
     
     useEffect(() => {
@@ -47,17 +46,10 @@ export default function Group() {
         fetchUserGroups();
         fetchGroup();
         fetchFolders();
-      }, [id, findGroup,findFoldersByGroupId]);
+      }, [id, findGroup,findFoldersByGroupId, findUsersGroups, user]);
 
       const checkUserInGroup = (members: GroupMember[]) => {
         let joined: boolean = false;
-        // joinedGroups?.forEach((joinedgroup) => {
-        //   console.log(joinedgroup.id)
-        //   console.log(group?.id)
-        //   if (group && joinedgroup.id === group.id) {
-        //     joined = true;
-        //   }
-        // })
         members.forEach((member)=>{
           if (member.member.id === user?.id) {
             joined = true;
@@ -73,7 +65,6 @@ export default function Group() {
           window.location.reload();
         }
         if (group?.group_setting_join === GroupJoin.OPEN && joinGroup && user) {
-          console.log('handel join click -  create new group member')
           await joinGroup(group, user);
           window.location.reload();
         }
