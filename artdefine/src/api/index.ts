@@ -10,6 +10,7 @@ import {
   GroupJoin,
   groupVisibility,
 } from "../components/group/Create-group-modal";
+import { FeedbackResponse } from "../model/FeedbackResponseModel";
 
 export enum orderBy {
   DESC = "DESC",
@@ -430,4 +431,17 @@ export const getUsersByName = async (
     console.error("Error while fetching one data:", error);
     throw error;
   }
+};
+
+
+export const postFeedbackResponse = async (response: FeedbackResponse) => {
+  console.log("Uploading feedback response...");
+    console.log("Response:", response);
+    try{
+    await api.post(`/feedback-results`, response);
+    console.log("Feedback response uploaded!");
+    }catch(error){
+      console.error("Error while uploading feedback response:", error);
+      throw error;
+    }
 };

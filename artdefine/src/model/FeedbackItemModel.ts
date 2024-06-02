@@ -24,3 +24,6 @@ export interface FeedbackOpenModel {
   //empty: boolean;
   text?: string;
 }
+
+
+
