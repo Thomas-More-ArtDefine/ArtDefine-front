@@ -92,7 +92,8 @@ export default function Group() {
                        : group.group_setting_join === GroupJoin.INVITE?
                        ''
                        :
-                       <button className="group-join-button clickable" onClick={() =>{handleJoinClick()}}>{group.group_setting_join === GroupJoin.APPLY? 'Apply': 'Join'}</button> 
+                       <div className="button-container"> <button className="group-join-button clickable" onClick={() =>{handleJoinClick()}}>{group.group_setting_join === GroupJoin.APPLY? 'Apply': 'Join'}</button> </div>
+                      
                     }
                    
                 </div>

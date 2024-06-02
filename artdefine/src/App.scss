@@ -2557,6 +2557,15 @@ tr {
   }
 }
 
+.button-container{
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1135px;
+  bottom: 0;
+  right: 0;
+}
+
 .group-join-button{
   position: absolute;
   bottom: 10px;
