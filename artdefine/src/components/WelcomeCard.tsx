@@ -19,7 +19,9 @@ const WelcomeCard: React.FC = () => {
                 </p>
                 <ul>
                     <li>Not all features are implemented.</li>
+                    <li>It is best experienced on a phone screen.</li>
                     <li>The <strong>login page is merely a mock</strong>, you can input whatever you want.</li>
+
                     <li>
                         The backend is hosted on a free-to-use platform, which is great. <br />
                         The downside is <strong>it could take up to a minute to start up</strong> after being idle.<br /><br />
