@@ -177,7 +177,7 @@ body {
     align-items: end;
   }
   &.justify-start {
-    justify-content: start;
+    justify-content: flex-start;
   }
   &.justify-center {
     justify-content: center;
@@ -362,13 +362,13 @@ nav.navigation {
     }
     li.navlogo {
       display: flex;
-      align-items: end;
+      align-items: flex-end;
       margin: $nav-element-margin-mobile;
     }
     li.navprofile {
       height: $nav-element-height;
       display: flex;
-      align-items: end;
+      align-items: flex-end;
       justify-content: space-between;
       margin: $nav-element-margin-mobile;
       width: 122px;
@@ -405,7 +405,7 @@ nav.navigation {
       }
       li.navlogo {
         display: flex;
-        align-items: end;
+        align-items: flex-end;
         padding: 0 16px;
         margin: 0px 10px 0px 10px;
       }
@@ -481,7 +481,7 @@ nav.navigation {
       }
       li.navlogo {
         display: flex;
-        align-items: end;
+        align-items: flex-end;
         padding: 0 16px;
         margin: 0px 10px 0px 10px;
       }
@@ -839,7 +839,7 @@ div.search-criteria-overlay {
     height: 50px;
     width: 100%;
     align-items: center;
-    justify-items: start;
+    justify-items: flex-start;
     margin: 10px 0 0 0;
     padding: 0 10px;
 
@@ -1138,7 +1138,7 @@ div.search-criteria-overlay {
 
   .artwork {
     width: 100%;
-    align-items: start;
+    align-items: flex-start;
     .content {
       height: 100%;
       img {
@@ -1827,7 +1827,7 @@ div.createGroupModal {
 
 div.togglecontainer {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   span.option {
     width: 60px;
@@ -1894,7 +1894,7 @@ div.radiocontainer {
 div.slidercontainer {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   span {
     margin-left: 5px;
     width: 18px;
@@ -2222,6 +2222,9 @@ button {
     i {
       font-size: 28px;
     }
+    .title{
+      margin: 0;
+    }
   }
 }
 
@@ -2425,10 +2428,10 @@ tr {
 .profile-btns {
   button {
     &:nth-child(1) {
-      justify-self: start;
+      justify-self: flex-start;
     }
     &:nth-child(3) {
-      justify-self: end;
+      justify-self: flex-end;
     }
     height: 42px;
     width: 112px;
@@ -2470,10 +2473,22 @@ tr {
 .post-view-page{
   width: 100vw;
   .artwork{
+    margin: 20px auto;
     max-width: 100%;
-    max-height: 75vh;
+    max-height: 60vh;
     height: 100%;
+    .content{
+      img{
+        max-height: 60vh;
+      }
+    }
   }
+}
+
+.return-link{
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .post-tags{
@@ -2555,6 +2570,15 @@ tr {
     left: calc(-450px + 50vw);
     top: -120px;
   }
+}
+
+.button-container{
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1135px;
+  bottom: 0;
+  right: 0;
 }
 
 .group-join-button{

@@ -194,8 +194,6 @@ function App() {
 
   
   const { REACT_APP_API_URL} = process.env;
-  console.log(REACT_APP_API_URL);
-  console.log("sterretjes in een string");
 
   return (
     <div className="App">

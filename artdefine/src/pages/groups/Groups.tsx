@@ -23,9 +23,8 @@ export default function Groups() {
     }, [ findUsersGroups, user]);
 
     const findByName = async (query: string) => {
-        console.log(query);
         if (findGroupsByName) {
-            console.log(await findGroupsByName(query ?? ''));
+            await findGroupsByName(query ?? '');
         }
     };
 

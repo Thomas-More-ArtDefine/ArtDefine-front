@@ -1,8 +1,6 @@
 import { ReactNode, createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { Artwork, visibility } from "../model/PostModel";
 import { getArtwork, getBasicUserById, getPostsByName, getPostsByTag, postArtwork } from "../api";
-import { User } from "../model/userModel";
-import { useAuth } from "./AuthContext";
 
 
 // export {Typescript}
@@ -61,7 +59,6 @@ export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children })
     const [artworks, setArtworks] = useState<Artwork[]>([]);
 
     useEffect(() => {
-      console.log("artwork: ", artwork);
     }, [artwork]);
 
 

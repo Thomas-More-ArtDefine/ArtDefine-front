@@ -30,7 +30,7 @@ const MobileMenu: React.FC<{
                 }}
               >
                 <div className="profile-block">
-                  <img src={user?.user_profile_picture} alt="profile picture" />
+                  <img src={user?.user_profile_picture} alt="user's profile" />
                   <div className="profile-info">
                     <div className="username">{user?.user_name}</div>
                     <div className="profile">Profile</div>
@@ -48,7 +48,7 @@ const MobileMenu: React.FC<{
               }}
             >
               <div className="profile-block">
-                <img src={pfp} alt="profile picture" />
+                <img src={pfp} alt="user's profile" />
                 <div className="profile-info">
                   <div className="username">Guest</div>
                 </div>
@@ -115,7 +115,7 @@ const MobileMenu: React.FC<{
               <button
                 className="secondary has-icon nav"
                 onClick={() => {
-                  navigate("/logout");
+                  navigate("/login");
                   closeMenu(false);
                 }}
               >

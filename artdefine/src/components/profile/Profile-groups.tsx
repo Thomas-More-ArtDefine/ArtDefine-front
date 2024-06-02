@@ -43,7 +43,6 @@ const ProfileGroups: React.FC<{ rank: number, userid?:string, user?:User }> = ({
             await findUsersGroups(userid ?? ""); 
         }
         if (findFollowers && userid) {
-          console.log('get followers');
           await findFollowers(userid ?? ""); 
         }
         if (findFollowing && userid) {
@@ -52,8 +51,6 @@ const ProfileGroups: React.FC<{ rank: number, userid?:string, user?:User }> = ({
     };
 
     fetchUserGroups();
-    console.log(followers);
-    console.log(following);
 }, [ findUsersGroups, findFollowers, findFollowing, userid]);
 
   const JoinedGroupList = joinedGroups !== undefined && joinedGroups.length !== 0 ? joinedGroups.map( group => <GroupCard group={group} key={group.id} />) : <div className="error-text">You haven't joined any groups yet</div>;

@@ -11,7 +11,6 @@ const Content: React.FC<{
   members,
   maxUsers = 12, // optional
 }) => {
-  console.log(members)
   return (
     <>
         <div className=" list">
