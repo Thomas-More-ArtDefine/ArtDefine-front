@@ -2473,10 +2473,22 @@ tr {
 .post-view-page{
   width: 100vw;
   .artwork{
+    margin: 20px auto;
     max-width: 100%;
-    max-height: 75vh;
+    max-height: 60vh;
     height: 100%;
+    .content{
+      img{
+        max-height: 60vh;
+      }
+    }
   }
+}
+
+.return-link{
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .post-tags{
