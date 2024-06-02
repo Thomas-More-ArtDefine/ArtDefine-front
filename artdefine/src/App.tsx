@@ -25,6 +25,8 @@ import { ProfileProvider } from './context/ProfileContext';
 import Login from './pages/login/Login';
 import Register from './pages/login/Register';
 import ForgotPassword from './pages/login/Forgot';
+import Settings from './pages/settings/Settings';
+import Messages from './pages/messages/Messages';
 
 
 
@@ -145,10 +147,6 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: '*',
-        element: <h1>Not Found</h1>,
-      },
-      {
         path: '/login',
         children: [
           {
@@ -165,6 +163,29 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: '/settings',
+        children: [
+          {
+            index: true,
+            element: <Settings/>,
+          }
+        ],
+      },
+      {
+        path: '/messages',
+        children: [
+          {
+            index: true,
+            element: <Messages/>,
+          }
+        ],
+      },
+      {
+        path: '*',
+        element: <h1>Not Found</h1>,
+      },
+      
     ],
   },
 ]);
@@ -173,8 +194,6 @@ function App() {
 
   
   const { REACT_APP_API_URL} = process.env;
-  console.log(REACT_APP_API_URL);
-  console.log("sterretjes in een string");
 
   return (
     <div className="App">

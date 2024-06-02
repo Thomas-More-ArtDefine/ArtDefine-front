@@ -3,14 +3,15 @@ import GroupJoinButton from "./GroupJoinButton";
 import placeholderpfp from "../../assets/images/mock-profile-pic.png";
 import { useContext } from "react";
 import { GroupsContext } from "../../context/GroupsContext";
+import { useNavigate } from "react-router-dom";
 
 const GroupCard: React.FC<{group:GroupModel}> = ({group} ) => {
     const image = (group.group_profile_picture !== null && group.group_profile_picture !== undefined && group.group_profile_picture !== '') ? <img src={group.group_profile_picture} alt="" className="gpfp" /> : <img src={placeholderpfp} alt="" className="gpfp" />
     const { joinedGroups } = useContext(GroupsContext) || {};
-    
+    const navigate = useNavigate();
     return (
         <>
-        <div className="group-card">
+        <div className="group-card clickable" onClick={() => navigate("/group/"+group.id)}>
             {image}
             <div className="group-info">
                 <div className="general">

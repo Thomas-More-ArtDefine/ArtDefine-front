@@ -76,6 +76,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           return data;
         };
         const response = await fetchData(loggedUserId);
+        return response;
       }, []);
 
     const value = useMemo(() => ({ user, users, following, findUserById, findBasicUserById,findFollowing, updateFollowing, findUsersByUsername }), [user, users, following, findUserById, findBasicUserById,findFollowing, updateFollowing, findUsersByUsername]);

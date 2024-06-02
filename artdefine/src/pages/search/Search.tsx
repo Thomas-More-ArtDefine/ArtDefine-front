@@ -1,11 +1,9 @@
-import react, { useCallback, useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { ArtworkContext } from "../../context/ArtworkContext";
 import ArtworkCard from "../../components/cards/Artwork-card";
 import { UserContext } from "../../context/UserContext";
-import { User } from "../../model/userModel";
 import CriteriaComponent from "../../components/search/CriteriaComponent";
 import SimpleUserCard from "../../components/cards/SimpleUserCard";
-import { GroupContext } from "../../context/GroupContext";
 import { GroupsContext } from "../../context/GroupsContext";
 import GroupCard from "../../components/cards/GroupCard";
 
@@ -45,7 +43,7 @@ export default function Search() {
     const handleInputChange = async (e: string) => {
         if (artActive && findArtworkByTitle && findArtworkByTag) {
            
-            if (e[0] == "#" && e.length > 1) {
+            if (e[0] === "#" && e.length > 1) {
                 if (findArtworkByTag) {
                     await findArtworkByTag(e.slice(1), 5, 0);
                 }
@@ -61,7 +59,7 @@ export default function Search() {
         }
     }
 
-    const works = artworks != undefined && artworks.length !== 0 ? artworks.map(
+    const works = artworks !== undefined && artworks.length !== 0 ? artworks.map(
         artwork => {
                 return <ArtworkCard 
                 src={artwork.post_content} 
@@ -75,17 +73,17 @@ export default function Search() {
       ):
       (<></>);
 
-      const usercards = users != undefined && users.length !== 0 ? users.map(
+      const usercards = users !== undefined && users.length !== 0 ? users.map(
         user => {
-                return <SimpleUserCard user={user}/>;
+                return <SimpleUserCard key={user.id} user={user}/>;
         }
           
       ):
       (<></>);
 
-      const groupsCards = foundGroups != undefined && foundGroups.length !== 0 ? foundGroups.map(
+      const groupsCards = foundGroups !== undefined && foundGroups.length !== 0 ? foundGroups.map(
         group => {
-                return <GroupCard group={group}/>;
+                return <GroupCard key={group.id} group={group}/>;
         }
           
       ):

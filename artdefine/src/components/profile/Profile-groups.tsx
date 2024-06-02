@@ -43,7 +43,6 @@ const ProfileGroups: React.FC<{ rank: number, userid?:string, user?:User }> = ({
             await findUsersGroups(userid ?? ""); 
         }
         if (findFollowers && userid) {
-          console.log('get followers');
           await findFollowers(userid ?? ""); 
         }
         if (findFollowing && userid) {
@@ -52,13 +51,11 @@ const ProfileGroups: React.FC<{ rank: number, userid?:string, user?:User }> = ({
     };
 
     fetchUserGroups();
-    console.log(followers);
-    console.log(following);
 }, [ findUsersGroups, findFollowers, findFollowing, userid]);
 
-  const JoinedGroupList = joinedGroups !== undefined && joinedGroups.length !== 0 ? joinedGroups.map( group => <GroupCard group={group} key={group.id} />) : "You haven't joined any groups yet";
-  const followersList = followers !== undefined && followers.length !== 0 ? followers.map( follower => <SimpleUserCard key={follower.id} user={follower}/>) : "No one had followed you yet";
-  const followingList = following !== undefined && following.length !== 0 ? following.map( followed => <SimpleUserCard key={followed.id} user={followed}/>) : "You haven't followed anyone yet";
+  const JoinedGroupList = joinedGroups !== undefined && joinedGroups.length !== 0 ? joinedGroups.map( group => <GroupCard group={group} key={group.id} />) : <div className="error-text">You haven't joined any groups yet</div>;
+  const followersList = followers !== undefined && followers.length !== 0 ? followers.map( follower => <SimpleUserCard key={follower.id} user={follower}/>) : <div className="error-text">No one had followed you yet</div>;
+  const followingList = following !== undefined && following.length !== 0 ? following.map( followed => <SimpleUserCard key={followed.id} user={followed}/>) : <div className="error-text">You haven't followed anyone yet</div>;
     return (
       <div className="profile-groups">
         <div className="max-size white-card">

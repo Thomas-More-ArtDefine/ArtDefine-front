@@ -1,5 +1,5 @@
 import { useFeed } from "../../context/FeedContext";
-import React, { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import ArtworkCard from "../../components/cards/Artwork-card";
 
 

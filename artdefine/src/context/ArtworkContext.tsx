@@ -6,6 +6,7 @@ import { useAuth } from "./AuthContext";
 import { FeedbackResponse } from "../model/FeedbackResponseModel";
 
 
+
 // export {Typescript}
   interface ArtworkContextType {
     artwork: Artwork ;
@@ -63,7 +64,6 @@ export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children })
     const [artworks, setArtworks] = useState<Artwork[]>([]);
 
     useEffect(() => {
-      console.log("artwork: ", artwork);
     }, [artwork]);
 
 

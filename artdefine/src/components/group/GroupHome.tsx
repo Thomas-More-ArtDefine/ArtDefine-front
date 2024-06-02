@@ -3,7 +3,6 @@ import TextCard from "../cards/TextCard";
 import UsersCard from "../cards/UsersCard";
 
 const GroupHome: React.FC<{group:GroupModel; membersClickHandler?: () => void;}> = ({group, membersClickHandler = () => console.log("not yet implemented"),} ) => {
-    console.log(group.members);
     return (
         <>
         <div className="about">

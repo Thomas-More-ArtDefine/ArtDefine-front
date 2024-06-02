@@ -1,7 +1,6 @@
 import React, { createContext, useState, useMemo, useContext, useEffect, ReactNode } from 'react';
 import { getAllUsers, getGroupsByUserId, getUserById } from '../api';
 import { User } from '../model/userModel';
-import USERMOCK from '../mock/UserMock';
 import { GroupModel } from '../model/GroupModel';
 
 
@@ -27,9 +26,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             console.log("Users in Context:",userData);
             setUser(userData);
             if (user) {
-                console.log("Getting groups");
                 const joinedGroupsData = await getGroupsByUserId(user.id);
-                console.log("Joined Groups in Context:",joinedGroupsData);
                 setJoinedGroups(joinedGroupsData);
             }
             

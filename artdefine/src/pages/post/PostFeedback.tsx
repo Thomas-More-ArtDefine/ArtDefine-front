@@ -18,7 +18,9 @@ export default function PostFeedback() {
   const [artwork, setArtwork] = useState<Artwork>();
  
   const [responseStack, setResponseStack] = useState<FeedbackResponse[]>([]);
-
+  const [feedbackQuestions, setFeedbackQuestions] = useState<
+    FeedbackItemModel[]
+  >([]);
 
   const handleResponse = useCallback((response: { feedback_result: JSON, question: FeedbackItemModel }) => {
     const isQuestionInStack = responseStack.some((item) => item.question.id === response.question.id);
@@ -46,15 +48,12 @@ export default function PostFeedback() {
     }
   }, [responseStack]);
 
-  const [feedbackQuestions, setFeedbackQuestions] = useState<
-    FeedbackItemModel[]
-  >([]);
+  
 
   useEffect(() => {
     if (id) {
       findArtwork(id).then((res) => {
         if (res) {
-          setArtwork(res);
           if (res.feedbackStack) {
             setFeedbackQuestions(res.feedbackStack);
           } else {
@@ -63,7 +62,7 @@ export default function PostFeedback() {
         }
       });
     }
-  }, [id]);
+  }, [id, findArtwork]);
 
   const handleUpload = useCallback(async () => {
     if (artwork) {
@@ -103,6 +102,8 @@ export default function PostFeedback() {
               );
             } else if (question.type.type === "open") {
               return <FeedbackOpen question={question} empty={true} onResponse={handleResponse} />;
+            }else{
+              return '';
             }
           })}
           <button className="upload-feedback" onClick={handleUpload}>Upload Feedback</button>

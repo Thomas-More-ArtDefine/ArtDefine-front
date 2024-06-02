@@ -2,8 +2,6 @@ import { Artwork } from "../model/PostModel";
 import { testOutput } from "../model/testOutput";
 import { User } from "../model/userModel";
 import api from "./http-common";
-import POSTMOCK from "../mock/PostMock";
-import FEEDMOCK from "../mock/FeedMock";
 import { GroupModel } from "../model/GroupModel";
 import { CreateGroupModel } from "../model/CreateGroupModel";
 import {
@@ -387,28 +385,28 @@ export const postFollowing = async (
 };
 
 
-export const getPostsByName = async (
-  query: string,
-  amount: number,
-  skip: number,
-  orderby: string
-): Promise<any[]> => {
-  let filter = orderBy.DESC;
-  if (orderby.toUpperCase() === orderBy.ASC) {
-    filter = orderBy.ASC;
-  }
-
+export const postGroupMember = async (
+  group: GroupModel,
+  user: User
+): Promise<any> => {
   try {
-    const response = await api.get(
-      `/posts/search/title/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`
-    );
-    // response[0] = groups, response[1] = total count in database
-    return response.data;
-  } catch (error) {
-    console.error("Error while fetching one data:", error);
-    throw error;
-  }
-};
+    const response = await api
+      .post("/group-members", 
+      {
+        member: user,
+        group: group,
+        rank: null
+      })
+      .then((res) => {
+        // console.log(res);
+        // console.log(res.data);
+      });
+    return response;
+    }catch (error) {
+      console.error("Error while fetching one data:", error);
+      throw error;
+    }
+  };
 
 export const getUsersByName = async (
   query: string,
@@ -445,3 +443,29 @@ export const postFeedbackResponse = async (response: FeedbackResponse) => {
       throw error;
     }
 };
+    export const getPostsByName = async (
+      query: string,
+      amount: number,
+      skip: number,
+      orderby: string
+    ): Promise<any[]> => {
+      let filter = orderBy.DESC;
+      if (orderby.toUpperCase() === orderBy.ASC) {
+        filter = orderBy.ASC;
+      }
+    
+      try {
+        const response = await api.get(
+          `/posts/search/title/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`
+        );
+        // response[0] = groups, response[1] = total count in database
+        return response.data;
+    
+      } catch (error) {
+        console.error("Error while fetching one data:", error);
+        throw error;
+      }
+    };
+    
+
+    
