@@ -16,7 +16,7 @@ const DetailFormForPost: React.FC<{
     <div className="form">
       <form>
         <div className="form-item">
-          <label htmlFor="title">Title</label>
+          <label htmlFor="title">Title*</label>
           <input
             type="text"
             id="title"

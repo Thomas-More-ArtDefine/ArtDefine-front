@@ -57,7 +57,7 @@ const FeedbackQuestionTypeCard:React.FC<{
             id: Math.random().toString(),
             question: question,
             type: type(),
-            
+            feedbackResponse: []
         };
         feedbackStack.push(feedbackItem);
         console.log(feedbackStack);

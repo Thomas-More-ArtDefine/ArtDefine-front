@@ -3,7 +3,8 @@ import { User } from "./userModel";
 
 
 export interface FeedbackResponse {
-    user: User;
-    question: FeedbackItemModel;
+    user_id: User["id"];
+    question?: FeedbackItemModel;
+    question_id: FeedbackItemModel["id"];
     feedback_result: JSON;
 }

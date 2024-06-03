@@ -12,7 +12,8 @@ const FeedbackStars: React.FC<{
     feedback_result: JSON;
     question: FeedbackItemModel;
   }) => void;
-}> = ({ question, empty, starAmount, onResponse }) => {
+  content?: JSON;
+}> = ({ question, empty, starAmount, onResponse, content }) => {
   const [stars, setStars] = useState<number>(starAmount ? starAmount : 0);
   const title = question.question;
   useEffect(() => {
@@ -22,6 +23,8 @@ const FeedbackStars: React.FC<{
         elem.classList.add("clickable");
         elem.classList.remove("set");
       });
+    } else {
+      setStars(Number((content as { response?: string })?.response) ?? 0);
     }
     setUIStars(stars);
   });

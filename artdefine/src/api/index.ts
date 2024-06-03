@@ -110,6 +110,16 @@ export const getArtwork = async (id: string): Promise<Artwork> => {
                   : "Open title:",
                   content: item.content ? (item.question_type === 'bulletpoints' ? JSON.parse(item.content) : item.content) : null,
             },
+            feedbackResponse: item.feedback_results?.map((feedback_result: any) => {
+              let feedbackResponse = {
+              id: feedback_result.id,
+              feedback_result: feedback_result?.feedback_result || [],
+              user_id: feedback_result?.user_id,
+              question: null,
+              question_id: feedback_result?.question_id,
+            };
+            return feedbackResponse;
+            }),
           };
           return question;
         }
