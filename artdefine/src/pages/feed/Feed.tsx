@@ -1,16 +1,22 @@
 import { useFeed } from "../../context/FeedContext";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ArtworkCard from "../../components/cards/Artwork-card";
+import { useAuth } from "../../context/AuthContext";
 
 
 
 export default function Feed() {
-    const { artworks } = useFeed();
+    const { artworks, findRandomFeed, findGlobalFeed, findMainFeed } = useFeed();
     const [globalActive, setGlobalActive] = useState<boolean>(false);
     const [personalActive, setPersonalActive] = useState<boolean>(true);
     const [randomActive, setRandomActive] = useState<boolean>(false);
+    const {user} = useAuth();
 
     const { isTop } = useFeed();
+
+    useEffect(() => {
+        findGlobalFeed();
+    }, []);
 
     setTimeout(() => {
         if (document.getElementsByClassName("no-posts")[0] !== undefined) {
@@ -24,17 +30,23 @@ export default function Feed() {
                 setGlobalActive(true);
                 setPersonalActive(false);
                 setRandomActive(false);
+                findGlobalFeed();
                 break;
         
             case "personal":
                 setGlobalActive(false);
                 setPersonalActive(true);
                 setRandomActive(false);
+                if (user) {
+                    findMainFeed(user?.id);
+                }
+                
                 break;
             case "random":
                 setGlobalActive(false);
                 setPersonalActive(false);
                 setRandomActive(true);
+                findRandomFeed();
                 break;
             default:
                 break;
