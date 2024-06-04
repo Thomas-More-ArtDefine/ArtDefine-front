@@ -15,12 +15,14 @@ export default function Feed() {
     const { isTop } = useFeed();
 
     useEffect(() => {
-        findGlobalFeed();
+        if (user) {
+           findMainFeed(user.id); 
+        }
     }, []);
 
     setTimeout(() => {
         if (document.getElementsByClassName("no-posts")[0] !== undefined) {
-            document.getElementsByClassName("no-posts")[0].innerHTML = "No posts could be loaded."
+            document.getElementsByClassName("no-posts")[0].innerHTML = "No posts were found."
         }
     }, 3000);
 
