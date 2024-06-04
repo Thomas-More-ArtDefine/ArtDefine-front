@@ -28,10 +28,13 @@ const FeedbackRadio: React.FC<{
     });
   };
 
-  let index = -1;
+  console.log("active: ", active);
+  console.log("options: ", options);
+console.log("chosen: ", active !== undefined ? options[active] : undefined);
   const mappedoptions = empty ? (
-    options.map((option) => {
-      index++;
+   
+    options.map(( option, index) => {
+      
       return (
         <div key={index}>
           <input
@@ -50,7 +53,7 @@ const FeedbackRadio: React.FC<{
         </div>
       );
     })
-  ) : active ? (
+  ) : active !== undefined ? (
     <div key={active}>
       <input
         type="radio"
