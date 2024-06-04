@@ -512,12 +512,12 @@ export const postFeedbackResponse = async (response: FeedbackResponse) => {
           const response = await api.get(
           `/posts/feed/main/${id}?amount=${amount}`
         );
-        return response.data[0];
+        return response.data;
         }else{
           const response = await api.get(
             `/posts/feed/main/${id}`
           );
-          return response.data[0];
+          return response.data;
         }
         
         // response[0] = groups, response[1] = total count in database
