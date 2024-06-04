@@ -14,8 +14,11 @@ const FeedbackStars: React.FC<{
   }) => void;
   content?: JSON;
 }> = ({ question, empty, starAmount, onResponse, content }) => {
-  const [stars, setStars] = useState<number>(starAmount ? starAmount : 0);
+  
+  const [stars, setStars] = useState<number>(starAmount ? starAmount : (content as { response?: number })?.response || 0);
   const title = question.question;
+
+
   useEffect(() => {
     if (empty) {
       let stars = document.querySelectorAll(".star");
@@ -23,11 +26,10 @@ const FeedbackStars: React.FC<{
         elem.classList.add("clickable");
         elem.classList.remove("set");
       });
-    } else {
-      setStars(Number((content as { response?: string })?.response) ?? 0);
     }
-    setUIStars(stars);
-  });
+    setStars(stars);
+   
+  }, [content, empty, stars]);
 
   const handleStarClick = (clickedStars: number) => {
     if (empty) {
@@ -36,7 +38,6 @@ const FeedbackStars: React.FC<{
       } else {
         setStars(clickedStars);
       }
-      setUIStars(stars);
       console.log("stars : ", clickedStars);
       onResponse({
         feedback_result: JSON.parse(
@@ -50,46 +51,21 @@ const FeedbackStars: React.FC<{
   };
 
   return (
-    <div className="feedback-stars">
+    <div className={`feedback-stars ${question.id}`}>
       <div className="feedback-title font fs20 eaves book purple-dark align-start">
         {title}
       </div>
       <div className="stars flex justify-spacebetween">
+        
+      {[1, 2, 3, 4, 5].map((starNumber) => (
         <i
-          className="material-icons set star"
-          id="star1"
-          onClick={() => handleStarClick(1)}
+          key={starNumber}
+          className={`material-icons star ${starNumber <= stars ? 'active' : ''}`}
+          onClick={() => handleStarClick(starNumber)}
         >
           star
         </i>
-        <i
-          className="material-icons set star"
-          id="star2"
-          onClick={() => handleStarClick(2)}
-        >
-          star
-        </i>
-        <i
-          className="material-icons set star"
-          id="star3"
-          onClick={() => handleStarClick(3)}
-        >
-          star
-        </i>
-        <i
-          className="material-icons set star"
-          id="star4"
-          onClick={() => handleStarClick(4)}
-        >
-          star
-        </i>
-        <i
-          className="material-icons set star"
-          id="star5"
-          onClick={() => handleStarClick(5)}
-        >
-          star
-        </i>
+      ))}
       </div>
     </div>
   );
@@ -97,19 +73,3 @@ const FeedbackStars: React.FC<{
 
 export default FeedbackStars;
 
-function setUIStars(amount: number) {
-  resetUIStars();
-  for (let index = 0; index < amount + 1; index++) {
-    let star = document.getElementById("star" + index.toString());
-    if (star) {
-      star.classList.add("active");
-    }
-  }
-}
-
-function resetUIStars() {
-  let stars = document.querySelectorAll(".star");
-  stars.forEach((elem) => {
-    elem.classList.remove("active");
-  });
-}

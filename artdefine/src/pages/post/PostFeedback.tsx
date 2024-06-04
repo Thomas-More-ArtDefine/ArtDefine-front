@@ -56,7 +56,7 @@ export default function PostFeedback() {
         ]);
       }
     },
-    [responseStack]
+    [responseStack, responseStack, user?.id]
   );
 
   useEffect(() => {
@@ -98,10 +98,11 @@ export default function PostFeedback() {
           {!feedback_id ? (
             <>
               <h3>Giving Feedback</h3>
-              {feedbackQuestions.map((question) => {
+              {feedbackQuestions.map((question, index) => {
                 if (question.type.type === "stars") {
                   return (
                     <FeedbackStars
+                    key={index + question.id + question.type.type}
                       question={question}
                       empty={true}
                       onResponse={handleResponse}
@@ -110,6 +111,7 @@ export default function PostFeedback() {
                 } else if (question.type.type === "bulletpoints") {
                   return (
                     <FeedbackRadio
+                    key={index + question.id + question.type.type}
                       question={question}
                       empty={true}
                       options={(question.type as FeedbackRatioModel).content}
@@ -119,6 +121,7 @@ export default function PostFeedback() {
                 } else if (question.type.type === "open") {
                   return (
                     <FeedbackOpen
+                    key={index + question.id + question.type.type}
                       question={question}
                       empty={true}
                       onResponse={handleResponse}
@@ -135,11 +138,12 @@ export default function PostFeedback() {
           ) : (
             <>
               {" "}
-              {feedbackQuestions.map((question) => {
+              {feedbackQuestions.map((question, index) => {
                 console.log("the question: ", question);
                 if (question.type.type === "stars") {
                   return (
                     <FeedbackStars
+                    key={index + question.id + question.type.type + feedback_id}
                       question={question}
                       empty={false}
                       content={
@@ -153,6 +157,7 @@ export default function PostFeedback() {
                 } else if (question.type.type === "bulletpoints") {
                   return (
                     <FeedbackRadio
+                    key={index + question.id + question.type.type + feedback_id}
                       question={question}
                       empty={false}
                       options={(question.type as FeedbackRatioModel).content}
@@ -174,6 +179,7 @@ export default function PostFeedback() {
                 } else if (question.type.type === "open") {
                   return (
                     <FeedbackOpen
+                    key={index + question.id + question.type.type + feedback_id}
                       question={question}
                       empty={false}
                       content={
