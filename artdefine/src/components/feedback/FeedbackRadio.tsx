@@ -14,6 +14,8 @@ const FeedbackRadio: React.FC<{
 }> = ({ question, empty, options, active, onResponse, content }) => {
   const [selected, setSelected] = useState<number>(0);
   const title = question.question;
+  console.log("the options: ", options);
+
   const handleRadioClick = (val: number) => {
     setSelected(val);
     onResponse({
@@ -26,7 +28,7 @@ const FeedbackRadio: React.FC<{
     });
   };
 
-  let index = 0;
+  let index = -1;
   const mappedoptions = empty ? (
     options.map((option) => {
       index++;
@@ -55,7 +57,7 @@ const FeedbackRadio: React.FC<{
         name="radial"
         id={"option" + active.toString()}
         value={active}
-        onChange={() => handleRadioClick(index)}
+        defaultChecked
       />
       <label
         className="eaves book font fs18 purple-dark"

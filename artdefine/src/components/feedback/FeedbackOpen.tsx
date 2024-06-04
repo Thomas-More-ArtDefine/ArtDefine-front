@@ -1,18 +1,21 @@
 import { useState } from "react";
 import { FeedbackItemModel } from "../../model/FeedbackItemModel";
 
+
 const FeedbackOpen: React.FC<{
   question: FeedbackItemModel;
   empty: boolean;
-  text?: string;
   onResponse: (response: {
     feedback_result: JSON;
     question: FeedbackItemModel;
   }) => void;
   content?: JSON;
-}> = ({ question, empty, text, onResponse, content }) => {
-  const [string, setString] = useState<string>("");
-  const title = question.question;
+}> = ({ question, empty, onResponse, content }) => {
+const [string, setString] = useState<string>("");
+const title = question.question;
+console.log("the content: ", JSON.stringify(content));
+  const text = (content as { response?: string })?.response;
+
   return (
     <div className="feedback-open">
       <div className="font fs20 eaves book purple-dark align-start feedback-title">

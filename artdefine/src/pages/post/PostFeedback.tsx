@@ -60,7 +60,6 @@ export default function PostFeedback() {
   );
 
   useEffect(() => {
-
     if (id) {
       findArtwork(id).then((res) => {
         if (res) {
@@ -72,7 +71,6 @@ export default function PostFeedback() {
         }
       });
     }
-
   }, [id, findArtwork]);
 
   const handleUpload = useCallback(async () => {
@@ -110,7 +108,6 @@ export default function PostFeedback() {
                     />
                   );
                 } else if (question.type.type === "bulletpoints") {
-                 
                   return (
                     <FeedbackRadio
                       question={question}
@@ -136,29 +133,41 @@ export default function PostFeedback() {
               </button>
             </>
           ) : (
-            <> {
-              
-              feedbackQuestions.map((question) => {
-                console.log("the question: ",question);
+            <>
+              {" "}
+              {feedbackQuestions.map((question) => {
+                console.log("the question: ", question);
                 if (question.type.type === "stars") {
                   return (
                     <FeedbackStars
                       question={question}
                       empty={false}
-                      content={question.feedbackResponse.find((response) => response.user_id == feedback_id)?.feedback_result as JSON}
+                      content={
+                        question.feedbackResponse.find(
+                          (response) => response.user_id == feedback_id
+                        )?.feedback_result as JSON
+                      }
                       onResponse={handleResponse}
                     />
                   );
-                }
-                else if (question.type.type === "bulletpoints") {
-                  console.log("the result: ",(question.feedbackResponse.find((response) => response.user_id == feedback_id)?.feedback_result as unknown as {response : number})?.response);
+                } else if (question.type.type === "bulletpoints") {
                   return (
                     <FeedbackRadio
                       question={question}
                       empty={false}
                       options={(question.type as FeedbackRatioModel).content}
-                      active={(question.feedbackResponse.find((response) => response.user_id == feedback_id)?.feedback_result as unknown as {response : number})?.response}
-                      content={question.feedbackResponse.find((response) => response.user_id == feedback_id)?.feedback_result as JSON}
+                      active={
+                        (
+                          question.feedbackResponse.find(
+                            (response) => response.user_id == feedback_id
+                          )?.feedback_result as unknown as { response: number }
+                        )?.response
+                      }
+                      content={
+                        question.feedbackResponse.find(
+                          (response) => response.user_id == feedback_id
+                        )?.feedback_result as JSON
+                      }
                       onResponse={handleResponse}
                     />
                   );
@@ -167,19 +176,19 @@ export default function PostFeedback() {
                     <FeedbackOpen
                       question={question}
                       empty={false}
-                      content={question.feedbackResponse.find((response) => response.user_id === feedback_id)?.feedback_result as JSON}
+                      content={
+                        question.feedbackResponse.find(
+                          (response) => response.user_id == feedback_id
+                        )?.feedback_result as JSON
+                      }
                       onResponse={handleResponse}
                     />
                   );
-                  
                 } else {
                   return "";
                 }
-                
-              })
-            
-            
-            } </>
+              })}{" "}
+            </>
           )}
         </div>
       </div>
