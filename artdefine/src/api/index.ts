@@ -479,3 +479,52 @@ export const postFeedbackResponse = async (response: FeedbackResponse) => {
     
 
     
+    export const getGlobalFeed = async (
+      amount?: number,
+    ): Promise<any[]> => {
+      try {
+        if (amount) {
+          const response = await api.get(
+          `/posts/feed/global?amount=${amount}`
+        );
+        return response.data[0];
+        }else{
+          const response = await api.get(
+            `/posts/feed/global`
+          );
+          return response.data[0];
+        }
+        
+        // response[0] = groups, response[1] = total count in database
+        
+      } catch (error) {
+        console.error("Error while fetching one data:", error);
+        throw error;
+      }
+    };
+
+    export const getMainFeed = async (
+      id: string,
+      amount?: number,
+    ): Promise<any[]> => {
+      try {
+        if (amount) {
+          const response = await api.get(
+          `/posts/feed/main/${id}?amount=${amount}`
+        );
+        return response.data[0];
+        }else{
+          const response = await api.get(
+            `/posts/feed/main/${id}`
+          );
+          return response.data[0];
+        }
+        
+        // response[0] = groups, response[1] = total count in database
+        
+      } catch (error) {
+        console.error("Error while fetching one data:", error);
+        throw error;
+      }
+    };
+    
