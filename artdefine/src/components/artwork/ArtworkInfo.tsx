@@ -4,9 +4,14 @@ import { User } from "../../model/userModel";
 import GroupCard from "../cards/GroupCard";
 import profilePic from "../../assets/images/mock-profile-pic.png"
 import { useNavigate, useParams } from "react-router-dom";
+import { FeedbackItemModel } from "../../model/FeedbackItemModel";
+import UserFeedbackCard from "../cards/UserFeedbackCard";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../../context/UserContext";
 
-const ArtworkInfo: React.FC<{title:string,user:User,description:string, folders:Folder[], tags: string, feedback?:boolean}> = ({title,user,description,folders, tags, feedback}) => {
+const ArtworkInfo: React.FC<{ title:string,user:User,description:string, folders:Folder[], tags: string, feedback?:FeedbackItemModel[]}> = ({title,user,description,folders, tags, feedback}) => {
     const navigate = useNavigate();
+    const {findBasicUserById } = useContext(UserContext) || {};
     const groups:GroupModel[] = [];
     const { id } = useParams<{ id: string }>();
     folders.forEach((folder) =>{
@@ -14,6 +19,7 @@ const ArtworkInfo: React.FC<{title:string,user:User,description:string, folders:
             groups.push(folder.group);
         }
     })
+    const [respondants, setRespondants] = useState<User[]>([]);
 
     let listedgroups: string[] = [];
     const groupMap = groups.map(group =>{
@@ -25,6 +31,43 @@ const ArtworkInfo: React.FC<{title:string,user:User,description:string, folders:
     }
     }
       );
+
+   
+
+    const findAllRespondants = async (feedback: FeedbackItemModel[]) => {
+        const respondants: User[] = [];
+        console.log(feedback);
+        await Promise.all(
+            feedback.map(async (feedbackItem) => {
+                console.log(feedbackItem);
+                const responses = feedbackItem.feedbackResponse;
+                console.log(responses);
+                await Promise.all(
+                    responses.map(async (response) => {
+                        console.log(response);
+                        if (response.user_id) {
+                            console.log(response.user_id);
+                            const respondant = findBasicUserById && await findBasicUserById(response.user_id);
+                            if (respondant && !respondants.some(res => res.id === respondant.id)) {
+                                respondants.push(respondant);
+                            }
+                        }
+                    })
+                );
+            })
+        );
+        console.log(respondants);
+        setRespondants(respondants);
+    };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            if (feedback) {
+                await findAllRespondants(feedback);
+            }
+        };
+        fetchData();
+    }, [feedback]);
       
     return (
         <>
@@ -49,15 +92,19 @@ const ArtworkInfo: React.FC<{title:string,user:User,description:string, folders:
             ''
             }
 
-            { feedback?
-              <div className="container">
-                <div className="title">Feedback</div>
-                {feedback && <button className="primary has-icon" onClick={()=>navigate('/post/'+id+'/feedback')}>Give Feedback<i className="material-icons">reviews</i></button>} 
-                <div>
-                    
-                </div>
-            </div>  :
-            ''
+            {feedback ?
+                <div className="container">
+                    <div className="title">Feedback</div>
+                    {feedback && <button className="primary has-icon" onClick={() => navigate('/post/' + id + '/feedback')}>Give Feedback<i className="material-icons">reviews</i></button>}
+                    <div>
+                        {
+                            respondants.map((respondant) => (
+                                <UserFeedbackCard user={respondant} key={respondant.id} postId={id ?? 'NotFound'} />
+                            ))
+                        }
+                    </div>
+                </div> :
+                ''
             }
             
 

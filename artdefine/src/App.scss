@@ -1346,6 +1346,62 @@ img.gpfp {
   margin-right: 14px;
 }
 
+div.userfeedback-card{
+  
+  background-color: $canvas-white-light;
+  height: 112px;
+  @include border-standard(3px);
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  margin: 8px 0;
+  justify-content: space-between;
+  div.description {
+    max-height: 40px;
+    text-align: start;
+    font-size: 18px;
+    font-family: "EavesSansBook";
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  div.user-info {
+    flex-grow: 1;
+    text-align: start;
+  }
+
+  span.user-name{
+    font-family: "EavesSansHeavy";
+    font-size: 24px;
+    max-height: 27px;
+    max-width: 116px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    @include breakpoint(xs) {
+      max-width: 150px;
+      margin-right: 12px;
+    }
+    @include breakpoint(sm) {
+      max-width: 265px;
+    }
+    @include breakpoint(md) {
+      max-width: 450px;
+    }
+    // extra breakpoints for truncade
+  }
+
+  button{
+    width: 42px !important;
+    padding: 0 !important;
+   height: 100%;
+    @include border-standard(3px);
+ 
+    text-align: center;
+  
+  }
+}
+
 div.group-card {
   background-color: $canvas-white-light;
   height: 112px;

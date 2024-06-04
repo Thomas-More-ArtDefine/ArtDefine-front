@@ -1,5 +1,5 @@
 import React, { createContext, useState, useMemo, useContext, useEffect, ReactNode } from 'react';
-import { getGroupsByUserId, getUserById } from '../api';
+import { getAllUsers, getGroupsByUserId, getUserById } from '../api';
 import { User } from '../model/userModel';
 import { GroupModel } from '../model/GroupModel';
 
@@ -21,7 +21,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     useEffect(() => {
         const fetchData = async () => {
-            const userData = await getUserById("1");
+            const usersData = await getAllUsers();
+            const userData = await getUserById(usersData[0].id);
+            console.log("Users in Context:",userData);
             setUser(userData);
             if (user) {
                 const joinedGroupsData = await getGroupsByUserId(user.id);

@@ -1,6 +1,10 @@
 import { ReactNode, createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { Artwork, visibility } from "../model/PostModel";
-import { getArtwork, getBasicUserById, getPostsByName, getPostsByTag, postArtwork } from "../api";
+import { getArtwork, getBasicUserById, getPostsByName, getPostsByTag, postArtwork, postFeedbackResponse } from "../api";
+import { User } from "../model/userModel";
+import { useAuth } from "./AuthContext";
+import { FeedbackResponse } from "../model/FeedbackResponseModel";
+
 
 
 // export {Typescript}
@@ -12,6 +16,7 @@ import { getArtwork, getBasicUserById, getPostsByName, getPostsByTag, postArtwor
     uploadArtwork: (artwork: Artwork) => Promise<Artwork | undefined>;
     findArtworkByTag: (tag: string, amount:number, skip:number) => Promise<Artwork[] | undefined>;
     findArtworkByTitle: (title: string) => Promise<Artwork[] | undefined>;
+    uploadFeedbackResponse: (response: FeedbackResponse[]) => void;
   }
   
 export const ArtworkContext = createContext<ArtworkContextType | null>(null);
@@ -114,8 +119,17 @@ export const ArtworkProvider: React.FC<{ children: ReactNode }> = ({ children })
       setArtworks(response);
       return response;
     }, []);
+
+    const uploadFeedbackResponse = useCallback(async (response: FeedbackResponse[]) => {
+      console.log("Uploading feedback response: ", response);
+      response.forEach(async (res) => {
+        const data = await postFeedbackResponse(res);
+        console.log(data);
+
+      });
+    }, []);
   
-    const value = useMemo(() => ({ artwork, artworks, setArtwork,findArtwork, uploadArtwork, findArtworkByTag, findArtworkByTitle }), [artwork, artworks, setArtwork, findArtwork, uploadArtwork, findArtworkByTag, findArtworkByTitle]);
+    const value = useMemo(() => ({ artwork, artworks, setArtwork,findArtwork, uploadArtwork, findArtworkByTag, findArtworkByTitle, uploadFeedbackResponse }), [artwork, artworks, setArtwork, findArtwork, uploadArtwork, findArtworkByTag, findArtworkByTitle, uploadFeedbackResponse]);
   
     return (
       <ArtworkContext.Provider value={value}>

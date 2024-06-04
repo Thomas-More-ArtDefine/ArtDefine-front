@@ -1,7 +1,10 @@
+import { FeedbackResponse } from "./FeedbackResponseModel";
+
 export interface FeedbackItemModel {
   id: string;
   question: string;
   type: FeedbackStarRatingModel | FeedbackRatioModel | FeedbackOpenModel;
+  feedbackResponse: FeedbackResponse[];
 }
 
 export interface FeedbackStarRatingModel {
@@ -9,6 +12,7 @@ export interface FeedbackStarRatingModel {
   title: string;
   //empty: boolean;
   starAmount?: number;
+  
 }
 
 export interface FeedbackRatioModel {
@@ -24,3 +28,6 @@ export interface FeedbackOpenModel {
   //empty: boolean;
   text?: string;
 }
+
+
+

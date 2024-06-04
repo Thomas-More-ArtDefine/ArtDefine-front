@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import { User } from "../../model/userModel";
+import { useAuth } from "../../context/AuthContext";
 
 const ProfileMain: React.FC<{ 
   rank: number, 
@@ -15,7 +16,8 @@ const ProfileMain: React.FC<{
   profileImg?:string
   handleCategoryButtonClick:any}> = ({ rank, profileActive, galleryActive, groupsActive, handleCategoryButtonClick, bannerImg, profileImg}) => {
     const { id } = useParams<{ id: string }>();
-    const loggedUserId = '1';
+    const {user} = useAuth();
+    const loggedUserId = user?.id;
     const { findFollowing,updateFollowing, following } = useContext(UserContext) || {};
 
     useEffect(() => {

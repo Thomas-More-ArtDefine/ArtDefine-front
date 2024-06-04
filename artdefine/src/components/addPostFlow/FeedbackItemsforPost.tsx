@@ -42,10 +42,10 @@ const FeedbackItemsForPost: React.FC<FeedbackItemsForPostProps> = ({
                 />
                 <div className='text'>Enable Feedback</div>
             </label>
-
-            <button className='font eaves book ' onClick={handleOpenFeedbackQuestionType}>
+            {isFeedbackEnabled && <button className='font eaves book ' onClick={handleOpenFeedbackQuestionType}>
                Add Feedback Question ...
-            </button>
+            </button>}
+            
             {openFeedback && <FeedbackQuestionTypeCard feedbackStack={feedbackStack} setOpenFeedback={setOpenFeedback} />}
 
             <div className='feedback-items-list'>

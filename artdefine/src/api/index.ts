@@ -8,6 +8,7 @@ import {
   GroupJoin,
   groupVisibility,
 } from "../components/group/Create-group-modal";
+import { FeedbackResponse } from "../model/FeedbackResponseModel";
 
 export enum orderBy {
   DESC = "DESC",
@@ -109,6 +110,16 @@ export const getArtwork = async (id: string): Promise<Artwork> => {
                   : "Open title:",
                   content: item.content ? (item.question_type === 'bulletpoints' ? JSON.parse(item.content) : item.content) : null,
             },
+            feedbackResponse: item.feedback_results?.map((feedback_result: any) => {
+              let feedbackResponse = {
+              id: feedback_result.id,
+              feedback_result: feedback_result?.feedback_result || [],
+              user_id: feedback_result?.user_id,
+              question: null,
+              question_id: feedback_result?.question_id,
+            };
+            return feedbackResponse;
+            }),
           };
           return question;
         }
@@ -407,6 +418,41 @@ export const postGroupMember = async (
     }
   };
 
+export const getUsersByName = async (
+  query: string,
+  amount: number,
+  skip: number,
+  orderby: string
+): Promise<any[]> => {
+  let filter = orderBy.DESC;
+  if (orderby.toUpperCase() === orderBy.ASC) {
+    filter = orderBy.ASC;
+  }
+
+  try {
+    const response = await api.get(
+      `/users/search/username/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`
+    );
+    // response[0] = groups, response[1] = total count in database
+    return response.data;
+  } catch (error) {
+    console.error("Error while fetching one data:", error);
+    throw error;
+  }
+};
+
+
+export const postFeedbackResponse = async (response: FeedbackResponse) => {
+  console.log("Uploading feedback response...");
+    console.log("Response:", response);
+    try{
+    await api.post(`/feedback-results`, response);
+    console.log("Feedback response uploaded!");
+    }catch(error){
+      console.error("Error while uploading feedback response:", error);
+      throw error;
+    }
+};
     export const getPostsByName = async (
       query: string,
       amount: number,
@@ -431,27 +477,5 @@ export const postGroupMember = async (
       }
     };
     
-    
-    export const getUsersByName = async (
-      query: string,
-      amount: number,
-      skip: number,
-      orderby: string
-    ): Promise<any[]> => {
-      let filter = orderBy.DESC;
-      if (orderby.toUpperCase() === orderBy.ASC) {
-        filter = orderBy.ASC;
-      }
-    
-      try {
-        const response = await api.get(
-          `/users/search/username/${query}?amount=${amount}&orderby=${filter}&skip=${skip}`
-        );
-        // response[0] = groups, response[1] = total count in database
-        return response.data;
-      } catch (error) {
-        console.error("Error while fetching one data:", error);
-        throw error;
-      }
-    };
+
     
