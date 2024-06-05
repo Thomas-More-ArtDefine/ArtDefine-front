@@ -694,7 +694,7 @@ h5 {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  margin: 27px 18px 55px 18px;
+  margin: 27px 18px 27px 18px;
   max-width: 1135px;
 
   @include breakpoint(lg) {
@@ -1010,6 +1010,12 @@ div.search-criteria-overlay {
   .content {
     flex-grow: 1;
     overflow: auto;
+
+    .artwork{
+      img{
+        max-height: 40vh;
+      }
+    }
     
     > div {
       overflow: auto;
@@ -2677,4 +2683,10 @@ tr {
     h3{
       margin: 0;
     }
+  }
+
+  .input-error{
+    font-family: 'EavesSansHeavy';
+    border-color: $sunset-red;
+    color: $sunset-red !important;
   }

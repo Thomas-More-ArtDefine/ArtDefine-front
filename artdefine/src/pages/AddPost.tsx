@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 export default function AddPost() {
   const [currentStep, setCurrentStep] = useState("Upload");
   const [isChanged, setIsChanged] = useState<boolean>(false);
+  const [isNameChanged, setIsNameChanged] = useState<boolean>(false);
   const [feedbackStack, setFeedbackStack] = useState<FeedbackItemModel[]>([]);
   const { uploadArtwork} = useArtwork(); 
   const {user, joinedGroups} = useAuth();
@@ -78,12 +79,21 @@ export default function AddPost() {
       if (feedbackStack.length > 0) {
         tempArtwork.feedbackStack = feedbackStack;
       }
-      const upload: Artwork | undefined = await uploadArtwork(tempArtwork);
+      if (isChanged && isNameChanged) {
+        const upload: Artwork | undefined = await uploadArtwork(tempArtwork);
       if (upload) {
         navigate(`/post/${upload.id}`);
       } else {
         console.log("Failed to upload");
       }
+      }else{
+        console.log("No Image with name to upload");
+        document.getElementsByClassName('upload-card')[0]?.classList.add('input-error');
+        document.getElementById('title')?.classList.add('input-error');
+        document.getElementsByClassName('input-title')[0]?.classList.add('input-error');
+        document.getElementsByClassName('error-message')[0].innerHTML = isChanged? 'A new post needs a title.': 'No image has been uploaded.';
+      }
+      
     } else {
       console.log("User not logged in");
     }
@@ -145,11 +155,12 @@ export default function AddPost() {
                 setArtwork={setTempArtwork}
               />
         </div>
-      {currentStep === "Details" && <>{ <DetailFormForPost artwork={tempArtwork} setArtwork={setTempArtwork}/>}</>}
+      {currentStep === "Details" && <>{ <DetailFormForPost setNameChanged={setIsNameChanged} artwork={tempArtwork} setArtwork={setTempArtwork}/>}</>}
       {currentStep === "Groups" && <>{<GroupsForPost userGroups={joinedGroups} />}</>}
       {currentStep === "Feedback" && <>{<><FeedbackItemsForPost feedbackStack={feedbackStack} setFeedbackStack={setFeedbackStack}  /></>}</>}
       </div>
       <div>
+        <div className="input-error error-message"></div>
         <button className="primary border-effect" onClick={onUpload}>Upload</button>
       </div>
     </div>

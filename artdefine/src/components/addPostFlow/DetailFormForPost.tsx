@@ -5,27 +5,32 @@ import { Artwork } from "../../model/PostModel";
 const DetailFormForPost: React.FC<{
   artwork: Artwork;
   setArtwork: (value: Artwork) => void;
-
+  setNameChanged: React.Dispatch<React.SetStateAction<boolean>>;
 }> = ({
   artwork,
   setArtwork,
- 
+  setNameChanged
 }) => {
   
   return (
     <div className="form">
       <form>
         <div className="form-item">
-          <label htmlFor="title">Title*</label>
+          <label htmlFor="title" className="input-title">Title*</label>
           <input
             type="text"
             id="title"
             value={artwork.post_title}
-            onChange={(e) =>
+            onChange={(e) =>{
               setArtwork({
                 ...artwork,
                 post_title: e.target.value,
-              })
+              });
+            if (e.target.value && e.target.value !== '') {
+              setNameChanged(true);
+            }else{
+              setNameChanged(false);
+            }}
             }
           />
         </div>
