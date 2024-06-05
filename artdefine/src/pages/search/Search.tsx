@@ -16,24 +16,37 @@ export default function Search() {
     const { users, findUsersByUsername } = useContext(UserContext) || {};
     const { foundGroups, findGroupsByName } = useContext(GroupsContext) || {};
     const [openFilter, setOpenFilter] = useState<boolean>(false);
+    const [searchVal, setSearchVal] = useState<string>('');
 
-    const handleCategoryButtonClick = (button:string) => {
+    const handleCategoryButtonClick = async (button:string) => {
+        if (findGroupsByName) {
+            await findGroupsByName('');
+        }
+        if (findUsersByUsername) {
+            await findUsersByUsername('');
+        }
+        if (findArtworkByTitle) {
+            await findArtworkByTitle('');
+        }
         switch (button) {
             case "art":
                 setArtActive(true);
                 setGroupActive(false);
                 setUsersActive(false);
+                setSearchVal('');
                 break;
         
             case "groups":
                 setArtActive(false);
                 setGroupActive(true);
                 setUsersActive(false);
+                setSearchVal('');
                 break;
             case "users":
                 setArtActive(false);
                 setGroupActive(false);
                 setUsersActive(true);
+                setSearchVal('');
                 break;
             default:
                 break;
@@ -41,6 +54,7 @@ export default function Search() {
     };
 
     const handleInputChange = async (e: string) => {
+        setSearchVal(e);
         if (artActive && findArtworkByTitle && findArtworkByTag) {
            
             if (e[0] === "#" && e.length > 1) {
@@ -102,7 +116,7 @@ export default function Search() {
         </div>
         <div className="flex justify-spacebetween align-center search-section">
             <div className='SearchBar'>
-                <input className='search' type="text" placeholder='Search...' onChange={(e) => handleInputChange(e.target.value)} />
+                <input className='search' id="searchbar" type="text" placeholder='Search...' value={searchVal} onChange={(e) => handleInputChange(e.target.value)} />
                 <i className="material-icons">search</i>
             </div>
             <div>
@@ -126,9 +140,9 @@ export default function Search() {
                 </div>            
         </div>
 
-            {artActive && works}
-            {usersActive && usercards}
-            {groupActive && groupsCards}
+            {artActive && (artworks?.length !== 0?works: <div className="error-text">Search to find posts.</div>)}
+            {usersActive && (users?.length !== 0?usercards: <div className="error-text">Search to find users.</div>)}
+            {groupActive && (foundGroups?.length !== 0? groupsCards: <div className="error-text">Search to find groups.</div>)}
         {/* {
                   works?.length !== 0 && works ?
                   (works)

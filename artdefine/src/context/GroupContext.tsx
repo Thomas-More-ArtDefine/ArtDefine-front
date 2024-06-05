@@ -41,7 +41,6 @@ export const GroupProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       const postNewGroup = useCallback(async (group: CreateGroupModel): Promise<any | undefined> => {
         try {
             let data = await postGroup(group);
-            console.log(data);
             return data.data.id;
          } catch (error) {
            console.error("Error while uploading artwork:", error);

@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { CreateGroupModel } from '../../model/CreateGroupModel';
 import { useNavigate } from 'react-router-dom';
 import { GroupContext } from '../../context/GroupContext';
+import { useAuth } from '../../context/AuthContext';
 
 export enum groupVisibility {
     PRIVATE = "private",
@@ -26,29 +27,32 @@ export default function CreateGroupModal({
     const [maxUserLimit, setMaxUserLimit] = useState(10);
     const { postNewGroup } = useContext(GroupContext) || {};
     const navigate = useNavigate();
-
+    const {user} = useAuth();
 
     const handleCreateClick = async () => {
-        let groupvisibility: groupVisibility =groupVisibility.PRIVATE;
-        if (visibility) {
-            groupvisibility = groupVisibility.PUBLIC;
-        }
-        const value:CreateGroupModel = {
-            group_name: groupname,
-            group_userlimit: parseInt(userLimit),
-            group_setting_visibility: groupvisibility,
-            creator_id: "1",
-            group_setting_join: join,
-        };
-
-        
-        if (postNewGroup) {
-            const data = await postNewGroup(value);
-            if (data) {
-               navigate("/group/"+data); 
+        if (user) {
+           let groupvisibility: groupVisibility =groupVisibility.PRIVATE;
+            if (visibility) {
+                groupvisibility = groupVisibility.PUBLIC;
             }
+            const value:CreateGroupModel = {
+                group_name: groupname,
+                group_userlimit: parseInt(userLimit),
+                group_setting_visibility: groupvisibility,
+                creator_id: user?.id,
+                group_setting_join: join,
+            };
+
+            
+            if (postNewGroup) {
+                const data = await postNewGroup(value);
+                if (data) {
+                navigate("/group/"+data); 
+                }
+            }
+            closeModal(false); 
         }
-        closeModal(false);
+        
     };
     
 
