@@ -18,7 +18,6 @@ const SimpleFolder: React.FC<{folder?: Folder, defaultfolder: boolean, profile:b
             setEdit(false)
         }else if (setOpen && saveFolder && user) {
             if (folderName !== '') {
-                console.log('save new folder');
                 await saveFolder({folder_name: folderName, id: "0", folder_order:0, folder_description: '', folder_archived: false, folder_visibility: visibility.PUBLIC}, profile, user, id)
             }
             
