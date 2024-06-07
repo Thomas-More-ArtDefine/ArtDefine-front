@@ -13,6 +13,7 @@ import { GroupJoin } from "../../components/group/Create-group-modal";
 import { GroupsContext } from "../../context/GroupsContext";
 import { useAuth } from "../../context/AuthContext";
 import { GroupMember } from "../../model/GroupMember";
+import EditFolders from "../../components/general/EditFolders";
 
 export default function Group() {
 
@@ -80,11 +81,11 @@ export default function Group() {
                     <GroupNav handleStepChange={setCurrentStep} currentStep={currentStep}/>
                     <div className="content">
                     {currentStep === "Home" && <GroupHome group={group} membersClickHandler={()=>{setCurrentStep('Members')}}/>}
-                    {currentStep === "Gallery" && <Gallery folders={folders? folders: group.folders}/>}
+                    {currentStep === "Gallery" && <Gallery setstate={setCurrentStep} folders={folders? folders: group.folders}/>}
                     {/* {currentStep === "Chat" && <div>Chat</div>} */}
                     {currentStep === "Details" && <GroupDetails group={group}/>}
                     {currentStep === "Members" && <GroupMembers members={group.members} />}
-                    
+                    {currentStep === "folderedit" && <EditFolders folders={folders? folders: group.folders} profile={false} />}
                     </div>
                     {
                       checkUserInGroup(group.members)?

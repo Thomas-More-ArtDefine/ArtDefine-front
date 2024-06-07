@@ -6,31 +6,24 @@ import ProfileGroups from "./Profile-groups";
 import { User } from "../../model/userModel";
 import { FolderContext } from "../../context/FolderContext";
 import { useParams } from "react-router-dom";
+import ProfileEditFolders from "./Profile-editFolders";
 
 const Profile: React.FC<{ user:User }> = ({ user }) => {
-    const [profileActive, setProfileActive] = useState<boolean>(true);
-    const [galleryActive, setGalleryActive] = useState<boolean>(false);
-    const [groupsActive, setGroupsActive] = useState<boolean>(false);
+    const [currentStep, setCurrentStep] = useState("main");
     const { findFoldersByUserId, folders } = useContext(FolderContext) || {};
     const { id } = useParams<{ id: string }>();
 
     const handleCategoryButtonClick = (button:string) => {
         switch (button) {
             case "profile":
-            setProfileActive(true);
-            setGalleryActive(false);
-            setGroupsActive(false);
+            setCurrentStep('main');
                 break;
     
             case "gallery":
-            setProfileActive(false);
-            setGalleryActive(true);
-            setGroupsActive(false);
+            setCurrentStep('gallery');
                 break;
             case "groups":
-            setProfileActive(false);
-            setGalleryActive(false);
-            setGroupsActive(true);
+            setCurrentStep('groups');
                 break;
             default:
                 break;
@@ -51,11 +44,12 @@ useEffect(() => {
         <>
         <div className="page profile own-profile">
             
-            <ProfileMain rank={id && id !== "1"?1:0} profileActive={profileActive} groupsActive={groupsActive} galleryActive={galleryActive} handleCategoryButtonClick={handleCategoryButtonClick} profileImg={user?.user_profile_picture} bannerImg={user?.user_banner_picture} />
-            {profileActive && !galleryActive && !groupsActive? <ProfileHome rank={1} user={user} folders={folders? folders: []} handleCategoryButtonClick={handleCategoryButtonClick}/>
-            :galleryActive && !profileActive && !groupsActive? <ProfileGallery rank={1} folders={folders? folders :user?.folders}/>
-            :groupsActive && !profileActive && !galleryActive? <ProfileGroups userid={user?.id} rank={1} user={user?user:undefined}/>
-            : <p>Something went wrong - please reload the page</p>}
+            <ProfileMain rank={id && id !== "1"?1:0} profileActive={currentStep === "main"} groupsActive={currentStep === "groups"} galleryActive={currentStep === "gallery"} handleCategoryButtonClick={handleCategoryButtonClick} profileImg={user?.user_profile_picture} bannerImg={user?.user_banner_picture} />
+            {currentStep === "main"? <ProfileHome rank={1} user={user} folders={folders? folders: []} handleCategoryButtonClick={handleCategoryButtonClick}/>
+            :currentStep === "gallery"? <ProfileGallery rank={1} folders={folders? folders :user?.folders} setstate={setCurrentStep}/>
+            :currentStep === "groups"? <ProfileGroups userid={user?.id} rank={1} user={user?user:undefined}/>
+            :currentStep === "folderedit"? <ProfileEditFolders folders={folders? folders :user?.folders} setstate={setCurrentStep}/>
+            : <p className="error-text">Something went wrong - please reload the page</p>}
             </div>
         </>
     );

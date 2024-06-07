@@ -2,7 +2,7 @@ import Banner from "../bannerAndProfileImage/Banner";
 import mockBannerPic from "../../assets/images/mock-banner-pic.png";
 import mockprofilePic from "../../assets/images/mock-profile-pic.png";
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import { User } from "../../model/userModel";
 import { useAuth } from "../../context/AuthContext";
@@ -19,7 +19,7 @@ const ProfileMain: React.FC<{
     const {user} = useAuth();
     const loggedUserId = user?.id;
     const { findFollowing,updateFollowing, following } = useContext(UserContext) || {};
-
+    const navigate = useNavigate();
     useEffect(() => {
       const fetchFolders = async () => {
           if (findFollowing && loggedUserId) {
@@ -91,7 +91,7 @@ const ProfileMain: React.FC<{
       <Banner myProfile={rank===0? true: false} imageUrl={bannerImg? bannerImg: mockBannerPic} imageAlt="Banner Picture" />
 
       <div className="profile-btns">
-        {rank === 0 ? (<div></div>) : (<button>Message</button> )}
+        {rank === 0 ? (<div></div>) : (<button onClick={()=>{navigate('/messages')}}>Message</button> )}
         <div className="flex justify-center"><img src={profileImg? profileImg: mockprofilePic} alt="Profile Picture" /></div>
         {rank === 0 ? (<div></div>) : (following && id && arrayContains(following, id)?<button onClick={() => handleUnfollowClick()}>Unfollow</button>:<button onClick={() => handleFollowClick()}>Follow</button>)}
         
