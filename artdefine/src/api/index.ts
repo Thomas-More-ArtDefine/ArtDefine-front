@@ -9,6 +9,7 @@ import {
   groupVisibility,
 } from "../components/group/Create-group-modal";
 import { FeedbackResponse } from "../model/FeedbackResponseModel";
+import { Folder } from "../model/FolderModel";
 
 export enum orderBy {
   DESC = "DESC",
@@ -522,6 +523,46 @@ export const postFeedbackResponse = async (response: FeedbackResponse) => {
         
         // response[0] = groups, response[1] = total count in database
         
+      } catch (error) {
+        console.error("Error while fetching one data:", error);
+        throw error;
+      }
+    };
+    
+    export const updateFolderAPI = async (
+      folderId: string,
+      updatedFolder: Folder
+    ): Promise<any> => {
+      try {
+        console.log('updated folder api');
+        const response = await api
+          .patch("/folders/" + folderId, {folder_name: updatedFolder.folder_name})
+          .then((res) => {
+            console.log(res);
+            console.log(res.data);
+          });
+        return response;
+      } catch (error) {
+        console.error("Error while fetching one data:", error);
+        throw error;
+      }
+    };
+
+    export const postFolder = async (
+      folder: Folder,
+      profile: boolean,
+      id: string
+    ): Promise<any> => {
+      const data: any = profile? {folder_name: folder.folder_name, folder_visibility: folder.folder_visibility, folder_description: folder.folder_description, user:{id: id}}: {folder_name: folder.folder_name, folder_visibility: folder.folder_visibility, folder_description: folder.folder_description, group:{id: id}};
+      try {
+        console.log('updated folder api');
+        const response = await api
+          .post("/folders", data)
+          .then((res) => {
+            console.log(res);
+            console.log(res.data);
+          });
+        return response;
       } catch (error) {
         console.error("Error while fetching one data:", error);
         throw error;

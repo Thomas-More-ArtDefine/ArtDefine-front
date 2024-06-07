@@ -2690,3 +2690,48 @@ tr {
     border-color: $sunset-red;
     color: $sunset-red !important;
   }
+
+
+  .edit-folders{
+    h4{
+      margin: 0;
+      margin-top: 24px;
+      text-align: left;
+    }
+
+    .add-button{
+      height: 48px;
+      background-color: $canvas-white-dark;
+      border-radius: $corner-radius-sm;
+      border: 2px #747261 solid;
+      color: $canary-yellow-dark;
+      margin-top: 16px;
+      transition: background-color 1s;
+      opacity: 75%;
+    }
+    .hover{
+      border: 2px $canary-yellow-dark solid;
+      background-color: $canvas-white-dark;
+    }
+    .hover:hover{
+      border: 2px $canary-yellow-dark solid;
+      background-color: #faf4cf;
+    }
+  }
+  
+  .simple-folder{
+    margin: 16px 0;
+      font-family: 'EavesSansHeavy';
+      height: 48px;
+      background-color: $canvas-white-light;
+      padding: 0 18px;
+      border-radius: $corner-radius-sm;
+      border: 2px $midnight-blue solid;
+      gap: 16px;
+      .icons{
+        min-width: 75px;
+      }
+      .disabled{
+        opacity: 50%;
+      }
+    }

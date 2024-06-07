@@ -1,7 +1,7 @@
 import { Folder } from "../../model/FolderModel";
 import placeholder from "../../assets/images/mock-banner-pic.png";
 
-const GalleryFolderModal: React.FC<{openMenu: React.Dispatch<React.SetStateAction<boolean>>, setFolder: React.Dispatch<React.SetStateAction<number>>, folders: Folder[]}> = ({ openMenu, setFolder, folders }) => {
+const GalleryFolderModal: React.FC<{openMenu: React.Dispatch<React.SetStateAction<boolean>>, setFolder: React.Dispatch<React.SetStateAction<number>>, folders: Folder[],setstate: React.Dispatch<React.SetStateAction<string>> }> = ({ openMenu, setFolder, folders, setstate }) => {
     const foldercards = folders.map(folder =>{
         if (folder.posts !== undefined && folder.posts.length !== 0) {
             return <div onClick={() => {setFolder(folder.folder_order - 1); openMenu(false);}} key={folder.id} className="clickable foldercard flex direction-column direction-column align-center justify-spacebetween">
@@ -27,7 +27,7 @@ const GalleryFolderModal: React.FC<{openMenu: React.Dispatch<React.SetStateActio
         }}
       ></div>
             <div className="slideout-modal">
-                <div className="header flex align-center justify-spacebetween"><span className="title">Folders</span><i className="material-icons clickable" onClick={() => console.log("open edit folder window")}>brush</i></div>
+                <div className="header flex align-center justify-spacebetween"><span className="title">Folders</span><i className="material-icons clickable" onClick={() => setstate('folderedit')}>brush</i></div>
                 <div className="content flex align-center direction-column">
                     {foldercards}
                 </div>

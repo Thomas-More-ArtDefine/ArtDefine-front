@@ -4,7 +4,7 @@ import UnderlinedTitleSmall from "./UnderlinedTitledSmall";
 import ArtworkCard from "../cards/Artwork-card";
 import GalleryFolderModal from "./GalleryFolderModal";
 
-const Gallery: React.FC<{folders: Folder[]}> = ({folders}) => {
+const Gallery: React.FC<{folders: Folder[], setstate: React.Dispatch<React.SetStateAction<string>>}> = ({folders, setstate}) => {
     const [activeFolder, setActiveFolder] = useState<number>(0);
     const [openModal, setOpenModal] = useState<boolean>(false);
     // sort folders on order
@@ -36,7 +36,7 @@ const Gallery: React.FC<{folders: Folder[]}> = ({folders}) => {
     return (
         <>
         <div className="gallery">
-        {openModal && <GalleryFolderModal folders={folders} setFolder={setActiveFolder} openMenu={setOpenModal} />}
+        {openModal && <GalleryFolderModal setstate={setstate} folders={folders} setFolder={setActiveFolder} openMenu={setOpenModal} />}
               
           
             <UnderlinedTitleSmall icon={true} title={folders[activeFolder].folder_name} set={setOpenModal} />
