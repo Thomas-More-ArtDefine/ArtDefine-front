@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useCallback, useContext, useMemo, useState } from "react";
-import { getFoldersByGroupId, getFoldersByUserId, postFolder, updateFolderAPI } from "../api";
+import { deleteFolder, getFoldersByGroupId, getFoldersByUserId, postFolder, updateFolderAPI } from "../api";
 import { Folder } from "../model/FolderModel";
 import { User } from "../model/userModel";
 
@@ -9,6 +9,7 @@ interface FolderContextType {
     findFoldersByUserId: (id: string) => Promise<Folder[] | undefined>;
     updateFolder: (id: string, folder:Folder) => Promise<void | undefined>;
     saveFolder: (folder:Folder, profile:boolean, user: User, id?: string) => Promise<void | undefined>;
+    removeFolder: (id: string) => Promise<void | undefined>;
 }
 
 export const FolderContext = createContext<FolderContextType | null>(null);
@@ -53,8 +54,15 @@ export const FolderProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         
       }, []);
 
+      const removeFolder = useCallback(async (id: string): Promise<void> => {
 
-    const value = useMemo(() => ({ folders, findFoldersByGroupId, findFoldersByUserId, updateFolder,saveFolder }), [folders, findFoldersByGroupId, findFoldersByUserId, updateFolder, saveFolder]);
+          await deleteFolder(id);
+        
+        
+      }, []);
+
+
+    const value = useMemo(() => ({ folders, findFoldersByGroupId, findFoldersByUserId, updateFolder,saveFolder,removeFolder }), [folders, findFoldersByGroupId, findFoldersByUserId, updateFolder, saveFolder, removeFolder]);
 
     return (
         <FolderContext.Provider value={value}>

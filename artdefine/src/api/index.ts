@@ -543,7 +543,7 @@ export const postFeedbackResponse = async (response: FeedbackResponse) => {
           });
         return response;
       } catch (error) {
-        console.error("Error while fetching one data:", error);
+        console.error("Error while patching one data:", error);
         throw error;
       }
     };
@@ -564,7 +564,26 @@ export const postFeedbackResponse = async (response: FeedbackResponse) => {
           });
         return response;
       } catch (error) {
-        console.error("Error while fetching one data:", error);
+        console.error("Error while posting one data:", error);
+        throw error;
+      }
+    };
+    
+
+    export const deleteFolder = async (
+      id: string
+    ): Promise<any> => {
+      try {
+        console.log('updated folder api');
+        const response = await api
+          .delete("/folders/"+id)
+          .then((res) => {
+            console.log(res);
+            console.log(res.data);
+          });
+        return response;
+      } catch (error) {
+        console.error("Error while removing one data:", error);
         throw error;
       }
     };

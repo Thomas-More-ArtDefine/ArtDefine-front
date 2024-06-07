@@ -8,7 +8,7 @@ import { visibility } from "../../model/PostModel";
 const SimpleFolder: React.FC<{folder?: Folder, defaultfolder: boolean, profile:boolean, setOpen?: React.Dispatch<React.SetStateAction<boolean>>}> = ({folder, defaultfolder,profile, setOpen}) => {
     const [edit, setEdit] = useState<boolean>(folder?false:true);
     const [folderName, setFolderName] = useState<string>(folder?folder.folder_name:'');
-    const { findFoldersByUserId, findFoldersByGroupId, updateFolder, saveFolder } = useContext(FolderContext) || {};
+    const { findFoldersByUserId, findFoldersByGroupId, updateFolder, saveFolder, removeFolder } = useContext(FolderContext) || {};
     const { id } = useParams<{ id: string }>();
     const {user} = useAuth();
     
@@ -37,6 +37,23 @@ const SimpleFolder: React.FC<{folder?: Folder, defaultfolder: boolean, profile:b
         }, 250);
     }
 
+    const handleDeleteFolder = async () => {
+        if (folder && removeFolder) {
+            await removeFolder(folder.id);
+        }
+        setTimeout(() => {
+            if (profile && id && findFoldersByUserId) {
+                findFoldersByUserId(id);
+            }else if (profile && user && findFoldersByUserId) {
+                findFoldersByUserId(user.id);
+            }else if(findFoldersByGroupId && id){
+                findFoldersByGroupId(id);
+            }else{
+                console.log("Couldn't reload folders");
+            }
+        }, 250);
+    }
+
     
     return (
         <>
@@ -47,7 +64,7 @@ const SimpleFolder: React.FC<{folder?: Folder, defaultfolder: boolean, profile:b
                 <div className="flex icons justify-spacebetween">
                     { !edit && <i className="material-icons clickable" onClick={() => setEdit(true)}>brush</i>}
                     { edit && <i className="material-icons clickable" onClick={() => handleSaveFolder()}>save</i>} 
-                    <i className={defaultfolder?"material-icons disabled":"material-icons clickable"} onClick={() => defaultfolder?console.log("Folder can't be deleted" ):console.log('delete folder: '+folder?.folder_name)}>delete</i>
+                    <i className={defaultfolder?"material-icons disabled":"material-icons clickable"} onClick={() => defaultfolder?console.log("Folder can't be deleted" ):handleDeleteFolder()}>delete</i>
                 </div>
                
             </div>
