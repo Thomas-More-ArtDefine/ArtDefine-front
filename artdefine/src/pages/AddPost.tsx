@@ -91,7 +91,6 @@ export default function AddPost() {
         tempArtwork.feedbackStack = feedbackStack;
       }
       selectedFolders.forEach((folderid) => {
-        console.log('folderid', folderid)
         tempArtwork.folders.push({
           id: folderid,
           folder_archived: false,
@@ -109,7 +108,6 @@ export default function AddPost() {
         console.log("Failed to upload");
       }
       }else{
-        console.log("No Image with name to upload");
         document.getElementsByClassName('upload-card')[0]?.classList.add('input-error');
         document.getElementById('title')?.classList.add('input-error');
         document.getElementsByClassName('input-title')[0]?.classList.add('input-error');
