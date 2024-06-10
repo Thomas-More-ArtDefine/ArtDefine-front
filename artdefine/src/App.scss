@@ -2735,3 +2735,21 @@ tr {
         opacity: 50%;
       }
     }
+
+    .add-group-title{
+      text-align: left;
+      font-family: 'EavesSansHeavy';
+      color: $purple-dark;
+    }
+
+    i{
+      &.icon-checkbox{
+        transition: opacity 1s;
+        &:hover{
+          opacity: 75%;
+        }
+        &.checkbox-disabled{
+          opacity: 50%;
+        }
+      }
+    }

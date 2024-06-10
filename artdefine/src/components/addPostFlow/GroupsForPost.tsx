@@ -1,64 +1,62 @@
 import React, { useState } from "react";
-import GroupCard from "../cards/GroupCard";
 import { GroupModel } from "../../model/GroupModel";
-import placeholderpfp from "../../assets/images/mock-profile-pic.png";
+import { useAuth } from "../../context/AuthContext";
 
 interface Props {
   userGroups: GroupModel[];
+  setSelectedFolders: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedFolders: string[];
 }
 
-const GroupsForPost: React.FC<Props> = ({ userGroups }) => {
-  const [selectedGroups, setSelectedGroups] = useState<number[]>([]);
-  const handleGroupSelection = (groupId: number) => {
-    if (selectedGroups.includes(groupId)) {
-      setSelectedGroups(selectedGroups.filter((id) => id !== groupId));
+const GroupsForPost: React.FC<Props> = ({ userGroups, setSelectedFolders, selectedFolders }) => {
+  // const [selectedFolders, setSelectedFolders] = useState<string[]>([]);
+  const {user} = useAuth();
+  const handleFolderSelection = (folderId: string) => {
+    if (selectedFolders.includes(folderId)) {
+      document.getElementById('folder-'+folderId)!.innerHTML = 'check_box_outline_blank';
+      setSelectedFolders(selectedFolders.filter((id) => id !== folderId));
+      console.log(selectedFolders);
+      
     } else {
-      setSelectedGroups([...selectedGroups, groupId]);
+      document.getElementById('folder-'+folderId)!.innerHTML = 'check_box';
+      setSelectedFolders([...selectedFolders, folderId]);
     }
   };
 
-  console.log(userGroups);
+  const groupFolders =userGroups.map((group) => {
+    return (
+      <div key={group.id}>
+        <div className="add-group-title">{group.group_name}</div>
+        <div className="divider"></div>
+        {group.folders.map((folder) => <div key={folder.id} className="simple-folder flex justify-spacebetween align-center">
+          <div>{folder.folder_name}</div>
+          <i className="material-icons icon-checkbox clickable" onClick={() => handleFolderSelection(folder.id)} id={"folder-"+folder.id}>{selectedFolders.includes(folder.id)?"check_box":"check_box_outline_blank"}</i>
+        </div>)}
+      </div>
+    );
+  })
   return (
     <div className="groups-for-post">
         <div className="own-profile">
-        <label htmlFor="own-profile" className="checkbox">
-          <input
-            type="checkbox"
-            id="own-profile"
-             />
-          <div className="text">My Profile</div>
-        </label>
-      </div>
-      {userGroups.map((group) => {
-        const image =
-          group.group_profile_picture !== null &&
-          group.group_profile_picture !== undefined &&
-          group.group_profile_picture !== "" ? (
-            <img src={group.group_profile_picture} alt="" className="gpfp" />
-          ) : (
-            <img src={placeholderpfp} alt="" className="gpfp" />
-          );
-
-        return (
+          <div className="add-group-title">My Profile</div>
+          <div className="divider"></div>
           <div>
-            <div className="group-card">
-              {image}
-              <div className="group-info">
-                <div className="general">
-                  <span className="group-name">{group.group_name}</span>
-                  <span className="userlimit">
-                    <span className="members">{group.members.length}</span>/
-                    <span className="limit">{group.group_userlimit}</span>
-                  </span>
-                </div>
-
-                <div className="description">{group.group_bio}</div>
-              </div>
+          <div className="simple-folder flex justify-spacebetween align-center">
+              <div>{user?.folders[0].folder_name}</div>
+              <i className="material-icons icon-checkbox checkbox-disabled">check_box</i>
             </div>
-            <div className="group-folders"></div>
+            {user?.folders.map((folder, index) =>{
+              if (index !== 0) {
+                return<div key={folder.id} className="simple-folder flex justify-spacebetween align-center">
+              <div>{folder?folder.folder_name:''}</div>
+              <i className="material-icons icon-checkbox clickable" onClick={() => handleFolderSelection(folder.id)} id={"folder-"+folder.id}>{selectedFolders.includes(folder.id)?"check_box":"check_box_outline_blank"}</i>
+            </div>
+              }
+            }
+            )}
           </div>
-        );
-      })}
+      </div>
+      {groupFolders}
       
     </div>
   );
