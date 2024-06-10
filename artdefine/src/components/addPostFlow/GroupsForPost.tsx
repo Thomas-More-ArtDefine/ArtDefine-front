@@ -4,15 +4,18 @@ import { useAuth } from "../../context/AuthContext";
 
 interface Props {
   userGroups: GroupModel[];
+  setSelectedFolders: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedFolders: string[];
 }
 
-const GroupsForPost: React.FC<Props> = ({ userGroups }) => {
-  const [selectedFolders, setSelectedFolders] = useState<string[]>([]);
+const GroupsForPost: React.FC<Props> = ({ userGroups, setSelectedFolders, selectedFolders }) => {
+  // const [selectedFolders, setSelectedFolders] = useState<string[]>([]);
   const {user} = useAuth();
   const handleFolderSelection = (folderId: string) => {
     if (selectedFolders.includes(folderId)) {
       document.getElementById('folder-'+folderId)!.innerHTML = 'check_box_outline_blank';
       setSelectedFolders(selectedFolders.filter((id) => id !== folderId));
+      console.log(selectedFolders);
       
     } else {
       document.getElementById('folder-'+folderId)!.innerHTML = 'check_box';

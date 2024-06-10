@@ -136,6 +136,11 @@ export const getArtwork = async (id: string): Promise<Artwork> => {
 
 export const postArtwork = async (artwork: Artwork): Promise<Artwork> => {
   try {
+    const folders: any[] = [];
+    artwork.folders.forEach((folder) =>{
+      folders.push({id:folder.id});
+    })
+
     const artworkForPost = {
       post_content: artwork.post_content,
       post_title: artwork.post_title,
@@ -145,8 +150,10 @@ export const postArtwork = async (artwork: Artwork): Promise<Artwork> => {
       user: {
         id: artwork.user.id,
       },
-      folders: [],
+      folders: folders,
     };
+
+    console.log(artworkForPost);
     const response = await api.post("/posts", artworkForPost);
     if (artwork.feedbackStack) {
       console.log("Feedbackstack:", artwork.feedbackStack);
