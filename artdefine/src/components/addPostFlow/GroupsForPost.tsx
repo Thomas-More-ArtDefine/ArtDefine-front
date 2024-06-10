@@ -38,11 +38,18 @@ const GroupsForPost: React.FC<Props> = ({ userGroups }) => {
           <div className="add-group-title">My Profile</div>
           <div className="divider"></div>
           <div>
-            {user?.folders.map((folder) =>
-            <div className="simple-folder flex justify-spacebetween align-center">
-              <div>{folder?folder.folder_name:''}</div>
+          <div className="simple-folder flex justify-spacebetween align-center">
+              <div>{user?.folders[0].folder_name}</div>
               <i className="material-icons icon-checkbox checkbox-disabled">check_box</i>
             </div>
+            {user?.folders.map((folder, index) =>{
+              if (index !== 0) {
+                return<div key={folder.id} className="simple-folder flex justify-spacebetween align-center">
+              <div>{folder?folder.folder_name:''}</div>
+              <i className="material-icons icon-checkbox clickable" onClick={() => handleFolderSelection(folder.id)} id={"folder-"+folder.id}>check_box_outline_blank</i>
+            </div>
+              }
+            }
             )}
           </div>
       </div>
