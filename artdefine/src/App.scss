@@ -2678,6 +2678,13 @@ tr {
   margin: 27px 18px 55px 18px;
 }
 
+.input-error{
+  font-family: 'EavesSansHeavy' !important;
+  border-color: $sunset-red !important;
+  color: $sunset-red !important;
+}
+
+
 .title{
     margin-bottom: 24px;
     h3{
@@ -2685,12 +2692,7 @@ tr {
     }
   }
 
-  .input-error{
-    font-family: 'EavesSansHeavy';
-    border-color: $sunset-red;
-    color: $sunset-red !important;
-  }
-
+ 
 
   .edit-folders{
     h4{

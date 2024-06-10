@@ -44,13 +44,18 @@ export default function CreateGroupModal({
             };
 
             
-            if (postNewGroup) {
+            if (postNewGroup && value.group_name !== '' && value.group_name) {
                 const data = await postNewGroup(value);
                 if (data) {
                 navigate("/group/"+data); 
                 }
+                closeModal(false); 
+            }else{
+                console.log('group must have a name');
+                document.getElementById('groupname')?.classList.add('input-error');
+                document.getElementById('groupname-title')?.classList.add('input-error');
             }
-            closeModal(false); 
+            
         }
         
     };
@@ -71,8 +76,8 @@ export default function CreateGroupModal({
                         <div className="divider red-dark"></div>
                     </div>
                     <div className='form'>
-                        <div className='groupname'>
-                            <label htmlFor="groupname">Group name</label>
+                        <div className='groupname' >
+                            <label htmlFor="groupname" id='groupname-title'>Group name*</label>
                             <input id='groupname' required name="groupname"  value={groupname} onChange={(e) => setGroupname(e.target.value)} type="text" placeholder='GroupName' />
                         </div>
                         <div className='userlimit'>
