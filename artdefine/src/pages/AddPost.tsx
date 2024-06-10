@@ -1,6 +1,6 @@
 import CatButton from "../components/general/buttons/CatBotton";
 import { ReactComponent as CrossIcon } from "../assets/Vectors/cross-black.svg";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import UploadItemForPost from "../components/addPostFlow/UploadItemForPost";
 import DetailFormForPost from "../components/addPostFlow/DetailFormForPost";
 import { ReactComponent as UploadIcon } from "../assets/vectors/upload-icon-black-fill.svg";
@@ -14,6 +14,7 @@ import FeedbackItemsForPost from "../components/addPostFlow/FeedbackItemsforPost
 import { FeedbackItemModel } from "../model/FeedbackItemModel";
 import GroupsForPost from "../components/addPostFlow/GroupsForPost";
 import { useNavigate } from "react-router-dom";
+import { GroupsContext } from "../context/GroupsContext";
 
 export default function AddPost() {
   const [currentStep, setCurrentStep] = useState("Upload");
@@ -21,7 +22,8 @@ export default function AddPost() {
   const [isNameChanged, setIsNameChanged] = useState<boolean>(false);
   const [feedbackStack, setFeedbackStack] = useState<FeedbackItemModel[]>([]);
   const { uploadArtwork} = useArtwork(); 
-  const {user, joinedGroups} = useAuth();
+  const {user} = useAuth();
+  const { joinedGroups,findUsersGroups } = useContext(GroupsContext) || {};
   const navigate = useNavigate();
 
   const [tempArtwork, setTempArtwork] = useState<Artwork>({
@@ -59,6 +61,13 @@ export default function AddPost() {
 
   // when resizing to, or starting from (min-width: 992px) set state to "Details"
   useEffect(() => {
+    const fetchUserGroups = async () => {
+      if (findUsersGroups && user) {
+          await findUsersGroups(user.id ?? ""); 
+      }
+  };
+
+  fetchUserGroups();
     const handleResize = () => {
       if (window.innerWidth >= 992) {
         setCurrentStep("Details");
@@ -70,6 +79,7 @@ export default function AddPost() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
+    
   }, []);
  
 
@@ -156,7 +166,7 @@ export default function AddPost() {
               />
         </div>
       {currentStep === "Details" && <>{ <DetailFormForPost setNameChanged={setIsNameChanged} artwork={tempArtwork} setArtwork={setTempArtwork}/>}</>}
-      {currentStep === "Groups" && <>{<GroupsForPost userGroups={joinedGroups} />}</>}
+      {currentStep === "Groups" && <>{<GroupsForPost userGroups={joinedGroups? joinedGroups: []} />}</>}
       {currentStep === "Feedback" && <>{<><FeedbackItemsForPost feedbackStack={feedbackStack} setFeedbackStack={setFeedbackStack}  /></>}</>}
       </div>
       <div>
