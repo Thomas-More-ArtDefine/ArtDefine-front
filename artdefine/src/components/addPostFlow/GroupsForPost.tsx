@@ -30,7 +30,7 @@ const GroupsForPost: React.FC<Props> = ({ userGroups, setSelectedFolders, select
         <div className="divider"></div>
         {group.folders.map((folder) => <div key={folder.id} className="simple-folder flex justify-spacebetween align-center">
           <div>{folder.folder_name}</div>
-          <i className="material-icons icon-checkbox clickable" onClick={() => handleFolderSelection(folder.id)} id={"folder-"+folder.id}>check_box_outline_blank</i>
+          <i className="material-icons icon-checkbox clickable" onClick={() => handleFolderSelection(folder.id)} id={"folder-"+folder.id}>{selectedFolders.includes(folder.id)?"check_box":"check_box_outline_blank"}</i>
         </div>)}
       </div>
     );
@@ -49,7 +49,7 @@ const GroupsForPost: React.FC<Props> = ({ userGroups, setSelectedFolders, select
               if (index !== 0) {
                 return<div key={folder.id} className="simple-folder flex justify-spacebetween align-center">
               <div>{folder?folder.folder_name:''}</div>
-              <i className="material-icons icon-checkbox clickable" onClick={() => handleFolderSelection(folder.id)} id={"folder-"+folder.id}>check_box_outline_blank</i>
+              <i className="material-icons icon-checkbox clickable" onClick={() => handleFolderSelection(folder.id)} id={"folder-"+folder.id}>{selectedFolders.includes(folder.id)?"check_box":"check_box_outline_blank"}</i>
             </div>
               }
             }
