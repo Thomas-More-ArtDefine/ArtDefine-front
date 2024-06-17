@@ -2388,6 +2388,14 @@ tr {
   }
 }
 
+.feedback-open{
+  text-align: left;
+
+  .field{
+    padding-left: 20px;
+  }
+}
+
 .feedback-radial {
   input {
     accent-color: $purple-dark;
@@ -2399,6 +2407,12 @@ tr {
 
   .options {
     text-align: start;
+    div{
+      display: flex;
+      input{
+        width: 40px;
+      }
+    }
   }
 }
 
